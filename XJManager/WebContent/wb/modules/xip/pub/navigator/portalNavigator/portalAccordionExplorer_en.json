@@ -1,0 +1,12 @@
+{
+  homePage : "Home Page",
+  role     : "Role",
+  functionMenu : "Function Menu",
+  quitTips : 'Are you sure you want to quit?',
+  waitingMsg : 'Please waiting ...',
+  failureMsg : 'The server is not responding',
+  modifiedPwd : 'Modify Password',
+  personalSet : 'PersonalSetting',
+  logout : 'logout',
+  portal_accord_query_condition:'Input the keywords for querying !'
+}

@@ -1,0 +1,10 @@
+{
+	configtools_source_string:'Original string',
+  	configtools_encryption:'encryption',
+  	configtools_input_encryption_string:'Please enter the encrypted string',
+  	configtools_prompt:'prompt',
+  	configtools_server_norepeat:'Server side did not respond, exit failure',
+  	configtools_Decrypt:'Decrypt',
+  	configtools_input_Decrypt_string:'Please enter a decryption string',
+  	configtools_encryption_Decrypt_string:'Character after encryption or decryption'
+}

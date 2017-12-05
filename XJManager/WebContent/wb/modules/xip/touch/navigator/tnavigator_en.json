@@ -1,0 +1,14 @@
+{
+  notice.status.open:"Open",
+  notice.status.close:"Close",
+  btn.home.text:"Home",
+  btn.task.text:"ToDo",
+  btn.notice.text:"Notice",
+  btn.setting.text:"Setting",
+  setting.theme:"Theme",
+  setting.changepwd:"Change Password",
+  setting.switchRole:"Switch Role",
+  setting.logout:"Logout",
+  setting.title:"Setting",
+  task.title.placeholder:"Task Title"
+}

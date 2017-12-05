@@ -1,0 +1,22 @@
+{
+  
+  query        : "查询",
+  backlog      : "待办",
+  notice       : "通知",
+  alreadyDone  : "已办",
+  file         : "归档",
+  entityName   : "实体名称",
+  nodeName     : "节点名称",
+  title        : "标题",
+  date         : "日期",
+  batchApproval   : "批量审批",
+  beginDate       : "开始时间",
+  endDate       : "结束时间",
+  Initiator       : "发起人",
+  owner           : "所有者",
+  noticeTitle     : "通知标题",
+  historyNotic    : "历史通知",
+  createDate      : "创建时间",
+  businessEntity  : "业务实体",
+  taskStatus           : "任务状态"
+}

@@ -1,0 +1,21 @@
+{
+  xip_auth_role_menuGroupLang_language       : "语种",
+  xip_auth_role_menuGroupLang_en             : "英文",
+  xip_auth_role_menuGroupLang_zh             : "中文",
+  xip_auth_role_menuGroupLang_menuCode       : "菜单功能编码",
+  xip_auth_role_menuGroupLang_query          : "查询",
+  xip_auth_role_menuGroupLang_reset          : "重置",
+  xip_auth_role_menuGroupLang_save           : "保存",
+  xip_auth_role_menuGroupLang_no             : "序号",
+  xip_auth_role_menuGroupLang_roleCode       : "角色编码",
+  xip_auth_role_menuGroupLang_roleName       : "角色名称",
+  xip_auth_role_menuGroupLang_languageCode   : "语种编码",
+  xip_auth_role_menuGroupLang_languageName   : "语种名称",
+  xip_auth_role_menuGroupLang_name           : "名称",
+  xip_auth_role_menuGroupLang_conditionQuery : "条件查询",
+  xip_auth_role_menuGroupLang_alert          : "提示",
+  xip_auth_role_menuGroupLang_success        : "保存成功",
+  xip_auth_role_menuGroupLang_message        : "正在保存，请稍后...",
+  xip_auth_role_menuGroupLang_selRecord      : "没有需要保存的数据！",
+  xip_auth_role_menuGroupLang_successFail    : "保存失败，详细信息>>"
+}

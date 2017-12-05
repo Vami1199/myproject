@@ -1,0 +1,36 @@
+{
+    wf_holiday_okBtn : 'Ok',
+    wf_holiday_closeBtn : 'Cancel',
+    wf_holiday_newWin : 'Add',
+    wf_holiday_USER : 'Current user',
+    wf_holiday_PROXY_USER : 'Proxy user',
+    wf_holiday_BEGIN_DATE : 'Begin date',
+    wf_holiday_END_DATE : 'End date',
+    wf_holiday_ATTRIBUTE1 : 'Is enabled',
+    wf_holiday_ATTRIBUTE1_COL : 'Enable state',
+    wf_holiday_queryBtn : 'Query',
+    wf_holiday_resetBtn : 'Reset',
+  
+    wf_holiday_cxtj : 'Query condition',
+  
+    wf_holiday_addBtn : 'Add',
+    wf_holiday_stopBtn : 'Stop',
+  
+    wf_holiday_prompt : 'Prompt',
+    wf_holiday_nmyxzrhsj : 'You do not select any data!',
+    wf_holiday_qxzytsj : 'Please select a data!',
+    wf_holiday_dlsjygqwfty : 'Agent time expired, can not be disabled!',
+    wf_holiday_yty : 'deactivated!',
+    wf_holiday_qdytym : 'Are you sure you want to disable it?',
+    wf_holiday_sztycg : 'Set disable success!',
+    wf_holiday_szsb : 'Setting failed!',
+    wf_holiday_xxbwz : 'Incomplete information!',
+    wf_holiday_yhbngzjdl : 'Users can not give their agents!',
+    wf_holiday_yhdlsjct : 'User agent time conflict!',
+    wf_holiday_sjyw : 'Time is wrong!',
+    wf_holiday_nsxzdsjbhygrq : 'The time you have selected contains the date you have passed!',
+    wf_holiday_bccg : 'Save success!',
+    wf_holiday_bcsb : 'Save failed!',
+    wf_holiday_Y : ' Yes',
+    wf_holiday_N : 'No'
+}

@@ -1,0 +1,1 @@
+{"inframe":false,"title":"删除收藏","hidden":false,"roles":{},"children":[{"configs":{"itemId":"module"},"children":[{"configs":{"sql":"delete from xip_pub_user_tab_collect where ID = {?ID?}","itemId":"query1","arrayName":"destroy"},"children":[],"expanded":false,"type":"query"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

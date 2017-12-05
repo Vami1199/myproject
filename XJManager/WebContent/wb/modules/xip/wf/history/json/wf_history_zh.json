@@ -1,0 +1,19 @@
+{
+    wf_history_assignUserName : '待办所有者',
+    wf_history_executeUserName : '待办执行人',
+    wf_history_actName : '审批阶段',
+    wf_history_beginDate : '开始时间',
+    wf_history_endDate : '结束时间',
+    wf_history_taskState : '待办状态',
+    wf_history_open : '打开',
+    wf_history_hung_up : '挂起',
+    wf_history_closed : '关闭',
+    wf_history_result : '结果',
+    wf_history_createType : '待办分类',
+    wf_history_normal : '正常待办',
+    wf_history_consult : '征询待办',
+    wf_history_copyto : '抄送待办',
+    wf_history_avoid : '规避待办',
+    wf_history_start : '提交人待办',
+    wf_history_approveCommnet : '审批意见'
+}

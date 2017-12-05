@@ -1,0 +1,19 @@
+{
+  xip_base_param_paramLang_language : "Languate",
+  xip_base_param_paramLang_paramCodeName : "Param Code/Name",
+  xip_base_param_paramLang_query : "Query",
+  xip_base_param_paramLang_reset : "Reset",
+  
+  xip_base_param_paramLang_no : "NO.",
+  xip_base_param_paramLang_languageCode : "Langudate Code",
+  xip_base_param_paramLang_languageName : "Langudate",
+  xip_base_param_paramLang_paramCode : "Param Code",
+  xip_base_param_paramLang_paramName : "Param Name",
+  xip_base_param_paramLang_decription : "Description",
+  
+  xip_base_param_paramLang_save : "Save",
+  xip_base_param_paramLang_checkModified : "There is no need to save the data",
+  xip_base_param_paramLang_message : "Saving,please wait...",
+  xip_base_param_paramLang_success : "Save success",
+  xip_base_param_paramLang_failure : "Save failure"
+}

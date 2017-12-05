@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":false,"roles":{"default":1},"children":[{"configs":{"initScript":"request.setAttribute(\"uuid\",java.util.UUID.randomUUID());","loginRequired":"false","serverScript":"app.send({uuid:request.getAttribute(\"uuid\")});","itemId":"module"},"children":[],"expanded":false,"type":"module"}],"pageLink":"","iconCls":""}

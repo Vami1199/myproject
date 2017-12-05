@@ -1,0 +1,21 @@
+{
+  xip_conc_nodes_fieldset1 : '查询条件',
+  xip_conc_nodes_jdbm : '节点编码/说明',
+  xip_conc_nodes_queryBtn : '查询',
+  xip_conc_nodes_resetBtn : '重置',
+  xip_conc_nodes_addBtn : '新增',
+  xip_conc_nodes_editBtn : '编辑',
+  xip_conc_nodes_deleteBtn : '删除',
+  xip_conc_nodes_NODE_CODE : '节点编码',
+  xip_conc_nodes_NODE_DESC : '节点说明',
+  xip_conc_nodes_CONTEXT_PATH : '节点地址',
+  xip_conc_nodes_MAX_CONC_COUNT : '最大并发数',
+  xip_conc_nodes_NODE_IP : '节点访IP',
+  xip_conc_nodes_NODE_PORT : '节点端口',
+  xip_conc_nodes_IS_ENCRYPTED : '是否加密',
+  xip_conc_nodes_add_title : '新增节点' ,
+  xip_conc_nodes_edit_title : '编辑' ,
+  xip_conc_nodes_saveWin : '保存' ,
+  xip_conc_nodes_savenextWin : '保存并添加下一个' ,
+  xip_conc_nodes_closeWin : '关闭' 
+}

@@ -1,0 +1,33 @@
+{
+  xip_tools_defined_fieldset : '查询条件',
+  xip_tools_defined_tabCode : '表编码',
+  xip_tools_defined_tabName : '表名称',
+  xip_tools_defined_tabType : '表类型',
+  xip_tools_defined_queryBtn : '查询',
+  xip_tools_defined_resetBtn : '重置',
+  
+  xip_tools_defined_addBtn : '新增',
+  xip_tools_defined_editBtn : '编辑',
+  xip_tools_defined_deleteBtn : '删除',
+  
+  xip_tools_defined_ins_sql : '插入SQL',
+  xip_tools_defined_qry_sql : '查询SQL',
+  xip_tools_defined_upd_sql : '更新SQL',
+  xip_tools_defined_order : '排序号',
+  
+  
+  xip_tools_defined_tip : '提示',
+  xip_tools_defined_selrow : '请选择一行!',
+  xip_tools_defined_deleteok : '删除成功！',
+  xip_tools_defined_okdelete : '您确定要删除所选的信息吗?',
+  xip_tools_defined_tablecode : '表编码已存在！',
+ 
+  xip_tools_defined_sys : '系统内置',
+  xip_tools_defined_def : '用户自定义',
+  xip_tools_defined_msgincomplete : '请填写所有必填项!',
+  xip_tools_defined_sqlincomplete : '插入SQL和更新SQL至少填写一个!',
+  xip_tools_defined_savesuc    : '保存成功！',
+  xip_tools_defined_saveBtn : '保存',
+  xip_tools_defined_saveAndMore : '保存并添加下一个',
+  xip_tools_defined_closeBtn : '关闭'
+}

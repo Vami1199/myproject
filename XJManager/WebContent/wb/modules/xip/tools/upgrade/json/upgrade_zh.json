@@ -1,0 +1,69 @@
+{
+  xip_tools_upgrade_handler_app:'应用信息',
+  
+  xip_tools_upgrade_select_app:'请选应用信息',
+
+  xip_tools_upgrade_no_match_val:'未找到匹配值',
+
+  xip_tools_upgrade_history_version:'历史版本',
+
+  xip_tools_upgrade_new_version:'最新版本',
+
+  xip_tools_upgrade_version_date:'更新日期',
+
+  xip_tools_upgrade_ddl_sql:'DDL脚本',
+
+  xip_tools_upgrade_crud_sql:'CRUD脚本',
+
+  xip_tools_upgrade_initial_data:'初始化数据',
+
+  xip_tools_upgrade_differ_data:'差异化数据',
+
+  xip_tools_upgrade_wb_module:'WB模块',
+
+  xip_tools_upgrade_execute_version:'执行升级',
+
+  xip_tools_upgrade_ver_number_empty:'当前版本号不能为空！',
+
+  xip_tools_upgrade_latest_ver_no:'"最新版本号不能为空！',
+
+  xip_tools_upgrade_version_option:'请选择升级选项！',
+
+  xip_tools_upgrade_option:'升级选项',
+
+  xip_tools_upgrade_confirm_tip:'您确定要执行升级吗?',
+
+  xip_tools_upgrade_execute_condition:'执行条件',
+
+  xip_tools_upgrade_log:'升级日志',
+
+  xip_tools_upgrade_version:'版本号',
+
+  xip_tools_upgrade_ddl:'1-DDL差异脚本',
+
+  xip_tools_upgrade_crud:'2-CRUD数据库脚本',
+
+  xip_tools_upgrade_init:'3-初始化数据',
+
+  xip_tools_upgrade_differ:'4-差异化数据',
+
+  xip_tools_upgrade_wb:'5-WB模块信息',
+
+  xip_tools_upgrade_synchronize:'0-数据库结构同步',
+
+  xip_tools_upgrade_start_time:'开始时间',
+
+  xip_tools_upgrade_end_time:'结束时间',
+
+  xip_tools_upgrade_exe_time:'执行时间',
+
+  xip_tools_upgrade_is_success:'是否成功',
+
+  xip_tools_upgrade_success:'成功',
+
+  xip_tools_upgrade_failure:'失败',
+
+  xip_tools_upgrade_result:'结果',
+  
+  xip_tools_upgrade_submit_request:'正在提交请求.......'
+}

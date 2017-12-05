@@ -1,0 +1,25 @@
+{
+  
+  conditionQuery  : "Query" ,
+  query        : "Search",
+  reset        : "Reset",
+  add          : "Add",
+  save         : "Save",
+  delete       : "Delete",
+  chartType     : "Chart Type",
+  attributeCode     : "Attribute Code",
+  attributeName     : "Attribute Name",
+  attributeDesc     : "Attribute Desc",
+  attributeValueType     : "Attribute Value Type",
+  attributeValueSource     : "Attribute Value Source",
+  groupAttribute       : "Attribute Group",
+  sort    : "Sort",
+  success      : "Save Success !",
+   alert        : "Alert",
+   selRecord    : "Please select the record of the operation!",
+   confirm      : "Are you sure you want to delete this data?",
+    enable       : "Enable"
+
+
+ 
+ }

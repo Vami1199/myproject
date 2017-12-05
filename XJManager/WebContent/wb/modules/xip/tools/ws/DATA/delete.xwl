@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":false,"roles":{"default":1},"children":[{"configs":{"loginRequired":"false","itemId":"module"},"children":[{"configs":{"sql":"DELETE FROM XIP_PUB_WS_SQL  WHERE SQL_ID IN ({#ids#})","itemId":"query1"},"children":[],"expanded":false,"type":"query"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

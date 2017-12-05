@@ -1,0 +1,22 @@
+{
+  conditionQuery : "条件查询",
+  query        : "查询",
+  reset        : "重置",
+  add          : "添加属性",
+  save         : "保存属性",
+  delete       : "删除属性",
+  chartType     : "图表类型",
+  attributeCode     : "属性编码",
+  attributeName     : "属性名称",
+  attributeDesc     : "属性描述",
+  attributeValueType     : "属性值类型",
+  attributeValueSource     : "属性值来源",
+  groupAttribute       : "属性分组",
+  sort    : "排序",
+  success      : "数据保存成功!",
+  alert        : "提示",
+  selRecord    : "请选择操作的记录！",
+   confirm      : "确定要删除此数据吗？",
+    enable       : "是否启用"
+
+}

@@ -1,0 +1,43 @@
+{
+    wf_monitor_queryBtn : '查询',
+    wf_monitor_resetBtn : '重置',
+    wf_monitor_cbxAppl : '应用',
+    wf_monitor_cbxEntities : '业务实体',
+    wf_monitor_cbxProcesses : '业务流程',
+    wf_monitor_cbxProVer : '流程版本',
+    wf_monitor_cbxInsActs : '流程节点',
+    wf_monitor_cbxInsActStatus : '节点状态',
+    wf_monitor_started : '开始',
+    wf_monitor_running : '运行',
+    wf_monitor_completed : '完成',
+    wf_monitor_canceled : '撤销',
+    wf_monitor_terminate : '中断',
+    wf_monitor_started01 : '已启动',
+    wf_monitor_running01 : '运行中',
+    wf_monitor_txtInsCode : '实例编码',
+    wf_monitor_txtBiz : '业务信息',
+    wf_monitor_instanGrid : '流程实例信息',
+  
+    wf_monitor_processId : '流程ID',
+    wf_monitor_processVersion : '流程版本号',
+    wf_monitor_instanceId : '实例ID',
+    wf_monitor_instanceCode : '实例编码',
+    wf_monitor_instanceTitle : '实例标题',
+    wf_monitor_instanceState : '实例状态',
+    wf_monitor_businessId : '业务ID',
+    wf_monitor_businessCode : '业务编码',
+    wf_monitor_businessName : '业务名称',
+  
+    wf_monitor_btnExecMonitor : '监控处理',
+    wf_monitor_btnStopProcess : '终止流程',
+  
+    wf_monitor_cxtj : '查询条件',
+    wf_monitor_order : '序号',
+  
+    wf_monitor_prompt : '提示',
+    wf_monitor_qxzlcslxx : '请选择流程实例信息!',
+    wf_monitor_qxzyglcslxx : '请选择一个流程实例信息!',
+    wf_monitor_nqdyzzsxdlcslm : '您确定要终止所选的流程实例吗?',
+    wf_monitor_lcslzzsb : '流程实例终止失败!',
+    wf_monitor_deleteIns : '删除实例'
+}

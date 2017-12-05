@@ -1,0 +1,22 @@
+{
+  
+  query        : "Query",
+  backlog      : "Task",
+  notice       : "Notice",
+  alreadyDone  : "Done",
+  file         : "Archive",
+  entityName   : "Entity Name",
+  nodeName     : "Node Name",
+  title        : "Title",
+  date         : "Date",
+  batchApproval   : "Batch Approval",
+  beginDate       : "BeginDate",
+  endDate       : "EndDate",
+  Initiator       : "Initiator",
+  owner           : "Owner",
+  noticeTitle     : "Notice Title",
+  historyNotic    : "Notice History",
+  createDate      : "CreateDate",
+  businessEntity  : "Business Entity",
+  taskStatus           : "Task Status"
+}

@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":false,"roles":{"default":1},"children":[{"configs":{"loginRequired":"false","itemId":"module"},"children":[{"configs":{"sql":"delete from XIP_PUB_IO_TMP_L where TMP_L_ID = {?TMP_L_ID?}","arrayName":"destroy","itemId":"query1"},"children":[],"expanded":false,"type":"query"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

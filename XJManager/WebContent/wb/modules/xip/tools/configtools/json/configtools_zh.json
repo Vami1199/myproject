@@ -1,0 +1,10 @@
+{
+	configtools_source_string:'原字符串',
+  	configtools_encryption:'加密',
+  	configtools_input_encryption_string:'请输入加密的字符串',
+  	configtools_prompt:'提示',
+  	configtools_server_norepeat:'服务器端没有响应,退出失败',
+  	configtools_Decrypt:'解密',
+  	configtools_input_Decrypt_string:'请输入解密的字符串',
+  	configtools_encryption_Decrypt_string:'加密或者解密后的字符'
+}

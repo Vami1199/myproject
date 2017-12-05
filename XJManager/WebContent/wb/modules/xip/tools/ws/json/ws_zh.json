@@ -1,0 +1,49 @@
+{
+  xip_tools_ws_fieldset1 : '查询条件',
+  xip_tools_ws_app : '所属应用名称',
+  xip_tools_ws_keyword : '关键码',
+  xip_tools_ws_type : '类型',
+  xip_tools_ws_queryBtn : '查询',
+  xip_tools_ws_resetBtn : '重置',
+  xip_tools_ws_exist : '已存在',
+
+  xip_tools_ws_addBtn : '新增',
+  xip_tools_ws_editBtn : '编辑',
+  xip_tools_ws_delBtn : '删除',
+  xip_tools_ws_testBtn : '测试',
+
+  xip_tools_ws_data_op : '数据操作',
+  xip_tools_ws_proc : '过程',
+  xip_tools_ws_java : 'Java方法',
+
+  xip_tools_ws_data_format : '查询结果格式',
+  xip_tools_ws_ds : '数据源',
+  xip_tools_ws_content : 'WS内容',
+
+  xip_tools_ws_btnSave : '保存',
+  xip_tools_ws_btnSaveAndNext : '保存并添加下一个',
+  xip_tools_ws_btnCancel : '关闭',
+
+  xip_tools_ws_tst_title : '请输入参数值',
+  xip_tools_ws_resultArea : '测试结果',
+
+  xip_tools_ws_servicereg : 'WEB服务注册/修改',
+  xip_tools_ws_tip : '提示',
+  xip_tools_ws_keynull : '关键码不能为空',
+  xip_tools_ws_typenull : '类型不能为空',
+  xip_tools_ws_appnull : '应用不能为空',
+  xip_tools_ws_formatenull : '查询结果格式不能为空',
+  xip_tools_ws_contentnull : 'WS内容不能为空',
+
+  xip_tools_ws_saveok : '保存成功',
+  xip_tools_ws_delselrow : '请选择删除的记录!',
+  xip_tools_ws_okdel : '您确定要删除所选的数据吗?', 
+  xip_tools_ws_delok : '删除成功！', 
+  xip_tools_ws_execute_test:'正在测试请稍后...',
+  xip_tools_ws_parmnull:'参数值不能为空...',
+
+  xip_tools_ws_testrow : '请选择测试的记录!',
+  xip_tools_ws_cdata : '请选择一条要修改的数据!',
+
+  xip_tools_ws_acceptBtn : '测试'
+}

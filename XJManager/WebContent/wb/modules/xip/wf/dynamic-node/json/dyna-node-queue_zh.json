@@ -1,0 +1,31 @@
+{
+  dyna_node_lang_app : '应用',
+  dyna_node_lang_entity : '业务实体',
+  dyna_node_lang_process : '流程名称',
+  dyna_node_lang_empName : '审批人',
+  dyna_node_lang_insCode : '实例编码',
+  dyna_node_lang_actCode : '节点编码',
+  dyna_node_lang_nodeName : '阶段名',
+  dyna_node_lang_btnQuery : '查询',
+  dyna_node_lang_btnReset : '重置',
+  dyna_node_lang_btnAdd : '新增',
+  dyna_node_lang_btnEdit : '修改',
+  dyna_node_lang_btnDel : '删除',
+  dyna_node_lang_rownum : '序号',
+  dyna_node_lang_actName:'节点名称',
+  dyna_node_lang_orderby:'审批序列',
+  dyna_node_lang_approveStatus:'审批状态',
+  dyna_node_lang_taskTitle:'待办标题',
+  
+  dyna_node_lang_status_open:'未审批' ,
+  dyna_node_lang_status_running:'审批中' ,
+  dyna_node_lang_status_closed:'已审批' ,
+  
+  dyna_node_lang_prompt_nodeName:'阶段名不能为空',
+  dyna_node_lang_prompt_approver:'审批人不能为空',
+  dyna_node_lang_prompt_title:'待办标题不能为空',
+  dyna_node_lang_prompt_orderby:'审批序列不能为空' ,
+  
+  dyna_node_lang_prompt_saved:'数据保存成功',
+  dyna_node_lang_prompt_deleted:'数据删除成功'
+}

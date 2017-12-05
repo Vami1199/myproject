@@ -1,0 +1,7 @@
+{
+	notice_usernotice_close:'close',
+  	notice_usernotice_seek_enclosure:'View attachments',
+  	notice_usernotice_title:'Title：',
+  	notice_usernotice_open:'open',
+  	notice_usernotice_test_window:'Test window'
+}

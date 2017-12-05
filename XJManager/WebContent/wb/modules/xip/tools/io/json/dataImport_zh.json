@@ -1,0 +1,9 @@
+{
+  xip_tools_dataImport_fileName : '请选择文件' ,
+  xip_tools_dataImport_submmit : '导入' ,
+  xip_tools_dataImport_reset : '重置' ,
+  xip_tools_dataImport_CREATION_DATE : '日志时间' ,
+  xip_tools_dataImport_tip : '提示' ,
+  xip_tools_dataImport_wati: '正在处理请稍后...' ,
+  xip_tools_dataImport_MSG : '日志信息' 
+}

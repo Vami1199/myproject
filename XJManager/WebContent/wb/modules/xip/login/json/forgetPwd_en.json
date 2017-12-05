@@ -1,0 +1,8 @@
+{
+  xip_login_forget_userNameOrEmail : 'UserName/Email',
+  xip_login_forget_nextBtn : 'Next',
+  xip_login_forget_returnBtn : 'Return',
+  xip_login_forget_enterUserNameOrEmail : 'Please enter userName or email address',
+  xip_login_forget_serverNotResp : 'The server is not responding',
+  xip_login_forget_accountNumber : 'Please enter the password to retrieve the account'
+}

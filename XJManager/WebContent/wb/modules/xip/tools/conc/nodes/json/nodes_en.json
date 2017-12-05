@@ -1,0 +1,21 @@
+{
+  xip_conc_nodes_fieldset1 : 'Query Conditions',
+  xip_conc_nodes_jdbm : 'Code Or Name',
+  xip_conc_nodes_queryBtn : 'Query',
+  xip_conc_nodes_resetBtn : 'Reset',
+  xip_conc_nodes_addBtn : 'New',
+  xip_conc_nodes_editBtn : 'Edit',
+  xip_conc_nodes_deleteBtn : 'Delete',
+  xip_conc_nodes_NODE_CODE : 'Code',
+  xip_conc_nodes_NODE_DESC : 'Description',
+  xip_conc_nodes_CONTEXT_PATH : 'Path',
+  xip_conc_nodes_MAX_CONC_COUNT : 'Maximum Concurrent Connections',
+  xip_conc_nodes_NODE_IP : 'IP Address',
+  xip_conc_nodes_NODE_PORT : 'Network Port',
+  xip_conc_nodes_IS_ENCRYPTED : 'Is Encrypted',
+  xip_conc_nodes_add_title : 'Add Node' ,
+  xip_conc_nodes_edit_title : 'Edit' ,
+  xip_conc_nodes_saveWin : 'Save' ,
+  xip_conc_nodes_savenextWin : 'Save And Next' ,
+  xip_conc_nodes_closeWin : 'Close'
+}

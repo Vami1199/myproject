@@ -1,0 +1,60 @@
+{
+  xip_tools_dataTemMa_fd : '条件查询',
+  xip_tools_dataTemMa_tempName : '模板编码/名称',
+  xip_tools_dataTemMa_queryBtn : '查询',
+  xip_tools_dataTemMa_resetBtn : '重置',
+
+  xip_tools_dataTemMa_btn_add : '新增',
+  xip_tools_dataTemMa_btn_edit : '编辑',
+  xip_tools_dataTemMa_btn_delete : '删除',
+  xip_tools_dataTemMa_btn_export : '测试导出',
+  xip_tools_dataTemMa_btn_import : '测试导入',
+
+  xip_tools_dataTemMa_tpl_code : '模板编码',
+  xip_tools_dataTemMa_tpl_name : '模板名称',
+  xip_tools_dataTemMa_chk_type : '校验类型',
+  xip_tools_dataTemMa_chk_func : '校验函数',
+  xip_tools_dataTemMa_src_tab : '来源表',
+  xip_tools_dataTemMa_desc : '描述',
+
+  xip_tools_dataTemMa_proc : '过程',
+  xip_tools_dataTemMa_func : '函数',
+  xip_tools_dataTemMa_java : 'java方法',
+
+  xip_tools_dataTemMa_add_tpl : '新增模板' ,
+  xip_tools_dataTemMa_edit_tpl : '编辑模板' ,
+  xip_tools_dataTemMa_saveBtn : '保存' ,
+  xip_tools_dataTemMa_closeBtn : '关闭' ,
+
+  xip_tools_dataTemMa_tpl_info : '模板信息' ,
+  xip_tools_dataTemMa_tpl_filed : '模板字段' ,
+  xip_tools_dataTemMa_app : '应用' ,
+  xip_tools_dataTemMa_src_pkey : '对象主键' ,
+  xip_tools_dataTemMa_record_col : '标记列' ,
+  xip_tools_dataTemMa_marked : '操作标记' ,
+  xip_tools_dataTemMa_tpl_desc : '操作描述' ,
+  xip_tools_dataTemMa_qry_sql : '查询SQL' ,
+  xip_tools_dataTemMa_ins_sql : '新增SQL' ,
+  xip_tools_dataTemMa_upd_sql : '更新SQL' ,
+  xip_tools_dataTemMa_col_code : '列编码' ,
+  xip_tools_dataTemMa_col_name : '列名称' ,
+  xip_tools_dataTemMa_col_width : '列宽(字符数)' ,
+  xip_tools_dataTemMa_col_desc : '列描述' ,
+
+  xip_tools_dataTemMa_notnull : '请填写所有必填项!' ,
+  xip_tools_dataTemMa_saveok : '保存成功!' ,
+  xip_tools_dataTemMa_code : '编码' ,
+  xip_tools_dataTemMa_existe : '已经存在！' ,
+  xip_tools_dataTemMa_tip : '提示' ,
+  xip_tools_dataTemMa_okdel : '确定要删除此数据吗?' ,
+  xip_tools_dataTemMa_delok : '删除成功！' ,
+  xip_tools_dataTemMa_msg : '请先保存模板信息！' ,
+    xip_tools_dataTemMa_selrow : '请选择操作的记录！' ,
+    xip_tools_dataTemMa_selarow : '请选择一条操作的记录！' ,
+  
+  
+  
+  xip_tools_dataTemMa_add_src_fileds : '添加来源对象字段' ,
+  xip_tools_dataTemMa_del_src_fileds : '删除字段'
+
+}

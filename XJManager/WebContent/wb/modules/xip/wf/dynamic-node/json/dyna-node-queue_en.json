@@ -1,0 +1,31 @@
+{
+  dyna_node_lang_app : 'Application',
+  dyna_node_lang_entity : 'Entity',
+  dyna_node_lang_process : 'Process',
+  dyna_node_lang_empName : 'Approver',
+  dyna_node_lang_insCode : 'Instance',
+  dyna_node_lang_actCode : 'Activity',
+  dyna_node_lang_nodeName : 'Node Name',
+  dyna_node_lang_btnQuery : 'Query',
+  dyna_node_lang_btnReset : 'Reset',
+  dyna_node_lang_btnAdd : 'New',
+  dyna_node_lang_btnEdit : 'Edit',
+  dyna_node_lang_btnDel : 'Delete',
+  dyna_node_lang_rownum : 'Order',
+  dyna_node_lang_actName : 'Activity Name',
+  dyna_node_lang_orderby : 'Number',
+  dyna_node_lang_approveStatus : 'Approve Status',
+  dyna_node_lang_taskTitle : 'Task Title',
+  
+  dyna_node_lang_status_open : 'open' ,
+  dyna_node_lang_status_running : 'running' ,
+  dyna_node_lang_status_closed : 'closed' ,
+  
+  dyna_node_lang_prompt_nodeName : 'Node Name is null',
+  dyna_node_lang_prompt_approver : 'Approver is null',
+  dyna_node_lang_prompt_title : 'Task Title is null',
+  dyna_node_lang_prompt_orderby : 'Orderby is null' ,
+  
+  dyna_node_lang_prompt_saved:'Saved Sucess',
+  dyna_node_lang_prompt_deleted:'Deleted Sucess'
+}

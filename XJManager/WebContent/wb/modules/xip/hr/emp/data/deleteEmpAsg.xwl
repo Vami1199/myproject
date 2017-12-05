@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":false,"roles":{"default":1},"children":[{"configs":{"loginRequired":"false","itemId":"module"},"children":[{"configs":{"sql":"delete from xip_pub_emp_asg where asg_id = {?asg_id?}","itemId":"dataprovider1"},"children":[],"expanded":false,"type":"dataprovider"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

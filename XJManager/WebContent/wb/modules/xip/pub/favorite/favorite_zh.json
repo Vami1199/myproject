@@ -1,0 +1,10 @@
+{
+  delFavor  : "删除收藏",
+  freFavor  : "刷新收藏",
+  alert     : "提示",
+  selRecord : "请选择要删除的收藏！",
+  confirm   : "确定要删除此收藏吗？",
+  deleting  : "正在删除请稍后...",
+  delSuc    : "删除成功",
+  error     : "服务器端没有响应"
+}

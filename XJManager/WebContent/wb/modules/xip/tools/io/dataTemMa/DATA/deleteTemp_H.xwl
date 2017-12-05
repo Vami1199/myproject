@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":false,"roles":{"default":1},"children":[{"configs":{"loginRequired":"false","itemId":"module"},"children":[{"configs":{"sql":"delete from XIP_PUB_IO_TMP_L where TMP_H_ID = {?TMP_H_ID?}","itemId":"query1"},"children":[],"expanded":false,"type":"query"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

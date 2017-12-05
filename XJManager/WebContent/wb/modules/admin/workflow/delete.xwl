@@ -1,0 +1,1 @@
+{"title":"删除","inframe":false,"hidden":false,"roles":{},"pageLink":"","children":[{"configs":{"serverScript":"var id = request.getParameter('id');\ncom.wb.common.ScriptBuffer.remove(id);\napp.run('delete from WB_FLOW where FLOW_ID={?id?}');","itemId":"module"},"children":[],"type":"module","expanded":false}],"iconCls":""}

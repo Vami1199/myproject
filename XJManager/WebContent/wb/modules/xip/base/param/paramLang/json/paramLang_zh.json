@@ -1,0 +1,19 @@
+{
+  xip_base_param_paramLang_language : "语言",
+  xip_base_param_paramLang_paramCodeName : "参数编码/名称",
+  xip_base_param_paramLang_query : "查询",
+  xip_base_param_paramLang_reset : "重置",
+  
+  xip_base_param_paramLang_no : "序号",
+  xip_base_param_paramLang_languageCode : "语言编码",
+  xip_base_param_paramLang_languageName : "语言",
+  xip_base_param_paramLang_paramCode : "参数编码",
+  xip_base_param_paramLang_paramName : "参数名称",
+  xip_base_param_paramLang_decription : "参数描述",
+  
+  xip_base_param_paramLang_save : "保存",
+  xip_base_param_paramLang_checkModified : "没有需要保存的数据",
+  xip_base_param_paramLang_message : "正在保存,请稍后...",
+  xip_base_param_paramLang_success : "保存成功",
+  xip_base_param_paramLang_failure : "保存失败"
+}

@@ -1,0 +1,23 @@
+{
+    wf_proExpImp_btnExp : 'Export',
+    wf_proExpImp_cbxEntities : 'Business entity',
+    wf_proExpImp_proc_name : 'Process name',
+    wf_proExpImp_procId : 'Process ID',
+    wf_proExpImp_procCode : 'Process code',
+    wf_proExpImp_PVERISON : 'Process version',
+    wf_proExpImp_PCATEGORY : 'Process category',
+    wf_proExpImp_gglc : 'Public process',
+    wf_proExpImp_zzlc : 'Organization process',
+    wf_proExpImp_ENTITYID : 'Business ID',
+    wf_proExpImp_ORG_ID : 'Organization ID',
+    wf_proExpImp_PORGNAME : 'Organization',
+  
+    wf_proExpImp_prompt : 'Prompt',
+    wf_proExpImp_qxzlcxx : 'Please select process information!',
+    wf_proExpImp_wait : 'Please wait',
+    wf_proExpImp_zztjqq : 'submitting request.......',
+  
+    wf_proExpImp_qxzddrdwj : 'Please select the XML file to import.：',
+    wf_proExpImp_fgywzt : 'Overlay service status',
+    wf_proExpImp_btnImport : 'Import'
+}

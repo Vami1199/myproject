@@ -1,0 +1,23 @@
+{
+  xip_hr_emp_dafaultRole_new								: "New",
+  xip_hr_emp_dafaultRole_delete								: "Delete",
+  xip_hr_emp_dafaultRole_serialNumber						: "No.",
+  xip_hr_emp_dafaultRole_authorizationMode					: "Authorization Mode",
+  xip_hr_emp_dafaultRole_defaultAuthority					: "Default Permissions",
+  xip_hr_emp_dafaultRole_roleAuthorization					: "Role Authorization",
+  xip_hr_emp_dafaultRole_userAuthorization					: "Function Authorization",
+  xip_hr_emp_dafaultRole_OK									: "OK",
+  xip_hr_emp_dafaultRole_close								: "Close",
+  xip_hr_emp_dafaultRole_role								: "Role",
+  xip_hr_emp_dafaultRole_query								: "Query",
+  xip_hr_emp_dafaultRole_roleName							: "Role Name",
+  xip_hr_emp_dafaultRole_roleDesc							: "Role Description",
+  xip_hr_emp_dafaultRole_prompt								: "Prompt",
+  xip_hr_emp_dafaultRole_qxzyscdjl							: "Please select the record you want to delete",
+  xip_hr_emp_dafaultRole_nqdysc								: "Are you sure you want to delete?",
+  xip_hr_emp_dafaultRole_qxzysqdjs							: "Please select the role you want to authorize",
+  xip_hr_emp_dafaultRole_sqcg								: "Authorization succeeded",
+  xip_hr_emp_dafaultRole_addroletitle						: "Add role",
+  xip_hr_emp_dafaultRole_addfuntitle						: "Add  function",
+  xip_hr_emp_dafaultRole_qxztjdsqgn							: "Please select the added authorization feature" 
+}

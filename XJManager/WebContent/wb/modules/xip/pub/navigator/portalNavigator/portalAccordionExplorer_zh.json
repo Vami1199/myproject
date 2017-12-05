@@ -1,0 +1,12 @@
+{
+  homePage : "首页",
+  role     : "角色",
+  functionMenu : "功能菜单",
+  quitTips : '您确定要退出吗?',
+  waitingMsg : '请求提交中，请稍后......',
+  failureMsg : '服务器端没有响应',
+  modifiedPwd : '修改密码',
+  personalSet : '个性化设置',
+  logout : '退出',
+  portal_accord_query_condition:'请输入查询条件'
+}

@@ -1,0 +1,8 @@
+{
+  xip_login_forget_userNameOrEmail : '用户名/邮箱',
+  xip_login_forget_nextBtn : '下一步',
+  xip_login_forget_returnBtn : '返回',
+  xip_login_forget_enterUserNameOrEmail : '请输入用户名或邮箱',
+  xip_login_forget_serverNotResp : '服务器无响应',
+  xip_login_forget_accountNumber : '请输入要找回密码的账号'
+}

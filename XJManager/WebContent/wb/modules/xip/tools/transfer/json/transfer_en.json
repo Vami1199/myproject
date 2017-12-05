@@ -1,0 +1,37 @@
+{
+  xip_tools_transfer_fieldset : 'Query Condition',
+  xip_tools_transfer_tabCode : 'Table Code',
+  xip_tools_transfer_tabName : 'Table Name',
+  xip_tools_transfer_tabType : 'Table Type',
+  xip_tools_transfer_queryBtn : 'Query',
+  xip_tools_transfer_resetBtn : 'Reset',
+  xip_tools_transfer_import : 'Import',
+  xip_tools_transfer_export : 'Export',
+  xip_tools_transfer_favorite : 'Favorite',
+  xip_tools_transfer_view_favorite : 'View Favorite',
+  xip_tools_transfer_sys : 'System',
+  xip_tools_transfer_def : 'Custom',
+  xip_tools_transfer_close : 'Close',
+  
+   xip_tools_transfer_tip : 'tip',
+   xip_tools_transfer_chosefile : 'Please select a file!',
+   xip_tools_transfer_fileerror : 'The file format is wrong!',
+  xip_tools_transfer_wait : 'Being processed, please later...',
+   xip_tools_transfer_othermsg : 'Other information',
+   xip_tools_transfer_favoritetab : 'Please select a favorite table！',
+   xip_tools_transfer_favoritename : 'Please fill out the favorite name！',
+    xip_tools_transfer_favoritesuc : 'favorite success！',
+  xip_tools_transfer_delsel : 'You have not chosen any data！',
+    xip_tools_transfer_okdel : 'Are you sure you want to delete?',
+  xip_tools_transfer_delok : 'deleted successfully！',
+  
+  
+  xip_tools_transfer_chooseFile : 'Select File',
+  xip_tools_transfer_log : 'Logger Information' ,
+  xip_tools_transfer_favorite_name : 'Favorite Name',
+  
+  xip_tools_transfer_my_favorite : 'My Favorite',
+  xip_tools_transfer_delete : 'Delete',
+  xip_tools_transfer_favorite_date : 'Favorite Date',
+  xip_tools_transfer_tabNum : 'Table Number'
+}

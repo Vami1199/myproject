@@ -1,0 +1,21 @@
+{
+  
+  language     : "Language",
+  en            : "English",
+  zh            : "Chinese",
+  appCodeName  : "App Code",
+  query        : "Query",
+  reset        : "Reset",
+  save         : "Save",
+  no           : "NO.",
+  languageCode  : "Language Code",
+  languageName  : "Language Name",
+  name           : "Name",
+  conditionQuery : "Query Condition",
+  alert        : "alert",
+  success      : "Save Success ",
+  message       : "Saving please wait...",
+  selRecord    : "There is no need to store data！",
+  successFail   : "Failure, detail>>"
+
+}

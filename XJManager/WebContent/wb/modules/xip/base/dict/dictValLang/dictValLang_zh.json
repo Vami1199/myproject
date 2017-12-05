@@ -1,0 +1,23 @@
+{
+  
+  language     : "语种",
+  en            : "英文",
+  zh            : "中文",
+  query        : "查询",
+  reset        : "重置",
+  save         : "保存",
+  no           : "序号",
+  languageCode  : "语种编码",
+  languageName  : "语种名称",
+  dictCode  : "值集编码",
+  valueCode  : "值编码",
+  valueName  : "值名称",
+  valueDesc  : "值描述",
+  conditionQuery : "条件查询",
+  alert        : "提示",
+  success      : "保存成功",
+  message       : "正在保存，请稍后...",
+  selRecord    : "没有需要保存的数据！",
+  successFail   : "保存失败，详细信息>>"
+
+}

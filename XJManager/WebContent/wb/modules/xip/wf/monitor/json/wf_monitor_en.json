@@ -1,0 +1,43 @@
+{
+    wf_monitor_queryBtn : 'Query',
+    wf_monitor_resetBtn : 'Reset',
+    wf_monitor_cbxAppl : 'Application',
+    wf_monitor_cbxEntities : 'Business entity',
+    wf_monitor_cbxProcesses : 'Business process',
+    wf_monitor_cbxProVer : 'Process verion',
+    wf_monitor_cbxInsActs : 'Process node',
+    wf_monitor_cbxInsActStatus : 'Node status',
+    wf_monitor_started : 'Start',
+    wf_monitor_running : 'Running',
+    wf_monitor_completed : 'Completed',
+    wf_monitor_canceled : 'Cancel',
+    wf_monitor_terminate : 'Terminate',
+    wf_monitor_started01 : 'Started',
+    wf_monitor_running01 : 'Running',
+    wf_monitor_txtInsCode : 'Instance code',
+    wf_monitor_txtBiz : 'Business info.',
+    wf_monitor_instanGrid : 'Process information',
+  
+    wf_monitor_processId : 'Process ID',
+    wf_monitor_processVersion : 'Process verion',
+    wf_monitor_instanceId : 'Instance ID',
+    wf_monitor_instanceCode : 'Instance code',
+    wf_monitor_instanceTitle : 'Instance title',
+    wf_monitor_instanceState : 'Instance state',
+    wf_monitor_businessId : 'Business ID',
+    wf_monitor_businessCode : 'Business code',
+    wf_monitor_businessName : 'Business name',
+  
+    wf_monitor_btnExecMonitor : 'Monitor',
+    wf_monitor_btnStopProcess : 'Stop process',
+  
+    wf_monitor_cxtj : 'Query condition',
+    wf_monitor_order : 'Order',
+  
+    wf_monitor_prompt : 'Prompt',
+    wf_monitor_qxzlcslxx : 'Please select a process instance information!',
+    wf_monitor_qxzyglcslxx : 'Please select a process instance information!',
+    wf_monitor_nqdyzzsxdlcslm : 'Are you sure you want to terminate the selected process instance?',
+    wf_monitor_lcslzzsb : 'Process instance termination failed!',
+    wf_monitor_deleteIns : 'Delete Instance'
+}

@@ -1,0 +1,21 @@
+{
+  
+  xip_auth_func_language      	 : "Language",
+  xip_auth_func_en           	 : "English",
+  xip_auth_func_zh           	 : "Chinese",
+  xip_auth_func_query       	 : "Query",
+  xip_auth_func_reset      	     : "Reset",
+  xip_auth_func_save        	 : "Save",
+  xip_auth_func_no           	 : "NO.",
+  xip_auth_func_languageCode  	 : "Language Code",
+  xip_auth_func_languageName  	 : "Language Name",
+  xip_auth_func_name          	 : "Name",
+  xip_auth_func_conditionQuery	 : "Query Condition",
+  xip_auth_func_alert       	 : "alert",
+  xip_auth_func_success    	     : "Save Success ",
+  xip_auth_func_message    	     : "Saving please wait...",
+  xip_auth_func_selRecord   	 : "There is no need to store data！",
+  xip_auth_func_mCode   	     : "Menu Fun Code",
+  xip_auth_func_successFail      : "Failure, detail>>"
+
+}

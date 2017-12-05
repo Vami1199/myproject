@@ -1,0 +1,76 @@
+{
+  xip_connc_task_fieldset1 : '查询条件' ,
+  xip_connc_task_program_name : '程序名称' ,
+  xip_connc_task_run_type : '运行类型' ,
+  xip_connc_task_STATUS : '状态' ,
+  xip_connc_task_queryBtn : '查询' ,
+  xip_connc_task_resetBtn : '重置' ,
+  xip_connc_task_addBtn : '新增' ,
+  xip_connc_task_editBtn : '编辑' ,
+  xip_connc_task_deleteBtn : '删除' ,
+  xip_connc_task_itembtn : '查看任务明细' ,
+  xip_connc_task_START_DATE : '开始时间' ,
+  xip_connc_task_END_DATE : '结束时间' ,
+  xip_connc_task_NEXT_DATE : '下次运行时间' ,
+  xip_connc_task_INTERVAL: '运行间隔' ,
+  xip_connc_task_INTERVAL_UNIT : '间隔时间' ,
+
+  xip_connc_task_STATUS_new : '新建' ,
+  xip_connc_task_STATUS_end : '结束' ,
+  xip_connc_task_STATUS_exec : '执行中' ,
+  xip_connc_task_STATUS_wait : '等待' ,
+
+  xip_connc_task_IU_year : '年' ,
+  xip_connc_task_IU_month : '月' ,
+  xip_connc_task_IU_day : '日' ,
+  xip_connc_task_IU_hour : '时' ,
+  xip_connc_task_IU_min : '分' ,
+
+  xip_connc_task_add_title : '新增定时任务',
+  xip_connc_task_edit_title : '编辑定时任务',
+
+  xip_connc_task_rt_immediate : '立即执行' ,
+  xip_connc_task_rt_plan : '计划执行' ,
+
+  xip_connc_task_fd_detail : '参数明细',
+  xip_connc_task_PARAM_CODE : '参数编码',
+  xip_connc_task_PARAM_NAME : '参数名称',
+  xip_connc_task_PARAM_VAL : '参数值',
+
+  xip_connc_task_saveWin : '保存',
+  xip_connc_task_closeWin : '关闭',
+
+  xip_connc_task_tip : '提示',
+  xip_connc_task_notnull : '请填写必填项',
+  xip_connc_task_msg1 : '任务为计划执行时,所有选项都必须填写！',
+  xip_connc_task_msg2  :'结束时间不能早于开始时间!',
+  xip_connc_task_saveok  :'保存成功!',
+  xip_connc_task_year  :'年',
+  xip_connc_task_month  :'月',
+  xip_connc_task_day  :'日',
+  xip_connc_task_time  :'时',
+  xip_connc_task_Minute  :'分',
+  xip_connc_task_delsel  :'请选择需要删除的记录!',
+  xip_connc_task_rundelsel  :'运行状态的任务不可删除!',
+  xip_connc_task_suredel  :'您确定要删除所选的信息吗？',
+  xip_connc_task_delok  :'删除成功!',
+
+  xip_connc_task_result : '结果',
+
+  xip_connc_task_task_detail : '任务明值编码',
+
+  xip_connc_task_order : '序号',
+  xip_connc_task_val_code : '值编码',
+  xip_connc_task_val_name : '值名称',
+
+  xip_connc_task_set_param_val : '设置参数值',
+  xip_connc_task_del_param_val : '清空参数值',
+  
+  xip_connc_task_executeResult : '执行结果'
+}
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+{
+  xip_connc_task_fieldset1 : 'Query Conditions' ,
+  xip_connc_task_program_name : 'Program Name' ,
+  xip_connc_task_run_type : 'Type' ,
+  xip_connc_task_STATUS : 'Status' ,
+  xip_connc_task_queryBtn : 'Query' ,
+  xip_connc_task_resetBtn : 'Reset' ,
+  xip_connc_task_addBtn : 'New' ,
+  xip_connc_task_editBtn : 'Edit' ,
+  xip_connc_task_deleteBtn : 'Delete' ,
+  xip_connc_task_itembtn : 'View Task Items',
+  xip_connc_task_START_DATE : 'Start Date' ,
+  xip_connc_task_END_DATE : 'End Date' ,
+  xip_connc_task_NEXT_DATE : 'Next Date' ,
+  xip_connc_task_INTERVAL: 'Interval' ,
+  xip_connc_task_INTERVAL_UNIT : 'Interval Unit' ,
+  
+  xip_connc_task_STATUS_new : 'New' ,
+  xip_connc_task_STATUS_end : 'End' ,
+  xip_connc_task_STATUS_exec : 'Running' ,
+  xip_connc_task_STATUS_wait : 'Waiting' ,
+  
+  xip_connc_task_IU_year : 'year' ,
+  xip_connc_task_IU_month : 'month' ,
+  xip_connc_task_IU_day : 'day' ,
+  xip_connc_task_IU_hour : 'hour' ,
+  xip_connc_task_IU_min : 'minute' ,
+  
+  xip_connc_task_add_title : 'Add Task',
+  xip_connc_task_edit_title : 'Edit Task',  
+  
+  xip_connc_task_rt_immediate : 'Immediate' ,
+  xip_connc_task_rt_plan : 'Plan' ,
+
+  xip_connc_task_fd_detail : 'parameter Detail',
+  xip_connc_task_PARAM_CODE : 'Param Code',
+  xip_connc_task_PARAM_NAME : 'Param Name',
+  xip_connc_task_PARAM_VAL : 'Param Value',
+  
+  xip_connc_task_saveWin : 'Save',
+  xip_connc_task_closeWin : 'Close',
+  
+  xip_connc_task_result : 'Result',
+  
+  xip_connc_task_task_detail : 'Task Detail',
+  
+   xip_connc_task_tip : 'tiip',
+  xip_connc_task_notnull : 'Please fill in the required!',
+  xip_connc_task_msg1 : 'When the task is planned, all the options must be filled in!!',
+  xip_connc_task_msg2  :'End time can not be earlier than the start time!',
+  xip_connc_task_saveok  :'Save success!',
+    xip_connc_task_year  :'year',
+  xip_connc_task_month  :'month',
+  xip_connc_task_day  :'day',
+  xip_connc_task_time  :'time',
+  xip_connc_task_Minute  :'minute',
+  
+    xip_connc_task_delsel  :'Please select the records you need to delete!',
+  xip_connc_task_rundelsel  :'The task of running status can not be deleted.!',
+  xip_connc_task_suredel  :'Are you sure you want to delete the selected information?',
+  xip_connc_task_delok  :'Delete success!',
+  
+  xip_connc_task_order : 'Order',
+  xip_connc_task_val_code : 'Value Code',
+  xip_connc_task_val_name : 'Value Name',
+  
+  xip_connc_task_set_param_val : 'setting parameter value',
+  xip_connc_task_del_param_val : 'clear parameter value'
+}
+
+
+

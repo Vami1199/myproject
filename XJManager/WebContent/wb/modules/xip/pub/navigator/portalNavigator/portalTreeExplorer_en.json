@@ -1,0 +1,15 @@
+{
+  homePage : "Home Page",
+  role     : "Role",
+  functionMenu : "Function Menu",
+  quitTips : 'Are you sure you want to quit?',
+  waitingMsg : 'Please waiting ...',
+  failureMsg : 'The server is not responding',
+  modifiedPwd : 'Modify Password',
+  personalSet : 'PersonalSetting',
+  logout : 'logout',  
+  portal_explorer_switch:'Switching role,please waiting ......',
+  portal_explorer_no_response:'Fail to logout,no response comes form the server !',
+  portal_explorer_mnu_response:'Fail to load menu,no response comes form the server !',
+  portal_explorer_notice:'Notice'
+}

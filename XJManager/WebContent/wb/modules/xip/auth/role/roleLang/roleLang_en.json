@@ -1,0 +1,20 @@
+{
+  xip_auth_role_roleLang_language       : "Language",
+  xip_auth_role_roleLang_en             : "English",
+  xip_auth_role_roleLang_zh             : "Chinese",
+  xip_auth_role_roleLang_query          : "Query",
+  xip_auth_role_roleLang_reset          : "Reset",
+  xip_auth_role_roleLang_save           : "Save",
+  xip_auth_role_roleLang_no             : "NO.",
+  xip_auth_role_roleLang_roleCode       : "Role Code",
+  xip_auth_role_roleLang_languageCode   : "Language Code",
+  xip_auth_role_roleLang_languageName   : "Language Name",
+  xip_auth_role_roleLang_name           : "Name",
+  xip_auth_role_roleLang_desc           : "Desc",
+  xip_auth_role_roleLang_conditionQuery : "Query Condition",
+  xip_auth_role_roleLang_alert          : "alert",
+  xip_auth_role_roleLang_success        : "Save Success ",
+  xip_auth_role_roleLang_message        : "Saving please wait...",
+  xip_auth_role_roleLang_selRecord      : "There is no need to store data！",
+  xip_auth_role_roleLang_successFail    : "Failure, detail>>"
+}

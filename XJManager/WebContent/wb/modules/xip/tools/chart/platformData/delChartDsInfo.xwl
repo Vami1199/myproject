@@ -1,0 +1,1 @@
+{"inframe":false,"title":"图表数据源信息插入","hidden":true,"roles":{"default":1},"children":[{"configs":{"loginRequired":"false","itemId":"module"},"children":[{"configs":{"sql":"delete from  xip_pub_chart_tmp_ds where TMP_ID={?TMP_ID?}","itemId":"deleteDs"},"children":[],"expanded":false,"type":"query"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

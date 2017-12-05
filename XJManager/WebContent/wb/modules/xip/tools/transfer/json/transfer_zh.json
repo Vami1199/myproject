@@ -1,0 +1,36 @@
+{
+  xip_tools_transfer_fieldset : '查询条件',
+  xip_tools_transfer_tabCode : '表编码',
+  xip_tools_transfer_tabName : '表名称',
+  xip_tools_transfer_tabType : '表类型',
+  xip_tools_transfer_queryBtn : '查询',
+  xip_tools_transfer_resetBtn : '重置',
+  xip_tools_transfer_import : '导入',
+  xip_tools_transfer_export : '导出',
+  xip_tools_transfer_favorite : '收藏',
+  xip_tools_transfer_view_favorite : '查看收藏',
+  xip_tools_transfer_sys : '系统内置',
+  xip_tools_transfer_def : '用户自定义',
+  xip_tools_transfer_close : '关闭',
+  
+   xip_tools_transfer_tip : '提示',
+   xip_tools_transfer_chosefile : '请选择文件!',
+   xip_tools_transfer_fileerror : '文件格式有误!',
+   xip_tools_transfer_wait : '正在处理请稍后...',
+   xip_tools_transfer_othermsg : '其他信息',
+   xip_tools_transfer_favoritetab : '请选择要收藏的表！',
+   xip_tools_transfer_favoritename : '请填写收藏名！',
+  xip_tools_transfer_favoritesuc : '收藏成功！',
+   xip_tools_transfer_delsel : '您没有选中任何数据！',
+   xip_tools_transfer_okdel : '您确定要删除?',
+  xip_tools_transfer_delok : '删除成功！',
+  
+  xip_tools_transfer_chooseFile : '请选择文件',
+  xip_tools_transfer_log : '日志信息',
+  xip_tools_transfer_favorite_name : '收藏名',
+  
+  xip_tools_transfer_my_favorite : '我的收藏',
+  xip_tools_transfer_delete : '删除',
+  xip_tools_transfer_favorite_date : '收藏时间',
+  xip_tools_transfer_tabNum : '表数'
+}

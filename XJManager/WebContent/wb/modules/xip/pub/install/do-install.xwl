@@ -1,0 +1,1 @@
+{"inframe":false,"title":"执行安装","hidden":false,"roles":{"default":1},"children":[{"configs":{"loginRequired":"false","serverMethod":"com.xzsoft.xip.platform.util.PlatformUtil.setup","itemId":"module"},"children":[],"expanded":false,"type":"module"}],"pageLink":"","iconCls":""}

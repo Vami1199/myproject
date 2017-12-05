@@ -1,0 +1,23 @@
+{
+    wf_proExpImp_btnExp : '导出',
+    wf_proExpImp_cbxEntities : '业务实体',
+    wf_proExpImp_proc_name : '流程名称',
+    wf_proExpImp_procId : '流程ID',
+    wf_proExpImp_procCode : '流程编码',
+    wf_proExpImp_PVERISON : '流程版本',
+    wf_proExpImp_PCATEGORY : '流程分类',
+    wf_proExpImp_gglc : '公共流程',
+    wf_proExpImp_zzlc : '组织流程',
+    wf_proExpImp_ENTITYID : '业务ID',
+    wf_proExpImp_ORG_ID : '组织ID',
+    wf_proExpImp_PORGNAME : '所属组织',
+  
+    wf_proExpImp_prompt : '提示',
+    wf_proExpImp_qxzlcxx : '请选择流程信息!',
+    wf_proExpImp_wait : '请等待',
+    wf_proExpImp_zztjqq : '正在提交请求.......',
+  
+    wf_proExpImp_qxzddrdwj : '请选择待导入的XML文件：',
+    wf_proExpImp_fgywzt : '覆盖业务状态',
+    wf_proExpImp_btnImport : '导入'
+}

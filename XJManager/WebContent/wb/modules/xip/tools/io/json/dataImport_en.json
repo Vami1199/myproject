@@ -1,0 +1,9 @@
+{
+  xip_tools_dataImport_fileName : 'Select File' ,
+  xip_tools_dataImport_submmit : 'Import' ,
+  xip_tools_dataImport_reset : 'Reset' ,
+  xip_tools_dataImport_CREATION_DATE : 'Logger Date' ,
+  xip_tools_dataImport_tip : 'tip' ,
+    xip_tools_dataImport_wati: 'Please wait for a moment....' ,
+  xip_tools_dataImport_MSG : 'Logger Information' 
+}

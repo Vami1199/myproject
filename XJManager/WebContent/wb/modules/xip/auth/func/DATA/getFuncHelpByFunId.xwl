@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":false,"roles":{"default":1},"children":[{"configs":{"itemId":"module"},"children":[{"configs":{"sql":"select FUN_HELP\n  from xip_pub_fun_tree\n where FUN_TREE_ID = '{#funcTreeId#}'","type":"object","itemId":"dataprovider"},"children":[],"expanded":false,"type":"dataprovider"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

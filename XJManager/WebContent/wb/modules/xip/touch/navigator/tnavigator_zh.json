@@ -1,0 +1,14 @@
+{
+  notice.status.open:"未读",
+  notice.status.close:"已读",
+  btn.home.text:"首页",
+  btn.task.text:"待办",
+  btn.notice.text:"通知",
+  btn.setting.text:"设置",
+  setting.theme:"皮肤设置",
+  setting.changepwd:"修改密码",
+  setting.switchRole:"切换角色",
+  setting.logout:"注销",
+  setting.title:"设置",
+  task.title.placeholder:"待办标题"
+}

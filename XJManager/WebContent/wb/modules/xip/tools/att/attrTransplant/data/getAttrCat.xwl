@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":false,"roles":{"default":1},"children":[{"configs":{"itemId":"module"},"children":[{"configs":{"sql":"select ATT_CAT_ID, CAT_CODE, CAT_NAME \n  from xip_pub_att_cat \n where ENABLE_FLAG = 'Y'","itemId":"dataprovider"},"children":[],"expanded":false,"type":"dataprovider"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

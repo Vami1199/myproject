@@ -1,0 +1,5 @@
+{
+  permission_title : 'Insufficient permissions',
+  permission_msg   : 'You do not have permission to access this page, please contact your administrator',
+  permission_btn   : 'Click here to return to the home page'
+}

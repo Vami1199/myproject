@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":false,"roles":{"default":1},"children":[{"configs":{"loginRequired":"false","itemId":"module"},"children":[{"configs":{"sql":"select t.* from XIP_PUB_DEPTS t where t.ORG_ID = {?ORG_ID?} ","itemId":"dataprovider1"},"children":[],"expanded":false,"type":"dataprovider"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

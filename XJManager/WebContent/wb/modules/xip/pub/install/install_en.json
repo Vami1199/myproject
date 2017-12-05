@@ -1,0 +1,10 @@
+{
+  btn_install_text:'Install',
+  page_title:'Install Software',
+  win_title_ver:'Version:',
+  welcome_title:'Welcome to use installation wizard',
+  html_p_1:'The purpose of the installation wizard is copying the database table to the target database.',
+  html_p_2:"If the table already exists in the target database, so don't need to use the installation wizard to install.",
+  html_p_3:'Click [Install] button,The system will automatically copy table to the target database'
+  
+}

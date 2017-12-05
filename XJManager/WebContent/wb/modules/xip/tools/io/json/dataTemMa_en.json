@@ -1,0 +1,57 @@
+{
+  xip_tools_dataTemMa_fd : 'Query Conditions',
+  xip_tools_dataTemMa_tempName : 'Code or Name',
+  xip_tools_dataTemMa_queryBtn : 'Query',
+  xip_tools_dataTemMa_resetBtn : 'Reset',
+  xip_tools_dataTemMa_btn_add : 'New',
+  xip_tools_dataTemMa_btn_edit : 'Edit',
+  xip_tools_dataTemMa_btn_delete : 'Delete',
+  xip_tools_dataTemMa_btn_export : 'Test Export',
+  xip_tools_dataTemMa_btn_import : 'Test Import',
+  xip_tools_dataTemMa_tpl_code : 'Template Code',
+  xip_tools_dataTemMa_tpl_name : 'Template Name',
+  xip_tools_dataTemMa_chk_type : 'Validation Type',
+  xip_tools_dataTemMa_chk_func : 'Validation Function',
+  xip_tools_dataTemMa_src_tab : 'Source Table',
+  xip_tools_dataTemMa_desc : 'Description',
+
+  xip_tools_dataTemMa_proc : 'Procedure',
+  xip_tools_dataTemMa_func : 'Function',
+
+  xip_tools_dataTemMa_add_tpl : 'Add Template' ,
+  xip_tools_dataTemMa_edit_tpl : 'Edit Template' ,
+  xip_tools_dataTemMa_saveBtn : 'Save' ,
+  xip_tools_dataTemMa_closeBtn : 'Close' ,
+
+  xip_tools_dataTemMa_tpl_info : 'Template Information' ,
+  xip_tools_dataTemMa_tpl_filed : 'Template Fileds' ,
+  xip_tools_dataTemMa_app : 'Application' ,
+  xip_tools_dataTemMa_src_pkey : 'Primary Key' ,
+  xip_tools_dataTemMa_record_col : 'Target Column' ,
+  xip_tools_dataTemMa_marked : 'Mark' ,
+  xip_tools_dataTemMa_tpl_desc : 'Description' ,
+  xip_tools_dataTemMa_qry_sql : 'Query SQL' ,
+  xip_tools_dataTemMa_ins_sql : 'Insert SQL' ,
+  xip_tools_dataTemMa_upd_sql : 'Update SQL' ,
+  xip_tools_dataTemMa_col_code : 'Column　Code' ,
+  xip_tools_dataTemMa_col_name : 'Column Name' ,
+  xip_tools_dataTemMa_col_width : 'Column Width' ,
+  xip_tools_dataTemMa_col_desc : 'Column Description' ,
+
+  xip_tools_dataTemMa_notnull : 'Please fill in all required fields!' ,
+  xip_tools_dataTemMa_saveok : 'Save success!' ,
+  xip_tools_dataTemMa_code : 'code' ,
+  xip_tools_dataTemMa_existe : ' alredy exists!' ,
+  xip_tools_dataTemMa_okdel : 'Are you sure you want to delete this data?' ,
+  xip_tools_dataTemMa_delok : 'Delete success!' ,
+  xip_tools_dataTemMa_msg : 'Save template information first!' ,
+     xip_tools_dataTemMa_selrow : 'Please select operation record！' ,
+    xip_tools_dataTemMa_selarow : 'Please select a operation record！' ,
+  
+
+  xip_tools_dataTemMa_add_src_fileds : 'Add Filed' ,
+  xip_tools_dataTemMa_del_src_fileds : 'Delete Filed'
+}
+
+
+

@@ -1,0 +1,49 @@
+{
+  xip_tools_ws_fieldset1 : 'Query Conditions',
+  xip_tools_ws_app : 'Application',
+  xip_tools_ws_keyword : 'Keyword',
+  xip_tools_ws_type : 'Type',
+  xip_tools_ws_queryBtn : 'Query',
+  xip_tools_ws_resetBtn : 'Reset',
+  xip_tools_ws_exist : ' is exist',
+
+  xip_tools_ws_addBtn : 'New',
+  xip_tools_ws_editBtn : 'Edit',
+  xip_tools_ws_delBtn : 'Delete',
+  xip_tools_ws_testBtn : 'Test',
+
+  xip_tools_ws_data_op : 'Data Operation',
+  xip_tools_ws_proc : 'Procduce',
+  xip_tools_ws_java : 'Java',
+
+  xip_tools_ws_data_format : 'Result Format',
+  xip_tools_ws_ds : 'Datasource',
+  xip_tools_ws_content : 'Content',
+
+  xip_tools_ws_btnSave : 'Save',
+  xip_tools_ws_btnSaveAndNext : 'Save And Next',
+  xip_tools_ws_btnCancel : 'Close',
+
+  xip_tools_ws_tst_title : 'Enter Parameter Value',
+  xip_tools_ws_resultArea : 'Result',
+  
+  xip_tools_ws_servicereg : 'WEB services registered/modify',
+  xip_tools_ws_tip : 'tip',
+  xip_tools_ws_keynull : 'The key code cannot be empty',
+  xip_tools_ws_typenull : 'Types cannot be empty',
+  xip_tools_ws_appnull : 'App cannot be empty',
+  xip_tools_ws_formatenull : 'The query result format cannot be empty',
+  xip_tools_ws_contentnull : 'WS content cannot be empty',
+  
+  xip_tools_ws_saveok : 'Save success!',
+  xip_tools_ws_delselrow : 'Please select delete records!',
+  xip_tools_ws_okdel : 'Are you sure you want to delete the selected data?', 
+  xip_tools_ws_delok : 'delete success!', 
+  xip_tools_ws_execute_test:'Being tested later on, please...',
+  xip_tools_ws_parmnull:'Parameter values cannot be empty',
+  
+  xip_tools_ws_testrow : 'Please select the test record!',
+  xip_tools_ws_cdata : 'Please select a data to modify!',
+
+  xip_tools_ws_acceptBtn : 'Test'
+}

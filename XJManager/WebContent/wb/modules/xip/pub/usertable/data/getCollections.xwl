@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":false,"roles":{"default":1},"children":[{"configs":{"itemId":"module"},"children":[{"configs":{"sql":"select * from xip_pub_user_tab_collect","itemId":"dataprovider"},"children":[],"expanded":false,"type":"dataprovider"}],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}

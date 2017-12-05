@@ -1,0 +1,23 @@
+{
+  
+  language     : "Language",
+  en            : "English",
+  zh            : "Chinese",
+  query        : "Query",
+  reset        : "Reset",
+  save         : "Save",
+  no           : "NO.",
+  languageCode  : "Language Code",
+  languageName  : "Language Name",
+  dictCode  : "Dict Code",
+  valueCode  : "Value Code",
+  valueName  : "Value Name",
+  valueDesc  : "Value Desc",
+  conditionQuery : "Query Condition",
+  alert        : "alert",
+  success      : "Save Success ",
+  message       : "Saving please wait...",
+  selRecord    : "There is no need to store data！",
+  successFail   : "Failure, detail>>"
+
+}

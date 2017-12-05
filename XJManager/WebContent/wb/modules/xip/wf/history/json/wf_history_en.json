@@ -1,0 +1,19 @@
+{
+    wf_history_assignUserName : 'Assign user name',
+    wf_history_executeUserName : 'Execute user name',
+    wf_history_actName : 'Approval stage',
+    wf_history_beginDate : 'Begin date',
+    wf_history_endDate : 'End date',
+    wf_history_taskState : 'Task state',
+    wf_history_open : 'Open',
+    wf_history_hung_up : 'Hang up',
+    wf_history_closed : 'Close',
+    wf_history_result : 'Result',
+    wf_history_createType : 'Task type',
+    wf_history_normal : 'Normal',
+    wf_history_consult : 'Consylt',
+    wf_history_copyto : 'Copy',
+    wf_history_avoid : 'Avoid',
+    wf_history_start : 'Submit',
+    wf_history_approveCommnet : 'Approval comments'
+}

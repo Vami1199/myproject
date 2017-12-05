@@ -1,0 +1,23 @@
+{
+  xip_hr_emp_dafaultRole_new								: "新增",
+  xip_hr_emp_dafaultRole_delete								: "删除",
+  xip_hr_emp_dafaultRole_serialNumber						: "序号",
+  xip_hr_emp_dafaultRole_authorizationMode					: "授权模式",
+  xip_hr_emp_dafaultRole_defaultAuthority					: "默认权限",
+  xip_hr_emp_dafaultRole_roleAuthorization					: "角色授权",
+  xip_hr_emp_dafaultRole_userAuthorization					: "功能授权",
+  xip_hr_emp_dafaultRole_OK									: "确认",
+  xip_hr_emp_dafaultRole_close								: "关闭",
+  xip_hr_emp_dafaultRole_role								: "角色",
+  xip_hr_emp_dafaultRole_query								: "查询",
+  xip_hr_emp_dafaultRole_roleName							: "角色名",
+  xip_hr_emp_dafaultRole_roleDesc							: "角色说明",
+  xip_hr_emp_dafaultRole_prompt								: "提示",
+  xip_hr_emp_dafaultRole_qxzyscdjl							: "请选择要删除的记录",
+  xip_hr_emp_dafaultRole_nqdysc								: "您确定要删除？",
+  xip_hr_emp_dafaultRole_qxzysqdjs							: "请选择要授权的角色",
+  xip_hr_emp_dafaultRole_sqcg								: "授权成功",
+  xip_hr_emp_dafaultRole_addroletitle						: "添加角色",
+  xip_hr_emp_dafaultRole_addfuntitle						: "添加功能",
+  xip_hr_emp_dafaultRole_qxztjdsqgn							: "请选择添加的授权功能" 
+}

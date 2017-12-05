@@ -1,0 +1,36 @@
+{
+    wf_holiday_okBtn : '确定',
+    wf_holiday_closeBtn : '取消',
+    wf_holiday_newWin : '新增',
+    wf_holiday_USER : '当前用户',
+    wf_holiday_PROXY_USER : '代理用户',
+    wf_holiday_BEGIN_DATE : '开始日期',
+    wf_holiday_END_DATE : '结束日期',
+    wf_holiday_ATTRIBUTE1 : '是否启用',
+    wf_holiday_ATTRIBUTE1_COL : '启用状态',
+    wf_holiday_queryBtn : '查询',
+    wf_holiday_resetBtn : '重置',
+  
+    wf_holiday_cxtj : '查询条件',
+  
+    wf_holiday_addBtn : '新增',
+    wf_holiday_stopBtn : '停用',
+  
+    wf_holiday_prompt : '提示',
+    wf_holiday_nmyxzrhsj : '您没有选中任何数据!',
+    wf_holiday_qxzytsj : '请选择一条数据!',
+    wf_holiday_dlsjygqwfty : '代理时间已过期，无法停用!',
+    wf_holiday_yty : '已停用!',
+    wf_holiday_qdytym : '确定要停用吗？',
+    wf_holiday_sztycg : '设置停用成功!',
+    wf_holiday_szsb : '设置失败!',
+    wf_holiday_xxbwz : '信息不完整!',
+    wf_holiday_yhbngzjdl : '用户不能给自己代理!',
+    wf_holiday_yhdlsjct : '用户代理时间冲突!',
+    wf_holiday_sjyw : '时间有误!',
+    wf_holiday_nsxzdsjbhygrq : '您所选择的时间段包含已过日期!',
+    wf_holiday_bccg : '保存成功!',
+    wf_holiday_bcsb : '保存失败!',
+    wf_holiday_Y : '是',
+    wf_holiday_N : '否'
+}

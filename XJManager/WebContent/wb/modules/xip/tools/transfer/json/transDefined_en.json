@@ -1,0 +1,33 @@
+{
+  xip_tools_defined_fieldset : 'Query Conditions',
+  xip_tools_defined_tabCode : 'Table Code',
+  xip_tools_defined_tabName : 'Table Name',
+  xip_tools_defined_tabType : 'Table Type',
+  xip_tools_defined_queryBtn : 'Query',
+  xip_tools_defined_resetBtn : 'Reset',
+  
+  xip_tools_defined_addBtn : 'New',
+  xip_tools_defined_editBtn : 'Edit',
+  xip_tools_defined_deleteBtn : 'Delete',
+   xip_tools_defined_tablecode : 'Table coding has been in existence!',
+  
+  xip_tools_defined_ins_sql : 'Insert SQL',
+  xip_tools_defined_qry_sql : 'Query SQL',
+  xip_tools_defined_upd_sql : 'Update SQL',
+  xip_tools_defined_order : 'Order',
+  xip_tools_defined_msgincomplete : 'Please fill in all required fields!',
+  xip_tools_defined_sqlincomplete : 'Insert SQL and update SQL fill in at least one!',
+   xip_tools_defined_savesuc    : 'save  sucess!',
+  xip_tools_defined_tip : 'tip',
+  xip_tools_defined_selrow : 'Please select a row!',
+   xip_tools_defined_deleteok : 'Delete sucess！',
+  xip_tools_defined_okdelete : 'Are you sure you want to delete the selected information?',
+  
+  xip_tools_defined_sys : 'System',
+  xip_tools_defined_def : 'Custom',
+  
+  xip_tools_defined_saveBtn : 'Save',
+  xip_tools_defined_saveAndMore : 'Save And Next',
+  xip_tools_defined_closeBtn : 'Close'
+  
+}

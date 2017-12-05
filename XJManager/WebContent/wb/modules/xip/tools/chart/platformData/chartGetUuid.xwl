@@ -1,0 +1,1 @@
+{"inframe":false,"title":"","hidden":true,"roles":{"default":1},"children":[{"configs":{"loginRequired":"false","serverScript":"var uuid = java.util.UUID.randomUUID();\napp.send({UUID:uuid});","itemId":"chartGetUuid"},"children":[],"expanded":true,"type":"module"}],"pageLink":"","iconCls":""}
