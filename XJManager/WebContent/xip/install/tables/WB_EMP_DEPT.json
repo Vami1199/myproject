@@ -1,0 +1,20 @@
+{"DEPT_ID":1,"DEPT_NAME":"Engineering","PARENT_DEPT":19}
+{"DEPT_ID":2,"DEPT_NAME":"Tool Design","PARENT_DEPT":19}
+{"DEPT_ID":3,"DEPT_NAME":"Sales","PARENT_DEPT":18}
+{"DEPT_ID":4,"DEPT_NAME":"Marketing","PARENT_DEPT":18}
+{"DEPT_ID":5,"DEPT_NAME":"Purchasing","PARENT_DEPT":16}
+{"DEPT_ID":6,"DEPT_NAME":"Production","PARENT_DEPT":17}
+{"DEPT_ID":7,"DEPT_NAME":"Production Control","PARENT_DEPT":17}
+{"DEPT_ID":8,"DEPT_NAME":"Human Resources","PARENT_DEPT":15}
+{"DEPT_ID":9,"DEPT_NAME":"Finance","PARENT_DEPT":15}
+{"DEPT_ID":10,"DEPT_NAME":"Recruitment","PARENT_DEPT":8}
+{"DEPT_ID":11,"DEPT_NAME":"Document Control","PARENT_DEPT":20}
+{"DEPT_ID":12,"DEPT_NAME":"Executive","PARENT_DEPT":15}
+{"DEPT_ID":13,"DEPT_NAME":"Shipping and Receiving","PARENT_DEPT":16}
+{"DEPT_ID":14,"DEPT_NAME":"Facilities and Maintenance","PARENT_DEPT":12}
+{"DEPT_ID":15,"DEPT_NAME":"Administration","PARENT_DEPT":-1}
+{"DEPT_ID":16,"DEPT_NAME":"Inventory Management","PARENT_DEPT":-1}
+{"DEPT_ID":17,"DEPT_NAME":"Manufacturing","PARENT_DEPT":-1}
+{"DEPT_ID":18,"DEPT_NAME":"Sales and Marketing","PARENT_DEPT":-1}
+{"DEPT_ID":19,"DEPT_NAME":"Research and Development","PARENT_DEPT":-1}
+{"DEPT_ID":20,"DEPT_NAME":"Quality Assurance","PARENT_DEPT":-1}

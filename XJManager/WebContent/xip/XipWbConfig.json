@@ -1,0 +1,217 @@
+{
+  "control": {
+    "children": [{
+      "text": "General",
+      "children": [{
+        "id": "panel",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "text",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "combo",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "number",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "date",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "radio",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "check",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "label",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "button",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "textarea",
+        "configs": {
+          "columnWidth": {
+            "type": "string"
+          }
+        }
+      }]
+    }, {
+      "text": "Touch",
+      "children": [{
+        "id": "tcontainer",
+        "configs": {
+          "iconCls": {
+            "type": "iconCls"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "ttext",
+        "configs": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "tnumber",
+        "configs": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "tselect",
+        "configs": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "tdate",
+        "configs": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "tdatetime",
+        "configs": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "tfile",
+        "configs": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "tcheck",
+        "configs": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "tradio",
+        "configs": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "tspinner",
+        "configs": {
+          "name": {
+            "type": "string"
+          }
+        }
+      }]
+    }, {
+      "text": "Bootstrap",
+      "children": [{
+        "id": "div",
+        "configs": {
+          "class": {
+            "hidden": true,
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "span",
+        "configs": {
+          "id": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "bform",
+        "configs": {
+          "id": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "bcheck",
+        "configs": {
+          "id": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "a",
+        "configs": {
+          "id": {
+            "type": "string"
+          }
+        }
+      }, {
+        "id": "input",
+        "configs": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }]
+    }]
+  },
+  "url": {
+    "/configNote": "xip/pub/confignote/configNote.xwl",
+    "/install": "xip/pub/install/install.xwl",
+    "/xipTHome": "xip/touch/home/thome.xwl",
+    "/ghost": "xip/tools/controlPanel/conPanel.xwl",
+    "/tnavigator":"xip/touch/navigator/tnavigator.xwl",
+    "/configtools":"xip/tools/configtools/configtools.xwl"
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>EnterpriseSheet</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="online SpreadSheet, online Excel, enterprise spreadsheet solution, integration" />
+    <meta name="description" content="EnterpriseSheet provides an enterprise solution to integrate and build your business spreadsheet. It is an online spreadsheet running on your server." />
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="Pragma" content="no-cache, must-revalidate, no-store"/>
+    <meta name="robots" content="all" />
+	
+    <link rel="shortcut icon" href="es/resource/images/favicon.png" type="image/x-icon"></link>
+    
+    <link rel="stylesheet" type="text/css" href="es/extjs4.2.1/css/ext-theme-gray-all.css"></link>
+    
+    <link rel="stylesheet" type="text/css" href="es/EnterpriseSheet/resources/css/common.css"></link>
+    <link rel="stylesheet" type="text/css" href="es/EnterpriseSheet/resources/css/sheet.css"></link>
+    <link rel="stylesheet" type="text/css" href="es/EnterpriseSheet/resources/css/toolbar.css"></link>
+    <!-- 
+    <link rel="stylesheet" type="text/css" href="es/EnterpriseSheet/resources/css/icon.css"></link>
+     --> 
+    <script type="text/javascript" src="wb/libs/ext/ext-all.js"></script>
+    
+    
+	<script type="text/javascript" src="ext/locale/ext-lang-zh"></script>
+	
+    <script type="text/javascript" src="es/EnterpriseSheet/src/EnterpriseSheet/Config.js"></script>
+    <script type="text/javascript" src="es/EnterpriseSheet/src/language/zh_CN.js"></script>
+    <!-- 
+    <script type="text/javascript" src="es/EnterpriseSheet/src/override/zh_CN.js"></script>
+    -->
+	<script type="text/javascript" src="es/EnterpriseSheet/enterprisesheet.js"></script>
+	
+	<script type="text/javascript">
+	    Ext.onReady(function(){
+			SCONFIG.setupDir('');
+			SHEET_API = Ext.create('EnterpriseSheet.api.SheetAPI', {
+				openFileByOnlyLoadDataFlag: false
+			});
+                   
+            SHEET_API_HD = SHEET_API.createSheetApp({
+                renderTo: 'sheet-markup',
+                height: '100%'
+            });
+
+			document.documentElement.style.background = 'none';
+			Ext.getBody().setStyle('background-image', 'none');
+		});
+	</script>	
+	
+</head>
+
+<body scroll="no">
+	<div id="sheet-markup" style="height:100%;"></div>
+</body>
+</html>

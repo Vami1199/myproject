@@ -1,0 +1,120 @@
+{"FUN_CODE":"XIP2_ATTCH","FUN_LANG":"zh","FUN_LANG_VAL":"附件管理"}
+{"FUN_CODE":"XIP2_WF_DEMO","FUN_LANG":"zh","FUN_LANG_VAL":"工作流调用演示"}
+{"FUN_CODE":"XIP2_CONF_IE","FUN_LANG":"zh","FUN_LANG_VAL":"平台数据移植"}
+{"FUN_CODE":"XIP2_WF_ACT_EXECUTOR","FUN_LANG":"zh","FUN_LANG_VAL":"节点执行人授权"}
+{"FUN_CODE":"XIP2_ATTCH_SERVER","FUN_LANG":"zh","FUN_LANG_VAL":"附件服务器管理"}
+{"FUN_CODE":"XIP2_CONF_YHZCQX","FUN_LANG":"zh","FUN_LANG_VAL":"用户注册默认权限"}
+{"FUN_CODE":"XIP2_WB7_IDE","FUN_LANG":"zh","FUN_LANG_VAL":"WB7集成开发环境"}
+{"FUN_CODE":"XIP2_CONC_PROGRAM","FUN_LANG":"zh","FUN_LANG_VAL":"程序管理"}
+{"FUN_CODE":"XIP2_DATA_MODEL","FUN_LANG":"zh","FUN_LANG_VAL":"数据库模型"}
+{"FUN_CODE":"XIP2_CONF_TENANT","FUN_LANG":"zh","FUN_LANG_VAL":"租户管理"}
+{"FUN_CODE":"XIP2_CONF_WBYGZC","FUN_LANG":"zh","FUN_LANG_VAL":"外部员工注册审批"}
+{"FUN_CODE":"XIP2_CHART_TMP","FUN_LANG":"zh","FUN_LANG_VAL":"图表模板配置"}
+{"FUN_CODE":"XIP2_WF_HOLIDAY_USER","FUN_LANG":"zh","FUN_LANG_VAL":"假期规则设置"}
+{"FUN_CODE":"XIP2_ATTCH_FILE","FUN_LANG":"zh","FUN_LANG_VAL":"附件查询"}
+{"FUN_CODE":"XIP2_WF_MONITOR","FUN_LANG":"zh","FUN_LANG_VAL":"流程运行监控"}
+{"FUN_CODE":"XIP2_WF_FORMS","FUN_LANG":"zh","FUN_LANG_VAL":"流程关联表单"}
+{"FUN_CODE":"XIP_PORTLET_UNIT","FUN_LANG":"zh","FUN_LANG_VAL":"Portal组件定义"}
+{"FUN_CODE":"XIP2_CONC_TASK","FUN_LANG":"zh","FUN_LANG_VAL":"任务管理"}
+{"FUN_CODE":"XIP2_AUTH_ROLE","FUN_LANG":"zh","FUN_LANG_VAL":"角色管理"}
+{"FUN_CODE":"XIP2_WB_IDE","FUN_LANG":"zh","FUN_LANG_VAL":"WB6集成开发环境"}
+{"FUN_CODE":"XIP2_AUTH_UF","FUN_LANG":"zh","FUN_LANG_VAL":"用户功能授权"}
+{"FUN_CODE":"XIP2_TOOL","FUN_LANG":"zh","FUN_LANG_VAL":"平台工具"}
+{"FUN_CODE":"XIP2_CONF_IE_DEF","FUN_LANG":"zh","FUN_LANG_VAL":"平台数据移植定义"}
+{"FUN_CODE":"XIP2_WF_ENTITY","FUN_LANG":"zh","FUN_LANG_VAL":"实体管理"}
+{"FUN_CODE":"XIP2_AUTH_UR","FUN_LANG":"zh","FUN_LANG_VAL":"用户角色授权"}
+{"FUN_CODE":"XIP2_AUTH_FUNC","FUN_LANG":"zh","FUN_LANG_VAL":"菜单功能注册"}
+{"FUN_CODE":"XIP2_WF_DEMO_WS","FUN_LANG":"zh","FUN_LANG_VAL":"工作流调用演示(WS)"}
+{"FUN_CODE":"XIP2_ATTCH_CAT","FUN_LANG":"zh","FUN_LANG_VAL":"附件分类管理"}
+{"FUN_CODE":"XIP2_WF","FUN_LANG":"zh","FUN_LANG_VAL":"工作流管理"}
+{"FUN_CODE":"XIP2_AUTH_ORG","FUN_LANG":"zh","FUN_LANG_VAL":"组织授权"}
+{"FUN_CODE":"XIP2_CONF_IO_TEMPLATE","FUN_LANG":"zh","FUN_LANG_VAL":"数据导入导出模板"}
+{"FUN_CODE":"XIP2_WF_CHART","FUN_LANG":"zh","FUN_LANG_VAL":"绘制流程图"}
+{"FUN_CODE":"XIP2_WF_HOLIDAY","FUN_LANG":"zh","FUN_LANG_VAL":"假期规则"}
+{"FUN_CODE":"XIP2_CONF_WS","FUN_LANG":"zh","FUN_LANG_VAL":"平台WS服务配置"}
+{"FUN_CODE":"XIP2_CONF","FUN_LANG":"zh","FUN_LANG_VAL":"平台设置"}
+{"FUN_CODE":"XIP2_HR","FUN_LANG":"zh","FUN_LANG_VAL":"HR信息"}
+{"FUN_CODE":"XIP2_AUTH","FUN_LANG":"zh","FUN_LANG_VAL":"权限管理"}
+{"FUN_CODE":"XIP2_CONF_VALSET","FUN_LANG":"zh","FUN_LANG_VAL":"值集管理"}
+{"FUN_CODE":"XIP2_CONF_APP","FUN_LANG":"zh","FUN_LANG_VAL":"应用管理"}
+{"FUN_CODE":"XIP2_CONF_PARAM","FUN_LANG":"zh","FUN_LANG_VAL":"参数管理"}
+{"FUN_CODE":"XIP2_HR_EMP","FUN_LANG":"zh","FUN_LANG_VAL":"员工管理"}
+{"FUN_CODE":"XIP2_HR_DEPT","FUN_LANG":"zh","FUN_LANG_VAL":"部门管理"}
+{"FUN_CODE":"XIP2_HR_ORG","FUN_LANG":"zh","FUN_LANG_VAL":"组织管理"}
+{"FUN_CODE":"XIP2_AUTH_USER","FUN_LANG":"zh","FUN_LANG_VAL":"用户管理"}
+{"FUN_CODE":"XIP2_CONF_NOTICE","FUN_LANG":"zh","FUN_LANG_VAL":"通知发布"}
+{"FUN_CODE":"XIP2_CONC","FUN_LANG":"zh","FUN_LANG_VAL":"并发管理"}
+{"FUN_CODE":"XIP2_ATTCH_CAT","FUN_LANG":"en","FUN_LANG_VAL":"Attachment Category"}
+{"FUN_CODE":"XIP2_ATTCH_FILE","FUN_LANG":"en","FUN_LANG_VAL":"Attachment Inquiry"}
+{"FUN_CODE":"XIP2_ATTCH_SERVER","FUN_LANG":"en","FUN_LANG_VAL":"Attachment Server"}
+{"FUN_CODE":"XIP2_ATTCH","FUN_LANG":"en","FUN_LANG_VAL":"Attachment"}
+{"FUN_CODE":"XIP2_AUTH_FUNC","FUN_LANG":"en","FUN_LANG_VAL":"Menu Function Register"}
+{"FUN_CODE":"XIP2_AUTH_ORG","FUN_LANG":"en","FUN_LANG_VAL":"Organization Authority"}
+{"FUN_CODE":"XIP2_AUTH_ROLE","FUN_LANG":"en","FUN_LANG_VAL":"Role"}
+{"FUN_CODE":"XIP2_AUTH_UF","FUN_LANG":"en","FUN_LANG_VAL":"User Functions Authority"}
+{"FUN_CODE":"XIP2_AUTH_UR","FUN_LANG":"en","FUN_LANG_VAL":"User Role Authority"}
+{"FUN_CODE":"XIP2_AUTH_USER","FUN_LANG":"en","FUN_LANG_VAL":"Users"}
+{"FUN_CODE":"XIP2_CHART_TMP","FUN_LANG":"en","FUN_LANG_VAL":"Chart Template"}
+{"FUN_CODE":"XIP2_CONC","FUN_LANG":"en","FUN_LANG_VAL":"Concurrency"}
+{"FUN_CODE":"XIP2_CONC_PROGRAM","FUN_LANG":"en","FUN_LANG_VAL":"Program"}
+{"FUN_CODE":"XIP2_CONC_TASK","FUN_LANG":"en","FUN_LANG_VAL":"Task"}
+{"FUN_CODE":"XIP2_CONF_APP","FUN_LANG":"en","FUN_LANG_VAL":"Application"}
+{"FUN_CODE":"XIP2_CONF_IE","FUN_LANG":"en","FUN_LANG_VAL":"Data Migration"}
+{"FUN_CODE":"XIP2_CONF_IE_DEF","FUN_LANG":"en","FUN_LANG_VAL":" Data Migration Definitions"}
+{"FUN_CODE":"XIP2_CONF_IO_TEMPLATE","FUN_LANG":"en","FUN_LANG_VAL":"Data Import And Export Templates"}
+{"FUN_CODE":"XIP2_CONF_NOTICE","FUN_LANG":"en","FUN_LANG_VAL":"Notice"}
+{"FUN_CODE":"XIP2_CONF_PARAM","FUN_LANG":"en","FUN_LANG_VAL":"Parameter"}
+{"FUN_CODE":"XIP2_CONF_TENANT","FUN_LANG":"en","FUN_LANG_VAL":"Tenant"}
+{"FUN_CODE":"XIP2_CONF_VALSET","FUN_LANG":"en","FUN_LANG_VAL":"Value Set"}
+{"FUN_CODE":"XIP2_CONF_WBYGZC","FUN_LANG":"en","FUN_LANG_VAL":"External Staff Registration Approval"}
+{"FUN_CODE":"XIP2_CONF_WS","FUN_LANG":"en","FUN_LANG_VAL":"WebService"}
+{"FUN_CODE":"XIP2_CONF_YHZCQX","FUN_LANG":"en","FUN_LANG_VAL":"Default Permissions for User"}
+{"FUN_CODE":"XIP2_DATA_MODEL","FUN_LANG":"en","FUN_LANG_VAL":"Database Model"}
+{"FUN_CODE":"XIP2_HR_DEPT","FUN_LANG":"en","FUN_LANG_VAL":"Department"}
+{"FUN_CODE":"XIP2_HR_EMP","FUN_LANG":"en","FUN_LANG_VAL":"Employee"}
+{"FUN_CODE":"XIP2_HR_ORG","FUN_LANG":"en","FUN_LANG_VAL":"Organization"}
+{"FUN_CODE":"XIP2_WB7_IDE","FUN_LANG":"en","FUN_LANG_VAL":"Webbuilder 7 IDE"}
+{"FUN_CODE":"XIP2_WB_IDE","FUN_LANG":"en","FUN_LANG_VAL":"Webbuilder 6 IDE"}
+{"FUN_CODE":"XIP2_WF_ACT_EXECUTOR","FUN_LANG":"en","FUN_LANG_VAL":"Authorized Executor Node"}
+{"FUN_CODE":"XIP2_WF_CHART","FUN_LANG":"en","FUN_LANG_VAL":"Flowchart Design"}
+{"FUN_CODE":"XIP2_WF_DEMO","FUN_LANG":"en","FUN_LANG_VAL":" Demo"}
+{"FUN_CODE":"XIP2_WF_DEMO_WS","FUN_LANG":"en","FUN_LANG_VAL":"Demo For WebService"}
+{"FUN_CODE":"XIP2_WF_ENTITY","FUN_LANG":"en","FUN_LANG_VAL":"Entity"}
+{"FUN_CODE":"XIP2_WF_FORMS","FUN_LANG":"en","FUN_LANG_VAL":"Process Association Form"}
+{"FUN_CODE":"XIP2_WF_HOLIDAY","FUN_LANG":"en","FUN_LANG_VAL":"Holiday Rules"}
+{"FUN_CODE":"XIP2_WF_HOLIDAY_USER","FUN_LANG":"en","FUN_LANG_VAL":"Holiday Rules Configuration"}
+{"FUN_CODE":"XIP2_WF_MONITOR","FUN_LANG":"en","FUN_LANG_VAL":"Process Monitoring"}
+{"FUN_CODE":"XIP_PORTLET_UNIT","FUN_LANG":"en","FUN_LANG_VAL":"Portal Component Definition"}
+{"FUN_CODE":"XIP2_AUTH_FUNC_LANG","FUN_LANG":"zh","FUN_LANG_VAL":"菜单功能多语言配置"}
+{"FUN_CODE":"XIP2_AUTH_MENUGROUP_LANG","FUN_LANG":"zh","FUN_LANG_VAL":"角色菜单多语言配置"}
+{"FUN_CODE":"XIP2_AUTH_FUNC_LANG","FUN_LANG":"en","FUN_LANG_VAL":"Menu Function Multilanguage Config"}
+{"FUN_CODE":"XIP2_AUTH_MENUGROUP_LANG","FUN_LANG":"en","FUN_LANG_VAL":"Role Function Multilanguage Config"}
+{"FUN_CODE":"XIP2_WF","FUN_LANG":"en","FUN_LANG_VAL":"Workflow"}
+{"FUN_CODE":"XIP2_AUTH","FUN_LANG":"en","FUN_LANG_VAL":"Authority"}
+{"FUN_CODE":"XIP2_CONF","FUN_LANG":"en","FUN_LANG_VAL":"Configuration"}
+{"FUN_CODE":"XIP2_TOOL","FUN_LANG":"en","FUN_LANG_VAL":"Tools"}
+{"FUN_CODE":"XIP2_HR","FUN_LANG":"en","FUN_LANG_VAL":"HR"}
+{"FUN_CODE":"XIP2_AUTH_ROLE_LANG","FUN_LANG":"zh","FUN_LANG_VAL":"角色多语言配置"}
+{"FUN_CODE":"XIP2_AUTH_UF_GRADE","FUN_LANG":"zh","FUN_LANG_VAL":"分级用户功能授权"}
+{"FUN_CODE":"XIP2-ML","FUN_LANG":"en","FUN_LANG_VAL":"Multilanguage"}
+{"FUN_CODE":"XIP2_AUTH_ROLE_GRADE","FUN_LANG":"en","FUN_LANG_VAL":"Grade Role"}
+{"FUN_CODE":"XIP2_AUTH_ROLE_LANG","FUN_LANG":"en","FUN_LANG_VAL":"Role Multilanguage Config"}
+{"FUN_CODE":"XIP2_AUTH_UF_GRADE","FUN_LANG":"en","FUN_LANG_VAL":"Grade User Functions Authority"}
+{"FUN_CODE":"XIP2_AUTH_UR_GRADE","FUN_LANG":"en","FUN_LANG_VAL":"Grade User Role Authority"}
+{"FUN_CODE":"XIP2_CONF_APP_LANG","FUN_LANG":"en","FUN_LANG_VAL":"Application Multilanguage Config"}
+{"FUN_CODE":"XIP2_CONF_VALSET_LANG","FUN_LANG":"en","FUN_LANG_VAL":"Value Set Multilanguage Config"}
+{"FUN_CODE":"XIP2_CONF_VALSET_VAL_LANG","FUN_LANG":"en","FUN_LANG_VAL":"Value Set Multilanguage Detail Config"}
+{"FUN_CODE":"XIP2-ML","FUN_LANG":"zh","FUN_LANG_VAL":"多语言"}
+{"FUN_CODE":"XIP2_AUTH_ROLE_GRADE","FUN_LANG":"zh","FUN_LANG_VAL":"分级角色管理"}
+{"FUN_CODE":"XIP2_AUTH_UR_GRADE","FUN_LANG":"zh","FUN_LANG_VAL":"分级用户角色授权"}
+{"FUN_CODE":"XIP2_CONF_APP_LANG","FUN_LANG":"zh","FUN_LANG_VAL":"应用多语言配置"}
+{"FUN_CODE":"XIP2_CONF_VALSET_LANG","FUN_LANG":"zh","FUN_LANG_VAL":"值集多语言配置"}
+{"FUN_CODE":"XIP2_CONF_VALSET_VAL_LANG","FUN_LANG":"zh","FUN_LANG_VAL":"值集值多语言配置"}
+{"FUN_CODE":"XIP2_CONF_MSG_CONF","FUN_LANG":"en","FUN_LANG_VAL":"Excepiton Message Config"}
+{"FUN_CODE":"XIP2_CONF_MSG_CONF","FUN_LANG":"zh","FUN_LANG_VAL":"异常消息配置"}
+{"FUN_CODE":"XIP2_WF_DEMO_PD","FUN_LANG":"zh","FUN_LANG_VAL":"流程驱动演示"}
+{"FUN_CODE":"XIP2_WF_DEMO_PD","FUN_LANG":"en","FUN_LANG_VAL":"Demo For PD"}
+{"FUN_CODE":"XIP2_PUB_PARAM_LANG","FUN_LANG":"zh","FUN_LANG_VAL":"参数多语言"}
+{"FUN_CODE":"XIP2_PUB_PARAM_LANG","FUN_LANG":"en","FUN_LANG_VAL":"Parameter Multilanguage Config"}
+{"FUN_CODE":"XIP2_WF_DYNA_QUEUE","FUN_LANG":"zh","FUN_LANG_VAL":"动态审批队列"}
+{"FUN_CODE":"XIP2_WF_DYNA_QUEUE","FUN_LANG":"en","FUN_LANG_VAL":"Dynamic Approval Queue"}

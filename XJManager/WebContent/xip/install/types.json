@@ -1,0 +1,24 @@
+{
+  mysql: {
+    VARCHAR: 'VARCHAR',
+    NVARCHAR: 'VARCHAR',
+    NUMERIC: 'NUMERIC',
+    TIMESTAMP :'TIMESTAMP',
+    DATETIME: 'DATETIME',
+    CLOB: 'LONGTEXT',
+    NCLOB: 'LONGTEXT',
+    BLOB: 'LONGBLOB',
+    DECIMAL:'DECIMAL'
+  },
+  oracle: {
+    VARCHAR: 'VARCHAR2',
+    NVARCHAR: 'NVARCHAR2',
+    NUMERIC: 'NUMBER',
+    TIMESTAMP :'TIMESTAMP',
+    DATETIME: 'DATE',
+    CLOB: 'CLOB',
+    NCLOB: 'NCLOB',
+    BLOB: 'BLOB',
+    DECIMAL:'NUMBER'
+  }
+}

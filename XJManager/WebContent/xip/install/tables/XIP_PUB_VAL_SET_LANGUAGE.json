@@ -1,0 +1,48 @@
+{"VAL_LANG":"en","VAL_SET_DESC":"Chart Attribute Grouping","VAL_SET_CODE":"XIP_CHART_GROUP_VS","VAL_SET_NAME":"Chart Attribute Grouping"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Chart Attribute Value Type","VAL_SET_CODE":"XIP_CHART_ATTR_TYPE_VS","VAL_SET_NAME":"Chart Attribute Value Type"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Languages List","VAL_SET_CODE":"XIP_LANG","VAL_SET_NAME":"Languages List"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"图表属性分组","VAL_SET_CODE":"XIP_CHART_GROUP_VS","VAL_SET_NAME":"图表属性分组"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"工作流实体内置属性值集","VAL_SET_CODE":"WF_INNER_ATTR_VS","VAL_SET_NAME":"实体内置属性值集"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"是否","VAL_SET_CODE":"YN","VAL_SET_NAME":"是否"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"语言列表","VAL_SET_CODE":"XIP_LANG","VAL_SET_NAME":"语言列表"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Problem Stage","VAL_SET_CODE":"XIP_PROC_PHASES","VAL_SET_NAME":"Problem Stage"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"问题阶段","VAL_SET_CODE":"XIP_PROC_PHASES","VAL_SET_NAME":"问题阶段"}
+{"VAL_LANG":"en","VAL_SET_DESC":null,"VAL_SET_CODE":"XTM_XZ_ERP_MODULE","VAL_SET_NAME":"Cloud ERP Purchase Module"}
+{"VAL_LANG":"zh","VAL_SET_DESC":null,"VAL_SET_CODE":"XTM_XZ_ERP_MODULE","VAL_SET_NAME":"云ERP购买模块"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Attachment server type and corresponding implementation class","VAL_SET_CODE":"ATT_SERV_TYPE","VAL_SET_NAME":"Attachment Server Type"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"附件服务器类型以及对应的实现类","VAL_SET_CODE":"ATT_SERV_TYPE","VAL_SET_NAME":"附件服务器类型"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Authorization mode","VAL_SET_CODE":"AUTH_MODAL_VS","VAL_SET_NAME":"Authorization Mode"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"授权模式值集","VAL_SET_CODE":"AUTH_MODAL_VS","VAL_SET_NAME":"授权模式值集"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Database column type","VAL_SET_CODE":"DB_COLUMN_TYPE","VAL_SET_NAME":"Database Column Type"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"数据库列类型","VAL_SET_CODE":"DB_COLUMN_TYPE","VAL_SET_NAME":"数据库列类型"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Database constraint type","VAL_SET_CODE":"DB_CONS_TYPE","VAL_SET_NAME":"Database Constraint Type"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"数据库约束类型","VAL_SET_CODE":"DB_CONS_TYPE","VAL_SET_NAME":"数据库约束类型"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Database type","VAL_SET_CODE":"DB_TYPE","VAL_SET_NAME":"Database Type"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"数据库类型","VAL_SET_CODE":"DB_TYPE","VAL_SET_NAME":"数据库类型"}
+{"VAL_LANG":"en","VAL_SET_DESC":"System navigation Type","VAL_SET_CODE":"NAVIGATOR_MODEL_VS","VAL_SET_NAME":"System Navigation Type"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Reminder  Mode","VAL_SET_CODE":"NOTICE_MODE_VS","VAL_SET_NAME":"Reminder  Mode"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"待办提醒模式值集","VAL_SET_CODE":"NOTICE_MODE_VS","VAL_SET_NAME":"待办提醒模式值集"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Page For Platform Use Only","VAL_SET_CODE":"ONLY_XIP_USE_URL","VAL_SET_NAME":"Page For Platform Use Only"}
+{"VAL_LANG":"en","VAL_SET_DESC":null,"VAL_SET_CODE":"SKIN","VAL_SET_NAME":"Skin Setting"}
+{"VAL_LANG":"zh","VAL_SET_DESC":null,"VAL_SET_CODE":"SKIN","VAL_SET_NAME":"皮肤设置"}
+{"VAL_LANG":"en","VAL_SET_DESC":"the directory is for WB7 outside service, username and password must be provided when the module is visitied by outside project","VAL_SET_CODE":"XIP_API_FOLDER","VAL_SET_NAME":"WB7 Service Directory"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"WB7对外提供服务目录，此目录内的Module被非本工程访问的时候，需要传入用户名和口令","VAL_SET_CODE":"XIP_API_FOLDER","VAL_SET_NAME":"WB7对外提供服务目录"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Platform Chart Type","VAL_SET_CODE":"XIP_CHART_TYPE_VS","VAL_SET_NAME":"Platform Chart Type"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"平台图表类别","VAL_SET_CODE":"XIP_CHART_TYPE_VS","VAL_SET_NAME":"平台图表类别"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Problem Classification","VAL_SET_CODE":"XIP_REC_CATEGORY","VAL_SET_NAME":"Problem Classification"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"问题分类","VAL_SET_CODE":"XIP_REC_CATEGORY","VAL_SET_NAME":"问题分类"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Problem Level","VAL_SET_CODE":"XIP_REC_LEVEL","VAL_SET_NAME":"Problem Level"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"问题程度","VAL_SET_CODE":"XIP_REC_LEVEL","VAL_SET_NAME":"问题程度"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Problem State","VAL_SET_CODE":"XIP_REC_STATUS","VAL_SET_NAME":"Problem State"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"问题状态","VAL_SET_CODE":"XIP_REC_STATUS","VAL_SET_NAME":"问题状态"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Friendship Link","VAL_SET_CODE":"FRIEND_LINK","VAL_SET_NAME":"Friendship Link"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"图表属性值类型","VAL_SET_CODE":"XIP_CHART_ATTR_TYPE_VS","VAL_SET_NAME":"图表属性值类型"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Whether","VAL_SET_CODE":"YN","VAL_SET_NAME":"Whether"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Entity Built-in  Attributes for Workfow","VAL_SET_CODE":"WF_INNER_ATTR_VS","VAL_SET_NAME":"Entity Built-in Attributes"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Login authentication filter, do not filter the list of pages","VAL_SET_CODE":"XIP_FILTER_EXCLUSION","VAL_SET_NAME":" Landing Filter Excluded Pages"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"系统导航值集","VAL_SET_CODE":"NAVIGATOR_MODEL_VS","VAL_SET_NAME":"系统导航值集"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"仅供平台使用的页面","VAL_SET_CODE":"ONLY_XIP_USE_URL","VAL_SET_NAME":"仅供平台使用的页面"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"登陆验证过滤器，不进行过滤的页面列表","VAL_SET_CODE":"XIP_FILTER_EXCLUSION","VAL_SET_NAME":"登陆过滤器排除的页面"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"友情链接","VAL_SET_CODE":"FRIEND_LINK","VAL_SET_NAME":"友情链接"}
+{"VAL_LANG":"zh","VAL_SET_DESC":"流程回调函数类型值集","VAL_SET_CODE":"WF_FUNC_TYPE_VS","VAL_SET_NAME":"流程回调函数类型"}
+{"VAL_LANG":"en","VAL_SET_DESC":"Workflow CallBack Function Types","VAL_SET_CODE":"WF_FUNC_TYPE_VS","VAL_SET_NAME":"Workflow CallBack Function Types"}

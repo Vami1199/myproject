@@ -1,0 +1,10 @@
+#myflow{
+		    margin: 0;
+			pading: 0;
+			text-align: left;
+			font-family: Arial, sans-serif, Helvetica, Tahoma;
+			font-size: 8px;
+			line-height: 1.5;
+			color: black;
+            background-image:url(../images/standard/bg.png)!important;
+		}

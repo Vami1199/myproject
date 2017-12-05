@@ -1,0 +1,315 @@
+.incon-wb-help {
+	background-image: url(../../webbuilder/images/help.gif) !important;
+}
+.incon-wb-key {
+	background-image: url(../../webbuilder/images/key.gif) !important;
+}
+.incon-wb-logout {
+	background-image: url(../../webbuilder/images/logout.gif) !important;
+}
+.icon-add {
+    background-image: url(../images/add.gif) !important;
+}
+.icon_fun {
+   background-image: url(../images/preview1.gif) !important;
+}
+.icon_mnu {
+  background-image: url(../images/folder.gif) !important;
+}
+.icon-save {
+    background-image: url(../images/save.png) !important;
+}
+.icon-delete {
+    background-image: url(../images/delete.gif) !important;
+}
+.icon-modify {
+    background-image: url(../images/modify.gif) !important;
+}
+.icon-query {
+    background-image: url(../images/query.gif) !important;
+}
+.icon-reset {
+    background-image: url(../images/reset.gif) !important;
+}
+.icon-preview {
+    background-image: url(../images/preview.gif) !important;
+}
+.icon-setting {
+    background-image: url(../images/icon_setting.gif) !important;
+}
+.icon-refresh {
+    background-image: url(../images/icon_refresh.gif) !important;
+}
+.icon-clean {
+    background-image: url(../images/icon_clean.gif) !important;
+}
+.icon-print {
+    background-image: url(../images/icon_print.gif) !important;
+}
+.icon-pase {
+    background-image: url(../images/owc_pase.bmp) !important;
+}
+.icon-unpick {
+    background-image: url(../images/unpick.png) !important;
+}
+.icon-pick {
+    background-image: url(../images/pick.png) !important;
+}
+.icon-write {
+    background-image: url(../images/icon-write.gif) !important;
+}
+.icon-veify {
+    background-image: url(../images/icon-veify.gif) !important;
+}
+.icon-collect {
+    background-image: url(../images/collect.gif) !important;
+}
+.icon-go {
+    background-image: url(../images/go.gif) !important;
+}
+.icon-export {
+    background-image: url(../images/icon_export.gif) !important;
+}
+.icon-import {
+    background-image: url(../images/icon_import.gif) !important;
+}
+.icon-exit {
+    background-image: url(../images/exit.gif) !important;
+}
+.icon-help {
+    background-image: url(../images/help.png) !important;
+}
+.icon-sub_workflow {
+    background-image: url(../images/sub_workflow.gif) !important;
+}
+.icon-wf_monitor {
+    background-image: url(../images/wf_monitor.png) !important;
+}
+.icon-pop {
+    background-image: url(../images/pop.gif) !important;
+}
+.icon-function {
+    background-image: url(../images/function.png) !important;
+}
+.icon-cancel {
+    background-image: url(../images/cancel.gif) !important;
+}
+.icon-draw {
+    background-image: url(../images/draw.png) !important;
+}
+.icon-owc_print {
+    background-image: url(../images/owc_print.gif) !important;
+}
+.icon-attach {
+    background-image: url(../images/attach.png) !important;
+}
+.icon-Import_Script {
+    background-image: url(../images/Import_Script.png) !important;
+}
+.icon-Ctrl_Shift {
+    background-image: url(../images/Ctrl_Shift.png) !important;
+  }
+.icon-page_copy {
+    background-image: url(../images/page_copy.png) !important;
+}
+.icon-table-minus {
+    background-image: url(../images/table-minus.png) !important;
+}
+.icon-table-plus {
+    background-image: url(../images/table-plus.png) !important;
+}
+.icon-tables-relation {
+    background-image: url(../images/tables-relation.png) !important;
+}
+.icon-table-insert-column {
+    background-image: url(../images/table-insert-column.png) !important;
+}
+.icon-table-insert-row {
+    background-image: url(../images/table-insert-row.png) !important;
+}
+.icon-arrow-curve-000-double {
+    background-image: url(../images/arrow-curve-000-double.png) !important;
+}
+.icon-application-table {
+    background-image: url(../images/application-table.png) !important;
+}
+.icon-tables-relation-delete {
+    background-image: url(../images/tables-relation-delete.png) !important;
+}
+.icon-test {
+    background-image: url(../images/test.png) !important;
+}
+.icon-show {
+    background-image: url(../images/show.gif) !important;
+}
+.icon-hide {
+    background-image: url(../images/hide.gif) !important;
+}
+.icon-node-insert {
+    background-image: url(../images/node-insert.png) !important;
+}
+.icon-node-magnifier {
+    background-image: url(../images/node-magnifier.png) !important;
+}
+.icon-node-delete {
+    background-image: url(../images/node-delete.png) !important;
+}
+.icon-arrow-switch {
+    background-image: url(../images/arrow-switch.png) !important;
+}
+.icon-magnifier-arrow {
+    background-image: url(../images/magnifier-arrow.png) !important;
+}
+.icon-spell-check {
+    background-image: url(../images/spell-check.png) !important;
+}
+.icon-magnifier-zoom {
+    background-image: url(../images/magnifier-zoom.png) !important;
+}
+.icon-arrow-curve {
+    background-image: url(../images/arrow-curve.png) !important;
+}
+.icon-Default {
+    background-image: url(../images/Default.png) !important;
+}
+.icon-arrow-circle-double {
+    background-image: url(../images/arrow-circle-double.png) !important;
+}
+.icon-clock-select-remain {
+    background-image: url(../images/clock-select-remain.png) !important;
+}
+.icon-page-find {
+    background-image: url(../images/page-find.png) !important;
+}
+
+.icon-calculator-edit {
+    background-image: url(../images/calculator-edit.png) !important;
+}
+
+.icon-report-edit {
+    background-image: url(../images/report-edit.png) !important;
+}
+
+.icon-page-refresh {
+    background-image: url(../images/page-refresh.png) !important;
+}
+
+.icon-question-button {
+    background-image: url(../images/question-button.png) !important;
+}
+.icon-card-chip-silver {
+    background-image: url(../images/card-chip-silver.png) !important;
+}
+.icon-layout-delete {
+    background-image: url(../images/layout-delete.png) !important;
+}
+.icon-page-delete {
+    background-image: url(../images/page-delete.png) !important;
+}
+.icon-page-white-magnify {
+    background-image: url(../images/page-white-magnify.png) !important;
+}
+.icon-chart-curve {
+    background-image: url(../images/chart-curve.png) !important;
+}
+.icon-chart-curve-go {
+    background-image: url(../images/chart-curve-go.png) !important;
+}
+.icon-script_gear {
+    background-image: url(../images/script_gear.png) !important;
+}
+.icon-tick_white {
+    background-image: url(../images/tick_white.png) !important;
+}
+.icon-tick_excel {
+    background-image: url(../images/excel.png) !important;
+}
+.icon-search1 {
+    background-image: url(../images/search1.png) !important;
+}
+.icon-commonfunction {
+    background-image: url(../images/commonfunction.png) !important;
+}
+.icon-commonpop {
+    background-image: url(../images/commonpop.png) !important;
+}
+.icon-search {
+    background-image: url(../images/search.gif) !important;
+}
+.icon-select-scope{
+	background-image: url(../images/icon_select_scope.gif) !important;
+}
+.icon-owc-view{
+	background-image: url(../images/owc_view.bmp) !important;
+}
+.icon-auto-batch{
+	background-image: url(../images/icon-auto-batch.png) !important;
+}
+.icon-icon_backpower{
+	background-image: url(../images/icon_backpower.gif) !important;
+}
+.icon-icon_delete{
+	background-image: url(../images/icon_delete.gif) !important;
+}
+.icon-backpower{
+	background-image: url(../images/icon_backpower.gif) !important;
+}
+.icon-man-batch{
+	background-image: url(../images/icon-man-batch.png) !important;
+}
+.icon-lock{
+	background-image: url(../images/lock.png) !important;
+}
+.icon-unlock{
+	background-image: url(../images/unlock.gif) !important;
+}
+.icon-auth{
+	background-image: url(../images/icon_addpower.gif) !important;
+}
+.icon-unauth{
+	background-image: url(../images/icon_backpower.gif) !important;
+}
+.icon-reboot{
+	background-image: url(../images/icon_reboot.gif) !important;
+}
+.icon-upload{
+    background-image: url(../../platform/attachment/images/arrow_up.png) !important;
+}
+.icon-down{
+    background-image: url(../../platform/attachment/images/arrow_down.png) !important;
+}
+.icon-save-add{
+    background-image: url(../images/save_add.png) !important;
+}
+.contain{
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+}
+.center {
+	position:absolute;
+	top:5%;
+	left:15%;
+	text-align:left;
+}
+td.x-date-mp-month a,td.x-date-mp-year a {
+	color: #15428b;
+	padding-right: 0px;
+	padding-left:0px;
+}
+.fon-right{
+	text-align:right;
+}
+.datePicker_bg{   
+    background-image:url(../My97DatePicker/skin/datePicker.gif) !important;   
+    background-repeat:no-repeat;   
+    background-position:right;
+    background-color:#FFFF99;                        
+} 
+.datePicker_bg_readOnly{   
+    background-image:url(../My97DatePicker/skin/datePicker.gif) !important;   
+    background-repeat:no-repeat;   
+    background-position:right;
+    background-color:lightgray;                        
+} 
