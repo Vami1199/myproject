@@ -1,0 +1,2 @@
+delete from xip_pub_mnu_tree where fun_tree_id in (select fun_tree_id from xip_pub_fun_tree where fun_tree_code = 'XIP2_WB_PORTAL');
+delete from xip_pub_fun_tree where fun_tree_code ='XIP2_WB_PORTAL';

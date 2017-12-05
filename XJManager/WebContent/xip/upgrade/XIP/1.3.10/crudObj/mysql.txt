@@ -1,0 +1,12 @@
+UPDATE xip_wf_ins_task t SET t.IS_TIMEOUT_TASK = 'N' ;
+UPDATE xip_wf_ins_task t SET t.IS_TIMEOUT_TASK = 'Y' WHERE EXISTS ( SELECT 1 FROM xip_wf_ins_act_properties a WHERE t.INSTANCE_ID = a.INSTANCE_ID AND t.ACT_ID = a.ACT_ID AND a.PROPERTY_CODE = 'a_timeout_days' AND IFNULL(a.property_value, '') != '' ) AND EXISTS ( SELECT 1 FROM xip_wf_ins_acts b WHERE t.INSTANCE_ID = b.INSTANCE_ID AND t.ACT_ID = b.ACT_ID AND b.ACT_CATEGORY IN ('Notice', 'Countersign')) AND t.TASK_STATE = 'open' ;
+UPDATE xip_wf_ins_task t SET t.IS_CUSTOM_TASK = 'N' ;
+UPDATE xip_wf_ins_task t SET t.IS_CUSTOM_TASK = 'Y' WHERE EXISTS ( SELECT 1 FROM xip_wf_ins_act_properties a WHERE t.INSTANCE_ID = a.INSTANCE_ID AND t.ACT_ID = a.ACT_ID AND a.PROPERTY_CODE = 'a_is_custom_task' AND a.property_value = 'Y') ;
+UPDATE xip_wf_arch_task t SET t.IS_CUSTOM_TASK = 'N';
+UPDATE xip_wf_arch_task t SET t.IS_CUSTOM_TASK = 'Y' WHERE EXISTS ( SELECT 1 FROM xip_wf_arch_act_properties a WHERE t.INSTANCE_ID = a.INSTANCE_ID AND t.ACT_ID = a.ACT_ID AND a.PROPERTY_CODE = 'a_is_custom_task' AND a.property_value = 'Y') ;
+update xip_pub_users t set USR_EMP_CODE =(select EMP_CODE from xip_pub_emps where emp_id = t.EMP_ID),USR_EMP_NAME =(select EMP_NAME from xip_pub_emps where emp_id = t.EMP_ID);
+commit;
+
+UPDATE XIP_WF_USER_HOLIDAY T SET T.MASTER_USER_NAME = ( SELECT XE.EMP_NAME FROM XIP_PUB_USERS XU, XIP_PUB_EMPS XE WHERE XU.EMP_ID = XE.EMP_ID AND XU.USER_ID = T.MASTER_USER_ID ) WHERE T.MASTER_USER_NAME IS NULL;
+UPDATE XIP_WF_USER_HOLIDAY T SET T.PROXY_USER_NAME = ( SELECT XE.EMP_NAME FROM XIP_PUB_USERS XU, XIP_PUB_EMPS XE WHERE XU.EMP_ID = XE.EMP_ID AND XU.USER_ID = T.PROXY_USER_ID ) WHERE T.PROXY_USER_NAME IS NULL;
+commit ;

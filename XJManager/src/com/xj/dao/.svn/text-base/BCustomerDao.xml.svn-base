@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.BCustomerDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.base.BCustomer" >
+    <id column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="c_iid" property="cIid" jdbcType="INTEGER" />
+    <result column="c_type" property="cType" jdbcType="TINYINT" />
+    <result column="c_name" property="cName" jdbcType="VARCHAR" />
+    <result column="c_short" property="cShort" jdbcType="VARCHAR" />
+    <result column="c_department" property="cDepartment" jdbcType="TINYINT" />
+    <result column="c_companytype" property="cCompanytype" jdbcType="TINYINT" />
+    <result column="c_scope" property="cScope" jdbcType="VARCHAR" />
+    <result column="c_legal" property="cLegal" jdbcType="VARCHAR" />
+    <result column="c_consignor" property="cConsignor" jdbcType="VARCHAR" />
+    <result column="c_bank" property="cBank" jdbcType="VARCHAR" />
+    <result column="c_account" property="cAccount" jdbcType="VARCHAR" />
+    <result column="c_credit" property="cCredit" jdbcType="TINYINT" />
+    <result column="c_limit" property="cLimit" jdbcType="BIGINT" />
+    <result column="c_registeredcapital" property="cRegisteredcapital" jdbcType="BIGINT" />
+    <result column="c_taxnumber" property="cTaxnumber" jdbcType="VARCHAR" />
+    <result column="c_sid" property="cSid" jdbcType="INTEGER" />
+    <result column="c_postcode" property="cPostcode" jdbcType="VARCHAR" />
+    <result column="c_linkman" property="cLinkman" jdbcType="VARCHAR" />
+    <result column="c_phone" property="cPhone" jdbcType="VARCHAR" />
+    <result column="c_fax" property="cFax" jdbcType="VARCHAR" />
+    <result column="c_homepage" property="cHomepage" jdbcType="VARCHAR" />
+    <result column="c_email" property="cEmail" jdbcType="VARCHAR" />
+    <result column="c_country" property="cCountry" jdbcType="VARCHAR" />
+    <result column="c_province" property="cProvince" jdbcType="VARCHAR" />
+    <result column="c_cityaddress" property="cCityaddress" jdbcType="VARCHAR" />
+    <result column="c_iselectricity" property="cIselectricity" jdbcType="TINYINT" />
+    <result column="c_state" property="cState" jdbcType="TINYINT" />
+    <result column="c_identifying" property="cIdentifying" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.base.BCustomerWithBLOBs" extends="BaseResultMap" >
+    <result column="c_quality" property="cQuality" jdbcType="LONGVARCHAR" />
+    <result column="c_creditdeclare" property="cCreditdeclare" jdbcType="LONGVARCHAR" />
+    <result column="c_remark" property="cRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      c_id, c_iid, c_type, c_name, c_short, c_department, c_companytype, c_scope, c_legal, 
+      c_consignor, c_bank, c_account, c_credit, c_limit, c_registeredcapital, c_taxnumber, 
+      c_sid, c_postcode, c_linkman, c_phone, c_fax, c_homepage, c_email, c_country, c_province, 
+      c_cityaddress, c_iselectricity, c_state, c_identifying, Createdate, ModifyDate, CreateBy, 
+      ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    c_quality, c_creditdeclare, c_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.base.BCustomerQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from b_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.base.BCustomerQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from b_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    c_id,c_iid,c_type,c_name,c_short,c_department,c_companytype,c_scope,c_legal,c_consignor,c_bank,c_account,c_credit,c_limit,c_registeredcapital,c_taxnumber,c_sid,c_postcode,c_linkman,c_phone,c_fax,c_homepage,c_email,c_country,c_province,c_cityaddress,c_iselectricity,c_state,c_identifying,Createdate,ModifyDate,CreateBy,ModifyBy,c_quality,c_creditdeclare,c_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from b_customer
+    where c_id = #{cId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from b_customer
+    where c_id = #{cId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.base.BCustomerQuery" >
+    delete from b_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.base.BCustomerWithBLOBs" >
+    insert into b_customer (c_id, c_iid, c_type, 
+      c_name, c_short, c_department, 
+      c_companytype, c_scope, c_legal, 
+      c_consignor, c_bank, c_account, 
+      c_credit, c_limit, c_registeredcapital, 
+      c_taxnumber, c_sid, c_postcode, 
+      c_linkman, c_phone, c_fax, 
+      c_homepage, c_email, c_country, 
+      c_province, c_cityaddress, c_iselectricity, 
+      c_state, c_identifying, Createdate, 
+      ModifyDate, CreateBy, ModifyBy, 
+      c_quality, c_creditdeclare, c_remark
+      )
+    values (#{cId,jdbcType=INTEGER}, #{cIid,jdbcType=INTEGER}, #{cType,jdbcType=TINYINT}, 
+      #{cName,jdbcType=VARCHAR}, #{cShort,jdbcType=VARCHAR}, #{cDepartment,jdbcType=TINYINT}, 
+      #{cCompanytype,jdbcType=TINYINT}, #{cScope,jdbcType=VARCHAR}, #{cLegal,jdbcType=VARCHAR}, 
+      #{cConsignor,jdbcType=VARCHAR}, #{cBank,jdbcType=VARCHAR}, #{cAccount,jdbcType=VARCHAR}, 
+      #{cCredit,jdbcType=TINYINT}, #{cLimit,jdbcType=BIGINT}, #{cRegisteredcapital,jdbcType=BIGINT}, 
+      #{cTaxnumber,jdbcType=VARCHAR}, #{cSid,jdbcType=INTEGER}, #{cPostcode,jdbcType=VARCHAR}, 
+      #{cLinkman,jdbcType=VARCHAR}, #{cPhone,jdbcType=VARCHAR}, #{cFax,jdbcType=VARCHAR}, 
+      #{cHomepage,jdbcType=VARCHAR}, #{cEmail,jdbcType=VARCHAR}, #{cCountry,jdbcType=VARCHAR}, 
+      #{cProvince,jdbcType=VARCHAR}, #{cCityaddress,jdbcType=VARCHAR}, #{cIselectricity,jdbcType=TINYINT}, 
+      #{cState,jdbcType=TINYINT}, #{cIdentifying,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, 
+      #{cQuality,jdbcType=LONGVARCHAR}, #{cCreditdeclare,jdbcType=LONGVARCHAR}, #{cRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.base.BCustomerWithBLOBs" >
+    insert into b_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        c_id,
+      </if>
+      <if test="cIid != null" >
+        c_iid,
+      </if>
+      <if test="cType != null" >
+        c_type,
+      </if>
+      <if test="cName != null" >
+        c_name,
+      </if>
+      <if test="cShort != null" >
+        c_short,
+      </if>
+      <if test="cDepartment != null" >
+        c_department,
+      </if>
+      <if test="cCompanytype != null" >
+        c_companytype,
+      </if>
+      <if test="cScope != null" >
+        c_scope,
+      </if>
+      <if test="cLegal != null" >
+        c_legal,
+      </if>
+      <if test="cConsignor != null" >
+        c_consignor,
+      </if>
+      <if test="cBank != null" >
+        c_bank,
+      </if>
+      <if test="cAccount != null" >
+        c_account,
+      </if>
+      <if test="cCredit != null" >
+        c_credit,
+      </if>
+      <if test="cLimit != null" >
+        c_limit,
+      </if>
+      <if test="cRegisteredcapital != null" >
+        c_registeredcapital,
+      </if>
+      <if test="cTaxnumber != null" >
+        c_taxnumber,
+      </if>
+      <if test="cSid != null" >
+        c_sid,
+      </if>
+      <if test="cPostcode != null" >
+        c_postcode,
+      </if>
+      <if test="cLinkman != null" >
+        c_linkman,
+      </if>
+      <if test="cPhone != null" >
+        c_phone,
+      </if>
+      <if test="cFax != null" >
+        c_fax,
+      </if>
+      <if test="cHomepage != null" >
+        c_homepage,
+      </if>
+      <if test="cEmail != null" >
+        c_email,
+      </if>
+      <if test="cCountry != null" >
+        c_country,
+      </if>
+      <if test="cProvince != null" >
+        c_province,
+      </if>
+      <if test="cCityaddress != null" >
+        c_cityaddress,
+      </if>
+      <if test="cIselectricity != null" >
+        c_iselectricity,
+      </if>
+      <if test="cState != null" >
+        c_state,
+      </if>
+      <if test="cIdentifying != null" >
+        c_identifying,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="cQuality != null" >
+        c_quality,
+      </if>
+      <if test="cCreditdeclare != null" >
+        c_creditdeclare,
+      </if>
+      <if test="cRemark != null" >
+        c_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cIid != null" >
+        #{cIid,jdbcType=INTEGER},
+      </if>
+      <if test="cType != null" >
+        #{cType,jdbcType=TINYINT},
+      </if>
+      <if test="cName != null" >
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cShort != null" >
+        #{cShort,jdbcType=VARCHAR},
+      </if>
+      <if test="cDepartment != null" >
+        #{cDepartment,jdbcType=TINYINT},
+      </if>
+      <if test="cCompanytype != null" >
+        #{cCompanytype,jdbcType=TINYINT},
+      </if>
+      <if test="cScope != null" >
+        #{cScope,jdbcType=VARCHAR},
+      </if>
+      <if test="cLegal != null" >
+        #{cLegal,jdbcType=VARCHAR},
+      </if>
+      <if test="cConsignor != null" >
+        #{cConsignor,jdbcType=VARCHAR},
+      </if>
+      <if test="cBank != null" >
+        #{cBank,jdbcType=VARCHAR},
+      </if>
+      <if test="cAccount != null" >
+        #{cAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="cCredit != null" >
+        #{cCredit,jdbcType=TINYINT},
+      </if>
+      <if test="cLimit != null" >
+        #{cLimit,jdbcType=BIGINT},
+      </if>
+      <if test="cRegisteredcapital != null" >
+        #{cRegisteredcapital,jdbcType=BIGINT},
+      </if>
+      <if test="cTaxnumber != null" >
+        #{cTaxnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cSid != null" >
+        #{cSid,jdbcType=INTEGER},
+      </if>
+      <if test="cPostcode != null" >
+        #{cPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cLinkman != null" >
+        #{cLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhone != null" >
+        #{cPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cFax != null" >
+        #{cFax,jdbcType=VARCHAR},
+      </if>
+      <if test="cHomepage != null" >
+        #{cHomepage,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmail != null" >
+        #{cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="cCountry != null" >
+        #{cCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="cProvince != null" >
+        #{cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="cCityaddress != null" >
+        #{cCityaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cIselectricity != null" >
+        #{cIselectricity,jdbcType=TINYINT},
+      </if>
+      <if test="cState != null" >
+        #{cState,jdbcType=TINYINT},
+      </if>
+      <if test="cIdentifying != null" >
+        #{cIdentifying,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="cQuality != null" >
+        #{cQuality,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cCreditdeclare != null" >
+        #{cCreditdeclare,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        #{cRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.base.BCustomerQuery" resultType="java.lang.Integer" >
+    select count(*) from b_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update b_customer
+    <set >
+      <if test="record.cId != null" >
+        c_id = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cIid != null" >
+        c_iid = #{record.cIid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cType != null" >
+        c_type = #{record.cType,jdbcType=TINYINT},
+      </if>
+      <if test="record.cName != null" >
+        c_name = #{record.cName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cShort != null" >
+        c_short = #{record.cShort,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cDepartment != null" >
+        c_department = #{record.cDepartment,jdbcType=TINYINT},
+      </if>
+      <if test="record.cCompanytype != null" >
+        c_companytype = #{record.cCompanytype,jdbcType=TINYINT},
+      </if>
+      <if test="record.cScope != null" >
+        c_scope = #{record.cScope,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cLegal != null" >
+        c_legal = #{record.cLegal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cConsignor != null" >
+        c_consignor = #{record.cConsignor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cBank != null" >
+        c_bank = #{record.cBank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cAccount != null" >
+        c_account = #{record.cAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCredit != null" >
+        c_credit = #{record.cCredit,jdbcType=TINYINT},
+      </if>
+      <if test="record.cLimit != null" >
+        c_limit = #{record.cLimit,jdbcType=BIGINT},
+      </if>
+      <if test="record.cRegisteredcapital != null" >
+        c_registeredcapital = #{record.cRegisteredcapital,jdbcType=BIGINT},
+      </if>
+      <if test="record.cTaxnumber != null" >
+        c_taxnumber = #{record.cTaxnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cSid != null" >
+        c_sid = #{record.cSid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cPostcode != null" >
+        c_postcode = #{record.cPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cLinkman != null" >
+        c_linkman = #{record.cLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cPhone != null" >
+        c_phone = #{record.cPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cFax != null" >
+        c_fax = #{record.cFax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cHomepage != null" >
+        c_homepage = #{record.cHomepage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cEmail != null" >
+        c_email = #{record.cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCountry != null" >
+        c_country = #{record.cCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cProvince != null" >
+        c_province = #{record.cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCityaddress != null" >
+        c_cityaddress = #{record.cCityaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cIselectricity != null" >
+        c_iselectricity = #{record.cIselectricity,jdbcType=TINYINT},
+      </if>
+      <if test="record.cState != null" >
+        c_state = #{record.cState,jdbcType=TINYINT},
+      </if>
+      <if test="record.cIdentifying != null" >
+        c_identifying = #{record.cIdentifying,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cQuality != null" >
+        c_quality = #{record.cQuality,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.cCreditdeclare != null" >
+        c_creditdeclare = #{record.cCreditdeclare,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.cRemark != null" >
+        c_remark = #{record.cRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update b_customer
+    set c_id = #{record.cId,jdbcType=INTEGER},
+      c_iid = #{record.cIid,jdbcType=INTEGER},
+      c_type = #{record.cType,jdbcType=TINYINT},
+      c_name = #{record.cName,jdbcType=VARCHAR},
+      c_short = #{record.cShort,jdbcType=VARCHAR},
+      c_department = #{record.cDepartment,jdbcType=TINYINT},
+      c_companytype = #{record.cCompanytype,jdbcType=TINYINT},
+      c_scope = #{record.cScope,jdbcType=VARCHAR},
+      c_legal = #{record.cLegal,jdbcType=VARCHAR},
+      c_consignor = #{record.cConsignor,jdbcType=VARCHAR},
+      c_bank = #{record.cBank,jdbcType=VARCHAR},
+      c_account = #{record.cAccount,jdbcType=VARCHAR},
+      c_credit = #{record.cCredit,jdbcType=TINYINT},
+      c_limit = #{record.cLimit,jdbcType=BIGINT},
+      c_registeredcapital = #{record.cRegisteredcapital,jdbcType=BIGINT},
+      c_taxnumber = #{record.cTaxnumber,jdbcType=VARCHAR},
+      c_sid = #{record.cSid,jdbcType=INTEGER},
+      c_postcode = #{record.cPostcode,jdbcType=VARCHAR},
+      c_linkman = #{record.cLinkman,jdbcType=VARCHAR},
+      c_phone = #{record.cPhone,jdbcType=VARCHAR},
+      c_fax = #{record.cFax,jdbcType=VARCHAR},
+      c_homepage = #{record.cHomepage,jdbcType=VARCHAR},
+      c_email = #{record.cEmail,jdbcType=VARCHAR},
+      c_country = #{record.cCountry,jdbcType=VARCHAR},
+      c_province = #{record.cProvince,jdbcType=VARCHAR},
+      c_cityaddress = #{record.cCityaddress,jdbcType=VARCHAR},
+      c_iselectricity = #{record.cIselectricity,jdbcType=TINYINT},
+      c_state = #{record.cState,jdbcType=TINYINT},
+      c_identifying = #{record.cIdentifying,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      c_quality = #{record.cQuality,jdbcType=LONGVARCHAR},
+      c_creditdeclare = #{record.cCreditdeclare,jdbcType=LONGVARCHAR},
+      c_remark = #{record.cRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update b_customer
+    set c_id = #{record.cId,jdbcType=INTEGER},
+      c_iid = #{record.cIid,jdbcType=INTEGER},
+      c_type = #{record.cType,jdbcType=TINYINT},
+      c_name = #{record.cName,jdbcType=VARCHAR},
+      c_short = #{record.cShort,jdbcType=VARCHAR},
+      c_department = #{record.cDepartment,jdbcType=TINYINT},
+      c_companytype = #{record.cCompanytype,jdbcType=TINYINT},
+      c_scope = #{record.cScope,jdbcType=VARCHAR},
+      c_legal = #{record.cLegal,jdbcType=VARCHAR},
+      c_consignor = #{record.cConsignor,jdbcType=VARCHAR},
+      c_bank = #{record.cBank,jdbcType=VARCHAR},
+      c_account = #{record.cAccount,jdbcType=VARCHAR},
+      c_credit = #{record.cCredit,jdbcType=TINYINT},
+      c_limit = #{record.cLimit,jdbcType=BIGINT},
+      c_registeredcapital = #{record.cRegisteredcapital,jdbcType=BIGINT},
+      c_taxnumber = #{record.cTaxnumber,jdbcType=VARCHAR},
+      c_sid = #{record.cSid,jdbcType=INTEGER},
+      c_postcode = #{record.cPostcode,jdbcType=VARCHAR},
+      c_linkman = #{record.cLinkman,jdbcType=VARCHAR},
+      c_phone = #{record.cPhone,jdbcType=VARCHAR},
+      c_fax = #{record.cFax,jdbcType=VARCHAR},
+      c_homepage = #{record.cHomepage,jdbcType=VARCHAR},
+      c_email = #{record.cEmail,jdbcType=VARCHAR},
+      c_country = #{record.cCountry,jdbcType=VARCHAR},
+      c_province = #{record.cProvince,jdbcType=VARCHAR},
+      c_cityaddress = #{record.cCityaddress,jdbcType=VARCHAR},
+      c_iselectricity = #{record.cIselectricity,jdbcType=TINYINT},
+      c_state = #{record.cState,jdbcType=TINYINT},
+      c_identifying = #{record.cIdentifying,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.base.BCustomerWithBLOBs" >
+    update b_customer
+    <set >
+      <if test="cIid != null" >
+        c_iid = #{cIid,jdbcType=INTEGER},
+      </if>
+      <if test="cType != null" >
+        c_type = #{cType,jdbcType=TINYINT},
+      </if>
+      <if test="cName != null" >
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cShort != null" >
+        c_short = #{cShort,jdbcType=VARCHAR},
+      </if>
+      <if test="cDepartment != null" >
+        c_department = #{cDepartment,jdbcType=TINYINT},
+      </if>
+      <if test="cCompanytype != null" >
+        c_companytype = #{cCompanytype,jdbcType=TINYINT},
+      </if>
+      <if test="cScope != null" >
+        c_scope = #{cScope,jdbcType=VARCHAR},
+      </if>
+      <if test="cLegal != null" >
+        c_legal = #{cLegal,jdbcType=VARCHAR},
+      </if>
+      <if test="cConsignor != null" >
+        c_consignor = #{cConsignor,jdbcType=VARCHAR},
+      </if>
+      <if test="cBank != null" >
+        c_bank = #{cBank,jdbcType=VARCHAR},
+      </if>
+      <if test="cAccount != null" >
+        c_account = #{cAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="cCredit != null" >
+        c_credit = #{cCredit,jdbcType=TINYINT},
+      </if>
+      <if test="cLimit != null" >
+        c_limit = #{cLimit,jdbcType=BIGINT},
+      </if>
+      <if test="cRegisteredcapital != null" >
+        c_registeredcapital = #{cRegisteredcapital,jdbcType=BIGINT},
+      </if>
+      <if test="cTaxnumber != null" >
+        c_taxnumber = #{cTaxnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cSid != null" >
+        c_sid = #{cSid,jdbcType=INTEGER},
+      </if>
+      <if test="cPostcode != null" >
+        c_postcode = #{cPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cLinkman != null" >
+        c_linkman = #{cLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhone != null" >
+        c_phone = #{cPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cFax != null" >
+        c_fax = #{cFax,jdbcType=VARCHAR},
+      </if>
+      <if test="cHomepage != null" >
+        c_homepage = #{cHomepage,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmail != null" >
+        c_email = #{cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="cCountry != null" >
+        c_country = #{cCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="cProvince != null" >
+        c_province = #{cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="cCityaddress != null" >
+        c_cityaddress = #{cCityaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cIselectricity != null" >
+        c_iselectricity = #{cIselectricity,jdbcType=TINYINT},
+      </if>
+      <if test="cState != null" >
+        c_state = #{cState,jdbcType=TINYINT},
+      </if>
+      <if test="cIdentifying != null" >
+        c_identifying = #{cIdentifying,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="cQuality != null" >
+        c_quality = #{cQuality,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cCreditdeclare != null" >
+        c_creditdeclare = #{cCreditdeclare,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        c_remark = #{cRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.base.BCustomerWithBLOBs" >
+    update b_customer
+    set c_iid = #{cIid,jdbcType=INTEGER},
+      c_type = #{cType,jdbcType=TINYINT},
+      c_name = #{cName,jdbcType=VARCHAR},
+      c_short = #{cShort,jdbcType=VARCHAR},
+      c_department = #{cDepartment,jdbcType=TINYINT},
+      c_companytype = #{cCompanytype,jdbcType=TINYINT},
+      c_scope = #{cScope,jdbcType=VARCHAR},
+      c_legal = #{cLegal,jdbcType=VARCHAR},
+      c_consignor = #{cConsignor,jdbcType=VARCHAR},
+      c_bank = #{cBank,jdbcType=VARCHAR},
+      c_account = #{cAccount,jdbcType=VARCHAR},
+      c_credit = #{cCredit,jdbcType=TINYINT},
+      c_limit = #{cLimit,jdbcType=BIGINT},
+      c_registeredcapital = #{cRegisteredcapital,jdbcType=BIGINT},
+      c_taxnumber = #{cTaxnumber,jdbcType=VARCHAR},
+      c_sid = #{cSid,jdbcType=INTEGER},
+      c_postcode = #{cPostcode,jdbcType=VARCHAR},
+      c_linkman = #{cLinkman,jdbcType=VARCHAR},
+      c_phone = #{cPhone,jdbcType=VARCHAR},
+      c_fax = #{cFax,jdbcType=VARCHAR},
+      c_homepage = #{cHomepage,jdbcType=VARCHAR},
+      c_email = #{cEmail,jdbcType=VARCHAR},
+      c_country = #{cCountry,jdbcType=VARCHAR},
+      c_province = #{cProvince,jdbcType=VARCHAR},
+      c_cityaddress = #{cCityaddress,jdbcType=VARCHAR},
+      c_iselectricity = #{cIselectricity,jdbcType=TINYINT},
+      c_state = #{cState,jdbcType=TINYINT},
+      c_identifying = #{cIdentifying,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      c_quality = #{cQuality,jdbcType=LONGVARCHAR},
+      c_creditdeclare = #{cCreditdeclare,jdbcType=LONGVARCHAR},
+      c_remark = #{cRemark,jdbcType=LONGVARCHAR}
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.base.BCustomer" >
+    update b_customer
+    set c_iid = #{cIid,jdbcType=INTEGER},
+      c_type = #{cType,jdbcType=TINYINT},
+      c_name = #{cName,jdbcType=VARCHAR},
+      c_short = #{cShort,jdbcType=VARCHAR},
+      c_department = #{cDepartment,jdbcType=TINYINT},
+      c_companytype = #{cCompanytype,jdbcType=TINYINT},
+      c_scope = #{cScope,jdbcType=VARCHAR},
+      c_legal = #{cLegal,jdbcType=VARCHAR},
+      c_consignor = #{cConsignor,jdbcType=VARCHAR},
+      c_bank = #{cBank,jdbcType=VARCHAR},
+      c_account = #{cAccount,jdbcType=VARCHAR},
+      c_credit = #{cCredit,jdbcType=TINYINT},
+      c_limit = #{cLimit,jdbcType=BIGINT},
+      c_registeredcapital = #{cRegisteredcapital,jdbcType=BIGINT},
+      c_taxnumber = #{cTaxnumber,jdbcType=VARCHAR},
+      c_sid = #{cSid,jdbcType=INTEGER},
+      c_postcode = #{cPostcode,jdbcType=VARCHAR},
+      c_linkman = #{cLinkman,jdbcType=VARCHAR},
+      c_phone = #{cPhone,jdbcType=VARCHAR},
+      c_fax = #{cFax,jdbcType=VARCHAR},
+      c_homepage = #{cHomepage,jdbcType=VARCHAR},
+      c_email = #{cEmail,jdbcType=VARCHAR},
+      c_country = #{cCountry,jdbcType=VARCHAR},
+      c_province = #{cProvince,jdbcType=VARCHAR},
+      c_cityaddress = #{cCityaddress,jdbcType=VARCHAR},
+      c_iselectricity = #{cIselectricity,jdbcType=TINYINT},
+      c_state = #{cState,jdbcType=TINYINT},
+      c_identifying = #{cIdentifying,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

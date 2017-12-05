@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.BRailwaywagonDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.base.BRailwaywagon" >
+    <id column="cs_id" property="csId" jdbcType="INTEGER" />
+    <result column="cs_type" property="csType" jdbcType="INTEGER" />
+    <result column="cs_load" property="csLoad" jdbcType="INTEGER" />
+    <result column="cs_deadload" property="csDeadload" jdbcType="INTEGER" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      cs_id, cs_type, cs_load, cs_deadload, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.base.BRailwaywagonQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from b_railwaywagon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    cs_id,cs_type,cs_load,cs_deadload,Createdate,ModifyDate,CreateBy,ModifyBy
+    from b_railwaywagon
+    where cs_id = #{csId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from b_railwaywagon
+    where cs_id = #{csId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.base.BRailwaywagonQuery" >
+    delete from b_railwaywagon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.base.BRailwaywagon" >
+    insert into b_railwaywagon (cs_id, cs_type, cs_load, 
+      cs_deadload, Createdate, ModifyDate, 
+      CreateBy, ModifyBy)
+    values (#{csId,jdbcType=INTEGER}, #{csType,jdbcType=INTEGER}, #{csLoad,jdbcType=INTEGER}, 
+      #{csDeadload,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.base.BRailwaywagon" >
+    insert into b_railwaywagon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="csId != null" >
+        cs_id,
+      </if>
+      <if test="csType != null" >
+        cs_type,
+      </if>
+      <if test="csLoad != null" >
+        cs_load,
+      </if>
+      <if test="csDeadload != null" >
+        cs_deadload,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="csId != null" >
+        #{csId,jdbcType=INTEGER},
+      </if>
+      <if test="csType != null" >
+        #{csType,jdbcType=INTEGER},
+      </if>
+      <if test="csLoad != null" >
+        #{csLoad,jdbcType=INTEGER},
+      </if>
+      <if test="csDeadload != null" >
+        #{csDeadload,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.base.BRailwaywagonQuery" resultType="java.lang.Integer" >
+    select count(*) from b_railwaywagon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update b_railwaywagon
+    <set >
+      <if test="record.csId != null" >
+        cs_id = #{record.csId,jdbcType=INTEGER},
+      </if>
+      <if test="record.csType != null" >
+        cs_type = #{record.csType,jdbcType=INTEGER},
+      </if>
+      <if test="record.csLoad != null" >
+        cs_load = #{record.csLoad,jdbcType=INTEGER},
+      </if>
+      <if test="record.csDeadload != null" >
+        cs_deadload = #{record.csDeadload,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update b_railwaywagon
+    set cs_id = #{record.csId,jdbcType=INTEGER},
+      cs_type = #{record.csType,jdbcType=INTEGER},
+      cs_load = #{record.csLoad,jdbcType=INTEGER},
+      cs_deadload = #{record.csDeadload,jdbcType=INTEGER},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.base.BRailwaywagon" >
+    update b_railwaywagon
+    <set >
+      <if test="csType != null" >
+        cs_type = #{csType,jdbcType=INTEGER},
+      </if>
+      <if test="csLoad != null" >
+        cs_load = #{csLoad,jdbcType=INTEGER},
+      </if>
+      <if test="csDeadload != null" >
+        cs_deadload = #{csDeadload,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cs_id = #{csId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.base.BRailwaywagon" >
+    update b_railwaywagon
+    set cs_type = #{csType,jdbcType=INTEGER},
+      cs_load = #{csLoad,jdbcType=INTEGER},
+      cs_deadload = #{csDeadload,jdbcType=INTEGER},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where cs_id = #{csId,jdbcType=INTEGER}
+  </update>
+</mapper>

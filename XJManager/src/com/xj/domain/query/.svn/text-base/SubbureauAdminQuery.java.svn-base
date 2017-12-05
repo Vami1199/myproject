@@ -1,0 +1,22 @@
+package com.xj.domain.query;
+
+import com.xj.domain.base.BRailwayadmin;
+import com.xj.domain.base.BRailwaysubbureau;
+
+public class SubbureauAdminQuery {
+	private BRailwaysubbureau railwaysubbureau;
+	private BRailwayadmin railwayadmin;
+	public BRailwaysubbureau getRailwaysubbureau() {
+		return railwaysubbureau;
+	}
+	public void setRailwaysubbureau(BRailwaysubbureau railwaysubbureau) {
+		this.railwaysubbureau = railwaysubbureau;
+	}
+	public BRailwayadmin getRailwayadmin() {
+		return railwayadmin;
+	}
+	public void setRailwayadmin(BRailwayadmin railwayadmin) {
+		this.railwayadmin = railwayadmin;
+	}
+	
+}

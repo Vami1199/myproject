@@ -1,0 +1,11 @@
+package com.xj.service.base.impl;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.xj.service.base.BRailwaysubbureauService;
+@Service
+@Transactional
+public class BRailwaysubbureauServiceImpl implements BRailwaysubbureauService{
+
+}

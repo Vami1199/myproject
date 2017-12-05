@@ -1,0 +1,167 @@
+package com.xj.web.action.base;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.xj.common.JsonUtils;
+import com.xj.domain.base.BCoaltype;
+import com.xj.domain.base.BCoaltypeQuery;
+import com.xj.domain.base.BCompany;
+import com.xj.domain.base.BCompanyQuery;
+import com.xj.domain.base.BMinesourceQuery;
+import com.xj.domain.base.BCompanyQuery.Criteria;
+import com.xj.domain.base.BMinesource;
+import com.xj.domain.base.BProductsQuery;
+import com.xj.domain.query.CompanyListQuery;
+import com.xj.domain.query.PageQuery;
+import com.xj.domain.query.ProductListQuery;
+import com.xj.domain.query.SourceListQuery;
+import com.xj.service.base.BCoalTypeService;
+import com.xj.service.base.BCompanyService;
+import com.xj.service.base.BMineSourceService;
+import com.xj.service.base.BRailwaysubbureauService;
+import com.xj.service.base.BproductsService;
+/**
+ * 基础信息管理跳转页面
+ * @author Administrator
+ *
+ */
+@Controller
+public class BaseAction {
+	@Autowired
+	BproductsService productsService;
+	@Resource
+	BRailwaysubbureauService railwaysubbureauService;
+	@Autowired
+	BCoalTypeService coalTypeService;
+	@Resource
+	BCompanyService companyService;
+	@Autowired
+	BMineSourceService sourceService;
+	/**
+	 * 产品信息管理
+	 * @param pageNo	页码
+	 * @param pCoaltype	品种类型
+	 * @param pApplicationrange 适用范围
+	 * @param pAvailability 是否可用
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/base/productList.do")
+	public void productList(HttpServletResponse response){
+		//创建产品信息查询对象
+		BProductsQuery productsQuery = new BProductsQuery();
+		//查询所有对象
+		List<ProductListQuery> list = productsService.findAll(productsQuery);
+		
+		String[] arr = {"ProductListQuery","Hash","modifydate","createby","createdate","modifyby","pRemark"};
+		//把集合转为json
+		String jsonList = JsonUtils.createJsonList(list,arr);
+		System.out.println("查询到的产品信息是"+jsonList);
+		try {
+			JsonUtils.returnJson(response, jsonList);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * 煤炭品种类型管理
+	 * @param response
+	 */
+	@RequestMapping(value="/base/coalTypeList.do")
+	public void coalTypeList(HttpServletResponse response){
+		BCoaltypeQuery coaltypeQuery = new BCoaltypeQuery();
+		List<BCoaltype> list = coalTypeService.findAll(coaltypeQuery);
+		String[] arr = {"ctRemark"};
+		String json = JsonUtils.createJsonList(list, arr);
+		try {
+			JsonUtils.returnJson(response, json);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	/**
+	 * 部门管理
+	 */
+	@RequestMapping(value = "/base/companyList.do")
+	public void companyList(BCompany company,HttpServletResponse response){
+		BCompanyQuery companyQuery = new BCompanyQuery();
+		Criteria criteria = companyQuery.createCriteria();
+		//判断各个元素是否为空,如果不为空就当做条件加入查询条件中
+		if(StringUtils.isNotBlank(company.getCoId())){
+			criteria.andCoIdLike("%"+company.getCoId()+"%");
+		}
+		if(StringUtils.isNotBlank(company.getCoShort())){
+			criteria.andCoShortLike("%"+company.getCoShort()+"%");
+		}
+		if(StringUtils.isNotBlank(company.getCoPhone())){
+			criteria.andCoPhoneLike("%"+company.getCoPhone()+"%");
+		}
+		if(StringUtils.isNotBlank(company.getCoFax())){
+			criteria.andCoFaxLike("%"+company.getCoFax()+"%");
+		}
+		if(company.getCoPostcode()!=null){
+			criteria.andCoPostcodeEqualTo(company.getCoPostcode());
+		}
+		if(StringUtils.isNotBlank(company.getCoLinkman())){
+			criteria.andCoLinkmanLike("%"+company.getCoLinkman()+"%");
+		}
+		List<BCompany> list = companyService.findAll(companyQuery);
+		/*List<CompanyListQuery> listQuery = new ArrayList<CompanyListQuery>();
+		for (BCompany bCompany : list) {
+			CompanyListQuery query = new CompanyListQuery();
+			query.setCompany(bCompany);
+			listQuery.add(query);
+		}*/
+		String[] arr = {"createdate","modifydate","createby","modifyby"};
+		String jsonList = JsonUtils.createJsonList(list,arr);
+		System.out.println("查询到的部门信息是"+jsonList);
+		/*jsonList = jsonList.substring(1, jsonList.length()-1);*/
+		try {
+			JsonUtils.returnJson(response,jsonList);
+		} catch (Exception e) {
+			String str = "{success:true}";
+			try {
+				JsonUtils.returnJson(response, str);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/***
+	 * 矿别信息管理
+	 * @param sourceListQuery
+	 * @param response
+	 * @throws IOException 
+	 */
+	@RequestMapping(value = "/base/sourceList.do")
+	public void sourceList(HttpServletResponse response,PageQuery pageQuery) throws IOException{
+		BMinesourceQuery sourceQuery = new BMinesourceQuery();
+		sourceQuery.setPageNo(pageQuery.getPage());
+		sourceQuery.setPageSize(pageQuery.getLimit());
+		sourceQuery.setStartRow(pageQuery.getStart());
+		String json = sourceService.findAll(sourceQuery);
+		JsonUtils.returnJson(response, json);
+		
+	}
+	
+}

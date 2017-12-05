@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.TAddheadDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trains.TAddhead" >
+    <id column="ah_id" property="ahId" jdbcType="VARCHAR" />
+    <result column="ah_num" property="ahNum" jdbcType="VARCHAR" />
+    <result column="ah_start" property="ahStart" jdbcType="VARCHAR" />
+    <result column="ah_source" property="ahSource" jdbcType="VARCHAR" />
+    <result column="ah_time" property="ahTime" jdbcType="DATE" />
+    <result column="ah_dispatcher" property="ahDispatcher" jdbcType="VARCHAR" />
+    <result column="ah_receivetime" property="ahReceivetime" jdbcType="VARCHAR" />
+    <result column="ah_intime" property="ahIntime" jdbcType="VARCHAR" />
+    <result column="ah_starttime" property="ahStarttime" jdbcType="VARCHAR" />
+    <result column="ah_endtime" property="ahEndtime" jdbcType="VARCHAR" />
+    <result column="ah_informtime" property="ahInformtime" jdbcType="VARCHAR" />
+    <result column="ah_trailertime" property="ahTrailertime" jdbcType="VARCHAR" />
+    <result column="ah_wagonnum" property="ahWagonnum" jdbcType="INTEGER" />
+    <result column="ah_headnum" property="ahHeadnum" jdbcType="VARCHAR" />
+    <result column="ah_truckuser" property="ahTruckuser" jdbcType="VARCHAR" />
+    <result column="ah_quality" property="ahQuality" jdbcType="VARCHAR" />
+    <result column="ah_roaduser" property="ahRoaduser" jdbcType="VARCHAR" />
+    <result column="ah_sales" property="ahSales" jdbcType="VARCHAR" />
+    <result column="ah_user" property="ahUser" jdbcType="VARCHAR" />
+    <result column="ah_department" property="ahDepartment" jdbcType="VARCHAR" />
+    <result column="ah_settime" property="ahSettime" jdbcType="DATE" />
+    <result column="ah_weight" property="ahWeight" jdbcType="DECIMAL" />
+    <result column="ah_assay" property="ahAssay" jdbcType="DECIMAL" />
+    <result column="ah_predict" property="ahPredict" jdbcType="DECIMAL" />
+    <result column="ah_isdepart" property="ahIsdepart" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.trains.TAddheadWithBLOBs" extends="BaseResultMap" >
+    <result column="ah_declare" property="ahDeclare" jdbcType="LONGVARCHAR" />
+    <result column="ah_remark" property="ahRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      ah_id, ah_num, ah_start, ah_source, ah_time, ah_dispatcher, ah_receivetime, ah_intime, 
+      ah_starttime, ah_endtime, ah_informtime, ah_trailertime, ah_wagonnum, ah_headnum, 
+      ah_truckuser, ah_quality, ah_roaduser, ah_sales, ah_user, ah_department, ah_settime, 
+      ah_weight, ah_assay, ah_predict, ah_isdepart, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    ah_declare, ah_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.trains.TAddheadQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_addhead
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trains.TAddheadQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_addhead
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    ah_id,ah_num,ah_start,ah_source,ah_time,ah_dispatcher,ah_receivetime,ah_intime,ah_starttime,ah_endtime,ah_informtime,ah_trailertime,ah_wagonnum,ah_headnum,ah_truckuser,ah_quality,ah_roaduser,ah_sales,ah_user,ah_department,ah_settime,ah_weight,ah_assay,ah_predict,ah_isdepart,Createdate,ModifyDate,CreateBy,ModifyBy,ah_declare,ah_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from t_addhead
+    where ah_id = #{ahId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_addhead
+    where ah_id = #{ahId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trains.TAddheadQuery" >
+    delete from t_addhead
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trains.TAddheadWithBLOBs" >
+    insert into t_addhead (ah_id, ah_num, ah_start, 
+      ah_source, ah_time, ah_dispatcher, 
+      ah_receivetime, ah_intime, ah_starttime, 
+      ah_endtime, ah_informtime, ah_trailertime, 
+      ah_wagonnum, ah_headnum, ah_truckuser, 
+      ah_quality, ah_roaduser, ah_sales, 
+      ah_user, ah_department, ah_settime, 
+      ah_weight, ah_assay, ah_predict, 
+      ah_isdepart, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, ah_declare, 
+      ah_remark)
+    values (#{ahId,jdbcType=VARCHAR}, #{ahNum,jdbcType=VARCHAR}, #{ahStart,jdbcType=VARCHAR}, 
+      #{ahSource,jdbcType=VARCHAR}, #{ahTime,jdbcType=DATE}, #{ahDispatcher,jdbcType=VARCHAR}, 
+      #{ahReceivetime,jdbcType=VARCHAR}, #{ahIntime,jdbcType=VARCHAR}, #{ahStarttime,jdbcType=VARCHAR}, 
+      #{ahEndtime,jdbcType=VARCHAR}, #{ahInformtime,jdbcType=VARCHAR}, #{ahTrailertime,jdbcType=VARCHAR}, 
+      #{ahWagonnum,jdbcType=INTEGER}, #{ahHeadnum,jdbcType=VARCHAR}, #{ahTruckuser,jdbcType=VARCHAR}, 
+      #{ahQuality,jdbcType=VARCHAR}, #{ahRoaduser,jdbcType=VARCHAR}, #{ahSales,jdbcType=VARCHAR}, 
+      #{ahUser,jdbcType=VARCHAR}, #{ahDepartment,jdbcType=VARCHAR}, #{ahSettime,jdbcType=DATE}, 
+      #{ahWeight,jdbcType=DECIMAL}, #{ahAssay,jdbcType=DECIMAL}, #{ahPredict,jdbcType=DECIMAL}, 
+      #{ahIsdepart,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{ahDeclare,jdbcType=LONGVARCHAR}, 
+      #{ahRemark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trains.TAddheadWithBLOBs" >
+    insert into t_addhead
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ahId != null" >
+        ah_id,
+      </if>
+      <if test="ahNum != null" >
+        ah_num,
+      </if>
+      <if test="ahStart != null" >
+        ah_start,
+      </if>
+      <if test="ahSource != null" >
+        ah_source,
+      </if>
+      <if test="ahTime != null" >
+        ah_time,
+      </if>
+      <if test="ahDispatcher != null" >
+        ah_dispatcher,
+      </if>
+      <if test="ahReceivetime != null" >
+        ah_receivetime,
+      </if>
+      <if test="ahIntime != null" >
+        ah_intime,
+      </if>
+      <if test="ahStarttime != null" >
+        ah_starttime,
+      </if>
+      <if test="ahEndtime != null" >
+        ah_endtime,
+      </if>
+      <if test="ahInformtime != null" >
+        ah_informtime,
+      </if>
+      <if test="ahTrailertime != null" >
+        ah_trailertime,
+      </if>
+      <if test="ahWagonnum != null" >
+        ah_wagonnum,
+      </if>
+      <if test="ahHeadnum != null" >
+        ah_headnum,
+      </if>
+      <if test="ahTruckuser != null" >
+        ah_truckuser,
+      </if>
+      <if test="ahQuality != null" >
+        ah_quality,
+      </if>
+      <if test="ahRoaduser != null" >
+        ah_roaduser,
+      </if>
+      <if test="ahSales != null" >
+        ah_sales,
+      </if>
+      <if test="ahUser != null" >
+        ah_user,
+      </if>
+      <if test="ahDepartment != null" >
+        ah_department,
+      </if>
+      <if test="ahSettime != null" >
+        ah_settime,
+      </if>
+      <if test="ahWeight != null" >
+        ah_weight,
+      </if>
+      <if test="ahAssay != null" >
+        ah_assay,
+      </if>
+      <if test="ahPredict != null" >
+        ah_predict,
+      </if>
+      <if test="ahIsdepart != null" >
+        ah_isdepart,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="ahDeclare != null" >
+        ah_declare,
+      </if>
+      <if test="ahRemark != null" >
+        ah_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ahId != null" >
+        #{ahId,jdbcType=VARCHAR},
+      </if>
+      <if test="ahNum != null" >
+        #{ahNum,jdbcType=VARCHAR},
+      </if>
+      <if test="ahStart != null" >
+        #{ahStart,jdbcType=VARCHAR},
+      </if>
+      <if test="ahSource != null" >
+        #{ahSource,jdbcType=VARCHAR},
+      </if>
+      <if test="ahTime != null" >
+        #{ahTime,jdbcType=DATE},
+      </if>
+      <if test="ahDispatcher != null" >
+        #{ahDispatcher,jdbcType=VARCHAR},
+      </if>
+      <if test="ahReceivetime != null" >
+        #{ahReceivetime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahIntime != null" >
+        #{ahIntime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahStarttime != null" >
+        #{ahStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahEndtime != null" >
+        #{ahEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahInformtime != null" >
+        #{ahInformtime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahTrailertime != null" >
+        #{ahTrailertime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahWagonnum != null" >
+        #{ahWagonnum,jdbcType=INTEGER},
+      </if>
+      <if test="ahHeadnum != null" >
+        #{ahHeadnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ahTruckuser != null" >
+        #{ahTruckuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ahQuality != null" >
+        #{ahQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="ahRoaduser != null" >
+        #{ahRoaduser,jdbcType=VARCHAR},
+      </if>
+      <if test="ahSales != null" >
+        #{ahSales,jdbcType=VARCHAR},
+      </if>
+      <if test="ahUser != null" >
+        #{ahUser,jdbcType=VARCHAR},
+      </if>
+      <if test="ahDepartment != null" >
+        #{ahDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="ahSettime != null" >
+        #{ahSettime,jdbcType=DATE},
+      </if>
+      <if test="ahWeight != null" >
+        #{ahWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="ahAssay != null" >
+        #{ahAssay,jdbcType=DECIMAL},
+      </if>
+      <if test="ahPredict != null" >
+        #{ahPredict,jdbcType=DECIMAL},
+      </if>
+      <if test="ahIsdepart != null" >
+        #{ahIsdepart,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="ahDeclare != null" >
+        #{ahDeclare,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ahRemark != null" >
+        #{ahRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trains.TAddheadQuery" resultType="java.lang.Integer" >
+    select count(*) from t_addhead
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_addhead
+    <set >
+      <if test="record.ahId != null" >
+        ah_id = #{record.ahId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahNum != null" >
+        ah_num = #{record.ahNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahStart != null" >
+        ah_start = #{record.ahStart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahSource != null" >
+        ah_source = #{record.ahSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahTime != null" >
+        ah_time = #{record.ahTime,jdbcType=DATE},
+      </if>
+      <if test="record.ahDispatcher != null" >
+        ah_dispatcher = #{record.ahDispatcher,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahReceivetime != null" >
+        ah_receivetime = #{record.ahReceivetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahIntime != null" >
+        ah_intime = #{record.ahIntime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahStarttime != null" >
+        ah_starttime = #{record.ahStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahEndtime != null" >
+        ah_endtime = #{record.ahEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahInformtime != null" >
+        ah_informtime = #{record.ahInformtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahTrailertime != null" >
+        ah_trailertime = #{record.ahTrailertime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahWagonnum != null" >
+        ah_wagonnum = #{record.ahWagonnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.ahHeadnum != null" >
+        ah_headnum = #{record.ahHeadnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahTruckuser != null" >
+        ah_truckuser = #{record.ahTruckuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahQuality != null" >
+        ah_quality = #{record.ahQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahRoaduser != null" >
+        ah_roaduser = #{record.ahRoaduser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahSales != null" >
+        ah_sales = #{record.ahSales,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahUser != null" >
+        ah_user = #{record.ahUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahDepartment != null" >
+        ah_department = #{record.ahDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahSettime != null" >
+        ah_settime = #{record.ahSettime,jdbcType=DATE},
+      </if>
+      <if test="record.ahWeight != null" >
+        ah_weight = #{record.ahWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ahAssay != null" >
+        ah_assay = #{record.ahAssay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ahPredict != null" >
+        ah_predict = #{record.ahPredict,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ahIsdepart != null" >
+        ah_isdepart = #{record.ahIsdepart,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ahDeclare != null" >
+        ah_declare = #{record.ahDeclare,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.ahRemark != null" >
+        ah_remark = #{record.ahRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_addhead
+    set ah_id = #{record.ahId,jdbcType=VARCHAR},
+      ah_num = #{record.ahNum,jdbcType=VARCHAR},
+      ah_start = #{record.ahStart,jdbcType=VARCHAR},
+      ah_source = #{record.ahSource,jdbcType=VARCHAR},
+      ah_time = #{record.ahTime,jdbcType=DATE},
+      ah_dispatcher = #{record.ahDispatcher,jdbcType=VARCHAR},
+      ah_receivetime = #{record.ahReceivetime,jdbcType=VARCHAR},
+      ah_intime = #{record.ahIntime,jdbcType=VARCHAR},
+      ah_starttime = #{record.ahStarttime,jdbcType=VARCHAR},
+      ah_endtime = #{record.ahEndtime,jdbcType=VARCHAR},
+      ah_informtime = #{record.ahInformtime,jdbcType=VARCHAR},
+      ah_trailertime = #{record.ahTrailertime,jdbcType=VARCHAR},
+      ah_wagonnum = #{record.ahWagonnum,jdbcType=INTEGER},
+      ah_headnum = #{record.ahHeadnum,jdbcType=VARCHAR},
+      ah_truckuser = #{record.ahTruckuser,jdbcType=VARCHAR},
+      ah_quality = #{record.ahQuality,jdbcType=VARCHAR},
+      ah_roaduser = #{record.ahRoaduser,jdbcType=VARCHAR},
+      ah_sales = #{record.ahSales,jdbcType=VARCHAR},
+      ah_user = #{record.ahUser,jdbcType=VARCHAR},
+      ah_department = #{record.ahDepartment,jdbcType=VARCHAR},
+      ah_settime = #{record.ahSettime,jdbcType=DATE},
+      ah_weight = #{record.ahWeight,jdbcType=DECIMAL},
+      ah_assay = #{record.ahAssay,jdbcType=DECIMAL},
+      ah_predict = #{record.ahPredict,jdbcType=DECIMAL},
+      ah_isdepart = #{record.ahIsdepart,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      ah_declare = #{record.ahDeclare,jdbcType=LONGVARCHAR},
+      ah_remark = #{record.ahRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_addhead
+    set ah_id = #{record.ahId,jdbcType=VARCHAR},
+      ah_num = #{record.ahNum,jdbcType=VARCHAR},
+      ah_start = #{record.ahStart,jdbcType=VARCHAR},
+      ah_source = #{record.ahSource,jdbcType=VARCHAR},
+      ah_time = #{record.ahTime,jdbcType=DATE},
+      ah_dispatcher = #{record.ahDispatcher,jdbcType=VARCHAR},
+      ah_receivetime = #{record.ahReceivetime,jdbcType=VARCHAR},
+      ah_intime = #{record.ahIntime,jdbcType=VARCHAR},
+      ah_starttime = #{record.ahStarttime,jdbcType=VARCHAR},
+      ah_endtime = #{record.ahEndtime,jdbcType=VARCHAR},
+      ah_informtime = #{record.ahInformtime,jdbcType=VARCHAR},
+      ah_trailertime = #{record.ahTrailertime,jdbcType=VARCHAR},
+      ah_wagonnum = #{record.ahWagonnum,jdbcType=INTEGER},
+      ah_headnum = #{record.ahHeadnum,jdbcType=VARCHAR},
+      ah_truckuser = #{record.ahTruckuser,jdbcType=VARCHAR},
+      ah_quality = #{record.ahQuality,jdbcType=VARCHAR},
+      ah_roaduser = #{record.ahRoaduser,jdbcType=VARCHAR},
+      ah_sales = #{record.ahSales,jdbcType=VARCHAR},
+      ah_user = #{record.ahUser,jdbcType=VARCHAR},
+      ah_department = #{record.ahDepartment,jdbcType=VARCHAR},
+      ah_settime = #{record.ahSettime,jdbcType=DATE},
+      ah_weight = #{record.ahWeight,jdbcType=DECIMAL},
+      ah_assay = #{record.ahAssay,jdbcType=DECIMAL},
+      ah_predict = #{record.ahPredict,jdbcType=DECIMAL},
+      ah_isdepart = #{record.ahIsdepart,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trains.TAddheadWithBLOBs" >
+    update t_addhead
+    <set >
+      <if test="ahNum != null" >
+        ah_num = #{ahNum,jdbcType=VARCHAR},
+      </if>
+      <if test="ahStart != null" >
+        ah_start = #{ahStart,jdbcType=VARCHAR},
+      </if>
+      <if test="ahSource != null" >
+        ah_source = #{ahSource,jdbcType=VARCHAR},
+      </if>
+      <if test="ahTime != null" >
+        ah_time = #{ahTime,jdbcType=DATE},
+      </if>
+      <if test="ahDispatcher != null" >
+        ah_dispatcher = #{ahDispatcher,jdbcType=VARCHAR},
+      </if>
+      <if test="ahReceivetime != null" >
+        ah_receivetime = #{ahReceivetime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahIntime != null" >
+        ah_intime = #{ahIntime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahStarttime != null" >
+        ah_starttime = #{ahStarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahEndtime != null" >
+        ah_endtime = #{ahEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahInformtime != null" >
+        ah_informtime = #{ahInformtime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahTrailertime != null" >
+        ah_trailertime = #{ahTrailertime,jdbcType=VARCHAR},
+      </if>
+      <if test="ahWagonnum != null" >
+        ah_wagonnum = #{ahWagonnum,jdbcType=INTEGER},
+      </if>
+      <if test="ahHeadnum != null" >
+        ah_headnum = #{ahHeadnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ahTruckuser != null" >
+        ah_truckuser = #{ahTruckuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ahQuality != null" >
+        ah_quality = #{ahQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="ahRoaduser != null" >
+        ah_roaduser = #{ahRoaduser,jdbcType=VARCHAR},
+      </if>
+      <if test="ahSales != null" >
+        ah_sales = #{ahSales,jdbcType=VARCHAR},
+      </if>
+      <if test="ahUser != null" >
+        ah_user = #{ahUser,jdbcType=VARCHAR},
+      </if>
+      <if test="ahDepartment != null" >
+        ah_department = #{ahDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="ahSettime != null" >
+        ah_settime = #{ahSettime,jdbcType=DATE},
+      </if>
+      <if test="ahWeight != null" >
+        ah_weight = #{ahWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="ahAssay != null" >
+        ah_assay = #{ahAssay,jdbcType=DECIMAL},
+      </if>
+      <if test="ahPredict != null" >
+        ah_predict = #{ahPredict,jdbcType=DECIMAL},
+      </if>
+      <if test="ahIsdepart != null" >
+        ah_isdepart = #{ahIsdepart,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="ahDeclare != null" >
+        ah_declare = #{ahDeclare,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ahRemark != null" >
+        ah_remark = #{ahRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ah_id = #{ahId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.trains.TAddheadWithBLOBs" >
+    update t_addhead
+    set ah_num = #{ahNum,jdbcType=VARCHAR},
+      ah_start = #{ahStart,jdbcType=VARCHAR},
+      ah_source = #{ahSource,jdbcType=VARCHAR},
+      ah_time = #{ahTime,jdbcType=DATE},
+      ah_dispatcher = #{ahDispatcher,jdbcType=VARCHAR},
+      ah_receivetime = #{ahReceivetime,jdbcType=VARCHAR},
+      ah_intime = #{ahIntime,jdbcType=VARCHAR},
+      ah_starttime = #{ahStarttime,jdbcType=VARCHAR},
+      ah_endtime = #{ahEndtime,jdbcType=VARCHAR},
+      ah_informtime = #{ahInformtime,jdbcType=VARCHAR},
+      ah_trailertime = #{ahTrailertime,jdbcType=VARCHAR},
+      ah_wagonnum = #{ahWagonnum,jdbcType=INTEGER},
+      ah_headnum = #{ahHeadnum,jdbcType=VARCHAR},
+      ah_truckuser = #{ahTruckuser,jdbcType=VARCHAR},
+      ah_quality = #{ahQuality,jdbcType=VARCHAR},
+      ah_roaduser = #{ahRoaduser,jdbcType=VARCHAR},
+      ah_sales = #{ahSales,jdbcType=VARCHAR},
+      ah_user = #{ahUser,jdbcType=VARCHAR},
+      ah_department = #{ahDepartment,jdbcType=VARCHAR},
+      ah_settime = #{ahSettime,jdbcType=DATE},
+      ah_weight = #{ahWeight,jdbcType=DECIMAL},
+      ah_assay = #{ahAssay,jdbcType=DECIMAL},
+      ah_predict = #{ahPredict,jdbcType=DECIMAL},
+      ah_isdepart = #{ahIsdepart,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      ah_declare = #{ahDeclare,jdbcType=LONGVARCHAR},
+      ah_remark = #{ahRemark,jdbcType=LONGVARCHAR}
+    where ah_id = #{ahId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trains.TAddhead" >
+    update t_addhead
+    set ah_num = #{ahNum,jdbcType=VARCHAR},
+      ah_start = #{ahStart,jdbcType=VARCHAR},
+      ah_source = #{ahSource,jdbcType=VARCHAR},
+      ah_time = #{ahTime,jdbcType=DATE},
+      ah_dispatcher = #{ahDispatcher,jdbcType=VARCHAR},
+      ah_receivetime = #{ahReceivetime,jdbcType=VARCHAR},
+      ah_intime = #{ahIntime,jdbcType=VARCHAR},
+      ah_starttime = #{ahStarttime,jdbcType=VARCHAR},
+      ah_endtime = #{ahEndtime,jdbcType=VARCHAR},
+      ah_informtime = #{ahInformtime,jdbcType=VARCHAR},
+      ah_trailertime = #{ahTrailertime,jdbcType=VARCHAR},
+      ah_wagonnum = #{ahWagonnum,jdbcType=INTEGER},
+      ah_headnum = #{ahHeadnum,jdbcType=VARCHAR},
+      ah_truckuser = #{ahTruckuser,jdbcType=VARCHAR},
+      ah_quality = #{ahQuality,jdbcType=VARCHAR},
+      ah_roaduser = #{ahRoaduser,jdbcType=VARCHAR},
+      ah_sales = #{ahSales,jdbcType=VARCHAR},
+      ah_user = #{ahUser,jdbcType=VARCHAR},
+      ah_department = #{ahDepartment,jdbcType=VARCHAR},
+      ah_settime = #{ahSettime,jdbcType=DATE},
+      ah_weight = #{ahWeight,jdbcType=DECIMAL},
+      ah_assay = #{ahAssay,jdbcType=DECIMAL},
+      ah_predict = #{ahPredict,jdbcType=DECIMAL},
+      ah_isdepart = #{ahIsdepart,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where ah_id = #{ahId,jdbcType=VARCHAR}
+  </update>
+</mapper>

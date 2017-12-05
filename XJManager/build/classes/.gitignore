@@ -1,0 +1,10 @@
+/.svn/
+/com/
+/application-context.xml
+/com.zip
+/config.properties
+/configNote.properties
+/log4j.properties
+/mybatis.xml
+/resources/
+/spring/

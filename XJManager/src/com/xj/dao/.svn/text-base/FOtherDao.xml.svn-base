@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.FOtherDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.freight.FOther" >
+    <id column="o_id" property="oId" jdbcType="VARCHAR" />
+    <result column="o_date" property="oDate" jdbcType="DATE" />
+    <result column="o_station" property="oStation" jdbcType="TINYINT" />
+    <result column="o_user" property="oUser" jdbcType="VARCHAR" />
+    <result column="o_makedate" property="oMakedate" jdbcType="DATE" />
+    <result column="o_color" property="oColor" jdbcType="TINYINT" />
+    <result column="o_state" property="oState" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.freight.FOther" extends="BaseResultMap" >
+    <result column="o_remark" property="oRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      o_id, o_date, o_station, o_user, o_makedate, o_color, o_state, Createdate, ModifyDate, 
+      CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    o_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.freight.FOtherQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from f_other
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.freight.FOtherQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from f_other
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    o_id,o_date,o_station,o_user,o_makedate,o_color,o_state,Createdate,ModifyDate,CreateBy,ModifyBy,o_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from f_other
+    where o_id = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from f_other
+    where o_id = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.freight.FOtherQuery" >
+    delete from f_other
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.freight.FOther" >
+    insert into f_other (o_id, o_date, o_station, 
+      o_user, o_makedate, o_color, 
+      o_state, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, o_remark
+      )
+    values (#{oId,jdbcType=VARCHAR}, #{oDate,jdbcType=DATE}, #{oStation,jdbcType=TINYINT}, 
+      #{oUser,jdbcType=VARCHAR}, #{oMakedate,jdbcType=DATE}, #{oColor,jdbcType=TINYINT}, 
+      #{oState,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{oRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.freight.FOther" >
+    insert into f_other
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oId != null" >
+        o_id,
+      </if>
+      <if test="oDate != null" >
+        o_date,
+      </if>
+      <if test="oStation != null" >
+        o_station,
+      </if>
+      <if test="oUser != null" >
+        o_user,
+      </if>
+      <if test="oMakedate != null" >
+        o_makedate,
+      </if>
+      <if test="oColor != null" >
+        o_color,
+      </if>
+      <if test="oState != null" >
+        o_state,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="oRemark != null" >
+        o_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oId != null" >
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="oDate != null" >
+        #{oDate,jdbcType=DATE},
+      </if>
+      <if test="oStation != null" >
+        #{oStation,jdbcType=TINYINT},
+      </if>
+      <if test="oUser != null" >
+        #{oUser,jdbcType=VARCHAR},
+      </if>
+      <if test="oMakedate != null" >
+        #{oMakedate,jdbcType=DATE},
+      </if>
+      <if test="oColor != null" >
+        #{oColor,jdbcType=TINYINT},
+      </if>
+      <if test="oState != null" >
+        #{oState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="oRemark != null" >
+        #{oRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.freight.FOtherQuery" resultType="java.lang.Integer" >
+    select count(*) from f_other
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update f_other
+    <set >
+      <if test="record.oId != null" >
+        o_id = #{record.oId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oDate != null" >
+        o_date = #{record.oDate,jdbcType=DATE},
+      </if>
+      <if test="record.oStation != null" >
+        o_station = #{record.oStation,jdbcType=TINYINT},
+      </if>
+      <if test="record.oUser != null" >
+        o_user = #{record.oUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oMakedate != null" >
+        o_makedate = #{record.oMakedate,jdbcType=DATE},
+      </if>
+      <if test="record.oColor != null" >
+        o_color = #{record.oColor,jdbcType=TINYINT},
+      </if>
+      <if test="record.oState != null" >
+        o_state = #{record.oState,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oRemark != null" >
+        o_remark = #{record.oRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update f_other
+    set o_id = #{record.oId,jdbcType=VARCHAR},
+      o_date = #{record.oDate,jdbcType=DATE},
+      o_station = #{record.oStation,jdbcType=TINYINT},
+      o_user = #{record.oUser,jdbcType=VARCHAR},
+      o_makedate = #{record.oMakedate,jdbcType=DATE},
+      o_color = #{record.oColor,jdbcType=TINYINT},
+      o_state = #{record.oState,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      o_remark = #{record.oRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update f_other
+    set o_id = #{record.oId,jdbcType=VARCHAR},
+      o_date = #{record.oDate,jdbcType=DATE},
+      o_station = #{record.oStation,jdbcType=TINYINT},
+      o_user = #{record.oUser,jdbcType=VARCHAR},
+      o_makedate = #{record.oMakedate,jdbcType=DATE},
+      o_color = #{record.oColor,jdbcType=TINYINT},
+      o_state = #{record.oState,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.freight.FOther" >
+    update f_other
+    <set >
+      <if test="oDate != null" >
+        o_date = #{oDate,jdbcType=DATE},
+      </if>
+      <if test="oStation != null" >
+        o_station = #{oStation,jdbcType=TINYINT},
+      </if>
+      <if test="oUser != null" >
+        o_user = #{oUser,jdbcType=VARCHAR},
+      </if>
+      <if test="oMakedate != null" >
+        o_makedate = #{oMakedate,jdbcType=DATE},
+      </if>
+      <if test="oColor != null" >
+        o_color = #{oColor,jdbcType=TINYINT},
+      </if>
+      <if test="oState != null" >
+        o_state = #{oState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="oRemark != null" >
+        o_remark = #{oRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where o_id = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.freight.FOther" >
+    update f_other
+    set o_date = #{oDate,jdbcType=DATE},
+      o_station = #{oStation,jdbcType=TINYINT},
+      o_user = #{oUser,jdbcType=VARCHAR},
+      o_makedate = #{oMakedate,jdbcType=DATE},
+      o_color = #{oColor,jdbcType=TINYINT},
+      o_state = #{oState,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      o_remark = #{oRemark,jdbcType=LONGVARCHAR}
+    where o_id = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.freight.FOther" >
+    update f_other
+    set o_date = #{oDate,jdbcType=DATE},
+      o_station = #{oStation,jdbcType=TINYINT},
+      o_user = #{oUser,jdbcType=VARCHAR},
+      o_makedate = #{oMakedate,jdbcType=DATE},
+      o_color = #{oColor,jdbcType=TINYINT},
+      o_state = #{oState,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where o_id = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

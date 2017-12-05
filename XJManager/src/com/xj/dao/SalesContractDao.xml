@@ -1,0 +1,1276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.SalesContractDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.contract.SalesContract" >
+    <id column="sc_id" property="scId" jdbcType="VARCHAR" />
+    <result column="sc_sellerId" property="scSellerid" jdbcType="VARCHAR" />
+    <result column="sc_sellerAddress" property="scSelleraddress" jdbcType="VARCHAR" />
+    <result column="sc_sellerCorporateRepresentative" property="scSellercorporaterepresentative" jdbcType="VARCHAR" />
+    <result column="sc_sellerAgent" property="scSelleragent" jdbcType="VARCHAR" />
+    <result column="sc_sellerOpeningBank" property="scSelleropeningbank" jdbcType="VARCHAR" />
+    <result column="sc_sellerAccountnNmber" property="scSelleraccountnnmber" jdbcType="VARCHAR" />
+    <result column="sc_sellerDutyParagraph" property="scSellerdutyparagraph" jdbcType="VARCHAR" />
+    <result column="sc_sellerTelephone" property="scSellertelephone" jdbcType="VARCHAR" />
+    <result column="sc_sellerFax" property="scSellerfax" jdbcType="VARCHAR" />
+    <result column="sc_sellerZipCode" property="scSellerzipcode" jdbcType="INTEGER" />
+    <result column="sc_sellerTelegraph" property="scSellertelegraph" jdbcType="VARCHAR" />
+    <result column="sc_buyer" property="scBuyer" jdbcType="INTEGER" />
+    <result column="sc_buyerAddress" property="scBuyeraddress" jdbcType="VARCHAR" />
+    <result column="sc_buyerCorporateRepresentative" property="scBuyercorporaterepresentative" jdbcType="VARCHAR" />
+    <result column="sc_buyerAgent" property="scBuyeragent" jdbcType="VARCHAR" />
+    <result column="sc_buyerOpeningBank" property="scBuyeropeningbank" jdbcType="VARCHAR" />
+    <result column="sc_buyerAccountNumber" property="scBuyeraccountnumber" jdbcType="VARCHAR" />
+    <result column="sc_buyerDutyParagraph" property="scBuyerdutyparagraph" jdbcType="VARCHAR" />
+    <result column="sc_buyerTelephone" property="scBuyertelephone" jdbcType="VARCHAR" />
+    <result column="sc_buyerFax" property="scBuyerfax" jdbcType="VARCHAR" />
+    <result column="sc_buyerZipCode" property="scBuyerzipcode" jdbcType="VARCHAR" />
+    <result column="sc_buyerTelegraph" property="scBuyertelegraph" jdbcType="VARCHAR" />
+    <result column="sc_year" property="scYear" jdbcType="DATE" />
+    <result column="sc_startingTime" property="scStartingtime" jdbcType="DATE" />
+    <result column="sc_deadline" property="scDeadline" jdbcType="DATE" />
+    <result column="sc_operator" property="scOperator" jdbcType="VARCHAR" />
+    <result column="sc_signingTime" property="scSigningtime" jdbcType="DATE" />
+    <result column="sc_signingPlace" property="scSigningplace" jdbcType="VARCHAR" />
+    <result column="sc_agreedCycle" property="scAgreedcycle" jdbcType="VARCHAR" />
+    <result column="sc_weeklyLeast" property="scWeeklyleast" jdbcType="INTEGER" />
+    <result column="sc_customerDustry" property="scCustomerdustry" jdbcType="INTEGER" />
+    <result column="sc_customerServiceDepartment" property="scCustomerservicedepartment" jdbcType="INTEGER" />
+    <result column="sc_contractType" property="scContracttype" jdbcType="INTEGER" />
+    <result column="sc_qualityPrice" property="scQualityprice" jdbcType="INTEGER" />
+    <result column="sc_deliveryMode" property="scDeliverymode" jdbcType="VARCHAR" />
+    <result column="sc_executableUnit" property="scExecutableunit" jdbcType="VARCHAR" />
+    <result column="sc_meteringMethod" property="scMeteringmethod" jdbcType="VARCHAR" />
+    <result column="sc_shippingType" property="scShippingtype" jdbcType="INTEGER" />
+    <result column="sc_freightBurden" property="scFreightburden" jdbcType="VARCHAR" />
+    <result column="sc_coalunitPrice" property="scCoalunitprice" jdbcType="DECIMAL" />
+    <result column="sc_pricedeScription" property="scPricedescription" jdbcType="VARCHAR" />
+    <result column="sc_settlementMethod" property="scSettlementmethod" jdbcType="INTEGER" />
+    <result column="sc_settlementStatement" property="scSettlementstatement" jdbcType="VARCHAR" />
+    <result column="sc_notaryUnit" property="scNotaryunit" jdbcType="VARCHAR" />
+    <result column="sc_notarialOpinions" property="scNotarialopinions" jdbcType="VARCHAR" />
+    <result column="sc_masterContractId" property="scMastercontractid" jdbcType="VARCHAR" />
+    <result column="sc_settlementUnit" property="scSettlementunit" jdbcType="INTEGER" />
+    <result column="sc_status" property="scStatus" jdbcType="INTEGER" />
+    <result column="sc_contractMark" property="scContractmark" jdbcType="INTEGER" />
+    <result column="sc_contractAmount" property="scContractamount" jdbcType="DECIMAL" />
+    <result column="sc_cashRate" property="scCashrate" jdbcType="DECIMAL" />
+    <result column="sc_isChange" property="scIschange" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+    <result column="sc_isMain" property="scIsmain" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.contract.SalesContractWithBLOBs" extends="BaseResultMap" >
+    <result column="sc_qualityQuantityAcceptanceCriteriaMethods" property="scQualityquantityacceptancecriteriamethods" jdbcType="LONGVARCHAR" />
+    <result column="sc_responsibilityBreach" property="scResponsibilitybreach" jdbcType="LONGVARCHAR" />
+    <result column="sc_disputeSettlement" property="scDisputesettlement" jdbcType="LONGVARCHAR" />
+    <result column="sc_remark" property="scRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      sc_id, sc_sellerId, sc_sellerAddress, sc_sellerCorporateRepresentative, sc_sellerAgent, 
+      sc_sellerOpeningBank, sc_sellerAccountnNmber, sc_sellerDutyParagraph, sc_sellerTelephone, 
+      sc_sellerFax, sc_sellerZipCode, sc_sellerTelegraph, sc_buyer, sc_buyerAddress, sc_buyerCorporateRepresentative, 
+      sc_buyerAgent, sc_buyerOpeningBank, sc_buyerAccountNumber, sc_buyerDutyParagraph, 
+      sc_buyerTelephone, sc_buyerFax, sc_buyerZipCode, sc_buyerTelegraph, sc_year, sc_startingTime, 
+      sc_deadline, sc_operator, sc_signingTime, sc_signingPlace, sc_agreedCycle, sc_weeklyLeast, 
+      sc_customerDustry, sc_customerServiceDepartment, sc_contractType, sc_qualityPrice, 
+      sc_deliveryMode, sc_executableUnit, sc_meteringMethod, sc_shippingType, sc_freightBurden, 
+      sc_coalunitPrice, sc_pricedeScription, sc_settlementMethod, sc_settlementStatement, 
+      sc_notaryUnit, sc_notarialOpinions, sc_masterContractId, sc_settlementUnit, sc_status, 
+      sc_contractMark, sc_contractAmount, sc_cashRate, sc_isChange, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, sc_isMain
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    sc_qualityQuantityAcceptanceCriteriaMethods, sc_responsibilityBreach, sc_disputeSettlement, 
+    sc_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.contract.SalesContractQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sales_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.contract.SalesContractQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sales_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    sc_id,sc_sellerId,sc_sellerAddress,sc_sellerCorporateRepresentative,sc_sellerAgent,sc_sellerOpeningBank,sc_sellerAccountnNmber,sc_sellerDutyParagraph,sc_sellerTelephone,sc_sellerFax,sc_sellerZipCode,sc_sellerTelegraph,sc_buyer,sc_buyerAddress,sc_buyerCorporateRepresentative,sc_buyerAgent,sc_buyerOpeningBank,sc_buyerAccountNumber,sc_buyerDutyParagraph,sc_buyerTelephone,sc_buyerFax,sc_buyerZipCode,sc_buyerTelegraph,sc_year,sc_startingTime,sc_deadline,sc_operator,sc_signingTime,sc_signingPlace,sc_agreedCycle,sc_weeklyLeast,sc_customerDustry,sc_customerServiceDepartment,sc_contractType,sc_qualityPrice,sc_deliveryMode,sc_executableUnit,sc_meteringMethod,sc_shippingType,sc_freightBurden,sc_coalunitPrice,sc_pricedeScription,sc_settlementMethod,sc_settlementStatement,sc_notaryUnit,sc_notarialOpinions,sc_masterContractId,sc_settlementUnit,sc_status,sc_contractMark,sc_contractAmount,sc_cashRate,sc_isChange,Createdate,ModifyDate,CreateBy,ModifyBy,sc_isMain,sc_qualityQuantityAcceptanceCriteriaMethods,sc_responsibilityBreach,sc_disputeSettlement,sc_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from sales_contract
+    where sc_id = #{scId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sales_contract
+    where sc_id = #{scId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.contract.SalesContractQuery" >
+    delete from sales_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.contract.SalesContractWithBLOBs" >
+    insert into sales_contract (sc_id, sc_sellerId, sc_sellerAddress, 
+      sc_sellerCorporateRepresentative, sc_sellerAgent, 
+      sc_sellerOpeningBank, sc_sellerAccountnNmber, 
+      sc_sellerDutyParagraph, sc_sellerTelephone, 
+      sc_sellerFax, sc_sellerZipCode, sc_sellerTelegraph, 
+      sc_buyer, sc_buyerAddress, sc_buyerCorporateRepresentative, 
+      sc_buyerAgent, sc_buyerOpeningBank, sc_buyerAccountNumber, 
+      sc_buyerDutyParagraph, sc_buyerTelephone, 
+      sc_buyerFax, sc_buyerZipCode, sc_buyerTelegraph, 
+      sc_year, sc_startingTime, sc_deadline, 
+      sc_operator, sc_signingTime, sc_signingPlace, 
+      sc_agreedCycle, sc_weeklyLeast, sc_customerDustry, 
+      sc_customerServiceDepartment, sc_contractType, 
+      sc_qualityPrice, sc_deliveryMode, sc_executableUnit, 
+      sc_meteringMethod, sc_shippingType, sc_freightBurden, 
+      sc_coalunitPrice, sc_pricedeScription, sc_settlementMethod, 
+      sc_settlementStatement, sc_notaryUnit, sc_notarialOpinions, 
+      sc_masterContractId, sc_settlementUnit, sc_status, 
+      sc_contractMark, sc_contractAmount, sc_cashRate, 
+      sc_isChange, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, sc_isMain, 
+      sc_qualityQuantityAcceptanceCriteriaMethods, sc_responsibilityBreach, 
+      sc_disputeSettlement, sc_remark)
+    values (#{scId,jdbcType=VARCHAR}, #{scSellerid,jdbcType=VARCHAR}, #{scSelleraddress,jdbcType=VARCHAR}, 
+      #{scSellercorporaterepresentative,jdbcType=VARCHAR}, #{scSelleragent,jdbcType=VARCHAR}, 
+      #{scSelleropeningbank,jdbcType=VARCHAR}, #{scSelleraccountnnmber,jdbcType=VARCHAR}, 
+      #{scSellerdutyparagraph,jdbcType=VARCHAR}, #{scSellertelephone,jdbcType=VARCHAR}, 
+      #{scSellerfax,jdbcType=VARCHAR}, #{scSellerzipcode,jdbcType=INTEGER}, #{scSellertelegraph,jdbcType=VARCHAR}, 
+      #{scBuyer,jdbcType=INTEGER}, #{scBuyeraddress,jdbcType=VARCHAR}, #{scBuyercorporaterepresentative,jdbcType=VARCHAR}, 
+      #{scBuyeragent,jdbcType=VARCHAR}, #{scBuyeropeningbank,jdbcType=VARCHAR}, #{scBuyeraccountnumber,jdbcType=VARCHAR}, 
+      #{scBuyerdutyparagraph,jdbcType=VARCHAR}, #{scBuyertelephone,jdbcType=VARCHAR}, 
+      #{scBuyerfax,jdbcType=VARCHAR}, #{scBuyerzipcode,jdbcType=VARCHAR}, #{scBuyertelegraph,jdbcType=VARCHAR}, 
+      #{scYear,jdbcType=DATE}, #{scStartingtime,jdbcType=DATE}, #{scDeadline,jdbcType=DATE}, 
+      #{scOperator,jdbcType=VARCHAR}, #{scSigningtime,jdbcType=DATE}, #{scSigningplace,jdbcType=VARCHAR}, 
+      #{scAgreedcycle,jdbcType=VARCHAR}, #{scWeeklyleast,jdbcType=INTEGER}, #{scCustomerdustry,jdbcType=INTEGER}, 
+      #{scCustomerservicedepartment,jdbcType=INTEGER}, #{scContracttype,jdbcType=INTEGER}, 
+      #{scQualityprice,jdbcType=INTEGER}, #{scDeliverymode,jdbcType=VARCHAR}, #{scExecutableunit,jdbcType=VARCHAR}, 
+      #{scMeteringmethod,jdbcType=VARCHAR}, #{scShippingtype,jdbcType=INTEGER}, #{scFreightburden,jdbcType=VARCHAR}, 
+      #{scCoalunitprice,jdbcType=DECIMAL}, #{scPricedescription,jdbcType=VARCHAR}, #{scSettlementmethod,jdbcType=INTEGER}, 
+      #{scSettlementstatement,jdbcType=VARCHAR}, #{scNotaryunit,jdbcType=VARCHAR}, #{scNotarialopinions,jdbcType=VARCHAR}, 
+      #{scMastercontractid,jdbcType=VARCHAR}, #{scSettlementunit,jdbcType=INTEGER}, #{scStatus,jdbcType=INTEGER}, 
+      #{scContractmark,jdbcType=INTEGER}, #{scContractamount,jdbcType=DECIMAL}, #{scCashrate,jdbcType=DECIMAL}, 
+      #{scIschange,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{scIsmain,jdbcType=TINYINT}, 
+      #{scQualityquantityacceptancecriteriamethods,jdbcType=LONGVARCHAR}, #{scResponsibilitybreach,jdbcType=LONGVARCHAR}, 
+      #{scDisputesettlement,jdbcType=LONGVARCHAR}, #{scRemark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.contract.SalesContractWithBLOBs" >
+    insert into sales_contract
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scId != null" >
+        sc_id,
+      </if>
+      <if test="scSellerid != null" >
+        sc_sellerId,
+      </if>
+      <if test="scSelleraddress != null" >
+        sc_sellerAddress,
+      </if>
+      <if test="scSellercorporaterepresentative != null" >
+        sc_sellerCorporateRepresentative,
+      </if>
+      <if test="scSelleragent != null" >
+        sc_sellerAgent,
+      </if>
+      <if test="scSelleropeningbank != null" >
+        sc_sellerOpeningBank,
+      </if>
+      <if test="scSelleraccountnnmber != null" >
+        sc_sellerAccountnNmber,
+      </if>
+      <if test="scSellerdutyparagraph != null" >
+        sc_sellerDutyParagraph,
+      </if>
+      <if test="scSellertelephone != null" >
+        sc_sellerTelephone,
+      </if>
+      <if test="scSellerfax != null" >
+        sc_sellerFax,
+      </if>
+      <if test="scSellerzipcode != null" >
+        sc_sellerZipCode,
+      </if>
+      <if test="scSellertelegraph != null" >
+        sc_sellerTelegraph,
+      </if>
+      <if test="scBuyer != null" >
+        sc_buyer,
+      </if>
+      <if test="scBuyeraddress != null" >
+        sc_buyerAddress,
+      </if>
+      <if test="scBuyercorporaterepresentative != null" >
+        sc_buyerCorporateRepresentative,
+      </if>
+      <if test="scBuyeragent != null" >
+        sc_buyerAgent,
+      </if>
+      <if test="scBuyeropeningbank != null" >
+        sc_buyerOpeningBank,
+      </if>
+      <if test="scBuyeraccountnumber != null" >
+        sc_buyerAccountNumber,
+      </if>
+      <if test="scBuyerdutyparagraph != null" >
+        sc_buyerDutyParagraph,
+      </if>
+      <if test="scBuyertelephone != null" >
+        sc_buyerTelephone,
+      </if>
+      <if test="scBuyerfax != null" >
+        sc_buyerFax,
+      </if>
+      <if test="scBuyerzipcode != null" >
+        sc_buyerZipCode,
+      </if>
+      <if test="scBuyertelegraph != null" >
+        sc_buyerTelegraph,
+      </if>
+      <if test="scYear != null" >
+        sc_year,
+      </if>
+      <if test="scStartingtime != null" >
+        sc_startingTime,
+      </if>
+      <if test="scDeadline != null" >
+        sc_deadline,
+      </if>
+      <if test="scOperator != null" >
+        sc_operator,
+      </if>
+      <if test="scSigningtime != null" >
+        sc_signingTime,
+      </if>
+      <if test="scSigningplace != null" >
+        sc_signingPlace,
+      </if>
+      <if test="scAgreedcycle != null" >
+        sc_agreedCycle,
+      </if>
+      <if test="scWeeklyleast != null" >
+        sc_weeklyLeast,
+      </if>
+      <if test="scCustomerdustry != null" >
+        sc_customerDustry,
+      </if>
+      <if test="scCustomerservicedepartment != null" >
+        sc_customerServiceDepartment,
+      </if>
+      <if test="scContracttype != null" >
+        sc_contractType,
+      </if>
+      <if test="scQualityprice != null" >
+        sc_qualityPrice,
+      </if>
+      <if test="scDeliverymode != null" >
+        sc_deliveryMode,
+      </if>
+      <if test="scExecutableunit != null" >
+        sc_executableUnit,
+      </if>
+      <if test="scMeteringmethod != null" >
+        sc_meteringMethod,
+      </if>
+      <if test="scShippingtype != null" >
+        sc_shippingType,
+      </if>
+      <if test="scFreightburden != null" >
+        sc_freightBurden,
+      </if>
+      <if test="scCoalunitprice != null" >
+        sc_coalunitPrice,
+      </if>
+      <if test="scPricedescription != null" >
+        sc_pricedeScription,
+      </if>
+      <if test="scSettlementmethod != null" >
+        sc_settlementMethod,
+      </if>
+      <if test="scSettlementstatement != null" >
+        sc_settlementStatement,
+      </if>
+      <if test="scNotaryunit != null" >
+        sc_notaryUnit,
+      </if>
+      <if test="scNotarialopinions != null" >
+        sc_notarialOpinions,
+      </if>
+      <if test="scMastercontractid != null" >
+        sc_masterContractId,
+      </if>
+      <if test="scSettlementunit != null" >
+        sc_settlementUnit,
+      </if>
+      <if test="scStatus != null" >
+        sc_status,
+      </if>
+      <if test="scContractmark != null" >
+        sc_contractMark,
+      </if>
+      <if test="scContractamount != null" >
+        sc_contractAmount,
+      </if>
+      <if test="scCashrate != null" >
+        sc_cashRate,
+      </if>
+      <if test="scIschange != null" >
+        sc_isChange,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="scIsmain != null" >
+        sc_isMain,
+      </if>
+      <if test="scQualityquantityacceptancecriteriamethods != null" >
+        sc_qualityQuantityAcceptanceCriteriaMethods,
+      </if>
+      <if test="scResponsibilitybreach != null" >
+        sc_responsibilityBreach,
+      </if>
+      <if test="scDisputesettlement != null" >
+        sc_disputeSettlement,
+      </if>
+      <if test="scRemark != null" >
+        sc_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scId != null" >
+        #{scId,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellerid != null" >
+        #{scSellerid,jdbcType=VARCHAR},
+      </if>
+      <if test="scSelleraddress != null" >
+        #{scSelleraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellercorporaterepresentative != null" >
+        #{scSellercorporaterepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="scSelleragent != null" >
+        #{scSelleragent,jdbcType=VARCHAR},
+      </if>
+      <if test="scSelleropeningbank != null" >
+        #{scSelleropeningbank,jdbcType=VARCHAR},
+      </if>
+      <if test="scSelleraccountnnmber != null" >
+        #{scSelleraccountnnmber,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellerdutyparagraph != null" >
+        #{scSellerdutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellertelephone != null" >
+        #{scSellertelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellerfax != null" >
+        #{scSellerfax,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellerzipcode != null" >
+        #{scSellerzipcode,jdbcType=INTEGER},
+      </if>
+      <if test="scSellertelegraph != null" >
+        #{scSellertelegraph,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyer != null" >
+        #{scBuyer,jdbcType=INTEGER},
+      </if>
+      <if test="scBuyeraddress != null" >
+        #{scBuyeraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyercorporaterepresentative != null" >
+        #{scBuyercorporaterepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyeragent != null" >
+        #{scBuyeragent,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyeropeningbank != null" >
+        #{scBuyeropeningbank,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyeraccountnumber != null" >
+        #{scBuyeraccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyerdutyparagraph != null" >
+        #{scBuyerdutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyertelephone != null" >
+        #{scBuyertelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyerfax != null" >
+        #{scBuyerfax,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyerzipcode != null" >
+        #{scBuyerzipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyertelegraph != null" >
+        #{scBuyertelegraph,jdbcType=VARCHAR},
+      </if>
+      <if test="scYear != null" >
+        #{scYear,jdbcType=DATE},
+      </if>
+      <if test="scStartingtime != null" >
+        #{scStartingtime,jdbcType=DATE},
+      </if>
+      <if test="scDeadline != null" >
+        #{scDeadline,jdbcType=DATE},
+      </if>
+      <if test="scOperator != null" >
+        #{scOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="scSigningtime != null" >
+        #{scSigningtime,jdbcType=DATE},
+      </if>
+      <if test="scSigningplace != null" >
+        #{scSigningplace,jdbcType=VARCHAR},
+      </if>
+      <if test="scAgreedcycle != null" >
+        #{scAgreedcycle,jdbcType=VARCHAR},
+      </if>
+      <if test="scWeeklyleast != null" >
+        #{scWeeklyleast,jdbcType=INTEGER},
+      </if>
+      <if test="scCustomerdustry != null" >
+        #{scCustomerdustry,jdbcType=INTEGER},
+      </if>
+      <if test="scCustomerservicedepartment != null" >
+        #{scCustomerservicedepartment,jdbcType=INTEGER},
+      </if>
+      <if test="scContracttype != null" >
+        #{scContracttype,jdbcType=INTEGER},
+      </if>
+      <if test="scQualityprice != null" >
+        #{scQualityprice,jdbcType=INTEGER},
+      </if>
+      <if test="scDeliverymode != null" >
+        #{scDeliverymode,jdbcType=VARCHAR},
+      </if>
+      <if test="scExecutableunit != null" >
+        #{scExecutableunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scMeteringmethod != null" >
+        #{scMeteringmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="scShippingtype != null" >
+        #{scShippingtype,jdbcType=INTEGER},
+      </if>
+      <if test="scFreightburden != null" >
+        #{scFreightburden,jdbcType=VARCHAR},
+      </if>
+      <if test="scCoalunitprice != null" >
+        #{scCoalunitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="scPricedescription != null" >
+        #{scPricedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="scSettlementmethod != null" >
+        #{scSettlementmethod,jdbcType=INTEGER},
+      </if>
+      <if test="scSettlementstatement != null" >
+        #{scSettlementstatement,jdbcType=VARCHAR},
+      </if>
+      <if test="scNotaryunit != null" >
+        #{scNotaryunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scNotarialopinions != null" >
+        #{scNotarialopinions,jdbcType=VARCHAR},
+      </if>
+      <if test="scMastercontractid != null" >
+        #{scMastercontractid,jdbcType=VARCHAR},
+      </if>
+      <if test="scSettlementunit != null" >
+        #{scSettlementunit,jdbcType=INTEGER},
+      </if>
+      <if test="scStatus != null" >
+        #{scStatus,jdbcType=INTEGER},
+      </if>
+      <if test="scContractmark != null" >
+        #{scContractmark,jdbcType=INTEGER},
+      </if>
+      <if test="scContractamount != null" >
+        #{scContractamount,jdbcType=DECIMAL},
+      </if>
+      <if test="scCashrate != null" >
+        #{scCashrate,jdbcType=DECIMAL},
+      </if>
+      <if test="scIschange != null" >
+        #{scIschange,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="scIsmain != null" >
+        #{scIsmain,jdbcType=TINYINT},
+      </if>
+      <if test="scQualityquantityacceptancecriteriamethods != null" >
+        #{scQualityquantityacceptancecriteriamethods,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scResponsibilitybreach != null" >
+        #{scResponsibilitybreach,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scDisputesettlement != null" >
+        #{scDisputesettlement,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scRemark != null" >
+        #{scRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.contract.SalesContractQuery" resultType="java.lang.Integer" >
+    select count(*) from sales_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sales_contract
+    <set >
+      <if test="record.scId != null" >
+        sc_id = #{record.scId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSellerid != null" >
+        sc_sellerId = #{record.scSellerid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSelleraddress != null" >
+        sc_sellerAddress = #{record.scSelleraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSellercorporaterepresentative != null" >
+        sc_sellerCorporateRepresentative = #{record.scSellercorporaterepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSelleragent != null" >
+        sc_sellerAgent = #{record.scSelleragent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSelleropeningbank != null" >
+        sc_sellerOpeningBank = #{record.scSelleropeningbank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSelleraccountnnmber != null" >
+        sc_sellerAccountnNmber = #{record.scSelleraccountnnmber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSellerdutyparagraph != null" >
+        sc_sellerDutyParagraph = #{record.scSellerdutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSellertelephone != null" >
+        sc_sellerTelephone = #{record.scSellertelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSellerfax != null" >
+        sc_sellerFax = #{record.scSellerfax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSellerzipcode != null" >
+        sc_sellerZipCode = #{record.scSellerzipcode,jdbcType=INTEGER},
+      </if>
+      <if test="record.scSellertelegraph != null" >
+        sc_sellerTelegraph = #{record.scSellertelegraph,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyer != null" >
+        sc_buyer = #{record.scBuyer,jdbcType=INTEGER},
+      </if>
+      <if test="record.scBuyeraddress != null" >
+        sc_buyerAddress = #{record.scBuyeraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyercorporaterepresentative != null" >
+        sc_buyerCorporateRepresentative = #{record.scBuyercorporaterepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyeragent != null" >
+        sc_buyerAgent = #{record.scBuyeragent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyeropeningbank != null" >
+        sc_buyerOpeningBank = #{record.scBuyeropeningbank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyeraccountnumber != null" >
+        sc_buyerAccountNumber = #{record.scBuyeraccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyerdutyparagraph != null" >
+        sc_buyerDutyParagraph = #{record.scBuyerdutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyertelephone != null" >
+        sc_buyerTelephone = #{record.scBuyertelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyerfax != null" >
+        sc_buyerFax = #{record.scBuyerfax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyerzipcode != null" >
+        sc_buyerZipCode = #{record.scBuyerzipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scBuyertelegraph != null" >
+        sc_buyerTelegraph = #{record.scBuyertelegraph,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scYear != null" >
+        sc_year = #{record.scYear,jdbcType=DATE},
+      </if>
+      <if test="record.scStartingtime != null" >
+        sc_startingTime = #{record.scStartingtime,jdbcType=DATE},
+      </if>
+      <if test="record.scDeadline != null" >
+        sc_deadline = #{record.scDeadline,jdbcType=DATE},
+      </if>
+      <if test="record.scOperator != null" >
+        sc_operator = #{record.scOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSigningtime != null" >
+        sc_signingTime = #{record.scSigningtime,jdbcType=DATE},
+      </if>
+      <if test="record.scSigningplace != null" >
+        sc_signingPlace = #{record.scSigningplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scAgreedcycle != null" >
+        sc_agreedCycle = #{record.scAgreedcycle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scWeeklyleast != null" >
+        sc_weeklyLeast = #{record.scWeeklyleast,jdbcType=INTEGER},
+      </if>
+      <if test="record.scCustomerdustry != null" >
+        sc_customerDustry = #{record.scCustomerdustry,jdbcType=INTEGER},
+      </if>
+      <if test="record.scCustomerservicedepartment != null" >
+        sc_customerServiceDepartment = #{record.scCustomerservicedepartment,jdbcType=INTEGER},
+      </if>
+      <if test="record.scContracttype != null" >
+        sc_contractType = #{record.scContracttype,jdbcType=INTEGER},
+      </if>
+      <if test="record.scQualityprice != null" >
+        sc_qualityPrice = #{record.scQualityprice,jdbcType=INTEGER},
+      </if>
+      <if test="record.scDeliverymode != null" >
+        sc_deliveryMode = #{record.scDeliverymode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scExecutableunit != null" >
+        sc_executableUnit = #{record.scExecutableunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scMeteringmethod != null" >
+        sc_meteringMethod = #{record.scMeteringmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scShippingtype != null" >
+        sc_shippingType = #{record.scShippingtype,jdbcType=INTEGER},
+      </if>
+      <if test="record.scFreightburden != null" >
+        sc_freightBurden = #{record.scFreightburden,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scCoalunitprice != null" >
+        sc_coalunitPrice = #{record.scCoalunitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scPricedescription != null" >
+        sc_pricedeScription = #{record.scPricedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSettlementmethod != null" >
+        sc_settlementMethod = #{record.scSettlementmethod,jdbcType=INTEGER},
+      </if>
+      <if test="record.scSettlementstatement != null" >
+        sc_settlementStatement = #{record.scSettlementstatement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scNotaryunit != null" >
+        sc_notaryUnit = #{record.scNotaryunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scNotarialopinions != null" >
+        sc_notarialOpinions = #{record.scNotarialopinions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scMastercontractid != null" >
+        sc_masterContractId = #{record.scMastercontractid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scSettlementunit != null" >
+        sc_settlementUnit = #{record.scSettlementunit,jdbcType=INTEGER},
+      </if>
+      <if test="record.scStatus != null" >
+        sc_status = #{record.scStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.scContractmark != null" >
+        sc_contractMark = #{record.scContractmark,jdbcType=INTEGER},
+      </if>
+      <if test="record.scContractamount != null" >
+        sc_contractAmount = #{record.scContractamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scCashrate != null" >
+        sc_cashRate = #{record.scCashrate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scIschange != null" >
+        sc_isChange = #{record.scIschange,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scIsmain != null" >
+        sc_isMain = #{record.scIsmain,jdbcType=TINYINT},
+      </if>
+      <if test="record.scQualityquantityacceptancecriteriamethods != null" >
+        sc_qualityQuantityAcceptanceCriteriaMethods = #{record.scQualityquantityacceptancecriteriamethods,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.scResponsibilitybreach != null" >
+        sc_responsibilityBreach = #{record.scResponsibilitybreach,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.scDisputesettlement != null" >
+        sc_disputeSettlement = #{record.scDisputesettlement,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.scRemark != null" >
+        sc_remark = #{record.scRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update sales_contract
+    set sc_id = #{record.scId,jdbcType=VARCHAR},
+      sc_sellerId = #{record.scSellerid,jdbcType=VARCHAR},
+      sc_sellerAddress = #{record.scSelleraddress,jdbcType=VARCHAR},
+      sc_sellerCorporateRepresentative = #{record.scSellercorporaterepresentative,jdbcType=VARCHAR},
+      sc_sellerAgent = #{record.scSelleragent,jdbcType=VARCHAR},
+      sc_sellerOpeningBank = #{record.scSelleropeningbank,jdbcType=VARCHAR},
+      sc_sellerAccountnNmber = #{record.scSelleraccountnnmber,jdbcType=VARCHAR},
+      sc_sellerDutyParagraph = #{record.scSellerdutyparagraph,jdbcType=VARCHAR},
+      sc_sellerTelephone = #{record.scSellertelephone,jdbcType=VARCHAR},
+      sc_sellerFax = #{record.scSellerfax,jdbcType=VARCHAR},
+      sc_sellerZipCode = #{record.scSellerzipcode,jdbcType=INTEGER},
+      sc_sellerTelegraph = #{record.scSellertelegraph,jdbcType=VARCHAR},
+      sc_buyer = #{record.scBuyer,jdbcType=INTEGER},
+      sc_buyerAddress = #{record.scBuyeraddress,jdbcType=VARCHAR},
+      sc_buyerCorporateRepresentative = #{record.scBuyercorporaterepresentative,jdbcType=VARCHAR},
+      sc_buyerAgent = #{record.scBuyeragent,jdbcType=VARCHAR},
+      sc_buyerOpeningBank = #{record.scBuyeropeningbank,jdbcType=VARCHAR},
+      sc_buyerAccountNumber = #{record.scBuyeraccountnumber,jdbcType=VARCHAR},
+      sc_buyerDutyParagraph = #{record.scBuyerdutyparagraph,jdbcType=VARCHAR},
+      sc_buyerTelephone = #{record.scBuyertelephone,jdbcType=VARCHAR},
+      sc_buyerFax = #{record.scBuyerfax,jdbcType=VARCHAR},
+      sc_buyerZipCode = #{record.scBuyerzipcode,jdbcType=VARCHAR},
+      sc_buyerTelegraph = #{record.scBuyertelegraph,jdbcType=VARCHAR},
+      sc_year = #{record.scYear,jdbcType=DATE},
+      sc_startingTime = #{record.scStartingtime,jdbcType=DATE},
+      sc_deadline = #{record.scDeadline,jdbcType=DATE},
+      sc_operator = #{record.scOperator,jdbcType=VARCHAR},
+      sc_signingTime = #{record.scSigningtime,jdbcType=DATE},
+      sc_signingPlace = #{record.scSigningplace,jdbcType=VARCHAR},
+      sc_agreedCycle = #{record.scAgreedcycle,jdbcType=VARCHAR},
+      sc_weeklyLeast = #{record.scWeeklyleast,jdbcType=INTEGER},
+      sc_customerDustry = #{record.scCustomerdustry,jdbcType=INTEGER},
+      sc_customerServiceDepartment = #{record.scCustomerservicedepartment,jdbcType=INTEGER},
+      sc_contractType = #{record.scContracttype,jdbcType=INTEGER},
+      sc_qualityPrice = #{record.scQualityprice,jdbcType=INTEGER},
+      sc_deliveryMode = #{record.scDeliverymode,jdbcType=VARCHAR},
+      sc_executableUnit = #{record.scExecutableunit,jdbcType=VARCHAR},
+      sc_meteringMethod = #{record.scMeteringmethod,jdbcType=VARCHAR},
+      sc_shippingType = #{record.scShippingtype,jdbcType=INTEGER},
+      sc_freightBurden = #{record.scFreightburden,jdbcType=VARCHAR},
+      sc_coalunitPrice = #{record.scCoalunitprice,jdbcType=DECIMAL},
+      sc_pricedeScription = #{record.scPricedescription,jdbcType=VARCHAR},
+      sc_settlementMethod = #{record.scSettlementmethod,jdbcType=INTEGER},
+      sc_settlementStatement = #{record.scSettlementstatement,jdbcType=VARCHAR},
+      sc_notaryUnit = #{record.scNotaryunit,jdbcType=VARCHAR},
+      sc_notarialOpinions = #{record.scNotarialopinions,jdbcType=VARCHAR},
+      sc_masterContractId = #{record.scMastercontractid,jdbcType=VARCHAR},
+      sc_settlementUnit = #{record.scSettlementunit,jdbcType=INTEGER},
+      sc_status = #{record.scStatus,jdbcType=INTEGER},
+      sc_contractMark = #{record.scContractmark,jdbcType=INTEGER},
+      sc_contractAmount = #{record.scContractamount,jdbcType=DECIMAL},
+      sc_cashRate = #{record.scCashrate,jdbcType=DECIMAL},
+      sc_isChange = #{record.scIschange,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      sc_isMain = #{record.scIsmain,jdbcType=TINYINT},
+      sc_qualityQuantityAcceptanceCriteriaMethods = #{record.scQualityquantityacceptancecriteriamethods,jdbcType=LONGVARCHAR},
+      sc_responsibilityBreach = #{record.scResponsibilitybreach,jdbcType=LONGVARCHAR},
+      sc_disputeSettlement = #{record.scDisputesettlement,jdbcType=LONGVARCHAR},
+      sc_remark = #{record.scRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sales_contract
+    set sc_id = #{record.scId,jdbcType=VARCHAR},
+      sc_sellerId = #{record.scSellerid,jdbcType=VARCHAR},
+      sc_sellerAddress = #{record.scSelleraddress,jdbcType=VARCHAR},
+      sc_sellerCorporateRepresentative = #{record.scSellercorporaterepresentative,jdbcType=VARCHAR},
+      sc_sellerAgent = #{record.scSelleragent,jdbcType=VARCHAR},
+      sc_sellerOpeningBank = #{record.scSelleropeningbank,jdbcType=VARCHAR},
+      sc_sellerAccountnNmber = #{record.scSelleraccountnnmber,jdbcType=VARCHAR},
+      sc_sellerDutyParagraph = #{record.scSellerdutyparagraph,jdbcType=VARCHAR},
+      sc_sellerTelephone = #{record.scSellertelephone,jdbcType=VARCHAR},
+      sc_sellerFax = #{record.scSellerfax,jdbcType=VARCHAR},
+      sc_sellerZipCode = #{record.scSellerzipcode,jdbcType=INTEGER},
+      sc_sellerTelegraph = #{record.scSellertelegraph,jdbcType=VARCHAR},
+      sc_buyer = #{record.scBuyer,jdbcType=INTEGER},
+      sc_buyerAddress = #{record.scBuyeraddress,jdbcType=VARCHAR},
+      sc_buyerCorporateRepresentative = #{record.scBuyercorporaterepresentative,jdbcType=VARCHAR},
+      sc_buyerAgent = #{record.scBuyeragent,jdbcType=VARCHAR},
+      sc_buyerOpeningBank = #{record.scBuyeropeningbank,jdbcType=VARCHAR},
+      sc_buyerAccountNumber = #{record.scBuyeraccountnumber,jdbcType=VARCHAR},
+      sc_buyerDutyParagraph = #{record.scBuyerdutyparagraph,jdbcType=VARCHAR},
+      sc_buyerTelephone = #{record.scBuyertelephone,jdbcType=VARCHAR},
+      sc_buyerFax = #{record.scBuyerfax,jdbcType=VARCHAR},
+      sc_buyerZipCode = #{record.scBuyerzipcode,jdbcType=VARCHAR},
+      sc_buyerTelegraph = #{record.scBuyertelegraph,jdbcType=VARCHAR},
+      sc_year = #{record.scYear,jdbcType=DATE},
+      sc_startingTime = #{record.scStartingtime,jdbcType=DATE},
+      sc_deadline = #{record.scDeadline,jdbcType=DATE},
+      sc_operator = #{record.scOperator,jdbcType=VARCHAR},
+      sc_signingTime = #{record.scSigningtime,jdbcType=DATE},
+      sc_signingPlace = #{record.scSigningplace,jdbcType=VARCHAR},
+      sc_agreedCycle = #{record.scAgreedcycle,jdbcType=VARCHAR},
+      sc_weeklyLeast = #{record.scWeeklyleast,jdbcType=INTEGER},
+      sc_customerDustry = #{record.scCustomerdustry,jdbcType=INTEGER},
+      sc_customerServiceDepartment = #{record.scCustomerservicedepartment,jdbcType=INTEGER},
+      sc_contractType = #{record.scContracttype,jdbcType=INTEGER},
+      sc_qualityPrice = #{record.scQualityprice,jdbcType=INTEGER},
+      sc_deliveryMode = #{record.scDeliverymode,jdbcType=VARCHAR},
+      sc_executableUnit = #{record.scExecutableunit,jdbcType=VARCHAR},
+      sc_meteringMethod = #{record.scMeteringmethod,jdbcType=VARCHAR},
+      sc_shippingType = #{record.scShippingtype,jdbcType=INTEGER},
+      sc_freightBurden = #{record.scFreightburden,jdbcType=VARCHAR},
+      sc_coalunitPrice = #{record.scCoalunitprice,jdbcType=DECIMAL},
+      sc_pricedeScription = #{record.scPricedescription,jdbcType=VARCHAR},
+      sc_settlementMethod = #{record.scSettlementmethod,jdbcType=INTEGER},
+      sc_settlementStatement = #{record.scSettlementstatement,jdbcType=VARCHAR},
+      sc_notaryUnit = #{record.scNotaryunit,jdbcType=VARCHAR},
+      sc_notarialOpinions = #{record.scNotarialopinions,jdbcType=VARCHAR},
+      sc_masterContractId = #{record.scMastercontractid,jdbcType=VARCHAR},
+      sc_settlementUnit = #{record.scSettlementunit,jdbcType=INTEGER},
+      sc_status = #{record.scStatus,jdbcType=INTEGER},
+      sc_contractMark = #{record.scContractmark,jdbcType=INTEGER},
+      sc_contractAmount = #{record.scContractamount,jdbcType=DECIMAL},
+      sc_cashRate = #{record.scCashrate,jdbcType=DECIMAL},
+      sc_isChange = #{record.scIschange,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      sc_isMain = #{record.scIsmain,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.contract.SalesContractWithBLOBs" >
+    update sales_contract
+    <set >
+      <if test="scSellerid != null" >
+        sc_sellerId = #{scSellerid,jdbcType=VARCHAR},
+      </if>
+      <if test="scSelleraddress != null" >
+        sc_sellerAddress = #{scSelleraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellercorporaterepresentative != null" >
+        sc_sellerCorporateRepresentative = #{scSellercorporaterepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="scSelleragent != null" >
+        sc_sellerAgent = #{scSelleragent,jdbcType=VARCHAR},
+      </if>
+      <if test="scSelleropeningbank != null" >
+        sc_sellerOpeningBank = #{scSelleropeningbank,jdbcType=VARCHAR},
+      </if>
+      <if test="scSelleraccountnnmber != null" >
+        sc_sellerAccountnNmber = #{scSelleraccountnnmber,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellerdutyparagraph != null" >
+        sc_sellerDutyParagraph = #{scSellerdutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellertelephone != null" >
+        sc_sellerTelephone = #{scSellertelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellerfax != null" >
+        sc_sellerFax = #{scSellerfax,jdbcType=VARCHAR},
+      </if>
+      <if test="scSellerzipcode != null" >
+        sc_sellerZipCode = #{scSellerzipcode,jdbcType=INTEGER},
+      </if>
+      <if test="scSellertelegraph != null" >
+        sc_sellerTelegraph = #{scSellertelegraph,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyer != null" >
+        sc_buyer = #{scBuyer,jdbcType=INTEGER},
+      </if>
+      <if test="scBuyeraddress != null" >
+        sc_buyerAddress = #{scBuyeraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyercorporaterepresentative != null" >
+        sc_buyerCorporateRepresentative = #{scBuyercorporaterepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyeragent != null" >
+        sc_buyerAgent = #{scBuyeragent,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyeropeningbank != null" >
+        sc_buyerOpeningBank = #{scBuyeropeningbank,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyeraccountnumber != null" >
+        sc_buyerAccountNumber = #{scBuyeraccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyerdutyparagraph != null" >
+        sc_buyerDutyParagraph = #{scBuyerdutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyertelephone != null" >
+        sc_buyerTelephone = #{scBuyertelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyerfax != null" >
+        sc_buyerFax = #{scBuyerfax,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyerzipcode != null" >
+        sc_buyerZipCode = #{scBuyerzipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="scBuyertelegraph != null" >
+        sc_buyerTelegraph = #{scBuyertelegraph,jdbcType=VARCHAR},
+      </if>
+      <if test="scYear != null" >
+        sc_year = #{scYear,jdbcType=DATE},
+      </if>
+      <if test="scStartingtime != null" >
+        sc_startingTime = #{scStartingtime,jdbcType=DATE},
+      </if>
+      <if test="scDeadline != null" >
+        sc_deadline = #{scDeadline,jdbcType=DATE},
+      </if>
+      <if test="scOperator != null" >
+        sc_operator = #{scOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="scSigningtime != null" >
+        sc_signingTime = #{scSigningtime,jdbcType=DATE},
+      </if>
+      <if test="scSigningplace != null" >
+        sc_signingPlace = #{scSigningplace,jdbcType=VARCHAR},
+      </if>
+      <if test="scAgreedcycle != null" >
+        sc_agreedCycle = #{scAgreedcycle,jdbcType=VARCHAR},
+      </if>
+      <if test="scWeeklyleast != null" >
+        sc_weeklyLeast = #{scWeeklyleast,jdbcType=INTEGER},
+      </if>
+      <if test="scCustomerdustry != null" >
+        sc_customerDustry = #{scCustomerdustry,jdbcType=INTEGER},
+      </if>
+      <if test="scCustomerservicedepartment != null" >
+        sc_customerServiceDepartment = #{scCustomerservicedepartment,jdbcType=INTEGER},
+      </if>
+      <if test="scContracttype != null" >
+        sc_contractType = #{scContracttype,jdbcType=INTEGER},
+      </if>
+      <if test="scQualityprice != null" >
+        sc_qualityPrice = #{scQualityprice,jdbcType=INTEGER},
+      </if>
+      <if test="scDeliverymode != null" >
+        sc_deliveryMode = #{scDeliverymode,jdbcType=VARCHAR},
+      </if>
+      <if test="scExecutableunit != null" >
+        sc_executableUnit = #{scExecutableunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scMeteringmethod != null" >
+        sc_meteringMethod = #{scMeteringmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="scShippingtype != null" >
+        sc_shippingType = #{scShippingtype,jdbcType=INTEGER},
+      </if>
+      <if test="scFreightburden != null" >
+        sc_freightBurden = #{scFreightburden,jdbcType=VARCHAR},
+      </if>
+      <if test="scCoalunitprice != null" >
+        sc_coalunitPrice = #{scCoalunitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="scPricedescription != null" >
+        sc_pricedeScription = #{scPricedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="scSettlementmethod != null" >
+        sc_settlementMethod = #{scSettlementmethod,jdbcType=INTEGER},
+      </if>
+      <if test="scSettlementstatement != null" >
+        sc_settlementStatement = #{scSettlementstatement,jdbcType=VARCHAR},
+      </if>
+      <if test="scNotaryunit != null" >
+        sc_notaryUnit = #{scNotaryunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scNotarialopinions != null" >
+        sc_notarialOpinions = #{scNotarialopinions,jdbcType=VARCHAR},
+      </if>
+      <if test="scMastercontractid != null" >
+        sc_masterContractId = #{scMastercontractid,jdbcType=VARCHAR},
+      </if>
+      <if test="scSettlementunit != null" >
+        sc_settlementUnit = #{scSettlementunit,jdbcType=INTEGER},
+      </if>
+      <if test="scStatus != null" >
+        sc_status = #{scStatus,jdbcType=INTEGER},
+      </if>
+      <if test="scContractmark != null" >
+        sc_contractMark = #{scContractmark,jdbcType=INTEGER},
+      </if>
+      <if test="scContractamount != null" >
+        sc_contractAmount = #{scContractamount,jdbcType=DECIMAL},
+      </if>
+      <if test="scCashrate != null" >
+        sc_cashRate = #{scCashrate,jdbcType=DECIMAL},
+      </if>
+      <if test="scIschange != null" >
+        sc_isChange = #{scIschange,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="scIsmain != null" >
+        sc_isMain = #{scIsmain,jdbcType=TINYINT},
+      </if>
+      <if test="scQualityquantityacceptancecriteriamethods != null" >
+        sc_qualityQuantityAcceptanceCriteriaMethods = #{scQualityquantityacceptancecriteriamethods,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scResponsibilitybreach != null" >
+        sc_responsibilityBreach = #{scResponsibilitybreach,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scDisputesettlement != null" >
+        sc_disputeSettlement = #{scDisputesettlement,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scRemark != null" >
+        sc_remark = #{scRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sc_id = #{scId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.contract.SalesContractWithBLOBs" >
+    update sales_contract
+    set sc_sellerId = #{scSellerid,jdbcType=VARCHAR},
+      sc_sellerAddress = #{scSelleraddress,jdbcType=VARCHAR},
+      sc_sellerCorporateRepresentative = #{scSellercorporaterepresentative,jdbcType=VARCHAR},
+      sc_sellerAgent = #{scSelleragent,jdbcType=VARCHAR},
+      sc_sellerOpeningBank = #{scSelleropeningbank,jdbcType=VARCHAR},
+      sc_sellerAccountnNmber = #{scSelleraccountnnmber,jdbcType=VARCHAR},
+      sc_sellerDutyParagraph = #{scSellerdutyparagraph,jdbcType=VARCHAR},
+      sc_sellerTelephone = #{scSellertelephone,jdbcType=VARCHAR},
+      sc_sellerFax = #{scSellerfax,jdbcType=VARCHAR},
+      sc_sellerZipCode = #{scSellerzipcode,jdbcType=INTEGER},
+      sc_sellerTelegraph = #{scSellertelegraph,jdbcType=VARCHAR},
+      sc_buyer = #{scBuyer,jdbcType=INTEGER},
+      sc_buyerAddress = #{scBuyeraddress,jdbcType=VARCHAR},
+      sc_buyerCorporateRepresentative = #{scBuyercorporaterepresentative,jdbcType=VARCHAR},
+      sc_buyerAgent = #{scBuyeragent,jdbcType=VARCHAR},
+      sc_buyerOpeningBank = #{scBuyeropeningbank,jdbcType=VARCHAR},
+      sc_buyerAccountNumber = #{scBuyeraccountnumber,jdbcType=VARCHAR},
+      sc_buyerDutyParagraph = #{scBuyerdutyparagraph,jdbcType=VARCHAR},
+      sc_buyerTelephone = #{scBuyertelephone,jdbcType=VARCHAR},
+      sc_buyerFax = #{scBuyerfax,jdbcType=VARCHAR},
+      sc_buyerZipCode = #{scBuyerzipcode,jdbcType=VARCHAR},
+      sc_buyerTelegraph = #{scBuyertelegraph,jdbcType=VARCHAR},
+      sc_year = #{scYear,jdbcType=DATE},
+      sc_startingTime = #{scStartingtime,jdbcType=DATE},
+      sc_deadline = #{scDeadline,jdbcType=DATE},
+      sc_operator = #{scOperator,jdbcType=VARCHAR},
+      sc_signingTime = #{scSigningtime,jdbcType=DATE},
+      sc_signingPlace = #{scSigningplace,jdbcType=VARCHAR},
+      sc_agreedCycle = #{scAgreedcycle,jdbcType=VARCHAR},
+      sc_weeklyLeast = #{scWeeklyleast,jdbcType=INTEGER},
+      sc_customerDustry = #{scCustomerdustry,jdbcType=INTEGER},
+      sc_customerServiceDepartment = #{scCustomerservicedepartment,jdbcType=INTEGER},
+      sc_contractType = #{scContracttype,jdbcType=INTEGER},
+      sc_qualityPrice = #{scQualityprice,jdbcType=INTEGER},
+      sc_deliveryMode = #{scDeliverymode,jdbcType=VARCHAR},
+      sc_executableUnit = #{scExecutableunit,jdbcType=VARCHAR},
+      sc_meteringMethod = #{scMeteringmethod,jdbcType=VARCHAR},
+      sc_shippingType = #{scShippingtype,jdbcType=INTEGER},
+      sc_freightBurden = #{scFreightburden,jdbcType=VARCHAR},
+      sc_coalunitPrice = #{scCoalunitprice,jdbcType=DECIMAL},
+      sc_pricedeScription = #{scPricedescription,jdbcType=VARCHAR},
+      sc_settlementMethod = #{scSettlementmethod,jdbcType=INTEGER},
+      sc_settlementStatement = #{scSettlementstatement,jdbcType=VARCHAR},
+      sc_notaryUnit = #{scNotaryunit,jdbcType=VARCHAR},
+      sc_notarialOpinions = #{scNotarialopinions,jdbcType=VARCHAR},
+      sc_masterContractId = #{scMastercontractid,jdbcType=VARCHAR},
+      sc_settlementUnit = #{scSettlementunit,jdbcType=INTEGER},
+      sc_status = #{scStatus,jdbcType=INTEGER},
+      sc_contractMark = #{scContractmark,jdbcType=INTEGER},
+      sc_contractAmount = #{scContractamount,jdbcType=DECIMAL},
+      sc_cashRate = #{scCashrate,jdbcType=DECIMAL},
+      sc_isChange = #{scIschange,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      sc_isMain = #{scIsmain,jdbcType=TINYINT},
+      sc_qualityQuantityAcceptanceCriteriaMethods = #{scQualityquantityacceptancecriteriamethods,jdbcType=LONGVARCHAR},
+      sc_responsibilityBreach = #{scResponsibilitybreach,jdbcType=LONGVARCHAR},
+      sc_disputeSettlement = #{scDisputesettlement,jdbcType=LONGVARCHAR},
+      sc_remark = #{scRemark,jdbcType=LONGVARCHAR}
+    where sc_id = #{scId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.contract.SalesContract" >
+    update sales_contract
+    set sc_sellerId = #{scSellerid,jdbcType=VARCHAR},
+      sc_sellerAddress = #{scSelleraddress,jdbcType=VARCHAR},
+      sc_sellerCorporateRepresentative = #{scSellercorporaterepresentative,jdbcType=VARCHAR},
+      sc_sellerAgent = #{scSelleragent,jdbcType=VARCHAR},
+      sc_sellerOpeningBank = #{scSelleropeningbank,jdbcType=VARCHAR},
+      sc_sellerAccountnNmber = #{scSelleraccountnnmber,jdbcType=VARCHAR},
+      sc_sellerDutyParagraph = #{scSellerdutyparagraph,jdbcType=VARCHAR},
+      sc_sellerTelephone = #{scSellertelephone,jdbcType=VARCHAR},
+      sc_sellerFax = #{scSellerfax,jdbcType=VARCHAR},
+      sc_sellerZipCode = #{scSellerzipcode,jdbcType=INTEGER},
+      sc_sellerTelegraph = #{scSellertelegraph,jdbcType=VARCHAR},
+      sc_buyer = #{scBuyer,jdbcType=INTEGER},
+      sc_buyerAddress = #{scBuyeraddress,jdbcType=VARCHAR},
+      sc_buyerCorporateRepresentative = #{scBuyercorporaterepresentative,jdbcType=VARCHAR},
+      sc_buyerAgent = #{scBuyeragent,jdbcType=VARCHAR},
+      sc_buyerOpeningBank = #{scBuyeropeningbank,jdbcType=VARCHAR},
+      sc_buyerAccountNumber = #{scBuyeraccountnumber,jdbcType=VARCHAR},
+      sc_buyerDutyParagraph = #{scBuyerdutyparagraph,jdbcType=VARCHAR},
+      sc_buyerTelephone = #{scBuyertelephone,jdbcType=VARCHAR},
+      sc_buyerFax = #{scBuyerfax,jdbcType=VARCHAR},
+      sc_buyerZipCode = #{scBuyerzipcode,jdbcType=VARCHAR},
+      sc_buyerTelegraph = #{scBuyertelegraph,jdbcType=VARCHAR},
+      sc_year = #{scYear,jdbcType=DATE},
+      sc_startingTime = #{scStartingtime,jdbcType=DATE},
+      sc_deadline = #{scDeadline,jdbcType=DATE},
+      sc_operator = #{scOperator,jdbcType=VARCHAR},
+      sc_signingTime = #{scSigningtime,jdbcType=DATE},
+      sc_signingPlace = #{scSigningplace,jdbcType=VARCHAR},
+      sc_agreedCycle = #{scAgreedcycle,jdbcType=VARCHAR},
+      sc_weeklyLeast = #{scWeeklyleast,jdbcType=INTEGER},
+      sc_customerDustry = #{scCustomerdustry,jdbcType=INTEGER},
+      sc_customerServiceDepartment = #{scCustomerservicedepartment,jdbcType=INTEGER},
+      sc_contractType = #{scContracttype,jdbcType=INTEGER},
+      sc_qualityPrice = #{scQualityprice,jdbcType=INTEGER},
+      sc_deliveryMode = #{scDeliverymode,jdbcType=VARCHAR},
+      sc_executableUnit = #{scExecutableunit,jdbcType=VARCHAR},
+      sc_meteringMethod = #{scMeteringmethod,jdbcType=VARCHAR},
+      sc_shippingType = #{scShippingtype,jdbcType=INTEGER},
+      sc_freightBurden = #{scFreightburden,jdbcType=VARCHAR},
+      sc_coalunitPrice = #{scCoalunitprice,jdbcType=DECIMAL},
+      sc_pricedeScription = #{scPricedescription,jdbcType=VARCHAR},
+      sc_settlementMethod = #{scSettlementmethod,jdbcType=INTEGER},
+      sc_settlementStatement = #{scSettlementstatement,jdbcType=VARCHAR},
+      sc_notaryUnit = #{scNotaryunit,jdbcType=VARCHAR},
+      sc_notarialOpinions = #{scNotarialopinions,jdbcType=VARCHAR},
+      sc_masterContractId = #{scMastercontractid,jdbcType=VARCHAR},
+      sc_settlementUnit = #{scSettlementunit,jdbcType=INTEGER},
+      sc_status = #{scStatus,jdbcType=INTEGER},
+      sc_contractMark = #{scContractmark,jdbcType=INTEGER},
+      sc_contractAmount = #{scContractamount,jdbcType=DECIMAL},
+      sc_cashRate = #{scCashrate,jdbcType=DECIMAL},
+      sc_isChange = #{scIschange,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      sc_isMain = #{scIsmain,jdbcType=TINYINT}
+    where sc_id = #{scId,jdbcType=VARCHAR}
+  </update>
+</mapper>

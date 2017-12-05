@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.TWorkcontantDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trains.TWorkcontant" >
+    <id column="wc_id" property="wcId" jdbcType="VARCHAR" />
+    <result column="wc_wid" property="wcWid" jdbcType="INTEGER" />
+    <result column="wc_maketime" property="wcMaketime" jdbcType="DATE" />
+    <result column="wc_totaltrain" property="wcTotaltrain" jdbcType="INTEGER" />
+    <result column="wc_totalweight" property="wcTotalweight" jdbcType="INTEGER" />
+    <result column="wc_state" property="wcState" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      wc_id, wc_wid, wc_maketime, wc_totaltrain, wc_totalweight, wc_state, Createdate, 
+      ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trains.TWorkcontantQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_workcontant
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    wc_id,wc_wid,wc_maketime,wc_totaltrain,wc_totalweight,wc_state,Createdate,ModifyDate,CreateBy,ModifyBy
+    from t_workcontant
+    where wc_id = #{wcId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_workcontant
+    where wc_id = #{wcId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trains.TWorkcontantQuery" >
+    delete from t_workcontant
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trains.TWorkcontant" >
+    insert into t_workcontant (wc_id, wc_wid, wc_maketime, 
+      wc_totaltrain, wc_totalweight, wc_state, 
+      Createdate, ModifyDate, CreateBy, 
+      ModifyBy)
+    values (#{wcId,jdbcType=VARCHAR}, #{wcWid,jdbcType=INTEGER}, #{wcMaketime,jdbcType=DATE}, 
+      #{wcTotaltrain,jdbcType=INTEGER}, #{wcTotalweight,jdbcType=INTEGER}, #{wcState,jdbcType=TINYINT}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{modifyby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trains.TWorkcontant" >
+    insert into t_workcontant
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wcId != null" >
+        wc_id,
+      </if>
+      <if test="wcWid != null" >
+        wc_wid,
+      </if>
+      <if test="wcMaketime != null" >
+        wc_maketime,
+      </if>
+      <if test="wcTotaltrain != null" >
+        wc_totaltrain,
+      </if>
+      <if test="wcTotalweight != null" >
+        wc_totalweight,
+      </if>
+      <if test="wcState != null" >
+        wc_state,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wcId != null" >
+        #{wcId,jdbcType=VARCHAR},
+      </if>
+      <if test="wcWid != null" >
+        #{wcWid,jdbcType=INTEGER},
+      </if>
+      <if test="wcMaketime != null" >
+        #{wcMaketime,jdbcType=DATE},
+      </if>
+      <if test="wcTotaltrain != null" >
+        #{wcTotaltrain,jdbcType=INTEGER},
+      </if>
+      <if test="wcTotalweight != null" >
+        #{wcTotalweight,jdbcType=INTEGER},
+      </if>
+      <if test="wcState != null" >
+        #{wcState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trains.TWorkcontantQuery" resultType="java.lang.Integer" >
+    select count(*) from t_workcontant
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_workcontant
+    <set >
+      <if test="record.wcId != null" >
+        wc_id = #{record.wcId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcWid != null" >
+        wc_wid = #{record.wcWid,jdbcType=INTEGER},
+      </if>
+      <if test="record.wcMaketime != null" >
+        wc_maketime = #{record.wcMaketime,jdbcType=DATE},
+      </if>
+      <if test="record.wcTotaltrain != null" >
+        wc_totaltrain = #{record.wcTotaltrain,jdbcType=INTEGER},
+      </if>
+      <if test="record.wcTotalweight != null" >
+        wc_totalweight = #{record.wcTotalweight,jdbcType=INTEGER},
+      </if>
+      <if test="record.wcState != null" >
+        wc_state = #{record.wcState,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_workcontant
+    set wc_id = #{record.wcId,jdbcType=VARCHAR},
+      wc_wid = #{record.wcWid,jdbcType=INTEGER},
+      wc_maketime = #{record.wcMaketime,jdbcType=DATE},
+      wc_totaltrain = #{record.wcTotaltrain,jdbcType=INTEGER},
+      wc_totalweight = #{record.wcTotalweight,jdbcType=INTEGER},
+      wc_state = #{record.wcState,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trains.TWorkcontant" >
+    update t_workcontant
+    <set >
+      <if test="wcWid != null" >
+        wc_wid = #{wcWid,jdbcType=INTEGER},
+      </if>
+      <if test="wcMaketime != null" >
+        wc_maketime = #{wcMaketime,jdbcType=DATE},
+      </if>
+      <if test="wcTotaltrain != null" >
+        wc_totaltrain = #{wcTotaltrain,jdbcType=INTEGER},
+      </if>
+      <if test="wcTotalweight != null" >
+        wc_totalweight = #{wcTotalweight,jdbcType=INTEGER},
+      </if>
+      <if test="wcState != null" >
+        wc_state = #{wcState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wc_id = #{wcId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trains.TWorkcontant" >
+    update t_workcontant
+    set wc_wid = #{wcWid,jdbcType=INTEGER},
+      wc_maketime = #{wcMaketime,jdbcType=DATE},
+      wc_totaltrain = #{wcTotaltrain,jdbcType=INTEGER},
+      wc_totalweight = #{wcTotalweight,jdbcType=INTEGER},
+      wc_state = #{wcState,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where wc_id = #{wcId,jdbcType=VARCHAR}
+  </update>
+</mapper>

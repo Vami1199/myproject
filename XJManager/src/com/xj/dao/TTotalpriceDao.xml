@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.TTotalpriceDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trains.TTotalprice" >
+    <id column="tp_id" property="tpId" jdbcType="VARCHAR" />
+    <result column="tp_transporttime" property="tpTransporttime" jdbcType="DATE" />
+    <result column="tp_ahid" property="tpAhid" jdbcType="VARCHAR" />
+    <result column="tp_transportprice" property="tpTransportprice" jdbcType="DECIMAL" />
+    <result column="tp_otherprice" property="tpOtherprice" jdbcType="DECIMAL" />
+    <result column="tp_total" property="tpTotal" jdbcType="DECIMAL" />
+    <result column="tp_receipt" property="tpReceipt" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      tp_id, tp_transporttime, tp_ahid, tp_transportprice, tp_otherprice, tp_total, tp_receipt, 
+      Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trains.TTotalpriceQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_totalprice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    tp_id,tp_transporttime,tp_ahid,tp_transportprice,tp_otherprice,tp_total,tp_receipt,Createdate,ModifyDate,CreateBy,ModifyBy
+    from t_totalprice
+    where tp_id = #{tpId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_totalprice
+    where tp_id = #{tpId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trains.TTotalpriceQuery" >
+    delete from t_totalprice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trains.TTotalprice" >
+    insert into t_totalprice (tp_id, tp_transporttime, tp_ahid, 
+      tp_transportprice, tp_otherprice, tp_total, 
+      tp_receipt, Createdate, ModifyDate, 
+      CreateBy, ModifyBy)
+    values (#{tpId,jdbcType=VARCHAR}, #{tpTransporttime,jdbcType=DATE}, #{tpAhid,jdbcType=VARCHAR}, 
+      #{tpTransportprice,jdbcType=DECIMAL}, #{tpOtherprice,jdbcType=DECIMAL}, #{tpTotal,jdbcType=DECIMAL}, 
+      #{tpReceipt,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trains.TTotalprice" >
+    insert into t_totalprice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tpId != null" >
+        tp_id,
+      </if>
+      <if test="tpTransporttime != null" >
+        tp_transporttime,
+      </if>
+      <if test="tpAhid != null" >
+        tp_ahid,
+      </if>
+      <if test="tpTransportprice != null" >
+        tp_transportprice,
+      </if>
+      <if test="tpOtherprice != null" >
+        tp_otherprice,
+      </if>
+      <if test="tpTotal != null" >
+        tp_total,
+      </if>
+      <if test="tpReceipt != null" >
+        tp_receipt,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tpId != null" >
+        #{tpId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpTransporttime != null" >
+        #{tpTransporttime,jdbcType=DATE},
+      </if>
+      <if test="tpAhid != null" >
+        #{tpAhid,jdbcType=VARCHAR},
+      </if>
+      <if test="tpTransportprice != null" >
+        #{tpTransportprice,jdbcType=DECIMAL},
+      </if>
+      <if test="tpOtherprice != null" >
+        #{tpOtherprice,jdbcType=DECIMAL},
+      </if>
+      <if test="tpTotal != null" >
+        #{tpTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="tpReceipt != null" >
+        #{tpReceipt,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trains.TTotalpriceQuery" resultType="java.lang.Integer" >
+    select count(*) from t_totalprice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_totalprice
+    <set >
+      <if test="record.tpId != null" >
+        tp_id = #{record.tpId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tpTransporttime != null" >
+        tp_transporttime = #{record.tpTransporttime,jdbcType=DATE},
+      </if>
+      <if test="record.tpAhid != null" >
+        tp_ahid = #{record.tpAhid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tpTransportprice != null" >
+        tp_transportprice = #{record.tpTransportprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tpOtherprice != null" >
+        tp_otherprice = #{record.tpOtherprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tpTotal != null" >
+        tp_total = #{record.tpTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tpReceipt != null" >
+        tp_receipt = #{record.tpReceipt,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_totalprice
+    set tp_id = #{record.tpId,jdbcType=VARCHAR},
+      tp_transporttime = #{record.tpTransporttime,jdbcType=DATE},
+      tp_ahid = #{record.tpAhid,jdbcType=VARCHAR},
+      tp_transportprice = #{record.tpTransportprice,jdbcType=DECIMAL},
+      tp_otherprice = #{record.tpOtherprice,jdbcType=DECIMAL},
+      tp_total = #{record.tpTotal,jdbcType=DECIMAL},
+      tp_receipt = #{record.tpReceipt,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trains.TTotalprice" >
+    update t_totalprice
+    <set >
+      <if test="tpTransporttime != null" >
+        tp_transporttime = #{tpTransporttime,jdbcType=DATE},
+      </if>
+      <if test="tpAhid != null" >
+        tp_ahid = #{tpAhid,jdbcType=VARCHAR},
+      </if>
+      <if test="tpTransportprice != null" >
+        tp_transportprice = #{tpTransportprice,jdbcType=DECIMAL},
+      </if>
+      <if test="tpOtherprice != null" >
+        tp_otherprice = #{tpOtherprice,jdbcType=DECIMAL},
+      </if>
+      <if test="tpTotal != null" >
+        tp_total = #{tpTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="tpReceipt != null" >
+        tp_receipt = #{tpReceipt,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tp_id = #{tpId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trains.TTotalprice" >
+    update t_totalprice
+    set tp_transporttime = #{tpTransporttime,jdbcType=DATE},
+      tp_ahid = #{tpAhid,jdbcType=VARCHAR},
+      tp_transportprice = #{tpTransportprice,jdbcType=DECIMAL},
+      tp_otherprice = #{tpOtherprice,jdbcType=DECIMAL},
+      tp_total = #{tpTotal,jdbcType=DECIMAL},
+      tp_receipt = #{tpReceipt,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where tp_id = #{tpId,jdbcType=VARCHAR}
+  </update>
+</mapper>

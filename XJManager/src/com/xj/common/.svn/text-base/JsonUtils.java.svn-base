@@ -1,0 +1,77 @@
+package com.xj.common;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
+/**
+ * 创建json并回调的工具类
+ * @author Administrator
+ *
+ */
+public class JsonUtils {
+	/**
+	 * 需要去除元素
+	 * @param list 要转化的集合
+	 * @param arr  要去掉的元素
+	 * @return
+	 */
+	public static String createJsonList(List list,String[] arr){
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.setExcludes(arr);
+		JSONArray jsonArray = JSONArray.fromObject(list,jsonConfig);
+		/*JSONObject json = new JSONObject();
+        json.accumulate("success","true");
+        jsonArray.add(0,json);*/
+		return jsonArray.toString();
+	}
+	/**
+	 * 不需去掉元素
+	 * @param list
+	 * @return
+	 */
+	public static String createJsonList(List list){
+		JSONArray jsonArray = JSONArray.fromObject(list);
+		return jsonArray.toString();
+	}
+	public static String createJsonObject(Object obj,String[] arr){
+		JsonConfig jc = new JsonConfig();
+		jc.setExcludes(arr);
+		JSONObject jo = JSONObject.fromObject(obj,jc);
+		return jo.toString();
+		
+	}
+	public static String createJsonObject(Object obj){
+		JSONObject jo = JSONObject.fromObject(obj);
+		return jo.toString();
+	}
+	//返回json
+	public static void returnJson(HttpServletResponse response,Object obj) throws IOException{
+		response.setContentType("text/json;charset=utf-8");
+		response.getWriter().print(obj);
+	}
+	
+	public static String addJson(List list,String[] arr,Map<String,Object> map){
+		JsonConfig js = new JsonConfig();
+		js.setExcludes(arr);
+		JSONArray ja = new JSONArray();
+		JSONObject json = new JSONObject();
+		Set<String> keySet = map.keySet();
+		String key = "";
+		for (String string : keySet) {
+			key = string;
+		}
+        json.put(key,map.get(key));
+        json.put("queryList", list);
+        ja.add(json);
+		return ja.toString();
+	}
+}

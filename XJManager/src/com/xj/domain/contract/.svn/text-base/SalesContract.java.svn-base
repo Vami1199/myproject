@@ -1,0 +1,772 @@
+package com.xj.domain.contract;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class SalesContract implements Serializable {
+    private String scId;
+
+    /**
+     * 出卖方
+     */
+    private Integer scSeller;
+
+    /**
+     * 出卖方地址
+     */
+    private String scSelleraddress;
+
+    /**
+     * 出卖方法人代表
+     */
+    private String scSellercorporaterepresentative;
+
+    /**
+     * 出卖方委托代理人
+     */
+    private String scSelleragent;
+
+    /**
+     * 出卖方开户银行
+     */
+    private Integer scSelleropeningbank;
+
+    /**
+     * 出卖方账号
+     */
+    private Integer scSelleraccountnnmber;
+
+    /**
+     * 出卖方税号
+     */
+    private Integer scSellerdutyparagraph;
+
+    /**
+     * 出卖方电话
+     */
+    private Integer scSellertelephone;
+
+    /**
+     * 出卖方传真
+     */
+    private Integer scSellerfax;
+
+    /**
+     * 出卖方邮编
+     */
+    private Integer scSellerzipcode;
+
+    /**
+     * 买受方
+     */
+    private Integer scBuyer;
+
+    /**
+     * 买受方地址
+     */
+    private String scBuyeraddress;
+
+    /**
+     * 买受方法人代表
+     */
+    private String scBuyercorporaterepresentative;
+
+    /**
+     * 买受方委托代理人
+     */
+    private String scBuyeragent;
+
+    /**
+     * 买受方开户银行
+     */
+    private Integer scBuyeropeningbank;
+
+    /**
+     * 买受方账号
+     */
+    private Integer scBuyeraccountnumber;
+
+    /**
+     * 买受方税号
+     */
+    private Integer scBuyerdutyparagraph;
+
+    /**
+     * 买受方电话
+     */
+    private Integer scBuyertelephone;
+
+    /**
+     * 买受方传真
+     */
+    private Integer scBuyerfax;
+
+    /**
+     * 买受方邮编
+     */
+    private Integer scBuyerzipcode;
+
+    /**
+     * 年份
+     */
+    private Date scYear;
+
+    /**
+     * 起始时间
+     */
+    private Date scStartingtime;
+
+    /**
+     * 截止时间
+     */
+    private Date scDeadline;
+
+    /**
+     * 经办人
+     */
+    private String scOperator;
+
+    /**
+     * 签订时间
+     */
+    private Date scSigningtime;
+
+    /**
+     * 签订地点
+     */
+    private String scSigningplace;
+
+    /**
+     * 约定周期
+     */
+    private String scAgreedcycle;
+
+    /**
+     * 每周最少量
+     */
+    private Integer scWeeklyleast;
+
+    /**
+     * 客户行业
+     */
+    private Integer scCustomerdustry;
+
+    /**
+     * 客户部别
+     */
+    private Integer scCustomerservicedepartment;
+
+    /**
+     * 合同类型
+     */
+    private Integer scContracttype;
+
+    /**
+     * 是否以质论价
+     */
+    private Integer scQualityprice;
+
+    /**
+     * 交（提）货方式
+     */
+    private String scDeliverymode;
+
+    /**
+     * 执行单位
+     */
+    private Integer scExecutableunit;
+
+    /**
+     * 计算方法
+     */
+    private String scMeteringmethod;
+
+    /**
+     * 运输方式
+     */
+    private Integer scShippingtype;
+
+    /**
+     * 运费负担
+     */
+    private String scFreightburden;
+
+    /**
+     * 煤炭单价
+     */
+    private Long scCoalunitprice;
+
+    /**
+     * 价格说明
+     */
+    private String scPricedescription;
+
+    /**
+     * 结算方式
+     */
+    private Integer scSettlementmethod;
+
+    /**
+     * 结算说明
+     */
+    private String scSettlementstatement;
+
+    /**
+     * 公证单位
+     */
+    private String scNotaryunit;
+
+    /**
+     * 公证意见
+     */
+    private String scNotarialopinions;
+
+    /**
+     * 主合同编号
+     */
+    private Integer scMastercontractid;
+
+    /**
+     * 结算单位
+     */
+    private Integer scSettlementunit;
+
+    /**
+     * 状态
+     */
+    private Integer scStatus;
+
+    /**
+     * 合同标记
+     */
+    private Integer scContractmark;
+
+    /**
+     * 合同总量
+     */
+    private Long scContractamount;
+
+    /**
+     * 兑换率
+     */
+    private Long scCashrate;
+
+    /**
+     * 创建日期
+     */
+    private Date createdate;
+
+    /**
+     * 修改日期
+     */
+    private Date modifydate;
+
+    /**
+     * 创建人
+     */
+    private String createby;
+
+    /**
+     * 修改人
+     */
+    private String modifyby;
+
+    private static final long serialVersionUID = 1L;
+
+    public String getScId() {
+        return scId;
+    }
+
+    public void setScId(String scId) {
+        this.scId = scId == null ? null : scId.trim();
+    }
+
+    public Integer getScSeller() {
+        return scSeller;
+    }
+
+    public void setScSeller(Integer scSeller) {
+        this.scSeller = scSeller;
+    }
+
+    public String getScSelleraddress() {
+        return scSelleraddress;
+    }
+
+    public void setScSelleraddress(String scSelleraddress) {
+        this.scSelleraddress = scSelleraddress == null ? null : scSelleraddress.trim();
+    }
+
+    public String getScSellercorporaterepresentative() {
+        return scSellercorporaterepresentative;
+    }
+
+    public void setScSellercorporaterepresentative(String scSellercorporaterepresentative) {
+        this.scSellercorporaterepresentative = scSellercorporaterepresentative == null ? null : scSellercorporaterepresentative.trim();
+    }
+
+    public String getScSelleragent() {
+        return scSelleragent;
+    }
+
+    public void setScSelleragent(String scSelleragent) {
+        this.scSelleragent = scSelleragent == null ? null : scSelleragent.trim();
+    }
+
+    public Integer getScSelleropeningbank() {
+        return scSelleropeningbank;
+    }
+
+    public void setScSelleropeningbank(Integer scSelleropeningbank) {
+        this.scSelleropeningbank = scSelleropeningbank;
+    }
+
+    public Integer getScSelleraccountnnmber() {
+        return scSelleraccountnnmber;
+    }
+
+    public void setScSelleraccountnnmber(Integer scSelleraccountnnmber) {
+        this.scSelleraccountnnmber = scSelleraccountnnmber;
+    }
+
+    public Integer getScSellerdutyparagraph() {
+        return scSellerdutyparagraph;
+    }
+
+    public void setScSellerdutyparagraph(Integer scSellerdutyparagraph) {
+        this.scSellerdutyparagraph = scSellerdutyparagraph;
+    }
+
+    public Integer getScSellertelephone() {
+        return scSellertelephone;
+    }
+
+    public void setScSellertelephone(Integer scSellertelephone) {
+        this.scSellertelephone = scSellertelephone;
+    }
+
+    public Integer getScSellerfax() {
+        return scSellerfax;
+    }
+
+    public void setScSellerfax(Integer scSellerfax) {
+        this.scSellerfax = scSellerfax;
+    }
+
+    public Integer getScSellerzipcode() {
+        return scSellerzipcode;
+    }
+
+    public void setScSellerzipcode(Integer scSellerzipcode) {
+        this.scSellerzipcode = scSellerzipcode;
+    }
+
+    public Integer getScBuyer() {
+        return scBuyer;
+    }
+
+    public void setScBuyer(Integer scBuyer) {
+        this.scBuyer = scBuyer;
+    }
+
+    public String getScBuyeraddress() {
+        return scBuyeraddress;
+    }
+
+    public void setScBuyeraddress(String scBuyeraddress) {
+        this.scBuyeraddress = scBuyeraddress == null ? null : scBuyeraddress.trim();
+    }
+
+    public String getScBuyercorporaterepresentative() {
+        return scBuyercorporaterepresentative;
+    }
+
+    public void setScBuyercorporaterepresentative(String scBuyercorporaterepresentative) {
+        this.scBuyercorporaterepresentative = scBuyercorporaterepresentative == null ? null : scBuyercorporaterepresentative.trim();
+    }
+
+    public String getScBuyeragent() {
+        return scBuyeragent;
+    }
+
+    public void setScBuyeragent(String scBuyeragent) {
+        this.scBuyeragent = scBuyeragent == null ? null : scBuyeragent.trim();
+    }
+
+    public Integer getScBuyeropeningbank() {
+        return scBuyeropeningbank;
+    }
+
+    public void setScBuyeropeningbank(Integer scBuyeropeningbank) {
+        this.scBuyeropeningbank = scBuyeropeningbank;
+    }
+
+    public Integer getScBuyeraccountnumber() {
+        return scBuyeraccountnumber;
+    }
+
+    public void setScBuyeraccountnumber(Integer scBuyeraccountnumber) {
+        this.scBuyeraccountnumber = scBuyeraccountnumber;
+    }
+
+    public Integer getScBuyerdutyparagraph() {
+        return scBuyerdutyparagraph;
+    }
+
+    public void setScBuyerdutyparagraph(Integer scBuyerdutyparagraph) {
+        this.scBuyerdutyparagraph = scBuyerdutyparagraph;
+    }
+
+    public Integer getScBuyertelephone() {
+        return scBuyertelephone;
+    }
+
+    public void setScBuyertelephone(Integer scBuyertelephone) {
+        this.scBuyertelephone = scBuyertelephone;
+    }
+
+    public Integer getScBuyerfax() {
+        return scBuyerfax;
+    }
+
+    public void setScBuyerfax(Integer scBuyerfax) {
+        this.scBuyerfax = scBuyerfax;
+    }
+
+    public Integer getScBuyerzipcode() {
+        return scBuyerzipcode;
+    }
+
+    public void setScBuyerzipcode(Integer scBuyerzipcode) {
+        this.scBuyerzipcode = scBuyerzipcode;
+    }
+
+    public Date getScYear() {
+        return scYear;
+    }
+
+    public void setScYear(Date scYear) {
+        this.scYear = scYear;
+    }
+
+    public Date getScStartingtime() {
+        return scStartingtime;
+    }
+
+    public void setScStartingtime(Date scStartingtime) {
+        this.scStartingtime = scStartingtime;
+    }
+
+    public Date getScDeadline() {
+        return scDeadline;
+    }
+
+    public void setScDeadline(Date scDeadline) {
+        this.scDeadline = scDeadline;
+    }
+
+    public String getScOperator() {
+        return scOperator;
+    }
+
+    public void setScOperator(String scOperator) {
+        this.scOperator = scOperator == null ? null : scOperator.trim();
+    }
+
+    public Date getScSigningtime() {
+        return scSigningtime;
+    }
+
+    public void setScSigningtime(Date scSigningtime) {
+        this.scSigningtime = scSigningtime;
+    }
+
+    public String getScSigningplace() {
+        return scSigningplace;
+    }
+
+    public void setScSigningplace(String scSigningplace) {
+        this.scSigningplace = scSigningplace == null ? null : scSigningplace.trim();
+    }
+
+    public String getScAgreedcycle() {
+        return scAgreedcycle;
+    }
+
+    public void setScAgreedcycle(String scAgreedcycle) {
+        this.scAgreedcycle = scAgreedcycle == null ? null : scAgreedcycle.trim();
+    }
+
+    public Integer getScWeeklyleast() {
+        return scWeeklyleast;
+    }
+
+    public void setScWeeklyleast(Integer scWeeklyleast) {
+        this.scWeeklyleast = scWeeklyleast;
+    }
+
+    public Integer getScCustomerdustry() {
+        return scCustomerdustry;
+    }
+
+    public void setScCustomerdustry(Integer scCustomerdustry) {
+        this.scCustomerdustry = scCustomerdustry;
+    }
+
+    public Integer getScCustomerservicedepartment() {
+        return scCustomerservicedepartment;
+    }
+
+    public void setScCustomerservicedepartment(Integer scCustomerservicedepartment) {
+        this.scCustomerservicedepartment = scCustomerservicedepartment;
+    }
+
+    public Integer getScContracttype() {
+        return scContracttype;
+    }
+
+    public void setScContracttype(Integer scContracttype) {
+        this.scContracttype = scContracttype;
+    }
+
+    public Integer getScQualityprice() {
+        return scQualityprice;
+    }
+
+    public void setScQualityprice(Integer scQualityprice) {
+        this.scQualityprice = scQualityprice;
+    }
+
+    public String getScDeliverymode() {
+        return scDeliverymode;
+    }
+
+    public void setScDeliverymode(String scDeliverymode) {
+        this.scDeliverymode = scDeliverymode == null ? null : scDeliverymode.trim();
+    }
+
+    public Integer getScExecutableunit() {
+        return scExecutableunit;
+    }
+
+    public void setScExecutableunit(Integer scExecutableunit) {
+        this.scExecutableunit = scExecutableunit;
+    }
+
+    public String getScMeteringmethod() {
+        return scMeteringmethod;
+    }
+
+    public void setScMeteringmethod(String scMeteringmethod) {
+        this.scMeteringmethod = scMeteringmethod == null ? null : scMeteringmethod.trim();
+    }
+
+    public Integer getScShippingtype() {
+        return scShippingtype;
+    }
+
+    public void setScShippingtype(Integer scShippingtype) {
+        this.scShippingtype = scShippingtype;
+    }
+
+    public String getScFreightburden() {
+        return scFreightburden;
+    }
+
+    public void setScFreightburden(String scFreightburden) {
+        this.scFreightburden = scFreightburden == null ? null : scFreightburden.trim();
+    }
+
+    public Long getScCoalunitprice() {
+        return scCoalunitprice;
+    }
+
+    public void setScCoalunitprice(Long scCoalunitprice) {
+        this.scCoalunitprice = scCoalunitprice;
+    }
+
+    public String getScPricedescription() {
+        return scPricedescription;
+    }
+
+    public void setScPricedescription(String scPricedescription) {
+        this.scPricedescription = scPricedescription == null ? null : scPricedescription.trim();
+    }
+
+    public Integer getScSettlementmethod() {
+        return scSettlementmethod;
+    }
+
+    public void setScSettlementmethod(Integer scSettlementmethod) {
+        this.scSettlementmethod = scSettlementmethod;
+    }
+
+    public String getScSettlementstatement() {
+        return scSettlementstatement;
+    }
+
+    public void setScSettlementstatement(String scSettlementstatement) {
+        this.scSettlementstatement = scSettlementstatement == null ? null : scSettlementstatement.trim();
+    }
+
+    public String getScNotaryunit() {
+        return scNotaryunit;
+    }
+
+    public void setScNotaryunit(String scNotaryunit) {
+        this.scNotaryunit = scNotaryunit == null ? null : scNotaryunit.trim();
+    }
+
+    public String getScNotarialopinions() {
+        return scNotarialopinions;
+    }
+
+    public void setScNotarialopinions(String scNotarialopinions) {
+        this.scNotarialopinions = scNotarialopinions == null ? null : scNotarialopinions.trim();
+    }
+
+    public Integer getScMastercontractid() {
+        return scMastercontractid;
+    }
+
+    public void setScMastercontractid(Integer scMastercontractid) {
+        this.scMastercontractid = scMastercontractid;
+    }
+
+    public Integer getScSettlementunit() {
+        return scSettlementunit;
+    }
+
+    public void setScSettlementunit(Integer scSettlementunit) {
+        this.scSettlementunit = scSettlementunit;
+    }
+
+    public Integer getScStatus() {
+        return scStatus;
+    }
+
+    public void setScStatus(Integer scStatus) {
+        this.scStatus = scStatus;
+    }
+
+    public Integer getScContractmark() {
+        return scContractmark;
+    }
+
+    public void setScContractmark(Integer scContractmark) {
+        this.scContractmark = scContractmark;
+    }
+
+    public Long getScContractamount() {
+        return scContractamount;
+    }
+
+    public void setScContractamount(Long scContractamount) {
+        this.scContractamount = scContractamount;
+    }
+
+    public Long getScCashrate() {
+        return scCashrate;
+    }
+
+    public void setScCashrate(Long scCashrate) {
+        this.scCashrate = scCashrate;
+    }
+
+    public Date getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
+    }
+
+    public Date getModifydate() {
+        return modifydate;
+    }
+
+    public void setModifydate(Date modifydate) {
+        this.modifydate = modifydate;
+    }
+
+    public String getCreateby() {
+        return createby;
+    }
+
+    public void setCreateby(String createby) {
+        this.createby = createby == null ? null : createby.trim();
+    }
+
+    public String getModifyby() {
+        return modifyby;
+    }
+
+    public void setModifyby(String modifyby) {
+        this.modifyby = modifyby == null ? null : modifyby.trim();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", scId=").append(scId);
+        sb.append(", scSeller=").append(scSeller);
+        sb.append(", scSelleraddress=").append(scSelleraddress);
+        sb.append(", scSellercorporaterepresentative=").append(scSellercorporaterepresentative);
+        sb.append(", scSelleragent=").append(scSelleragent);
+        sb.append(", scSelleropeningbank=").append(scSelleropeningbank);
+        sb.append(", scSelleraccountnnmber=").append(scSelleraccountnnmber);
+        sb.append(", scSellerdutyparagraph=").append(scSellerdutyparagraph);
+        sb.append(", scSellertelephone=").append(scSellertelephone);
+        sb.append(", scSellerfax=").append(scSellerfax);
+        sb.append(", scSellerzipcode=").append(scSellerzipcode);
+        sb.append(", scBuyer=").append(scBuyer);
+        sb.append(", scBuyeraddress=").append(scBuyeraddress);
+        sb.append(", scBuyercorporaterepresentative=").append(scBuyercorporaterepresentative);
+        sb.append(", scBuyeragent=").append(scBuyeragent);
+        sb.append(", scBuyeropeningbank=").append(scBuyeropeningbank);
+        sb.append(", scBuyeraccountnumber=").append(scBuyeraccountnumber);
+        sb.append(", scBuyerdutyparagraph=").append(scBuyerdutyparagraph);
+        sb.append(", scBuyertelephone=").append(scBuyertelephone);
+        sb.append(", scBuyerfax=").append(scBuyerfax);
+        sb.append(", scBuyerzipcode=").append(scBuyerzipcode);
+        sb.append(", scYear=").append(scYear);
+        sb.append(", scStartingtime=").append(scStartingtime);
+        sb.append(", scDeadline=").append(scDeadline);
+        sb.append(", scOperator=").append(scOperator);
+        sb.append(", scSigningtime=").append(scSigningtime);
+        sb.append(", scSigningplace=").append(scSigningplace);
+        sb.append(", scAgreedcycle=").append(scAgreedcycle);
+        sb.append(", scWeeklyleast=").append(scWeeklyleast);
+        sb.append(", scCustomerdustry=").append(scCustomerdustry);
+        sb.append(", scCustomerservicedepartment=").append(scCustomerservicedepartment);
+        sb.append(", scContracttype=").append(scContracttype);
+        sb.append(", scQualityprice=").append(scQualityprice);
+        sb.append(", scDeliverymode=").append(scDeliverymode);
+        sb.append(", scExecutableunit=").append(scExecutableunit);
+        sb.append(", scMeteringmethod=").append(scMeteringmethod);
+        sb.append(", scShippingtype=").append(scShippingtype);
+        sb.append(", scFreightburden=").append(scFreightburden);
+        sb.append(", scCoalunitprice=").append(scCoalunitprice);
+        sb.append(", scPricedescription=").append(scPricedescription);
+        sb.append(", scSettlementmethod=").append(scSettlementmethod);
+        sb.append(", scSettlementstatement=").append(scSettlementstatement);
+        sb.append(", scNotaryunit=").append(scNotaryunit);
+        sb.append(", scNotarialopinions=").append(scNotarialopinions);
+        sb.append(", scMastercontractid=").append(scMastercontractid);
+        sb.append(", scSettlementunit=").append(scSettlementunit);
+        sb.append(", scStatus=").append(scStatus);
+        sb.append(", scContractmark=").append(scContractmark);
+        sb.append(", scContractamount=").append(scContractamount);
+        sb.append(", scCashrate=").append(scCashrate);
+        sb.append(", createdate=").append(createdate);
+        sb.append(", modifydate=").append(modifydate);
+        sb.append(", createby=").append(createby);
+        sb.append(", modifyby=").append(modifyby);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PMonthrequestDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trainsplan.PMonthrequest" >
+    <id column="m_id" property="mId" jdbcType="VARCHAR" />
+    <result column="m_year" property="mYear" jdbcType="VARCHAR" />
+    <result column="m_month" property="mMonth" jdbcType="VARCHAR" />
+    <result column="m_date" property="mDate" jdbcType="DATE" />
+    <result column="m_flag" property="mFlag" jdbcType="TINYINT" />
+    <result column="m_adminid" property="mAdminid" jdbcType="INTEGER" />
+    <result column="m_user" property="mUser" jdbcType="VARCHAR" />
+    <result column="m_trains" property="mTrains" jdbcType="INTEGER" />
+    <result column="m_weight" property="mWeight" jdbcType="BIGINT" />
+    <result column="m_state" property="mState" jdbcType="TINYINT" />
+    <result column="m_rnumber" property="mRnumber" jdbcType="INTEGER" />
+    <result column="m_rweight" property="mRweight" jdbcType="BIGINT" />
+    <result column="m_realtrain" property="mRealtrain" jdbcType="INTEGER" />
+    <result column="m_realweight" property="mRealweight" jdbcType="BIGINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.trainsplan.PMonthrequest" extends="BaseResultMap" >
+    <result column="m_remark" property="mRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      m_id, m_year, m_month, m_date, m_flag, m_adminid, m_user, m_trains, m_weight, m_state, 
+      m_rnumber, m_rweight, m_realtrain, m_realweight, Createdate, ModifyDate, CreateBy, 
+      ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    m_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.trainsplan.PMonthrequestQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from p_monthrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trainsplan.PMonthrequestQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_monthrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    m_id,m_year,m_month,m_date,m_flag,m_adminid,m_user,m_trains,m_weight,m_state,m_rnumber,m_rweight,m_realtrain,m_realweight,Createdate,ModifyDate,CreateBy,ModifyBy,m_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from p_monthrequest
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from p_monthrequest
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trainsplan.PMonthrequestQuery" >
+    delete from p_monthrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trainsplan.PMonthrequest" >
+    insert into p_monthrequest (m_id, m_year, m_month, 
+      m_date, m_flag, m_adminid, 
+      m_user, m_trains, m_weight, 
+      m_state, m_rnumber, m_rweight, 
+      m_realtrain, m_realweight, Createdate, 
+      ModifyDate, CreateBy, ModifyBy, 
+      m_remark)
+    values (#{mId,jdbcType=VARCHAR}, #{mYear,jdbcType=VARCHAR}, #{mMonth,jdbcType=VARCHAR}, 
+      #{mDate,jdbcType=DATE}, #{mFlag,jdbcType=TINYINT}, #{mAdminid,jdbcType=INTEGER}, 
+      #{mUser,jdbcType=VARCHAR}, #{mTrains,jdbcType=INTEGER}, #{mWeight,jdbcType=BIGINT}, 
+      #{mState,jdbcType=TINYINT}, #{mRnumber,jdbcType=INTEGER}, #{mRweight,jdbcType=BIGINT}, 
+      #{mRealtrain,jdbcType=INTEGER}, #{mRealweight,jdbcType=BIGINT}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, 
+      #{mRemark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trainsplan.PMonthrequest" >
+    insert into p_monthrequest
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        m_id,
+      </if>
+      <if test="mYear != null" >
+        m_year,
+      </if>
+      <if test="mMonth != null" >
+        m_month,
+      </if>
+      <if test="mDate != null" >
+        m_date,
+      </if>
+      <if test="mFlag != null" >
+        m_flag,
+      </if>
+      <if test="mAdminid != null" >
+        m_adminid,
+      </if>
+      <if test="mUser != null" >
+        m_user,
+      </if>
+      <if test="mTrains != null" >
+        m_trains,
+      </if>
+      <if test="mWeight != null" >
+        m_weight,
+      </if>
+      <if test="mState != null" >
+        m_state,
+      </if>
+      <if test="mRnumber != null" >
+        m_rnumber,
+      </if>
+      <if test="mRweight != null" >
+        m_rweight,
+      </if>
+      <if test="mRealtrain != null" >
+        m_realtrain,
+      </if>
+      <if test="mRealweight != null" >
+        m_realweight,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="mRemark != null" >
+        m_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        #{mId,jdbcType=VARCHAR},
+      </if>
+      <if test="mYear != null" >
+        #{mYear,jdbcType=VARCHAR},
+      </if>
+      <if test="mMonth != null" >
+        #{mMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="mDate != null" >
+        #{mDate,jdbcType=DATE},
+      </if>
+      <if test="mFlag != null" >
+        #{mFlag,jdbcType=TINYINT},
+      </if>
+      <if test="mAdminid != null" >
+        #{mAdminid,jdbcType=INTEGER},
+      </if>
+      <if test="mUser != null" >
+        #{mUser,jdbcType=VARCHAR},
+      </if>
+      <if test="mTrains != null" >
+        #{mTrains,jdbcType=INTEGER},
+      </if>
+      <if test="mWeight != null" >
+        #{mWeight,jdbcType=BIGINT},
+      </if>
+      <if test="mState != null" >
+        #{mState,jdbcType=TINYINT},
+      </if>
+      <if test="mRnumber != null" >
+        #{mRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="mRweight != null" >
+        #{mRweight,jdbcType=BIGINT},
+      </if>
+      <if test="mRealtrain != null" >
+        #{mRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="mRealweight != null" >
+        #{mRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="mRemark != null" >
+        #{mRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trainsplan.PMonthrequestQuery" resultType="java.lang.Integer" >
+    select count(*) from p_monthrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_monthrequest
+    <set >
+      <if test="record.mId != null" >
+        m_id = #{record.mId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mYear != null" >
+        m_year = #{record.mYear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mMonth != null" >
+        m_month = #{record.mMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mDate != null" >
+        m_date = #{record.mDate,jdbcType=DATE},
+      </if>
+      <if test="record.mFlag != null" >
+        m_flag = #{record.mFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.mAdminid != null" >
+        m_adminid = #{record.mAdminid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mUser != null" >
+        m_user = #{record.mUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mTrains != null" >
+        m_trains = #{record.mTrains,jdbcType=INTEGER},
+      </if>
+      <if test="record.mWeight != null" >
+        m_weight = #{record.mWeight,jdbcType=BIGINT},
+      </if>
+      <if test="record.mState != null" >
+        m_state = #{record.mState,jdbcType=TINYINT},
+      </if>
+      <if test="record.mRnumber != null" >
+        m_rnumber = #{record.mRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.mRweight != null" >
+        m_rweight = #{record.mRweight,jdbcType=BIGINT},
+      </if>
+      <if test="record.mRealtrain != null" >
+        m_realtrain = #{record.mRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="record.mRealweight != null" >
+        m_realweight = #{record.mRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mRemark != null" >
+        m_remark = #{record.mRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update p_monthrequest
+    set m_id = #{record.mId,jdbcType=VARCHAR},
+      m_year = #{record.mYear,jdbcType=VARCHAR},
+      m_month = #{record.mMonth,jdbcType=VARCHAR},
+      m_date = #{record.mDate,jdbcType=DATE},
+      m_flag = #{record.mFlag,jdbcType=TINYINT},
+      m_adminid = #{record.mAdminid,jdbcType=INTEGER},
+      m_user = #{record.mUser,jdbcType=VARCHAR},
+      m_trains = #{record.mTrains,jdbcType=INTEGER},
+      m_weight = #{record.mWeight,jdbcType=BIGINT},
+      m_state = #{record.mState,jdbcType=TINYINT},
+      m_rnumber = #{record.mRnumber,jdbcType=INTEGER},
+      m_rweight = #{record.mRweight,jdbcType=BIGINT},
+      m_realtrain = #{record.mRealtrain,jdbcType=INTEGER},
+      m_realweight = #{record.mRealweight,jdbcType=BIGINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      m_remark = #{record.mRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_monthrequest
+    set m_id = #{record.mId,jdbcType=VARCHAR},
+      m_year = #{record.mYear,jdbcType=VARCHAR},
+      m_month = #{record.mMonth,jdbcType=VARCHAR},
+      m_date = #{record.mDate,jdbcType=DATE},
+      m_flag = #{record.mFlag,jdbcType=TINYINT},
+      m_adminid = #{record.mAdminid,jdbcType=INTEGER},
+      m_user = #{record.mUser,jdbcType=VARCHAR},
+      m_trains = #{record.mTrains,jdbcType=INTEGER},
+      m_weight = #{record.mWeight,jdbcType=BIGINT},
+      m_state = #{record.mState,jdbcType=TINYINT},
+      m_rnumber = #{record.mRnumber,jdbcType=INTEGER},
+      m_rweight = #{record.mRweight,jdbcType=BIGINT},
+      m_realtrain = #{record.mRealtrain,jdbcType=INTEGER},
+      m_realweight = #{record.mRealweight,jdbcType=BIGINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trainsplan.PMonthrequest" >
+    update p_monthrequest
+    <set >
+      <if test="mYear != null" >
+        m_year = #{mYear,jdbcType=VARCHAR},
+      </if>
+      <if test="mMonth != null" >
+        m_month = #{mMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="mDate != null" >
+        m_date = #{mDate,jdbcType=DATE},
+      </if>
+      <if test="mFlag != null" >
+        m_flag = #{mFlag,jdbcType=TINYINT},
+      </if>
+      <if test="mAdminid != null" >
+        m_adminid = #{mAdminid,jdbcType=INTEGER},
+      </if>
+      <if test="mUser != null" >
+        m_user = #{mUser,jdbcType=VARCHAR},
+      </if>
+      <if test="mTrains != null" >
+        m_trains = #{mTrains,jdbcType=INTEGER},
+      </if>
+      <if test="mWeight != null" >
+        m_weight = #{mWeight,jdbcType=BIGINT},
+      </if>
+      <if test="mState != null" >
+        m_state = #{mState,jdbcType=TINYINT},
+      </if>
+      <if test="mRnumber != null" >
+        m_rnumber = #{mRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="mRweight != null" >
+        m_rweight = #{mRweight,jdbcType=BIGINT},
+      </if>
+      <if test="mRealtrain != null" >
+        m_realtrain = #{mRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="mRealweight != null" >
+        m_realweight = #{mRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="mRemark != null" >
+        m_remark = #{mRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.trainsplan.PMonthrequest" >
+    update p_monthrequest
+    set m_year = #{mYear,jdbcType=VARCHAR},
+      m_month = #{mMonth,jdbcType=VARCHAR},
+      m_date = #{mDate,jdbcType=DATE},
+      m_flag = #{mFlag,jdbcType=TINYINT},
+      m_adminid = #{mAdminid,jdbcType=INTEGER},
+      m_user = #{mUser,jdbcType=VARCHAR},
+      m_trains = #{mTrains,jdbcType=INTEGER},
+      m_weight = #{mWeight,jdbcType=BIGINT},
+      m_state = #{mState,jdbcType=TINYINT},
+      m_rnumber = #{mRnumber,jdbcType=INTEGER},
+      m_rweight = #{mRweight,jdbcType=BIGINT},
+      m_realtrain = #{mRealtrain,jdbcType=INTEGER},
+      m_realweight = #{mRealweight,jdbcType=BIGINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      m_remark = #{mRemark,jdbcType=LONGVARCHAR}
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trainsplan.PMonthrequest" >
+    update p_monthrequest
+    set m_year = #{mYear,jdbcType=VARCHAR},
+      m_month = #{mMonth,jdbcType=VARCHAR},
+      m_date = #{mDate,jdbcType=DATE},
+      m_flag = #{mFlag,jdbcType=TINYINT},
+      m_adminid = #{mAdminid,jdbcType=INTEGER},
+      m_user = #{mUser,jdbcType=VARCHAR},
+      m_trains = #{mTrains,jdbcType=INTEGER},
+      m_weight = #{mWeight,jdbcType=BIGINT},
+      m_state = #{mState,jdbcType=TINYINT},
+      m_rnumber = #{mRnumber,jdbcType=INTEGER},
+      m_rweight = #{mRweight,jdbcType=BIGINT},
+      m_realtrain = #{mRealtrain,jdbcType=INTEGER},
+      m_realweight = #{mRealweight,jdbcType=BIGINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </update>
+</mapper>

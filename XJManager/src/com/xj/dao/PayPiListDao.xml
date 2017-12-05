@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PayPiListDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.account.PayPiList" >
+    <id column="pay_pi_id" property="payPiId" jdbcType="INTEGER" />
+    <result column="pay_pi_sale" property="payPiSale" jdbcType="INTEGER" />
+    <result column="pay_pi_buy" property="payPiBuy" jdbcType="INTEGER" />
+    <result column="pay_pi_main" property="payPiMain" jdbcType="INTEGER" />
+    <result column="pay_pi_date" property="payPiDate" jdbcType="TIMESTAMP" />
+    <result column="pay_pi_projects" property="payPiProjects" jdbcType="VARCHAR" />
+    <result column="pay_pi_no_income" property="payPiNoIncome" jdbcType="DECIMAL" />
+    <result column="pay_pi_purchases" property="payPiPurchases" jdbcType="DECIMAL" />
+    <result column="pay_pi_coal_quality" property="payPiCoalQuality" jdbcType="DECIMAL" />
+    <result column="pay_pi_price" property="payPiPrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      pay_pi_id, pay_pi_sale, pay_pi_buy, pay_pi_main, pay_pi_date, pay_pi_projects, pay_pi_no_income, 
+      pay_pi_purchases, pay_pi_coal_quality, pay_pi_price
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.account.PayPiListQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pay_pi_list
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    pay_pi_id,pay_pi_sale,pay_pi_buy,pay_pi_main,pay_pi_date,pay_pi_projects,pay_pi_no_income,pay_pi_purchases,pay_pi_coal_quality,pay_pi_price
+    from pay_pi_list
+    where pay_pi_id = #{payPiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pay_pi_list
+    where pay_pi_id = #{payPiId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.account.PayPiListQuery" >
+    delete from pay_pi_list
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.account.PayPiList" >
+    insert into pay_pi_list (pay_pi_id, pay_pi_sale, pay_pi_buy, 
+      pay_pi_main, pay_pi_date, pay_pi_projects, 
+      pay_pi_no_income, pay_pi_purchases, pay_pi_coal_quality, 
+      pay_pi_price)
+    values (#{payPiId,jdbcType=INTEGER}, #{payPiSale,jdbcType=INTEGER}, #{payPiBuy,jdbcType=INTEGER}, 
+      #{payPiMain,jdbcType=INTEGER}, #{payPiDate,jdbcType=TIMESTAMP}, #{payPiProjects,jdbcType=VARCHAR}, 
+      #{payPiNoIncome,jdbcType=DECIMAL}, #{payPiPurchases,jdbcType=DECIMAL}, #{payPiCoalQuality,jdbcType=DECIMAL}, 
+      #{payPiPrice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.account.PayPiList" >
+    insert into pay_pi_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="payPiId != null" >
+        pay_pi_id,
+      </if>
+      <if test="payPiSale != null" >
+        pay_pi_sale,
+      </if>
+      <if test="payPiBuy != null" >
+        pay_pi_buy,
+      </if>
+      <if test="payPiMain != null" >
+        pay_pi_main,
+      </if>
+      <if test="payPiDate != null" >
+        pay_pi_date,
+      </if>
+      <if test="payPiProjects != null" >
+        pay_pi_projects,
+      </if>
+      <if test="payPiNoIncome != null" >
+        pay_pi_no_income,
+      </if>
+      <if test="payPiPurchases != null" >
+        pay_pi_purchases,
+      </if>
+      <if test="payPiCoalQuality != null" >
+        pay_pi_coal_quality,
+      </if>
+      <if test="payPiPrice != null" >
+        pay_pi_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="payPiId != null" >
+        #{payPiId,jdbcType=INTEGER},
+      </if>
+      <if test="payPiSale != null" >
+        #{payPiSale,jdbcType=INTEGER},
+      </if>
+      <if test="payPiBuy != null" >
+        #{payPiBuy,jdbcType=INTEGER},
+      </if>
+      <if test="payPiMain != null" >
+        #{payPiMain,jdbcType=INTEGER},
+      </if>
+      <if test="payPiDate != null" >
+        #{payPiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payPiProjects != null" >
+        #{payPiProjects,jdbcType=VARCHAR},
+      </if>
+      <if test="payPiNoIncome != null" >
+        #{payPiNoIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="payPiPurchases != null" >
+        #{payPiPurchases,jdbcType=DECIMAL},
+      </if>
+      <if test="payPiCoalQuality != null" >
+        #{payPiCoalQuality,jdbcType=DECIMAL},
+      </if>
+      <if test="payPiPrice != null" >
+        #{payPiPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.account.PayPiListQuery" resultType="java.lang.Integer" >
+    select count(*) from pay_pi_list
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update pay_pi_list
+    <set >
+      <if test="record.payPiId != null" >
+        pay_pi_id = #{record.payPiId,jdbcType=INTEGER},
+      </if>
+      <if test="record.payPiSale != null" >
+        pay_pi_sale = #{record.payPiSale,jdbcType=INTEGER},
+      </if>
+      <if test="record.payPiBuy != null" >
+        pay_pi_buy = #{record.payPiBuy,jdbcType=INTEGER},
+      </if>
+      <if test="record.payPiMain != null" >
+        pay_pi_main = #{record.payPiMain,jdbcType=INTEGER},
+      </if>
+      <if test="record.payPiDate != null" >
+        pay_pi_date = #{record.payPiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.payPiProjects != null" >
+        pay_pi_projects = #{record.payPiProjects,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payPiNoIncome != null" >
+        pay_pi_no_income = #{record.payPiNoIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payPiPurchases != null" >
+        pay_pi_purchases = #{record.payPiPurchases,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payPiCoalQuality != null" >
+        pay_pi_coal_quality = #{record.payPiCoalQuality,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payPiPrice != null" >
+        pay_pi_price = #{record.payPiPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update pay_pi_list
+    set pay_pi_id = #{record.payPiId,jdbcType=INTEGER},
+      pay_pi_sale = #{record.payPiSale,jdbcType=INTEGER},
+      pay_pi_buy = #{record.payPiBuy,jdbcType=INTEGER},
+      pay_pi_main = #{record.payPiMain,jdbcType=INTEGER},
+      pay_pi_date = #{record.payPiDate,jdbcType=TIMESTAMP},
+      pay_pi_projects = #{record.payPiProjects,jdbcType=VARCHAR},
+      pay_pi_no_income = #{record.payPiNoIncome,jdbcType=DECIMAL},
+      pay_pi_purchases = #{record.payPiPurchases,jdbcType=DECIMAL},
+      pay_pi_coal_quality = #{record.payPiCoalQuality,jdbcType=DECIMAL},
+      pay_pi_price = #{record.payPiPrice,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.account.PayPiList" >
+    update pay_pi_list
+    <set >
+      <if test="payPiSale != null" >
+        pay_pi_sale = #{payPiSale,jdbcType=INTEGER},
+      </if>
+      <if test="payPiBuy != null" >
+        pay_pi_buy = #{payPiBuy,jdbcType=INTEGER},
+      </if>
+      <if test="payPiMain != null" >
+        pay_pi_main = #{payPiMain,jdbcType=INTEGER},
+      </if>
+      <if test="payPiDate != null" >
+        pay_pi_date = #{payPiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payPiProjects != null" >
+        pay_pi_projects = #{payPiProjects,jdbcType=VARCHAR},
+      </if>
+      <if test="payPiNoIncome != null" >
+        pay_pi_no_income = #{payPiNoIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="payPiPurchases != null" >
+        pay_pi_purchases = #{payPiPurchases,jdbcType=DECIMAL},
+      </if>
+      <if test="payPiCoalQuality != null" >
+        pay_pi_coal_quality = #{payPiCoalQuality,jdbcType=DECIMAL},
+      </if>
+      <if test="payPiPrice != null" >
+        pay_pi_price = #{payPiPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where pay_pi_id = #{payPiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.account.PayPiList" >
+    update pay_pi_list
+    set pay_pi_sale = #{payPiSale,jdbcType=INTEGER},
+      pay_pi_buy = #{payPiBuy,jdbcType=INTEGER},
+      pay_pi_main = #{payPiMain,jdbcType=INTEGER},
+      pay_pi_date = #{payPiDate,jdbcType=TIMESTAMP},
+      pay_pi_projects = #{payPiProjects,jdbcType=VARCHAR},
+      pay_pi_no_income = #{payPiNoIncome,jdbcType=DECIMAL},
+      pay_pi_purchases = #{payPiPurchases,jdbcType=DECIMAL},
+      pay_pi_coal_quality = #{payPiCoalQuality,jdbcType=DECIMAL},
+      pay_pi_price = #{payPiPrice,jdbcType=DECIMAL}
+    where pay_pi_id = #{payPiId,jdbcType=INTEGER}
+  </update>
+</mapper>

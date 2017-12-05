@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.LApplyDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.land.LApply" >
+    <id column="ap_id" property="apId" jdbcType="INTEGER" />
+    <result column="ap_date" property="apDate" jdbcType="DATE" />
+    <result column="ap_customerid" property="apCustomerid" jdbcType="INTEGER" />
+    <result column="ap_departmentid" property="apDepartmentid" jdbcType="VARCHAR" />
+    <result column="ap_transport" property="apTransport" jdbcType="VARCHAR" />
+    <result column="ap_method" property="apMethod" jdbcType="TINYINT" />
+    <result column="ap_pay" property="apPay" jdbcType="TINYINT" />
+    <result column="ap_ticket" property="apTicket" jdbcType="VARCHAR" />
+    <result column="ap_receiver" property="apReceiver" jdbcType="VARCHAR" />
+    <result column="ap_flag" property="apFlag" jdbcType="TINYINT" />
+    <result column="ap_user" property="apUser" jdbcType="VARCHAR" />
+    <result column="ap_ticketer" property="apTicketer" jdbcType="VARCHAR" />
+    <result column="ap_contract" property="apContract" jdbcType="VARCHAR" />
+    <result column="ap_state" property="apState" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.land.LApplyWithBLOBs" extends="BaseResultMap" >
+    <result column="ap_gettime" property="apGettime" jdbcType="LONGVARCHAR" />
+    <result column="ap_remark" property="apRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      ap_id, ap_date, ap_customerid, ap_departmentid, ap_transport, ap_method, ap_pay, 
+      ap_ticket, ap_receiver, ap_flag, ap_user, ap_ticketer, ap_contract, ap_state, Createdate, 
+      ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    ap_gettime, ap_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.land.LApplyQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from l_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.land.LApplyQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from l_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    ap_id,ap_date,ap_customerid,ap_departmentid,ap_transport,ap_method,ap_pay,ap_ticket,ap_receiver,ap_flag,ap_user,ap_ticketer,ap_contract,ap_state,Createdate,ModifyDate,CreateBy,ModifyBy,ap_gettime,ap_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from l_apply
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from l_apply
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.land.LApplyQuery" >
+    delete from l_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.land.LApplyWithBLOBs" >
+    insert into l_apply (ap_id, ap_date, ap_customerid, 
+      ap_departmentid, ap_transport, ap_method, 
+      ap_pay, ap_ticket, ap_receiver, 
+      ap_flag, ap_user, ap_ticketer, 
+      ap_contract, ap_state, Createdate, 
+      ModifyDate, CreateBy, ModifyBy, 
+      ap_gettime, ap_remark)
+    values (#{apId,jdbcType=INTEGER}, #{apDate,jdbcType=DATE}, #{apCustomerid,jdbcType=INTEGER}, 
+      #{apDepartmentid,jdbcType=VARCHAR}, #{apTransport,jdbcType=VARCHAR}, #{apMethod,jdbcType=TINYINT}, 
+      #{apPay,jdbcType=TINYINT}, #{apTicket,jdbcType=VARCHAR}, #{apReceiver,jdbcType=VARCHAR}, 
+      #{apFlag,jdbcType=TINYINT}, #{apUser,jdbcType=VARCHAR}, #{apTicketer,jdbcType=VARCHAR}, 
+      #{apContract,jdbcType=VARCHAR}, #{apState,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, 
+      #{apGettime,jdbcType=LONGVARCHAR}, #{apRemark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.land.LApplyWithBLOBs" >
+    insert into l_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="apId != null" >
+        ap_id,
+      </if>
+      <if test="apDate != null" >
+        ap_date,
+      </if>
+      <if test="apCustomerid != null" >
+        ap_customerid,
+      </if>
+      <if test="apDepartmentid != null" >
+        ap_departmentid,
+      </if>
+      <if test="apTransport != null" >
+        ap_transport,
+      </if>
+      <if test="apMethod != null" >
+        ap_method,
+      </if>
+      <if test="apPay != null" >
+        ap_pay,
+      </if>
+      <if test="apTicket != null" >
+        ap_ticket,
+      </if>
+      <if test="apReceiver != null" >
+        ap_receiver,
+      </if>
+      <if test="apFlag != null" >
+        ap_flag,
+      </if>
+      <if test="apUser != null" >
+        ap_user,
+      </if>
+      <if test="apTicketer != null" >
+        ap_ticketer,
+      </if>
+      <if test="apContract != null" >
+        ap_contract,
+      </if>
+      <if test="apState != null" >
+        ap_state,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="apGettime != null" >
+        ap_gettime,
+      </if>
+      <if test="apRemark != null" >
+        ap_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="apId != null" >
+        #{apId,jdbcType=INTEGER},
+      </if>
+      <if test="apDate != null" >
+        #{apDate,jdbcType=DATE},
+      </if>
+      <if test="apCustomerid != null" >
+        #{apCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="apDepartmentid != null" >
+        #{apDepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="apTransport != null" >
+        #{apTransport,jdbcType=VARCHAR},
+      </if>
+      <if test="apMethod != null" >
+        #{apMethod,jdbcType=TINYINT},
+      </if>
+      <if test="apPay != null" >
+        #{apPay,jdbcType=TINYINT},
+      </if>
+      <if test="apTicket != null" >
+        #{apTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="apReceiver != null" >
+        #{apReceiver,jdbcType=VARCHAR},
+      </if>
+      <if test="apFlag != null" >
+        #{apFlag,jdbcType=TINYINT},
+      </if>
+      <if test="apUser != null" >
+        #{apUser,jdbcType=VARCHAR},
+      </if>
+      <if test="apTicketer != null" >
+        #{apTicketer,jdbcType=VARCHAR},
+      </if>
+      <if test="apContract != null" >
+        #{apContract,jdbcType=VARCHAR},
+      </if>
+      <if test="apState != null" >
+        #{apState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="apGettime != null" >
+        #{apGettime,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="apRemark != null" >
+        #{apRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.land.LApplyQuery" resultType="java.lang.Integer" >
+    select count(*) from l_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update l_apply
+    <set >
+      <if test="record.apId != null" >
+        ap_id = #{record.apId,jdbcType=INTEGER},
+      </if>
+      <if test="record.apDate != null" >
+        ap_date = #{record.apDate,jdbcType=DATE},
+      </if>
+      <if test="record.apCustomerid != null" >
+        ap_customerid = #{record.apCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.apDepartmentid != null" >
+        ap_departmentid = #{record.apDepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apTransport != null" >
+        ap_transport = #{record.apTransport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apMethod != null" >
+        ap_method = #{record.apMethod,jdbcType=TINYINT},
+      </if>
+      <if test="record.apPay != null" >
+        ap_pay = #{record.apPay,jdbcType=TINYINT},
+      </if>
+      <if test="record.apTicket != null" >
+        ap_ticket = #{record.apTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apReceiver != null" >
+        ap_receiver = #{record.apReceiver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apFlag != null" >
+        ap_flag = #{record.apFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.apUser != null" >
+        ap_user = #{record.apUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apTicketer != null" >
+        ap_ticketer = #{record.apTicketer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apContract != null" >
+        ap_contract = #{record.apContract,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apState != null" >
+        ap_state = #{record.apState,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apGettime != null" >
+        ap_gettime = #{record.apGettime,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.apRemark != null" >
+        ap_remark = #{record.apRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update l_apply
+    set ap_id = #{record.apId,jdbcType=INTEGER},
+      ap_date = #{record.apDate,jdbcType=DATE},
+      ap_customerid = #{record.apCustomerid,jdbcType=INTEGER},
+      ap_departmentid = #{record.apDepartmentid,jdbcType=VARCHAR},
+      ap_transport = #{record.apTransport,jdbcType=VARCHAR},
+      ap_method = #{record.apMethod,jdbcType=TINYINT},
+      ap_pay = #{record.apPay,jdbcType=TINYINT},
+      ap_ticket = #{record.apTicket,jdbcType=VARCHAR},
+      ap_receiver = #{record.apReceiver,jdbcType=VARCHAR},
+      ap_flag = #{record.apFlag,jdbcType=TINYINT},
+      ap_user = #{record.apUser,jdbcType=VARCHAR},
+      ap_ticketer = #{record.apTicketer,jdbcType=VARCHAR},
+      ap_contract = #{record.apContract,jdbcType=VARCHAR},
+      ap_state = #{record.apState,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      ap_gettime = #{record.apGettime,jdbcType=LONGVARCHAR},
+      ap_remark = #{record.apRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update l_apply
+    set ap_id = #{record.apId,jdbcType=INTEGER},
+      ap_date = #{record.apDate,jdbcType=DATE},
+      ap_customerid = #{record.apCustomerid,jdbcType=INTEGER},
+      ap_departmentid = #{record.apDepartmentid,jdbcType=VARCHAR},
+      ap_transport = #{record.apTransport,jdbcType=VARCHAR},
+      ap_method = #{record.apMethod,jdbcType=TINYINT},
+      ap_pay = #{record.apPay,jdbcType=TINYINT},
+      ap_ticket = #{record.apTicket,jdbcType=VARCHAR},
+      ap_receiver = #{record.apReceiver,jdbcType=VARCHAR},
+      ap_flag = #{record.apFlag,jdbcType=TINYINT},
+      ap_user = #{record.apUser,jdbcType=VARCHAR},
+      ap_ticketer = #{record.apTicketer,jdbcType=VARCHAR},
+      ap_contract = #{record.apContract,jdbcType=VARCHAR},
+      ap_state = #{record.apState,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.land.LApplyWithBLOBs" >
+    update l_apply
+    <set >
+      <if test="apDate != null" >
+        ap_date = #{apDate,jdbcType=DATE},
+      </if>
+      <if test="apCustomerid != null" >
+        ap_customerid = #{apCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="apDepartmentid != null" >
+        ap_departmentid = #{apDepartmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="apTransport != null" >
+        ap_transport = #{apTransport,jdbcType=VARCHAR},
+      </if>
+      <if test="apMethod != null" >
+        ap_method = #{apMethod,jdbcType=TINYINT},
+      </if>
+      <if test="apPay != null" >
+        ap_pay = #{apPay,jdbcType=TINYINT},
+      </if>
+      <if test="apTicket != null" >
+        ap_ticket = #{apTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="apReceiver != null" >
+        ap_receiver = #{apReceiver,jdbcType=VARCHAR},
+      </if>
+      <if test="apFlag != null" >
+        ap_flag = #{apFlag,jdbcType=TINYINT},
+      </if>
+      <if test="apUser != null" >
+        ap_user = #{apUser,jdbcType=VARCHAR},
+      </if>
+      <if test="apTicketer != null" >
+        ap_ticketer = #{apTicketer,jdbcType=VARCHAR},
+      </if>
+      <if test="apContract != null" >
+        ap_contract = #{apContract,jdbcType=VARCHAR},
+      </if>
+      <if test="apState != null" >
+        ap_state = #{apState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="apGettime != null" >
+        ap_gettime = #{apGettime,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="apRemark != null" >
+        ap_remark = #{apRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.land.LApplyWithBLOBs" >
+    update l_apply
+    set ap_date = #{apDate,jdbcType=DATE},
+      ap_customerid = #{apCustomerid,jdbcType=INTEGER},
+      ap_departmentid = #{apDepartmentid,jdbcType=VARCHAR},
+      ap_transport = #{apTransport,jdbcType=VARCHAR},
+      ap_method = #{apMethod,jdbcType=TINYINT},
+      ap_pay = #{apPay,jdbcType=TINYINT},
+      ap_ticket = #{apTicket,jdbcType=VARCHAR},
+      ap_receiver = #{apReceiver,jdbcType=VARCHAR},
+      ap_flag = #{apFlag,jdbcType=TINYINT},
+      ap_user = #{apUser,jdbcType=VARCHAR},
+      ap_ticketer = #{apTicketer,jdbcType=VARCHAR},
+      ap_contract = #{apContract,jdbcType=VARCHAR},
+      ap_state = #{apState,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      ap_gettime = #{apGettime,jdbcType=LONGVARCHAR},
+      ap_remark = #{apRemark,jdbcType=LONGVARCHAR}
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.land.LApply" >
+    update l_apply
+    set ap_date = #{apDate,jdbcType=DATE},
+      ap_customerid = #{apCustomerid,jdbcType=INTEGER},
+      ap_departmentid = #{apDepartmentid,jdbcType=VARCHAR},
+      ap_transport = #{apTransport,jdbcType=VARCHAR},
+      ap_method = #{apMethod,jdbcType=TINYINT},
+      ap_pay = #{apPay,jdbcType=TINYINT},
+      ap_ticket = #{apTicket,jdbcType=VARCHAR},
+      ap_receiver = #{apReceiver,jdbcType=VARCHAR},
+      ap_flag = #{apFlag,jdbcType=TINYINT},
+      ap_user = #{apUser,jdbcType=VARCHAR},
+      ap_ticketer = #{apTicketer,jdbcType=VARCHAR},
+      ap_contract = #{apContract,jdbcType=VARCHAR},
+      ap_state = #{apState,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </update>
+</mapper>

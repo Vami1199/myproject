@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PlanMonthdetailDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.plan.PlanMonthdetail" >
+    <id column="md_id" property="mdId" jdbcType="VARCHAR" />
+    <result column="md_mid" property="mdMid" jdbcType="VARCHAR" />
+    <result column="md_customerid" property="mdCustomerid" jdbcType="VARCHAR" />
+    <result column="md_ctype" property="mdCtype" jdbcType="VARCHAR" />
+    <result column="md_product" property="mdProduct" jdbcType="TINYINT" />
+    <result column="yd_ptype" property="ydPtype" jdbcType="TINYINT" />
+    <result column="yd_people" property="ydPeople" jdbcType="VARCHAR" />
+    <result column="yd_plan" property="ydPlan" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.plan.PlanMonthdetail" extends="BaseResultMap" >
+    <result column="yd_remark" property="ydRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      md_id, md_mid, md_customerid, md_ctype, md_product, yd_ptype, yd_people, yd_plan
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    yd_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.plan.PlanMonthdetailQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from plan_monthdetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.plan.PlanMonthdetailQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from plan_monthdetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    md_id,md_mid,md_customerid,md_ctype,md_product,yd_ptype,yd_people,yd_plan,yd_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from plan_monthdetail
+    where md_id = #{mdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from plan_monthdetail
+    where md_id = #{mdId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.plan.PlanMonthdetailQuery" >
+    delete from plan_monthdetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.plan.PlanMonthdetail" >
+    insert into plan_monthdetail (md_id, md_mid, md_customerid, 
+      md_ctype, md_product, yd_ptype, 
+      yd_people, yd_plan, yd_remark
+      )
+    values (#{mdId,jdbcType=VARCHAR}, #{mdMid,jdbcType=VARCHAR}, #{mdCustomerid,jdbcType=VARCHAR}, 
+      #{mdCtype,jdbcType=VARCHAR}, #{mdProduct,jdbcType=TINYINT}, #{ydPtype,jdbcType=TINYINT}, 
+      #{ydPeople,jdbcType=VARCHAR}, #{ydPlan,jdbcType=INTEGER}, #{ydRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.plan.PlanMonthdetail" >
+    insert into plan_monthdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mdId != null" >
+        md_id,
+      </if>
+      <if test="mdMid != null" >
+        md_mid,
+      </if>
+      <if test="mdCustomerid != null" >
+        md_customerid,
+      </if>
+      <if test="mdCtype != null" >
+        md_ctype,
+      </if>
+      <if test="mdProduct != null" >
+        md_product,
+      </if>
+      <if test="ydPtype != null" >
+        yd_ptype,
+      </if>
+      <if test="ydPeople != null" >
+        yd_people,
+      </if>
+      <if test="ydPlan != null" >
+        yd_plan,
+      </if>
+      <if test="ydRemark != null" >
+        yd_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mdId != null" >
+        #{mdId,jdbcType=VARCHAR},
+      </if>
+      <if test="mdMid != null" >
+        #{mdMid,jdbcType=VARCHAR},
+      </if>
+      <if test="mdCustomerid != null" >
+        #{mdCustomerid,jdbcType=VARCHAR},
+      </if>
+      <if test="mdCtype != null" >
+        #{mdCtype,jdbcType=VARCHAR},
+      </if>
+      <if test="mdProduct != null" >
+        #{mdProduct,jdbcType=TINYINT},
+      </if>
+      <if test="ydPtype != null" >
+        #{ydPtype,jdbcType=TINYINT},
+      </if>
+      <if test="ydPeople != null" >
+        #{ydPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="ydPlan != null" >
+        #{ydPlan,jdbcType=INTEGER},
+      </if>
+      <if test="ydRemark != null" >
+        #{ydRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.plan.PlanMonthdetailQuery" resultType="java.lang.Integer" >
+    select count(*) from plan_monthdetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update plan_monthdetail
+    <set >
+      <if test="record.mdId != null" >
+        md_id = #{record.mdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mdMid != null" >
+        md_mid = #{record.mdMid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mdCustomerid != null" >
+        md_customerid = #{record.mdCustomerid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mdCtype != null" >
+        md_ctype = #{record.mdCtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mdProduct != null" >
+        md_product = #{record.mdProduct,jdbcType=TINYINT},
+      </if>
+      <if test="record.ydPtype != null" >
+        yd_ptype = #{record.ydPtype,jdbcType=TINYINT},
+      </if>
+      <if test="record.ydPeople != null" >
+        yd_people = #{record.ydPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ydPlan != null" >
+        yd_plan = #{record.ydPlan,jdbcType=INTEGER},
+      </if>
+      <if test="record.ydRemark != null" >
+        yd_remark = #{record.ydRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update plan_monthdetail
+    set md_id = #{record.mdId,jdbcType=VARCHAR},
+      md_mid = #{record.mdMid,jdbcType=VARCHAR},
+      md_customerid = #{record.mdCustomerid,jdbcType=VARCHAR},
+      md_ctype = #{record.mdCtype,jdbcType=VARCHAR},
+      md_product = #{record.mdProduct,jdbcType=TINYINT},
+      yd_ptype = #{record.ydPtype,jdbcType=TINYINT},
+      yd_people = #{record.ydPeople,jdbcType=VARCHAR},
+      yd_plan = #{record.ydPlan,jdbcType=INTEGER},
+      yd_remark = #{record.ydRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update plan_monthdetail
+    set md_id = #{record.mdId,jdbcType=VARCHAR},
+      md_mid = #{record.mdMid,jdbcType=VARCHAR},
+      md_customerid = #{record.mdCustomerid,jdbcType=VARCHAR},
+      md_ctype = #{record.mdCtype,jdbcType=VARCHAR},
+      md_product = #{record.mdProduct,jdbcType=TINYINT},
+      yd_ptype = #{record.ydPtype,jdbcType=TINYINT},
+      yd_people = #{record.ydPeople,jdbcType=VARCHAR},
+      yd_plan = #{record.ydPlan,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.plan.PlanMonthdetail" >
+    update plan_monthdetail
+    <set >
+      <if test="mdMid != null" >
+        md_mid = #{mdMid,jdbcType=VARCHAR},
+      </if>
+      <if test="mdCustomerid != null" >
+        md_customerid = #{mdCustomerid,jdbcType=VARCHAR},
+      </if>
+      <if test="mdCtype != null" >
+        md_ctype = #{mdCtype,jdbcType=VARCHAR},
+      </if>
+      <if test="mdProduct != null" >
+        md_product = #{mdProduct,jdbcType=TINYINT},
+      </if>
+      <if test="ydPtype != null" >
+        yd_ptype = #{ydPtype,jdbcType=TINYINT},
+      </if>
+      <if test="ydPeople != null" >
+        yd_people = #{ydPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="ydPlan != null" >
+        yd_plan = #{ydPlan,jdbcType=INTEGER},
+      </if>
+      <if test="ydRemark != null" >
+        yd_remark = #{ydRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where md_id = #{mdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.plan.PlanMonthdetail" >
+    update plan_monthdetail
+    set md_mid = #{mdMid,jdbcType=VARCHAR},
+      md_customerid = #{mdCustomerid,jdbcType=VARCHAR},
+      md_ctype = #{mdCtype,jdbcType=VARCHAR},
+      md_product = #{mdProduct,jdbcType=TINYINT},
+      yd_ptype = #{ydPtype,jdbcType=TINYINT},
+      yd_people = #{ydPeople,jdbcType=VARCHAR},
+      yd_plan = #{ydPlan,jdbcType=INTEGER},
+      yd_remark = #{ydRemark,jdbcType=LONGVARCHAR}
+    where md_id = #{mdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.plan.PlanMonthdetail" >
+    update plan_monthdetail
+    set md_mid = #{mdMid,jdbcType=VARCHAR},
+      md_customerid = #{mdCustomerid,jdbcType=VARCHAR},
+      md_ctype = #{mdCtype,jdbcType=VARCHAR},
+      md_product = #{mdProduct,jdbcType=TINYINT},
+      yd_ptype = #{ydPtype,jdbcType=TINYINT},
+      yd_people = #{ydPeople,jdbcType=VARCHAR},
+      yd_plan = #{ydPlan,jdbcType=INTEGER}
+    where md_id = #{mdId,jdbcType=VARCHAR}
+  </update>
+</mapper>

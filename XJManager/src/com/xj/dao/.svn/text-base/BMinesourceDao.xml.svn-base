@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.BMinesourceDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.base.BMinesource" >
+    <id column="source_id" property="sourceId" jdbcType="INTEGER" />
+    <result column="source_name" property="sourceName" jdbcType="VARCHAR" />
+    <result column="source_companyid" property="sourceCompanyid" jdbcType="VARCHAR" />
+    <result column="source_companyname" property="sourceCompanyname" jdbcType="VARCHAR" />
+    <result column="source_companyshort" property="sourceCompanyshort" jdbcType="VARCHAR" />
+    <result column="source_sulphur" property="sourceSulphur" jdbcType="DOUBLE" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.base.BMinesource" extends="BaseResultMap" >
+    <result column="source_remark" property="sourceRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      source_id, source_name, source_companyid, source_companyname, source_companyshort, 
+      source_sulphur, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    source_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.base.BMinesourceQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from b_minesource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.base.BMinesourceQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from b_minesource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    source_id,source_name,source_companyid,source_companyname,source_companyshort,source_sulphur,Createdate,ModifyDate,CreateBy,ModifyBy,source_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from b_minesource
+    where source_id = #{sourceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from b_minesource
+    where source_id = #{sourceId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.base.BMinesourceQuery" >
+    delete from b_minesource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.base.BMinesource" >
+    insert into b_minesource (source_id, source_name, source_companyid, 
+      source_companyname, source_companyshort, 
+      source_sulphur, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, source_remark
+      )
+    values (#{sourceId,jdbcType=INTEGER}, #{sourceName,jdbcType=VARCHAR}, #{sourceCompanyid,jdbcType=VARCHAR}, 
+      #{sourceCompanyname,jdbcType=VARCHAR}, #{sourceCompanyshort,jdbcType=VARCHAR}, 
+      #{sourceSulphur,jdbcType=DOUBLE}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{sourceRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.base.BMinesource" >
+    insert into b_minesource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sourceId != null" >
+        source_id,
+      </if>
+      <if test="sourceName != null" >
+        source_name,
+      </if>
+      <if test="sourceCompanyid != null" >
+        source_companyid,
+      </if>
+      <if test="sourceCompanyname != null" >
+        source_companyname,
+      </if>
+      <if test="sourceCompanyshort != null" >
+        source_companyshort,
+      </if>
+      <if test="sourceSulphur != null" >
+        source_sulphur,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="sourceRemark != null" >
+        source_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sourceId != null" >
+        #{sourceId,jdbcType=INTEGER},
+      </if>
+      <if test="sourceName != null" >
+        #{sourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceCompanyid != null" >
+        #{sourceCompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceCompanyname != null" >
+        #{sourceCompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceCompanyshort != null" >
+        #{sourceCompanyshort,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceSulphur != null" >
+        #{sourceSulphur,jdbcType=DOUBLE},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceRemark != null" >
+        #{sourceRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.base.BMinesourceQuery" resultType="java.lang.Integer" >
+    select count(*) from b_minesource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update b_minesource
+    <set >
+      <if test="record.sourceId != null" >
+        source_id = #{record.sourceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sourceName != null" >
+        source_name = #{record.sourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceCompanyid != null" >
+        source_companyid = #{record.sourceCompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceCompanyname != null" >
+        source_companyname = #{record.sourceCompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceCompanyshort != null" >
+        source_companyshort = #{record.sourceCompanyshort,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceSulphur != null" >
+        source_sulphur = #{record.sourceSulphur,jdbcType=DOUBLE},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceRemark != null" >
+        source_remark = #{record.sourceRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update b_minesource
+    set source_id = #{record.sourceId,jdbcType=INTEGER},
+      source_name = #{record.sourceName,jdbcType=VARCHAR},
+      source_companyid = #{record.sourceCompanyid,jdbcType=VARCHAR},
+      source_companyname = #{record.sourceCompanyname,jdbcType=VARCHAR},
+      source_companyshort = #{record.sourceCompanyshort,jdbcType=VARCHAR},
+      source_sulphur = #{record.sourceSulphur,jdbcType=DOUBLE},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      source_remark = #{record.sourceRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update b_minesource
+    set source_id = #{record.sourceId,jdbcType=INTEGER},
+      source_name = #{record.sourceName,jdbcType=VARCHAR},
+      source_companyid = #{record.sourceCompanyid,jdbcType=VARCHAR},
+      source_companyname = #{record.sourceCompanyname,jdbcType=VARCHAR},
+      source_companyshort = #{record.sourceCompanyshort,jdbcType=VARCHAR},
+      source_sulphur = #{record.sourceSulphur,jdbcType=DOUBLE},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.base.BMinesource" >
+    update b_minesource
+    <set >
+      <if test="sourceName != null" >
+        source_name = #{sourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceCompanyid != null" >
+        source_companyid = #{sourceCompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceCompanyname != null" >
+        source_companyname = #{sourceCompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceCompanyshort != null" >
+        source_companyshort = #{sourceCompanyshort,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceSulphur != null" >
+        source_sulphur = #{sourceSulphur,jdbcType=DOUBLE},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceRemark != null" >
+        source_remark = #{sourceRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where source_id = #{sourceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.base.BMinesource" >
+    update b_minesource
+    set source_name = #{sourceName,jdbcType=VARCHAR},
+      source_companyid = #{sourceCompanyid,jdbcType=VARCHAR},
+      source_companyname = #{sourceCompanyname,jdbcType=VARCHAR},
+      source_companyshort = #{sourceCompanyshort,jdbcType=VARCHAR},
+      source_sulphur = #{sourceSulphur,jdbcType=DOUBLE},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      source_remark = #{sourceRemark,jdbcType=LONGVARCHAR}
+    where source_id = #{sourceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.base.BMinesource" >
+    update b_minesource
+    set source_name = #{sourceName,jdbcType=VARCHAR},
+      source_companyid = #{sourceCompanyid,jdbcType=VARCHAR},
+      source_companyname = #{sourceCompanyname,jdbcType=VARCHAR},
+      source_companyshort = #{sourceCompanyshort,jdbcType=VARCHAR},
+      source_sulphur = #{sourceSulphur,jdbcType=DOUBLE},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where source_id = #{sourceId,jdbcType=INTEGER}
+  </update>
+</mapper>

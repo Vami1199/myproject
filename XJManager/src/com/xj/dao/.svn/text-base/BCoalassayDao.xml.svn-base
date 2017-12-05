@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.BCoalassayDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.base.BCoalassay" >
+    <id column="ca_id" property="caId" jdbcType="VARCHAR" />
+    <result column="ca_name" property="caName" jdbcType="VARCHAR" />
+    <result column="ca_unit" property="caUnit" jdbcType="VARCHAR" />
+    <result column="ca_en" property="caEn" jdbcType="VARCHAR" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.base.BCoalassay" extends="BaseResultMap" >
+    <result column="ca_remark" property="caRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      ca_id, ca_name, ca_unit, ca_en, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    ca_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.base.BCoalassayQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from b_coalassay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.base.BCoalassayQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from b_coalassay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    ca_id,ca_name,ca_unit,ca_en,Createdate,ModifyDate,CreateBy,ModifyBy,ca_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from b_coalassay
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from b_coalassay
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.base.BCoalassayQuery" >
+    delete from b_coalassay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.base.BCoalassay" >
+    insert into b_coalassay (ca_id, ca_name, ca_unit, 
+      ca_en, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, ca_remark
+      )
+    values (#{caId,jdbcType=VARCHAR}, #{caName,jdbcType=VARCHAR}, #{caUnit,jdbcType=VARCHAR}, 
+      #{caEn,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{caRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.base.BCoalassay" >
+    insert into b_coalassay
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="caId != null" >
+        ca_id,
+      </if>
+      <if test="caName != null" >
+        ca_name,
+      </if>
+      <if test="caUnit != null" >
+        ca_unit,
+      </if>
+      <if test="caEn != null" >
+        ca_en,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="caRemark != null" >
+        ca_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="caId != null" >
+        #{caId,jdbcType=VARCHAR},
+      </if>
+      <if test="caName != null" >
+        #{caName,jdbcType=VARCHAR},
+      </if>
+      <if test="caUnit != null" >
+        #{caUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="caEn != null" >
+        #{caEn,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="caRemark != null" >
+        #{caRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.base.BCoalassayQuery" resultType="java.lang.Integer" >
+    select count(*) from b_coalassay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update b_coalassay
+    <set >
+      <if test="record.caId != null" >
+        ca_id = #{record.caId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caName != null" >
+        ca_name = #{record.caName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caUnit != null" >
+        ca_unit = #{record.caUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caEn != null" >
+        ca_en = #{record.caEn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caRemark != null" >
+        ca_remark = #{record.caRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update b_coalassay
+    set ca_id = #{record.caId,jdbcType=VARCHAR},
+      ca_name = #{record.caName,jdbcType=VARCHAR},
+      ca_unit = #{record.caUnit,jdbcType=VARCHAR},
+      ca_en = #{record.caEn,jdbcType=VARCHAR},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      ca_remark = #{record.caRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update b_coalassay
+    set ca_id = #{record.caId,jdbcType=VARCHAR},
+      ca_name = #{record.caName,jdbcType=VARCHAR},
+      ca_unit = #{record.caUnit,jdbcType=VARCHAR},
+      ca_en = #{record.caEn,jdbcType=VARCHAR},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.base.BCoalassay" >
+    update b_coalassay
+    <set >
+      <if test="caName != null" >
+        ca_name = #{caName,jdbcType=VARCHAR},
+      </if>
+      <if test="caUnit != null" >
+        ca_unit = #{caUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="caEn != null" >
+        ca_en = #{caEn,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="caRemark != null" >
+        ca_remark = #{caRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.base.BCoalassay" >
+    update b_coalassay
+    set ca_name = #{caName,jdbcType=VARCHAR},
+      ca_unit = #{caUnit,jdbcType=VARCHAR},
+      ca_en = #{caEn,jdbcType=VARCHAR},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      ca_remark = #{caRemark,jdbcType=LONGVARCHAR}
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.base.BCoalassay" >
+    update b_coalassay
+    set ca_name = #{caName,jdbcType=VARCHAR},
+      ca_unit = #{caUnit,jdbcType=VARCHAR},
+      ca_en = #{caEn,jdbcType=VARCHAR},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </update>
+</mapper>

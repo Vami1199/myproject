@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PayListDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.account.PayList" >
+    <id column="pay_id" property="payId" jdbcType="VARCHAR" />
+    <result column="pay_date" property="payDate" jdbcType="DATE" />
+    <result column="pay_customerid" property="payCustomerid" jdbcType="INTEGER" />
+    <result column="pay_reciever" property="payReciever" jdbcType="INTEGER" />
+    <result column="pay_tdate" property="payTdate" jdbcType="DATE" />
+    <result column="pay_count" property="payCount" jdbcType="INTEGER" />
+    <result column="pay_weight" property="payWeight" jdbcType="INTEGER" />
+    <result column="pay_calorific" property="payCalorific" jdbcType="INTEGER" />
+    <result column="pay_price" property="payPrice" jdbcType="DOUBLE" />
+    <result column="pay_total" property="payTotal" jdbcType="DOUBLE" />
+    <result column="pay_dedicated" property="payDedicated" jdbcType="DOUBLE" />
+    <result column="pay_transport" property="payTransport" jdbcType="DOUBLE" />
+    <result column="pay_train" property="payTrain" jdbcType="DOUBLE" />
+    <result column="pay_serve" property="payServe" jdbcType="DOUBLE" />
+    <result column="pay_department" property="payDepartment" jdbcType="VARCHAR" />
+    <result column="pay_user" property="payUser" jdbcType="VARCHAR" />
+    <result column="pay_auditor" property="payAuditor" jdbcType="VARCHAR" />
+    <result column="pay_decider" property="payDecider" jdbcType="VARCHAR" />
+    <result column="pay_state" property="payState" jdbcType="VARCHAR" />
+    <result column="pay_pihao" property="payPihao" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.account.PayList" extends="BaseResultMap" >
+    <result column="pay_remark" property="payRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      pay_id, pay_date, pay_customerid, pay_reciever, pay_tdate, pay_count, pay_weight, 
+      pay_calorific, pay_price, pay_total, pay_dedicated, pay_transport, pay_train, pay_serve, 
+      pay_department, pay_user, pay_auditor, pay_decider, pay_state, pay_pihao
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    pay_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.account.PayListQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from pay_list
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.account.PayListQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pay_list
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    pay_id,pay_date,pay_customerid,pay_reciever,pay_tdate,pay_count,pay_weight,pay_calorific,pay_price,pay_total,pay_dedicated,pay_transport,pay_train,pay_serve,pay_department,pay_user,pay_auditor,pay_decider,pay_state,pay_pihao,pay_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from pay_list
+    where pay_id = #{payId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from pay_list
+    where pay_id = #{payId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.account.PayListQuery" >
+    delete from pay_list
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.account.PayList" >
+    insert into pay_list (pay_id, pay_date, pay_customerid, 
+      pay_reciever, pay_tdate, pay_count, 
+      pay_weight, pay_calorific, pay_price, 
+      pay_total, pay_dedicated, pay_transport, 
+      pay_train, pay_serve, pay_department, 
+      pay_user, pay_auditor, pay_decider, 
+      pay_state, pay_pihao, pay_remark
+      )
+    values (#{payId,jdbcType=VARCHAR}, #{payDate,jdbcType=DATE}, #{payCustomerid,jdbcType=INTEGER}, 
+      #{payReciever,jdbcType=INTEGER}, #{payTdate,jdbcType=DATE}, #{payCount,jdbcType=INTEGER}, 
+      #{payWeight,jdbcType=INTEGER}, #{payCalorific,jdbcType=INTEGER}, #{payPrice,jdbcType=DOUBLE}, 
+      #{payTotal,jdbcType=DOUBLE}, #{payDedicated,jdbcType=DOUBLE}, #{payTransport,jdbcType=DOUBLE}, 
+      #{payTrain,jdbcType=DOUBLE}, #{payServe,jdbcType=DOUBLE}, #{payDepartment,jdbcType=VARCHAR}, 
+      #{payUser,jdbcType=VARCHAR}, #{payAuditor,jdbcType=VARCHAR}, #{payDecider,jdbcType=VARCHAR}, 
+      #{payState,jdbcType=VARCHAR}, #{payPihao,jdbcType=INTEGER}, #{payRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.account.PayList" >
+    insert into pay_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="payId != null" >
+        pay_id,
+      </if>
+      <if test="payDate != null" >
+        pay_date,
+      </if>
+      <if test="payCustomerid != null" >
+        pay_customerid,
+      </if>
+      <if test="payReciever != null" >
+        pay_reciever,
+      </if>
+      <if test="payTdate != null" >
+        pay_tdate,
+      </if>
+      <if test="payCount != null" >
+        pay_count,
+      </if>
+      <if test="payWeight != null" >
+        pay_weight,
+      </if>
+      <if test="payCalorific != null" >
+        pay_calorific,
+      </if>
+      <if test="payPrice != null" >
+        pay_price,
+      </if>
+      <if test="payTotal != null" >
+        pay_total,
+      </if>
+      <if test="payDedicated != null" >
+        pay_dedicated,
+      </if>
+      <if test="payTransport != null" >
+        pay_transport,
+      </if>
+      <if test="payTrain != null" >
+        pay_train,
+      </if>
+      <if test="payServe != null" >
+        pay_serve,
+      </if>
+      <if test="payDepartment != null" >
+        pay_department,
+      </if>
+      <if test="payUser != null" >
+        pay_user,
+      </if>
+      <if test="payAuditor != null" >
+        pay_auditor,
+      </if>
+      <if test="payDecider != null" >
+        pay_decider,
+      </if>
+      <if test="payState != null" >
+        pay_state,
+      </if>
+      <if test="payPihao != null" >
+        pay_pihao,
+      </if>
+      <if test="payRemark != null" >
+        pay_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="payId != null" >
+        #{payId,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null" >
+        #{payDate,jdbcType=DATE},
+      </if>
+      <if test="payCustomerid != null" >
+        #{payCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="payReciever != null" >
+        #{payReciever,jdbcType=INTEGER},
+      </if>
+      <if test="payTdate != null" >
+        #{payTdate,jdbcType=DATE},
+      </if>
+      <if test="payCount != null" >
+        #{payCount,jdbcType=INTEGER},
+      </if>
+      <if test="payWeight != null" >
+        #{payWeight,jdbcType=INTEGER},
+      </if>
+      <if test="payCalorific != null" >
+        #{payCalorific,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null" >
+        #{payPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="payTotal != null" >
+        #{payTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="payDedicated != null" >
+        #{payDedicated,jdbcType=DOUBLE},
+      </if>
+      <if test="payTransport != null" >
+        #{payTransport,jdbcType=DOUBLE},
+      </if>
+      <if test="payTrain != null" >
+        #{payTrain,jdbcType=DOUBLE},
+      </if>
+      <if test="payServe != null" >
+        #{payServe,jdbcType=DOUBLE},
+      </if>
+      <if test="payDepartment != null" >
+        #{payDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="payUser != null" >
+        #{payUser,jdbcType=VARCHAR},
+      </if>
+      <if test="payAuditor != null" >
+        #{payAuditor,jdbcType=VARCHAR},
+      </if>
+      <if test="payDecider != null" >
+        #{payDecider,jdbcType=VARCHAR},
+      </if>
+      <if test="payState != null" >
+        #{payState,jdbcType=VARCHAR},
+      </if>
+      <if test="payPihao != null" >
+        #{payPihao,jdbcType=INTEGER},
+      </if>
+      <if test="payRemark != null" >
+        #{payRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.account.PayListQuery" resultType="java.lang.Integer" >
+    select count(*) from pay_list
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update pay_list
+    <set >
+      <if test="record.payId != null" >
+        pay_id = #{record.payId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payDate != null" >
+        pay_date = #{record.payDate,jdbcType=DATE},
+      </if>
+      <if test="record.payCustomerid != null" >
+        pay_customerid = #{record.payCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.payReciever != null" >
+        pay_reciever = #{record.payReciever,jdbcType=INTEGER},
+      </if>
+      <if test="record.payTdate != null" >
+        pay_tdate = #{record.payTdate,jdbcType=DATE},
+      </if>
+      <if test="record.payCount != null" >
+        pay_count = #{record.payCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.payWeight != null" >
+        pay_weight = #{record.payWeight,jdbcType=INTEGER},
+      </if>
+      <if test="record.payCalorific != null" >
+        pay_calorific = #{record.payCalorific,jdbcType=INTEGER},
+      </if>
+      <if test="record.payPrice != null" >
+        pay_price = #{record.payPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.payTotal != null" >
+        pay_total = #{record.payTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="record.payDedicated != null" >
+        pay_dedicated = #{record.payDedicated,jdbcType=DOUBLE},
+      </if>
+      <if test="record.payTransport != null" >
+        pay_transport = #{record.payTransport,jdbcType=DOUBLE},
+      </if>
+      <if test="record.payTrain != null" >
+        pay_train = #{record.payTrain,jdbcType=DOUBLE},
+      </if>
+      <if test="record.payServe != null" >
+        pay_serve = #{record.payServe,jdbcType=DOUBLE},
+      </if>
+      <if test="record.payDepartment != null" >
+        pay_department = #{record.payDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payUser != null" >
+        pay_user = #{record.payUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payAuditor != null" >
+        pay_auditor = #{record.payAuditor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payDecider != null" >
+        pay_decider = #{record.payDecider,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payState != null" >
+        pay_state = #{record.payState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payPihao != null" >
+        pay_pihao = #{record.payPihao,jdbcType=INTEGER},
+      </if>
+      <if test="record.payRemark != null" >
+        pay_remark = #{record.payRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update pay_list
+    set pay_id = #{record.payId,jdbcType=VARCHAR},
+      pay_date = #{record.payDate,jdbcType=DATE},
+      pay_customerid = #{record.payCustomerid,jdbcType=INTEGER},
+      pay_reciever = #{record.payReciever,jdbcType=INTEGER},
+      pay_tdate = #{record.payTdate,jdbcType=DATE},
+      pay_count = #{record.payCount,jdbcType=INTEGER},
+      pay_weight = #{record.payWeight,jdbcType=INTEGER},
+      pay_calorific = #{record.payCalorific,jdbcType=INTEGER},
+      pay_price = #{record.payPrice,jdbcType=DOUBLE},
+      pay_total = #{record.payTotal,jdbcType=DOUBLE},
+      pay_dedicated = #{record.payDedicated,jdbcType=DOUBLE},
+      pay_transport = #{record.payTransport,jdbcType=DOUBLE},
+      pay_train = #{record.payTrain,jdbcType=DOUBLE},
+      pay_serve = #{record.payServe,jdbcType=DOUBLE},
+      pay_department = #{record.payDepartment,jdbcType=VARCHAR},
+      pay_user = #{record.payUser,jdbcType=VARCHAR},
+      pay_auditor = #{record.payAuditor,jdbcType=VARCHAR},
+      pay_decider = #{record.payDecider,jdbcType=VARCHAR},
+      pay_state = #{record.payState,jdbcType=VARCHAR},
+      pay_pihao = #{record.payPihao,jdbcType=INTEGER},
+      pay_remark = #{record.payRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update pay_list
+    set pay_id = #{record.payId,jdbcType=VARCHAR},
+      pay_date = #{record.payDate,jdbcType=DATE},
+      pay_customerid = #{record.payCustomerid,jdbcType=INTEGER},
+      pay_reciever = #{record.payReciever,jdbcType=INTEGER},
+      pay_tdate = #{record.payTdate,jdbcType=DATE},
+      pay_count = #{record.payCount,jdbcType=INTEGER},
+      pay_weight = #{record.payWeight,jdbcType=INTEGER},
+      pay_calorific = #{record.payCalorific,jdbcType=INTEGER},
+      pay_price = #{record.payPrice,jdbcType=DOUBLE},
+      pay_total = #{record.payTotal,jdbcType=DOUBLE},
+      pay_dedicated = #{record.payDedicated,jdbcType=DOUBLE},
+      pay_transport = #{record.payTransport,jdbcType=DOUBLE},
+      pay_train = #{record.payTrain,jdbcType=DOUBLE},
+      pay_serve = #{record.payServe,jdbcType=DOUBLE},
+      pay_department = #{record.payDepartment,jdbcType=VARCHAR},
+      pay_user = #{record.payUser,jdbcType=VARCHAR},
+      pay_auditor = #{record.payAuditor,jdbcType=VARCHAR},
+      pay_decider = #{record.payDecider,jdbcType=VARCHAR},
+      pay_state = #{record.payState,jdbcType=VARCHAR},
+      pay_pihao = #{record.payPihao,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.account.PayList" >
+    update pay_list
+    <set >
+      <if test="payDate != null" >
+        pay_date = #{payDate,jdbcType=DATE},
+      </if>
+      <if test="payCustomerid != null" >
+        pay_customerid = #{payCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="payReciever != null" >
+        pay_reciever = #{payReciever,jdbcType=INTEGER},
+      </if>
+      <if test="payTdate != null" >
+        pay_tdate = #{payTdate,jdbcType=DATE},
+      </if>
+      <if test="payCount != null" >
+        pay_count = #{payCount,jdbcType=INTEGER},
+      </if>
+      <if test="payWeight != null" >
+        pay_weight = #{payWeight,jdbcType=INTEGER},
+      </if>
+      <if test="payCalorific != null" >
+        pay_calorific = #{payCalorific,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null" >
+        pay_price = #{payPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="payTotal != null" >
+        pay_total = #{payTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="payDedicated != null" >
+        pay_dedicated = #{payDedicated,jdbcType=DOUBLE},
+      </if>
+      <if test="payTransport != null" >
+        pay_transport = #{payTransport,jdbcType=DOUBLE},
+      </if>
+      <if test="payTrain != null" >
+        pay_train = #{payTrain,jdbcType=DOUBLE},
+      </if>
+      <if test="payServe != null" >
+        pay_serve = #{payServe,jdbcType=DOUBLE},
+      </if>
+      <if test="payDepartment != null" >
+        pay_department = #{payDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="payUser != null" >
+        pay_user = #{payUser,jdbcType=VARCHAR},
+      </if>
+      <if test="payAuditor != null" >
+        pay_auditor = #{payAuditor,jdbcType=VARCHAR},
+      </if>
+      <if test="payDecider != null" >
+        pay_decider = #{payDecider,jdbcType=VARCHAR},
+      </if>
+      <if test="payState != null" >
+        pay_state = #{payState,jdbcType=VARCHAR},
+      </if>
+      <if test="payPihao != null" >
+        pay_pihao = #{payPihao,jdbcType=INTEGER},
+      </if>
+      <if test="payRemark != null" >
+        pay_remark = #{payRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pay_id = #{payId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.account.PayList" >
+    update pay_list
+    set pay_date = #{payDate,jdbcType=DATE},
+      pay_customerid = #{payCustomerid,jdbcType=INTEGER},
+      pay_reciever = #{payReciever,jdbcType=INTEGER},
+      pay_tdate = #{payTdate,jdbcType=DATE},
+      pay_count = #{payCount,jdbcType=INTEGER},
+      pay_weight = #{payWeight,jdbcType=INTEGER},
+      pay_calorific = #{payCalorific,jdbcType=INTEGER},
+      pay_price = #{payPrice,jdbcType=DOUBLE},
+      pay_total = #{payTotal,jdbcType=DOUBLE},
+      pay_dedicated = #{payDedicated,jdbcType=DOUBLE},
+      pay_transport = #{payTransport,jdbcType=DOUBLE},
+      pay_train = #{payTrain,jdbcType=DOUBLE},
+      pay_serve = #{payServe,jdbcType=DOUBLE},
+      pay_department = #{payDepartment,jdbcType=VARCHAR},
+      pay_user = #{payUser,jdbcType=VARCHAR},
+      pay_auditor = #{payAuditor,jdbcType=VARCHAR},
+      pay_decider = #{payDecider,jdbcType=VARCHAR},
+      pay_state = #{payState,jdbcType=VARCHAR},
+      pay_pihao = #{payPihao,jdbcType=INTEGER},
+      pay_remark = #{payRemark,jdbcType=LONGVARCHAR}
+    where pay_id = #{payId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.account.PayList" >
+    update pay_list
+    set pay_date = #{payDate,jdbcType=DATE},
+      pay_customerid = #{payCustomerid,jdbcType=INTEGER},
+      pay_reciever = #{payReciever,jdbcType=INTEGER},
+      pay_tdate = #{payTdate,jdbcType=DATE},
+      pay_count = #{payCount,jdbcType=INTEGER},
+      pay_weight = #{payWeight,jdbcType=INTEGER},
+      pay_calorific = #{payCalorific,jdbcType=INTEGER},
+      pay_price = #{payPrice,jdbcType=DOUBLE},
+      pay_total = #{payTotal,jdbcType=DOUBLE},
+      pay_dedicated = #{payDedicated,jdbcType=DOUBLE},
+      pay_transport = #{payTransport,jdbcType=DOUBLE},
+      pay_train = #{payTrain,jdbcType=DOUBLE},
+      pay_serve = #{payServe,jdbcType=DOUBLE},
+      pay_department = #{payDepartment,jdbcType=VARCHAR},
+      pay_user = #{payUser,jdbcType=VARCHAR},
+      pay_auditor = #{payAuditor,jdbcType=VARCHAR},
+      pay_decider = #{payDecider,jdbcType=VARCHAR},
+      pay_state = #{payState,jdbcType=VARCHAR},
+      pay_pihao = #{payPihao,jdbcType=INTEGER}
+    where pay_id = #{payId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.ASamplingDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.assay.ASampling" >
+    <id column="sp_id" property="spId" jdbcType="VARCHAR" />
+    <result column="sp_source" property="spSource" jdbcType="VARCHAR" />
+    <result column="sp_product" property="spProduct" jdbcType="VARCHAR" />
+    <result column="sp_batch" property="spBatch" jdbcType="VARCHAR" />
+    <result column="sp_weight" property="spWeight" jdbcType="INTEGER" />
+    <result column="sp_count" property="spCount" jdbcType="INTEGER" />
+    <result column="sp_address" property="spAddress" jdbcType="VARCHAR" />
+    <result column="sp_department" property="spDepartment" jdbcType="VARCHAR" />
+    <result column="sp_classes" property="spClasses" jdbcType="TINYINT" />
+    <result column="sp_main" property="spMain" jdbcType="VARCHAR" />
+    <result column="sp_gangue" property="spGangue" jdbcType="INTEGER" />
+    <result column="sp_reciever" property="spReciever" jdbcType="VARCHAR" />
+    <result column="sp_collecter" property="spCollecter" jdbcType="VARCHAR" />
+    <result column="sp_producer" property="spProducer" jdbcType="VARCHAR" />
+    <result column="sp_cstart" property="spCstart" jdbcType="TIMESTAMP" />
+    <result column="sp_cend" property="spCend" jdbcType="TIMESTAMP" />
+    <result column="sp_pstart" property="spPstart" jdbcType="TIMESTAMP" />
+    <result column="sp_pend" property="spPend" jdbcType="TIMESTAMP" />
+    <result column="sp_flag" property="spFlag" jdbcType="TINYINT" />
+    <result column="sp_user" property="spUser" jdbcType="VARCHAR" />
+    <result column="sp_date" property="spDate" jdbcType="DATE" />
+    <result column="sp_write" property="spWrite" jdbcType="TIMESTAMP" />
+    <result column="sp_examine" property="spExamine" jdbcType="TIMESTAMP" />
+    <result column="sp_get" property="spGet" jdbcType="TIMESTAMP" />
+    <result column="sp_writer" property="spWriter" jdbcType="VARCHAR" />
+    <result column="sp_auditor" property="spAuditor" jdbcType="VARCHAR" />
+    <result column="sp_consignee" property="spConsignee" jdbcType="VARCHAR" />
+    <result column="sp_state" property="spState" jdbcType="TINYINT" />
+    <result column="CreateDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.assay.ASampling" extends="BaseResultMap" >
+    <result column="sp_remark" property="spRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      sp_id, sp_source, sp_product, sp_batch, sp_weight, sp_count, sp_address, sp_department, 
+      sp_classes, sp_main, sp_gangue, sp_reciever, sp_collecter, sp_producer, sp_cstart, 
+      sp_cend, sp_pstart, sp_pend, sp_flag, sp_user, sp_date, sp_write, sp_examine, sp_get, 
+      sp_writer, sp_auditor, sp_consignee, sp_state, CreateDate, ModifyDate, CreateBy, 
+      ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    sp_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.assay.ASamplingQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from a_sampling
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.assay.ASamplingQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from a_sampling
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    sp_id,sp_source,sp_product,sp_batch,sp_weight,sp_count,sp_address,sp_department,sp_classes,sp_main,sp_gangue,sp_reciever,sp_collecter,sp_producer,sp_cstart,sp_cend,sp_pstart,sp_pend,sp_flag,sp_user,sp_date,sp_write,sp_examine,sp_get,sp_writer,sp_auditor,sp_consignee,sp_state,CreateDate,ModifyDate,CreateBy,ModifyBy,sp_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from a_sampling
+    where sp_id = #{spId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from a_sampling
+    where sp_id = #{spId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.assay.ASamplingQuery" >
+    delete from a_sampling
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.assay.ASampling" >
+    insert into a_sampling (sp_id, sp_source, sp_product, 
+      sp_batch, sp_weight, sp_count, 
+      sp_address, sp_department, sp_classes, 
+      sp_main, sp_gangue, sp_reciever, 
+      sp_collecter, sp_producer, sp_cstart, 
+      sp_cend, sp_pstart, sp_pend, 
+      sp_flag, sp_user, sp_date, 
+      sp_write, sp_examine, sp_get, 
+      sp_writer, sp_auditor, sp_consignee, 
+      sp_state, CreateDate, ModifyDate, 
+      CreateBy, ModifyBy, sp_remark
+      )
+    values (#{spId,jdbcType=VARCHAR}, #{spSource,jdbcType=VARCHAR}, #{spProduct,jdbcType=VARCHAR}, 
+      #{spBatch,jdbcType=VARCHAR}, #{spWeight,jdbcType=INTEGER}, #{spCount,jdbcType=INTEGER}, 
+      #{spAddress,jdbcType=VARCHAR}, #{spDepartment,jdbcType=VARCHAR}, #{spClasses,jdbcType=TINYINT}, 
+      #{spMain,jdbcType=VARCHAR}, #{spGangue,jdbcType=INTEGER}, #{spReciever,jdbcType=VARCHAR}, 
+      #{spCollecter,jdbcType=VARCHAR}, #{spProducer,jdbcType=VARCHAR}, #{spCstart,jdbcType=TIMESTAMP}, 
+      #{spCend,jdbcType=TIMESTAMP}, #{spPstart,jdbcType=TIMESTAMP}, #{spPend,jdbcType=TIMESTAMP}, 
+      #{spFlag,jdbcType=TINYINT}, #{spUser,jdbcType=VARCHAR}, #{spDate,jdbcType=DATE}, 
+      #{spWrite,jdbcType=TIMESTAMP}, #{spExamine,jdbcType=TIMESTAMP}, #{spGet,jdbcType=TIMESTAMP}, 
+      #{spWriter,jdbcType=VARCHAR}, #{spAuditor,jdbcType=VARCHAR}, #{spConsignee,jdbcType=VARCHAR}, 
+      #{spState,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{spRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.assay.ASampling" >
+    insert into a_sampling
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="spId != null" >
+        sp_id,
+      </if>
+      <if test="spSource != null" >
+        sp_source,
+      </if>
+      <if test="spProduct != null" >
+        sp_product,
+      </if>
+      <if test="spBatch != null" >
+        sp_batch,
+      </if>
+      <if test="spWeight != null" >
+        sp_weight,
+      </if>
+      <if test="spCount != null" >
+        sp_count,
+      </if>
+      <if test="spAddress != null" >
+        sp_address,
+      </if>
+      <if test="spDepartment != null" >
+        sp_department,
+      </if>
+      <if test="spClasses != null" >
+        sp_classes,
+      </if>
+      <if test="spMain != null" >
+        sp_main,
+      </if>
+      <if test="spGangue != null" >
+        sp_gangue,
+      </if>
+      <if test="spReciever != null" >
+        sp_reciever,
+      </if>
+      <if test="spCollecter != null" >
+        sp_collecter,
+      </if>
+      <if test="spProducer != null" >
+        sp_producer,
+      </if>
+      <if test="spCstart != null" >
+        sp_cstart,
+      </if>
+      <if test="spCend != null" >
+        sp_cend,
+      </if>
+      <if test="spPstart != null" >
+        sp_pstart,
+      </if>
+      <if test="spPend != null" >
+        sp_pend,
+      </if>
+      <if test="spFlag != null" >
+        sp_flag,
+      </if>
+      <if test="spUser != null" >
+        sp_user,
+      </if>
+      <if test="spDate != null" >
+        sp_date,
+      </if>
+      <if test="spWrite != null" >
+        sp_write,
+      </if>
+      <if test="spExamine != null" >
+        sp_examine,
+      </if>
+      <if test="spGet != null" >
+        sp_get,
+      </if>
+      <if test="spWriter != null" >
+        sp_writer,
+      </if>
+      <if test="spAuditor != null" >
+        sp_auditor,
+      </if>
+      <if test="spConsignee != null" >
+        sp_consignee,
+      </if>
+      <if test="spState != null" >
+        sp_state,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="spRemark != null" >
+        sp_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="spId != null" >
+        #{spId,jdbcType=VARCHAR},
+      </if>
+      <if test="spSource != null" >
+        #{spSource,jdbcType=VARCHAR},
+      </if>
+      <if test="spProduct != null" >
+        #{spProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="spBatch != null" >
+        #{spBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="spWeight != null" >
+        #{spWeight,jdbcType=INTEGER},
+      </if>
+      <if test="spCount != null" >
+        #{spCount,jdbcType=INTEGER},
+      </if>
+      <if test="spAddress != null" >
+        #{spAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="spDepartment != null" >
+        #{spDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="spClasses != null" >
+        #{spClasses,jdbcType=TINYINT},
+      </if>
+      <if test="spMain != null" >
+        #{spMain,jdbcType=VARCHAR},
+      </if>
+      <if test="spGangue != null" >
+        #{spGangue,jdbcType=INTEGER},
+      </if>
+      <if test="spReciever != null" >
+        #{spReciever,jdbcType=VARCHAR},
+      </if>
+      <if test="spCollecter != null" >
+        #{spCollecter,jdbcType=VARCHAR},
+      </if>
+      <if test="spProducer != null" >
+        #{spProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="spCstart != null" >
+        #{spCstart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spCend != null" >
+        #{spCend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spPstart != null" >
+        #{spPstart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spPend != null" >
+        #{spPend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spFlag != null" >
+        #{spFlag,jdbcType=TINYINT},
+      </if>
+      <if test="spUser != null" >
+        #{spUser,jdbcType=VARCHAR},
+      </if>
+      <if test="spDate != null" >
+        #{spDate,jdbcType=DATE},
+      </if>
+      <if test="spWrite != null" >
+        #{spWrite,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spExamine != null" >
+        #{spExamine,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spGet != null" >
+        #{spGet,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spWriter != null" >
+        #{spWriter,jdbcType=VARCHAR},
+      </if>
+      <if test="spAuditor != null" >
+        #{spAuditor,jdbcType=VARCHAR},
+      </if>
+      <if test="spConsignee != null" >
+        #{spConsignee,jdbcType=VARCHAR},
+      </if>
+      <if test="spState != null" >
+        #{spState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="spRemark != null" >
+        #{spRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.assay.ASamplingQuery" resultType="java.lang.Integer" >
+    select count(*) from a_sampling
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update a_sampling
+    <set >
+      <if test="record.spId != null" >
+        sp_id = #{record.spId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spSource != null" >
+        sp_source = #{record.spSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spProduct != null" >
+        sp_product = #{record.spProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spBatch != null" >
+        sp_batch = #{record.spBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spWeight != null" >
+        sp_weight = #{record.spWeight,jdbcType=INTEGER},
+      </if>
+      <if test="record.spCount != null" >
+        sp_count = #{record.spCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.spAddress != null" >
+        sp_address = #{record.spAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spDepartment != null" >
+        sp_department = #{record.spDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spClasses != null" >
+        sp_classes = #{record.spClasses,jdbcType=TINYINT},
+      </if>
+      <if test="record.spMain != null" >
+        sp_main = #{record.spMain,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spGangue != null" >
+        sp_gangue = #{record.spGangue,jdbcType=INTEGER},
+      </if>
+      <if test="record.spReciever != null" >
+        sp_reciever = #{record.spReciever,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spCollecter != null" >
+        sp_collecter = #{record.spCollecter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spProducer != null" >
+        sp_producer = #{record.spProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spCstart != null" >
+        sp_cstart = #{record.spCstart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spCend != null" >
+        sp_cend = #{record.spCend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spPstart != null" >
+        sp_pstart = #{record.spPstart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spPend != null" >
+        sp_pend = #{record.spPend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spFlag != null" >
+        sp_flag = #{record.spFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.spUser != null" >
+        sp_user = #{record.spUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spDate != null" >
+        sp_date = #{record.spDate,jdbcType=DATE},
+      </if>
+      <if test="record.spWrite != null" >
+        sp_write = #{record.spWrite,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spExamine != null" >
+        sp_examine = #{record.spExamine,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spGet != null" >
+        sp_get = #{record.spGet,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spWriter != null" >
+        sp_writer = #{record.spWriter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spAuditor != null" >
+        sp_auditor = #{record.spAuditor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spConsignee != null" >
+        sp_consignee = #{record.spConsignee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spState != null" >
+        sp_state = #{record.spState,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        CreateDate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spRemark != null" >
+        sp_remark = #{record.spRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update a_sampling
+    set sp_id = #{record.spId,jdbcType=VARCHAR},
+      sp_source = #{record.spSource,jdbcType=VARCHAR},
+      sp_product = #{record.spProduct,jdbcType=VARCHAR},
+      sp_batch = #{record.spBatch,jdbcType=VARCHAR},
+      sp_weight = #{record.spWeight,jdbcType=INTEGER},
+      sp_count = #{record.spCount,jdbcType=INTEGER},
+      sp_address = #{record.spAddress,jdbcType=VARCHAR},
+      sp_department = #{record.spDepartment,jdbcType=VARCHAR},
+      sp_classes = #{record.spClasses,jdbcType=TINYINT},
+      sp_main = #{record.spMain,jdbcType=VARCHAR},
+      sp_gangue = #{record.spGangue,jdbcType=INTEGER},
+      sp_reciever = #{record.spReciever,jdbcType=VARCHAR},
+      sp_collecter = #{record.spCollecter,jdbcType=VARCHAR},
+      sp_producer = #{record.spProducer,jdbcType=VARCHAR},
+      sp_cstart = #{record.spCstart,jdbcType=TIMESTAMP},
+      sp_cend = #{record.spCend,jdbcType=TIMESTAMP},
+      sp_pstart = #{record.spPstart,jdbcType=TIMESTAMP},
+      sp_pend = #{record.spPend,jdbcType=TIMESTAMP},
+      sp_flag = #{record.spFlag,jdbcType=TINYINT},
+      sp_user = #{record.spUser,jdbcType=VARCHAR},
+      sp_date = #{record.spDate,jdbcType=DATE},
+      sp_write = #{record.spWrite,jdbcType=TIMESTAMP},
+      sp_examine = #{record.spExamine,jdbcType=TIMESTAMP},
+      sp_get = #{record.spGet,jdbcType=TIMESTAMP},
+      sp_writer = #{record.spWriter,jdbcType=VARCHAR},
+      sp_auditor = #{record.spAuditor,jdbcType=VARCHAR},
+      sp_consignee = #{record.spConsignee,jdbcType=VARCHAR},
+      sp_state = #{record.spState,jdbcType=TINYINT},
+      CreateDate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      sp_remark = #{record.spRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update a_sampling
+    set sp_id = #{record.spId,jdbcType=VARCHAR},
+      sp_source = #{record.spSource,jdbcType=VARCHAR},
+      sp_product = #{record.spProduct,jdbcType=VARCHAR},
+      sp_batch = #{record.spBatch,jdbcType=VARCHAR},
+      sp_weight = #{record.spWeight,jdbcType=INTEGER},
+      sp_count = #{record.spCount,jdbcType=INTEGER},
+      sp_address = #{record.spAddress,jdbcType=VARCHAR},
+      sp_department = #{record.spDepartment,jdbcType=VARCHAR},
+      sp_classes = #{record.spClasses,jdbcType=TINYINT},
+      sp_main = #{record.spMain,jdbcType=VARCHAR},
+      sp_gangue = #{record.spGangue,jdbcType=INTEGER},
+      sp_reciever = #{record.spReciever,jdbcType=VARCHAR},
+      sp_collecter = #{record.spCollecter,jdbcType=VARCHAR},
+      sp_producer = #{record.spProducer,jdbcType=VARCHAR},
+      sp_cstart = #{record.spCstart,jdbcType=TIMESTAMP},
+      sp_cend = #{record.spCend,jdbcType=TIMESTAMP},
+      sp_pstart = #{record.spPstart,jdbcType=TIMESTAMP},
+      sp_pend = #{record.spPend,jdbcType=TIMESTAMP},
+      sp_flag = #{record.spFlag,jdbcType=TINYINT},
+      sp_user = #{record.spUser,jdbcType=VARCHAR},
+      sp_date = #{record.spDate,jdbcType=DATE},
+      sp_write = #{record.spWrite,jdbcType=TIMESTAMP},
+      sp_examine = #{record.spExamine,jdbcType=TIMESTAMP},
+      sp_get = #{record.spGet,jdbcType=TIMESTAMP},
+      sp_writer = #{record.spWriter,jdbcType=VARCHAR},
+      sp_auditor = #{record.spAuditor,jdbcType=VARCHAR},
+      sp_consignee = #{record.spConsignee,jdbcType=VARCHAR},
+      sp_state = #{record.spState,jdbcType=TINYINT},
+      CreateDate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.assay.ASampling" >
+    update a_sampling
+    <set >
+      <if test="spSource != null" >
+        sp_source = #{spSource,jdbcType=VARCHAR},
+      </if>
+      <if test="spProduct != null" >
+        sp_product = #{spProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="spBatch != null" >
+        sp_batch = #{spBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="spWeight != null" >
+        sp_weight = #{spWeight,jdbcType=INTEGER},
+      </if>
+      <if test="spCount != null" >
+        sp_count = #{spCount,jdbcType=INTEGER},
+      </if>
+      <if test="spAddress != null" >
+        sp_address = #{spAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="spDepartment != null" >
+        sp_department = #{spDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="spClasses != null" >
+        sp_classes = #{spClasses,jdbcType=TINYINT},
+      </if>
+      <if test="spMain != null" >
+        sp_main = #{spMain,jdbcType=VARCHAR},
+      </if>
+      <if test="spGangue != null" >
+        sp_gangue = #{spGangue,jdbcType=INTEGER},
+      </if>
+      <if test="spReciever != null" >
+        sp_reciever = #{spReciever,jdbcType=VARCHAR},
+      </if>
+      <if test="spCollecter != null" >
+        sp_collecter = #{spCollecter,jdbcType=VARCHAR},
+      </if>
+      <if test="spProducer != null" >
+        sp_producer = #{spProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="spCstart != null" >
+        sp_cstart = #{spCstart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spCend != null" >
+        sp_cend = #{spCend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spPstart != null" >
+        sp_pstart = #{spPstart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spPend != null" >
+        sp_pend = #{spPend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spFlag != null" >
+        sp_flag = #{spFlag,jdbcType=TINYINT},
+      </if>
+      <if test="spUser != null" >
+        sp_user = #{spUser,jdbcType=VARCHAR},
+      </if>
+      <if test="spDate != null" >
+        sp_date = #{spDate,jdbcType=DATE},
+      </if>
+      <if test="spWrite != null" >
+        sp_write = #{spWrite,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spExamine != null" >
+        sp_examine = #{spExamine,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spGet != null" >
+        sp_get = #{spGet,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spWriter != null" >
+        sp_writer = #{spWriter,jdbcType=VARCHAR},
+      </if>
+      <if test="spAuditor != null" >
+        sp_auditor = #{spAuditor,jdbcType=VARCHAR},
+      </if>
+      <if test="spConsignee != null" >
+        sp_consignee = #{spConsignee,jdbcType=VARCHAR},
+      </if>
+      <if test="spState != null" >
+        sp_state = #{spState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="spRemark != null" >
+        sp_remark = #{spRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sp_id = #{spId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.assay.ASampling" >
+    update a_sampling
+    set sp_source = #{spSource,jdbcType=VARCHAR},
+      sp_product = #{spProduct,jdbcType=VARCHAR},
+      sp_batch = #{spBatch,jdbcType=VARCHAR},
+      sp_weight = #{spWeight,jdbcType=INTEGER},
+      sp_count = #{spCount,jdbcType=INTEGER},
+      sp_address = #{spAddress,jdbcType=VARCHAR},
+      sp_department = #{spDepartment,jdbcType=VARCHAR},
+      sp_classes = #{spClasses,jdbcType=TINYINT},
+      sp_main = #{spMain,jdbcType=VARCHAR},
+      sp_gangue = #{spGangue,jdbcType=INTEGER},
+      sp_reciever = #{spReciever,jdbcType=VARCHAR},
+      sp_collecter = #{spCollecter,jdbcType=VARCHAR},
+      sp_producer = #{spProducer,jdbcType=VARCHAR},
+      sp_cstart = #{spCstart,jdbcType=TIMESTAMP},
+      sp_cend = #{spCend,jdbcType=TIMESTAMP},
+      sp_pstart = #{spPstart,jdbcType=TIMESTAMP},
+      sp_pend = #{spPend,jdbcType=TIMESTAMP},
+      sp_flag = #{spFlag,jdbcType=TINYINT},
+      sp_user = #{spUser,jdbcType=VARCHAR},
+      sp_date = #{spDate,jdbcType=DATE},
+      sp_write = #{spWrite,jdbcType=TIMESTAMP},
+      sp_examine = #{spExamine,jdbcType=TIMESTAMP},
+      sp_get = #{spGet,jdbcType=TIMESTAMP},
+      sp_writer = #{spWriter,jdbcType=VARCHAR},
+      sp_auditor = #{spAuditor,jdbcType=VARCHAR},
+      sp_consignee = #{spConsignee,jdbcType=VARCHAR},
+      sp_state = #{spState,jdbcType=TINYINT},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      sp_remark = #{spRemark,jdbcType=LONGVARCHAR}
+    where sp_id = #{spId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.assay.ASampling" >
+    update a_sampling
+    set sp_source = #{spSource,jdbcType=VARCHAR},
+      sp_product = #{spProduct,jdbcType=VARCHAR},
+      sp_batch = #{spBatch,jdbcType=VARCHAR},
+      sp_weight = #{spWeight,jdbcType=INTEGER},
+      sp_count = #{spCount,jdbcType=INTEGER},
+      sp_address = #{spAddress,jdbcType=VARCHAR},
+      sp_department = #{spDepartment,jdbcType=VARCHAR},
+      sp_classes = #{spClasses,jdbcType=TINYINT},
+      sp_main = #{spMain,jdbcType=VARCHAR},
+      sp_gangue = #{spGangue,jdbcType=INTEGER},
+      sp_reciever = #{spReciever,jdbcType=VARCHAR},
+      sp_collecter = #{spCollecter,jdbcType=VARCHAR},
+      sp_producer = #{spProducer,jdbcType=VARCHAR},
+      sp_cstart = #{spCstart,jdbcType=TIMESTAMP},
+      sp_cend = #{spCend,jdbcType=TIMESTAMP},
+      sp_pstart = #{spPstart,jdbcType=TIMESTAMP},
+      sp_pend = #{spPend,jdbcType=TIMESTAMP},
+      sp_flag = #{spFlag,jdbcType=TINYINT},
+      sp_user = #{spUser,jdbcType=VARCHAR},
+      sp_date = #{spDate,jdbcType=DATE},
+      sp_write = #{spWrite,jdbcType=TIMESTAMP},
+      sp_examine = #{spExamine,jdbcType=TIMESTAMP},
+      sp_get = #{spGet,jdbcType=TIMESTAMP},
+      sp_writer = #{spWriter,jdbcType=VARCHAR},
+      sp_auditor = #{spAuditor,jdbcType=VARCHAR},
+      sp_consignee = #{spConsignee,jdbcType=VARCHAR},
+      sp_state = #{spState,jdbcType=TINYINT},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where sp_id = #{spId,jdbcType=VARCHAR}
+  </update>
+</mapper>

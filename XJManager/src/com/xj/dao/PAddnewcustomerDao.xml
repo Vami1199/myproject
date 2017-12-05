@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PAddnewcustomerDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trainsplan.PAddnewcustomer" >
+    <id column="awc_id" property="awcId" jdbcType="VARCHAR" />
+    <result column="awc_contractid" property="awcContractid" jdbcType="VARCHAR" />
+    <result column="awc_arrive" property="awcArrive" jdbcType="VARCHAR" />
+    <result column="awc_paycompany" property="awcPaycompany" jdbcType="VARCHAR" />
+    <result column="awc_takecompanyid" property="awcTakecompanyid" jdbcType="BIGINT" />
+    <result column="awc_takecompany" property="awcTakecompany" jdbcType="VARCHAR" />
+    <result column="awc_customerflag" property="awcCustomerflag" jdbcType="TINYINT" />
+    <result column="awc_starttime" property="awcStarttime" jdbcType="DATE" />
+    <result column="awc_endtime" property="awcEndtime" jdbcType="DATE" />
+    <result column="awc_start" property="awcStart" jdbcType="VARCHAR" />
+    <result column="awc_end" property="awcEnd" jdbcType="VARCHAR" />
+    <result column="awc_province" property="awcProvince" jdbcType="VARCHAR" />
+    <result column="awc_industry" property="awcIndustry" jdbcType="VARCHAR" />
+    <result column="awc_product" property="awcProduct" jdbcType="VARCHAR" />
+    <result column="awc_trainnumber" property="awcTrainnumber" jdbcType="INTEGER" />
+    <result column="awc_weight" property="awcWeight" jdbcType="BIGINT" />
+    <result column="awc_rnumber" property="awcRnumber" jdbcType="INTEGER" />
+    <result column="awc_rweight" property="awcRweight" jdbcType="BIGINT" />
+    <result column="awc_mid" property="awcMid" jdbcType="VARCHAR" />
+    <result column="awc_batch" property="awcBatch" jdbcType="VARCHAR" />
+    <result column="awc_realtrain" property="awcRealtrain" jdbcType="INTEGER" />
+    <result column="awc_realweight" property="awcRealweight" jdbcType="BIGINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.trainsplan.PAddnewcustomer" extends="BaseResultMap" >
+    <result column="awc_remark" property="awcRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      awc_id, awc_contractid, awc_arrive, awc_paycompany, awc_takecompanyid, awc_takecompany, 
+      awc_customerflag, awc_starttime, awc_endtime, awc_start, awc_end, awc_province, awc_industry, 
+      awc_product, awc_trainnumber, awc_weight, awc_rnumber, awc_rweight, awc_mid, awc_batch, 
+      awc_realtrain, awc_realweight, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    awc_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.trainsplan.PAddnewcustomerQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from p_addnewcustomer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trainsplan.PAddnewcustomerQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_addnewcustomer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    awc_id,awc_contractid,awc_arrive,awc_paycompany,awc_takecompanyid,awc_takecompany,awc_customerflag,awc_starttime,awc_endtime,awc_start,awc_end,awc_province,awc_industry,awc_product,awc_trainnumber,awc_weight,awc_rnumber,awc_rweight,awc_mid,awc_batch,awc_realtrain,awc_realweight,Createdate,ModifyDate,CreateBy,ModifyBy,awc_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from p_addnewcustomer
+    where awc_id = #{awcId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from p_addnewcustomer
+    where awc_id = #{awcId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trainsplan.PAddnewcustomerQuery" >
+    delete from p_addnewcustomer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trainsplan.PAddnewcustomer" >
+    insert into p_addnewcustomer (awc_id, awc_contractid, awc_arrive, 
+      awc_paycompany, awc_takecompanyid, awc_takecompany, 
+      awc_customerflag, awc_starttime, awc_endtime, 
+      awc_start, awc_end, awc_province, 
+      awc_industry, awc_product, awc_trainnumber, 
+      awc_weight, awc_rnumber, awc_rweight, 
+      awc_mid, awc_batch, awc_realtrain, 
+      awc_realweight, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, awc_remark
+      )
+    values (#{awcId,jdbcType=VARCHAR}, #{awcContractid,jdbcType=VARCHAR}, #{awcArrive,jdbcType=VARCHAR}, 
+      #{awcPaycompany,jdbcType=VARCHAR}, #{awcTakecompanyid,jdbcType=BIGINT}, #{awcTakecompany,jdbcType=VARCHAR}, 
+      #{awcCustomerflag,jdbcType=TINYINT}, #{awcStarttime,jdbcType=DATE}, #{awcEndtime,jdbcType=DATE}, 
+      #{awcStart,jdbcType=VARCHAR}, #{awcEnd,jdbcType=VARCHAR}, #{awcProvince,jdbcType=VARCHAR}, 
+      #{awcIndustry,jdbcType=VARCHAR}, #{awcProduct,jdbcType=VARCHAR}, #{awcTrainnumber,jdbcType=INTEGER}, 
+      #{awcWeight,jdbcType=BIGINT}, #{awcRnumber,jdbcType=INTEGER}, #{awcRweight,jdbcType=BIGINT}, 
+      #{awcMid,jdbcType=VARCHAR}, #{awcBatch,jdbcType=VARCHAR}, #{awcRealtrain,jdbcType=INTEGER}, 
+      #{awcRealweight,jdbcType=BIGINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{awcRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trainsplan.PAddnewcustomer" >
+    insert into p_addnewcustomer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="awcId != null" >
+        awc_id,
+      </if>
+      <if test="awcContractid != null" >
+        awc_contractid,
+      </if>
+      <if test="awcArrive != null" >
+        awc_arrive,
+      </if>
+      <if test="awcPaycompany != null" >
+        awc_paycompany,
+      </if>
+      <if test="awcTakecompanyid != null" >
+        awc_takecompanyid,
+      </if>
+      <if test="awcTakecompany != null" >
+        awc_takecompany,
+      </if>
+      <if test="awcCustomerflag != null" >
+        awc_customerflag,
+      </if>
+      <if test="awcStarttime != null" >
+        awc_starttime,
+      </if>
+      <if test="awcEndtime != null" >
+        awc_endtime,
+      </if>
+      <if test="awcStart != null" >
+        awc_start,
+      </if>
+      <if test="awcEnd != null" >
+        awc_end,
+      </if>
+      <if test="awcProvince != null" >
+        awc_province,
+      </if>
+      <if test="awcIndustry != null" >
+        awc_industry,
+      </if>
+      <if test="awcProduct != null" >
+        awc_product,
+      </if>
+      <if test="awcTrainnumber != null" >
+        awc_trainnumber,
+      </if>
+      <if test="awcWeight != null" >
+        awc_weight,
+      </if>
+      <if test="awcRnumber != null" >
+        awc_rnumber,
+      </if>
+      <if test="awcRweight != null" >
+        awc_rweight,
+      </if>
+      <if test="awcMid != null" >
+        awc_mid,
+      </if>
+      <if test="awcBatch != null" >
+        awc_batch,
+      </if>
+      <if test="awcRealtrain != null" >
+        awc_realtrain,
+      </if>
+      <if test="awcRealweight != null" >
+        awc_realweight,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="awcRemark != null" >
+        awc_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="awcId != null" >
+        #{awcId,jdbcType=VARCHAR},
+      </if>
+      <if test="awcContractid != null" >
+        #{awcContractid,jdbcType=VARCHAR},
+      </if>
+      <if test="awcArrive != null" >
+        #{awcArrive,jdbcType=VARCHAR},
+      </if>
+      <if test="awcPaycompany != null" >
+        #{awcPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="awcTakecompanyid != null" >
+        #{awcTakecompanyid,jdbcType=BIGINT},
+      </if>
+      <if test="awcTakecompany != null" >
+        #{awcTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="awcCustomerflag != null" >
+        #{awcCustomerflag,jdbcType=TINYINT},
+      </if>
+      <if test="awcStarttime != null" >
+        #{awcStarttime,jdbcType=DATE},
+      </if>
+      <if test="awcEndtime != null" >
+        #{awcEndtime,jdbcType=DATE},
+      </if>
+      <if test="awcStart != null" >
+        #{awcStart,jdbcType=VARCHAR},
+      </if>
+      <if test="awcEnd != null" >
+        #{awcEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="awcProvince != null" >
+        #{awcProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="awcIndustry != null" >
+        #{awcIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="awcProduct != null" >
+        #{awcProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="awcTrainnumber != null" >
+        #{awcTrainnumber,jdbcType=INTEGER},
+      </if>
+      <if test="awcWeight != null" >
+        #{awcWeight,jdbcType=BIGINT},
+      </if>
+      <if test="awcRnumber != null" >
+        #{awcRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="awcRweight != null" >
+        #{awcRweight,jdbcType=BIGINT},
+      </if>
+      <if test="awcMid != null" >
+        #{awcMid,jdbcType=VARCHAR},
+      </if>
+      <if test="awcBatch != null" >
+        #{awcBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="awcRealtrain != null" >
+        #{awcRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="awcRealweight != null" >
+        #{awcRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="awcRemark != null" >
+        #{awcRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trainsplan.PAddnewcustomerQuery" resultType="java.lang.Integer" >
+    select count(*) from p_addnewcustomer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_addnewcustomer
+    <set >
+      <if test="record.awcId != null" >
+        awc_id = #{record.awcId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcContractid != null" >
+        awc_contractid = #{record.awcContractid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcArrive != null" >
+        awc_arrive = #{record.awcArrive,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcPaycompany != null" >
+        awc_paycompany = #{record.awcPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcTakecompanyid != null" >
+        awc_takecompanyid = #{record.awcTakecompanyid,jdbcType=BIGINT},
+      </if>
+      <if test="record.awcTakecompany != null" >
+        awc_takecompany = #{record.awcTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcCustomerflag != null" >
+        awc_customerflag = #{record.awcCustomerflag,jdbcType=TINYINT},
+      </if>
+      <if test="record.awcStarttime != null" >
+        awc_starttime = #{record.awcStarttime,jdbcType=DATE},
+      </if>
+      <if test="record.awcEndtime != null" >
+        awc_endtime = #{record.awcEndtime,jdbcType=DATE},
+      </if>
+      <if test="record.awcStart != null" >
+        awc_start = #{record.awcStart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcEnd != null" >
+        awc_end = #{record.awcEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcProvince != null" >
+        awc_province = #{record.awcProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcIndustry != null" >
+        awc_industry = #{record.awcIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcProduct != null" >
+        awc_product = #{record.awcProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcTrainnumber != null" >
+        awc_trainnumber = #{record.awcTrainnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.awcWeight != null" >
+        awc_weight = #{record.awcWeight,jdbcType=BIGINT},
+      </if>
+      <if test="record.awcRnumber != null" >
+        awc_rnumber = #{record.awcRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.awcRweight != null" >
+        awc_rweight = #{record.awcRweight,jdbcType=BIGINT},
+      </if>
+      <if test="record.awcMid != null" >
+        awc_mid = #{record.awcMid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcBatch != null" >
+        awc_batch = #{record.awcBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcRealtrain != null" >
+        awc_realtrain = #{record.awcRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="record.awcRealweight != null" >
+        awc_realweight = #{record.awcRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcRemark != null" >
+        awc_remark = #{record.awcRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update p_addnewcustomer
+    set awc_id = #{record.awcId,jdbcType=VARCHAR},
+      awc_contractid = #{record.awcContractid,jdbcType=VARCHAR},
+      awc_arrive = #{record.awcArrive,jdbcType=VARCHAR},
+      awc_paycompany = #{record.awcPaycompany,jdbcType=VARCHAR},
+      awc_takecompanyid = #{record.awcTakecompanyid,jdbcType=BIGINT},
+      awc_takecompany = #{record.awcTakecompany,jdbcType=VARCHAR},
+      awc_customerflag = #{record.awcCustomerflag,jdbcType=TINYINT},
+      awc_starttime = #{record.awcStarttime,jdbcType=DATE},
+      awc_endtime = #{record.awcEndtime,jdbcType=DATE},
+      awc_start = #{record.awcStart,jdbcType=VARCHAR},
+      awc_end = #{record.awcEnd,jdbcType=VARCHAR},
+      awc_province = #{record.awcProvince,jdbcType=VARCHAR},
+      awc_industry = #{record.awcIndustry,jdbcType=VARCHAR},
+      awc_product = #{record.awcProduct,jdbcType=VARCHAR},
+      awc_trainnumber = #{record.awcTrainnumber,jdbcType=INTEGER},
+      awc_weight = #{record.awcWeight,jdbcType=BIGINT},
+      awc_rnumber = #{record.awcRnumber,jdbcType=INTEGER},
+      awc_rweight = #{record.awcRweight,jdbcType=BIGINT},
+      awc_mid = #{record.awcMid,jdbcType=VARCHAR},
+      awc_batch = #{record.awcBatch,jdbcType=VARCHAR},
+      awc_realtrain = #{record.awcRealtrain,jdbcType=INTEGER},
+      awc_realweight = #{record.awcRealweight,jdbcType=BIGINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      awc_remark = #{record.awcRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_addnewcustomer
+    set awc_id = #{record.awcId,jdbcType=VARCHAR},
+      awc_contractid = #{record.awcContractid,jdbcType=VARCHAR},
+      awc_arrive = #{record.awcArrive,jdbcType=VARCHAR},
+      awc_paycompany = #{record.awcPaycompany,jdbcType=VARCHAR},
+      awc_takecompanyid = #{record.awcTakecompanyid,jdbcType=BIGINT},
+      awc_takecompany = #{record.awcTakecompany,jdbcType=VARCHAR},
+      awc_customerflag = #{record.awcCustomerflag,jdbcType=TINYINT},
+      awc_starttime = #{record.awcStarttime,jdbcType=DATE},
+      awc_endtime = #{record.awcEndtime,jdbcType=DATE},
+      awc_start = #{record.awcStart,jdbcType=VARCHAR},
+      awc_end = #{record.awcEnd,jdbcType=VARCHAR},
+      awc_province = #{record.awcProvince,jdbcType=VARCHAR},
+      awc_industry = #{record.awcIndustry,jdbcType=VARCHAR},
+      awc_product = #{record.awcProduct,jdbcType=VARCHAR},
+      awc_trainnumber = #{record.awcTrainnumber,jdbcType=INTEGER},
+      awc_weight = #{record.awcWeight,jdbcType=BIGINT},
+      awc_rnumber = #{record.awcRnumber,jdbcType=INTEGER},
+      awc_rweight = #{record.awcRweight,jdbcType=BIGINT},
+      awc_mid = #{record.awcMid,jdbcType=VARCHAR},
+      awc_batch = #{record.awcBatch,jdbcType=VARCHAR},
+      awc_realtrain = #{record.awcRealtrain,jdbcType=INTEGER},
+      awc_realweight = #{record.awcRealweight,jdbcType=BIGINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trainsplan.PAddnewcustomer" >
+    update p_addnewcustomer
+    <set >
+      <if test="awcContractid != null" >
+        awc_contractid = #{awcContractid,jdbcType=VARCHAR},
+      </if>
+      <if test="awcArrive != null" >
+        awc_arrive = #{awcArrive,jdbcType=VARCHAR},
+      </if>
+      <if test="awcPaycompany != null" >
+        awc_paycompany = #{awcPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="awcTakecompanyid != null" >
+        awc_takecompanyid = #{awcTakecompanyid,jdbcType=BIGINT},
+      </if>
+      <if test="awcTakecompany != null" >
+        awc_takecompany = #{awcTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="awcCustomerflag != null" >
+        awc_customerflag = #{awcCustomerflag,jdbcType=TINYINT},
+      </if>
+      <if test="awcStarttime != null" >
+        awc_starttime = #{awcStarttime,jdbcType=DATE},
+      </if>
+      <if test="awcEndtime != null" >
+        awc_endtime = #{awcEndtime,jdbcType=DATE},
+      </if>
+      <if test="awcStart != null" >
+        awc_start = #{awcStart,jdbcType=VARCHAR},
+      </if>
+      <if test="awcEnd != null" >
+        awc_end = #{awcEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="awcProvince != null" >
+        awc_province = #{awcProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="awcIndustry != null" >
+        awc_industry = #{awcIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="awcProduct != null" >
+        awc_product = #{awcProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="awcTrainnumber != null" >
+        awc_trainnumber = #{awcTrainnumber,jdbcType=INTEGER},
+      </if>
+      <if test="awcWeight != null" >
+        awc_weight = #{awcWeight,jdbcType=BIGINT},
+      </if>
+      <if test="awcRnumber != null" >
+        awc_rnumber = #{awcRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="awcRweight != null" >
+        awc_rweight = #{awcRweight,jdbcType=BIGINT},
+      </if>
+      <if test="awcMid != null" >
+        awc_mid = #{awcMid,jdbcType=VARCHAR},
+      </if>
+      <if test="awcBatch != null" >
+        awc_batch = #{awcBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="awcRealtrain != null" >
+        awc_realtrain = #{awcRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="awcRealweight != null" >
+        awc_realweight = #{awcRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="awcRemark != null" >
+        awc_remark = #{awcRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where awc_id = #{awcId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.trainsplan.PAddnewcustomer" >
+    update p_addnewcustomer
+    set awc_contractid = #{awcContractid,jdbcType=VARCHAR},
+      awc_arrive = #{awcArrive,jdbcType=VARCHAR},
+      awc_paycompany = #{awcPaycompany,jdbcType=VARCHAR},
+      awc_takecompanyid = #{awcTakecompanyid,jdbcType=BIGINT},
+      awc_takecompany = #{awcTakecompany,jdbcType=VARCHAR},
+      awc_customerflag = #{awcCustomerflag,jdbcType=TINYINT},
+      awc_starttime = #{awcStarttime,jdbcType=DATE},
+      awc_endtime = #{awcEndtime,jdbcType=DATE},
+      awc_start = #{awcStart,jdbcType=VARCHAR},
+      awc_end = #{awcEnd,jdbcType=VARCHAR},
+      awc_province = #{awcProvince,jdbcType=VARCHAR},
+      awc_industry = #{awcIndustry,jdbcType=VARCHAR},
+      awc_product = #{awcProduct,jdbcType=VARCHAR},
+      awc_trainnumber = #{awcTrainnumber,jdbcType=INTEGER},
+      awc_weight = #{awcWeight,jdbcType=BIGINT},
+      awc_rnumber = #{awcRnumber,jdbcType=INTEGER},
+      awc_rweight = #{awcRweight,jdbcType=BIGINT},
+      awc_mid = #{awcMid,jdbcType=VARCHAR},
+      awc_batch = #{awcBatch,jdbcType=VARCHAR},
+      awc_realtrain = #{awcRealtrain,jdbcType=INTEGER},
+      awc_realweight = #{awcRealweight,jdbcType=BIGINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      awc_remark = #{awcRemark,jdbcType=LONGVARCHAR}
+    where awc_id = #{awcId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trainsplan.PAddnewcustomer" >
+    update p_addnewcustomer
+    set awc_contractid = #{awcContractid,jdbcType=VARCHAR},
+      awc_arrive = #{awcArrive,jdbcType=VARCHAR},
+      awc_paycompany = #{awcPaycompany,jdbcType=VARCHAR},
+      awc_takecompanyid = #{awcTakecompanyid,jdbcType=BIGINT},
+      awc_takecompany = #{awcTakecompany,jdbcType=VARCHAR},
+      awc_customerflag = #{awcCustomerflag,jdbcType=TINYINT},
+      awc_starttime = #{awcStarttime,jdbcType=DATE},
+      awc_endtime = #{awcEndtime,jdbcType=DATE},
+      awc_start = #{awcStart,jdbcType=VARCHAR},
+      awc_end = #{awcEnd,jdbcType=VARCHAR},
+      awc_province = #{awcProvince,jdbcType=VARCHAR},
+      awc_industry = #{awcIndustry,jdbcType=VARCHAR},
+      awc_product = #{awcProduct,jdbcType=VARCHAR},
+      awc_trainnumber = #{awcTrainnumber,jdbcType=INTEGER},
+      awc_weight = #{awcWeight,jdbcType=BIGINT},
+      awc_rnumber = #{awcRnumber,jdbcType=INTEGER},
+      awc_rweight = #{awcRweight,jdbcType=BIGINT},
+      awc_mid = #{awcMid,jdbcType=VARCHAR},
+      awc_batch = #{awcBatch,jdbcType=VARCHAR},
+      awc_realtrain = #{awcRealtrain,jdbcType=INTEGER},
+      awc_realweight = #{awcRealweight,jdbcType=BIGINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where awc_id = #{awcId,jdbcType=VARCHAR}
+  </update>
+</mapper>

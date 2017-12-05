@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PlanYeardetailDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.plan.PlanYeardetail" >
+    <id column="yd_id" property="ydId" jdbcType="VARCHAR" />
+    <result column="yd_yid" property="ydYid" jdbcType="VARCHAR" />
+    <result column="yd_customerid" property="ydCustomerid" jdbcType="VARCHAR" />
+    <result column="yd_ctype" property="ydCtype" jdbcType="VARCHAR" />
+    <result column="yd_product" property="ydProduct" jdbcType="TINYINT" />
+    <result column="yd_transport" property="ydTransport" jdbcType="TINYINT" />
+    <result column="yd_ptype" property="ydPtype" jdbcType="TINYINT" />
+    <result column="yd_people" property="ydPeople" jdbcType="VARCHAR" />
+    <result column="yd_plan" property="ydPlan" jdbcType="INTEGER" />
+    <result column="y_one" property="yOne" jdbcType="INTEGER" />
+    <result column="y_two" property="yTwo" jdbcType="INTEGER" />
+    <result column="y_three" property="yThree" jdbcType="INTEGER" />
+    <result column="y_four" property="yFour" jdbcType="INTEGER" />
+    <result column="y_five" property="yFive" jdbcType="INTEGER" />
+    <result column="y_six" property="ySix" jdbcType="INTEGER" />
+    <result column="y_seven" property="ySeven" jdbcType="INTEGER" />
+    <result column="y_eight" property="yEight" jdbcType="INTEGER" />
+    <result column="y_nine" property="yNine" jdbcType="INTEGER" />
+    <result column="y_ten" property="yTen" jdbcType="INTEGER" />
+    <result column="y_eleven" property="yEleven" jdbcType="INTEGER" />
+    <result column="y_twelve" property="yTwelve" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.plan.PlanYeardetail" extends="BaseResultMap" >
+    <result column="y_remark" property="yRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      yd_id, yd_yid, yd_customerid, yd_ctype, yd_product, yd_transport, yd_ptype, yd_people, 
+      yd_plan, y_one, y_two, y_three, y_four, y_five, y_six, y_seven, y_eight, y_nine, 
+      y_ten, y_eleven, y_twelve
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    y_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.plan.PlanYeardetailQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from plan_yeardetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.plan.PlanYeardetailQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from plan_yeardetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    yd_id,yd_yid,yd_customerid,yd_ctype,yd_product,yd_transport,yd_ptype,yd_people,yd_plan,y_one,y_two,y_three,y_four,y_five,y_six,y_seven,y_eight,y_nine,y_ten,y_eleven,y_twelve,y_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from plan_yeardetail
+    where yd_id = #{ydId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from plan_yeardetail
+    where yd_id = #{ydId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.plan.PlanYeardetailQuery" >
+    delete from plan_yeardetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.plan.PlanYeardetail" >
+    insert into plan_yeardetail (yd_id, yd_yid, yd_customerid, 
+      yd_ctype, yd_product, yd_transport, 
+      yd_ptype, yd_people, yd_plan, 
+      y_one, y_two, y_three, 
+      y_four, y_five, y_six, 
+      y_seven, y_eight, y_nine, 
+      y_ten, y_eleven, y_twelve, 
+      y_remark)
+    values (#{ydId,jdbcType=VARCHAR}, #{ydYid,jdbcType=VARCHAR}, #{ydCustomerid,jdbcType=VARCHAR}, 
+      #{ydCtype,jdbcType=VARCHAR}, #{ydProduct,jdbcType=TINYINT}, #{ydTransport,jdbcType=TINYINT}, 
+      #{ydPtype,jdbcType=TINYINT}, #{ydPeople,jdbcType=VARCHAR}, #{ydPlan,jdbcType=INTEGER}, 
+      #{yOne,jdbcType=INTEGER}, #{yTwo,jdbcType=INTEGER}, #{yThree,jdbcType=INTEGER}, 
+      #{yFour,jdbcType=INTEGER}, #{yFive,jdbcType=INTEGER}, #{ySix,jdbcType=INTEGER}, 
+      #{ySeven,jdbcType=INTEGER}, #{yEight,jdbcType=INTEGER}, #{yNine,jdbcType=INTEGER}, 
+      #{yTen,jdbcType=INTEGER}, #{yEleven,jdbcType=INTEGER}, #{yTwelve,jdbcType=INTEGER}, 
+      #{yRemark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.plan.PlanYeardetail" >
+    insert into plan_yeardetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ydId != null" >
+        yd_id,
+      </if>
+      <if test="ydYid != null" >
+        yd_yid,
+      </if>
+      <if test="ydCustomerid != null" >
+        yd_customerid,
+      </if>
+      <if test="ydCtype != null" >
+        yd_ctype,
+      </if>
+      <if test="ydProduct != null" >
+        yd_product,
+      </if>
+      <if test="ydTransport != null" >
+        yd_transport,
+      </if>
+      <if test="ydPtype != null" >
+        yd_ptype,
+      </if>
+      <if test="ydPeople != null" >
+        yd_people,
+      </if>
+      <if test="ydPlan != null" >
+        yd_plan,
+      </if>
+      <if test="yOne != null" >
+        y_one,
+      </if>
+      <if test="yTwo != null" >
+        y_two,
+      </if>
+      <if test="yThree != null" >
+        y_three,
+      </if>
+      <if test="yFour != null" >
+        y_four,
+      </if>
+      <if test="yFive != null" >
+        y_five,
+      </if>
+      <if test="ySix != null" >
+        y_six,
+      </if>
+      <if test="ySeven != null" >
+        y_seven,
+      </if>
+      <if test="yEight != null" >
+        y_eight,
+      </if>
+      <if test="yNine != null" >
+        y_nine,
+      </if>
+      <if test="yTen != null" >
+        y_ten,
+      </if>
+      <if test="yEleven != null" >
+        y_eleven,
+      </if>
+      <if test="yTwelve != null" >
+        y_twelve,
+      </if>
+      <if test="yRemark != null" >
+        y_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ydId != null" >
+        #{ydId,jdbcType=VARCHAR},
+      </if>
+      <if test="ydYid != null" >
+        #{ydYid,jdbcType=VARCHAR},
+      </if>
+      <if test="ydCustomerid != null" >
+        #{ydCustomerid,jdbcType=VARCHAR},
+      </if>
+      <if test="ydCtype != null" >
+        #{ydCtype,jdbcType=VARCHAR},
+      </if>
+      <if test="ydProduct != null" >
+        #{ydProduct,jdbcType=TINYINT},
+      </if>
+      <if test="ydTransport != null" >
+        #{ydTransport,jdbcType=TINYINT},
+      </if>
+      <if test="ydPtype != null" >
+        #{ydPtype,jdbcType=TINYINT},
+      </if>
+      <if test="ydPeople != null" >
+        #{ydPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="ydPlan != null" >
+        #{ydPlan,jdbcType=INTEGER},
+      </if>
+      <if test="yOne != null" >
+        #{yOne,jdbcType=INTEGER},
+      </if>
+      <if test="yTwo != null" >
+        #{yTwo,jdbcType=INTEGER},
+      </if>
+      <if test="yThree != null" >
+        #{yThree,jdbcType=INTEGER},
+      </if>
+      <if test="yFour != null" >
+        #{yFour,jdbcType=INTEGER},
+      </if>
+      <if test="yFive != null" >
+        #{yFive,jdbcType=INTEGER},
+      </if>
+      <if test="ySix != null" >
+        #{ySix,jdbcType=INTEGER},
+      </if>
+      <if test="ySeven != null" >
+        #{ySeven,jdbcType=INTEGER},
+      </if>
+      <if test="yEight != null" >
+        #{yEight,jdbcType=INTEGER},
+      </if>
+      <if test="yNine != null" >
+        #{yNine,jdbcType=INTEGER},
+      </if>
+      <if test="yTen != null" >
+        #{yTen,jdbcType=INTEGER},
+      </if>
+      <if test="yEleven != null" >
+        #{yEleven,jdbcType=INTEGER},
+      </if>
+      <if test="yTwelve != null" >
+        #{yTwelve,jdbcType=INTEGER},
+      </if>
+      <if test="yRemark != null" >
+        #{yRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.plan.PlanYeardetailQuery" resultType="java.lang.Integer" >
+    select count(*) from plan_yeardetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update plan_yeardetail
+    <set >
+      <if test="record.ydId != null" >
+        yd_id = #{record.ydId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ydYid != null" >
+        yd_yid = #{record.ydYid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ydCustomerid != null" >
+        yd_customerid = #{record.ydCustomerid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ydCtype != null" >
+        yd_ctype = #{record.ydCtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ydProduct != null" >
+        yd_product = #{record.ydProduct,jdbcType=TINYINT},
+      </if>
+      <if test="record.ydTransport != null" >
+        yd_transport = #{record.ydTransport,jdbcType=TINYINT},
+      </if>
+      <if test="record.ydPtype != null" >
+        yd_ptype = #{record.ydPtype,jdbcType=TINYINT},
+      </if>
+      <if test="record.ydPeople != null" >
+        yd_people = #{record.ydPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ydPlan != null" >
+        yd_plan = #{record.ydPlan,jdbcType=INTEGER},
+      </if>
+      <if test="record.yOne != null" >
+        y_one = #{record.yOne,jdbcType=INTEGER},
+      </if>
+      <if test="record.yTwo != null" >
+        y_two = #{record.yTwo,jdbcType=INTEGER},
+      </if>
+      <if test="record.yThree != null" >
+        y_three = #{record.yThree,jdbcType=INTEGER},
+      </if>
+      <if test="record.yFour != null" >
+        y_four = #{record.yFour,jdbcType=INTEGER},
+      </if>
+      <if test="record.yFive != null" >
+        y_five = #{record.yFive,jdbcType=INTEGER},
+      </if>
+      <if test="record.ySix != null" >
+        y_six = #{record.ySix,jdbcType=INTEGER},
+      </if>
+      <if test="record.ySeven != null" >
+        y_seven = #{record.ySeven,jdbcType=INTEGER},
+      </if>
+      <if test="record.yEight != null" >
+        y_eight = #{record.yEight,jdbcType=INTEGER},
+      </if>
+      <if test="record.yNine != null" >
+        y_nine = #{record.yNine,jdbcType=INTEGER},
+      </if>
+      <if test="record.yTen != null" >
+        y_ten = #{record.yTen,jdbcType=INTEGER},
+      </if>
+      <if test="record.yEleven != null" >
+        y_eleven = #{record.yEleven,jdbcType=INTEGER},
+      </if>
+      <if test="record.yTwelve != null" >
+        y_twelve = #{record.yTwelve,jdbcType=INTEGER},
+      </if>
+      <if test="record.yRemark != null" >
+        y_remark = #{record.yRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update plan_yeardetail
+    set yd_id = #{record.ydId,jdbcType=VARCHAR},
+      yd_yid = #{record.ydYid,jdbcType=VARCHAR},
+      yd_customerid = #{record.ydCustomerid,jdbcType=VARCHAR},
+      yd_ctype = #{record.ydCtype,jdbcType=VARCHAR},
+      yd_product = #{record.ydProduct,jdbcType=TINYINT},
+      yd_transport = #{record.ydTransport,jdbcType=TINYINT},
+      yd_ptype = #{record.ydPtype,jdbcType=TINYINT},
+      yd_people = #{record.ydPeople,jdbcType=VARCHAR},
+      yd_plan = #{record.ydPlan,jdbcType=INTEGER},
+      y_one = #{record.yOne,jdbcType=INTEGER},
+      y_two = #{record.yTwo,jdbcType=INTEGER},
+      y_three = #{record.yThree,jdbcType=INTEGER},
+      y_four = #{record.yFour,jdbcType=INTEGER},
+      y_five = #{record.yFive,jdbcType=INTEGER},
+      y_six = #{record.ySix,jdbcType=INTEGER},
+      y_seven = #{record.ySeven,jdbcType=INTEGER},
+      y_eight = #{record.yEight,jdbcType=INTEGER},
+      y_nine = #{record.yNine,jdbcType=INTEGER},
+      y_ten = #{record.yTen,jdbcType=INTEGER},
+      y_eleven = #{record.yEleven,jdbcType=INTEGER},
+      y_twelve = #{record.yTwelve,jdbcType=INTEGER},
+      y_remark = #{record.yRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update plan_yeardetail
+    set yd_id = #{record.ydId,jdbcType=VARCHAR},
+      yd_yid = #{record.ydYid,jdbcType=VARCHAR},
+      yd_customerid = #{record.ydCustomerid,jdbcType=VARCHAR},
+      yd_ctype = #{record.ydCtype,jdbcType=VARCHAR},
+      yd_product = #{record.ydProduct,jdbcType=TINYINT},
+      yd_transport = #{record.ydTransport,jdbcType=TINYINT},
+      yd_ptype = #{record.ydPtype,jdbcType=TINYINT},
+      yd_people = #{record.ydPeople,jdbcType=VARCHAR},
+      yd_plan = #{record.ydPlan,jdbcType=INTEGER},
+      y_one = #{record.yOne,jdbcType=INTEGER},
+      y_two = #{record.yTwo,jdbcType=INTEGER},
+      y_three = #{record.yThree,jdbcType=INTEGER},
+      y_four = #{record.yFour,jdbcType=INTEGER},
+      y_five = #{record.yFive,jdbcType=INTEGER},
+      y_six = #{record.ySix,jdbcType=INTEGER},
+      y_seven = #{record.ySeven,jdbcType=INTEGER},
+      y_eight = #{record.yEight,jdbcType=INTEGER},
+      y_nine = #{record.yNine,jdbcType=INTEGER},
+      y_ten = #{record.yTen,jdbcType=INTEGER},
+      y_eleven = #{record.yEleven,jdbcType=INTEGER},
+      y_twelve = #{record.yTwelve,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.plan.PlanYeardetail" >
+    update plan_yeardetail
+    <set >
+      <if test="ydYid != null" >
+        yd_yid = #{ydYid,jdbcType=VARCHAR},
+      </if>
+      <if test="ydCustomerid != null" >
+        yd_customerid = #{ydCustomerid,jdbcType=VARCHAR},
+      </if>
+      <if test="ydCtype != null" >
+        yd_ctype = #{ydCtype,jdbcType=VARCHAR},
+      </if>
+      <if test="ydProduct != null" >
+        yd_product = #{ydProduct,jdbcType=TINYINT},
+      </if>
+      <if test="ydTransport != null" >
+        yd_transport = #{ydTransport,jdbcType=TINYINT},
+      </if>
+      <if test="ydPtype != null" >
+        yd_ptype = #{ydPtype,jdbcType=TINYINT},
+      </if>
+      <if test="ydPeople != null" >
+        yd_people = #{ydPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="ydPlan != null" >
+        yd_plan = #{ydPlan,jdbcType=INTEGER},
+      </if>
+      <if test="yOne != null" >
+        y_one = #{yOne,jdbcType=INTEGER},
+      </if>
+      <if test="yTwo != null" >
+        y_two = #{yTwo,jdbcType=INTEGER},
+      </if>
+      <if test="yThree != null" >
+        y_three = #{yThree,jdbcType=INTEGER},
+      </if>
+      <if test="yFour != null" >
+        y_four = #{yFour,jdbcType=INTEGER},
+      </if>
+      <if test="yFive != null" >
+        y_five = #{yFive,jdbcType=INTEGER},
+      </if>
+      <if test="ySix != null" >
+        y_six = #{ySix,jdbcType=INTEGER},
+      </if>
+      <if test="ySeven != null" >
+        y_seven = #{ySeven,jdbcType=INTEGER},
+      </if>
+      <if test="yEight != null" >
+        y_eight = #{yEight,jdbcType=INTEGER},
+      </if>
+      <if test="yNine != null" >
+        y_nine = #{yNine,jdbcType=INTEGER},
+      </if>
+      <if test="yTen != null" >
+        y_ten = #{yTen,jdbcType=INTEGER},
+      </if>
+      <if test="yEleven != null" >
+        y_eleven = #{yEleven,jdbcType=INTEGER},
+      </if>
+      <if test="yTwelve != null" >
+        y_twelve = #{yTwelve,jdbcType=INTEGER},
+      </if>
+      <if test="yRemark != null" >
+        y_remark = #{yRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where yd_id = #{ydId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.plan.PlanYeardetail" >
+    update plan_yeardetail
+    set yd_yid = #{ydYid,jdbcType=VARCHAR},
+      yd_customerid = #{ydCustomerid,jdbcType=VARCHAR},
+      yd_ctype = #{ydCtype,jdbcType=VARCHAR},
+      yd_product = #{ydProduct,jdbcType=TINYINT},
+      yd_transport = #{ydTransport,jdbcType=TINYINT},
+      yd_ptype = #{ydPtype,jdbcType=TINYINT},
+      yd_people = #{ydPeople,jdbcType=VARCHAR},
+      yd_plan = #{ydPlan,jdbcType=INTEGER},
+      y_one = #{yOne,jdbcType=INTEGER},
+      y_two = #{yTwo,jdbcType=INTEGER},
+      y_three = #{yThree,jdbcType=INTEGER},
+      y_four = #{yFour,jdbcType=INTEGER},
+      y_five = #{yFive,jdbcType=INTEGER},
+      y_six = #{ySix,jdbcType=INTEGER},
+      y_seven = #{ySeven,jdbcType=INTEGER},
+      y_eight = #{yEight,jdbcType=INTEGER},
+      y_nine = #{yNine,jdbcType=INTEGER},
+      y_ten = #{yTen,jdbcType=INTEGER},
+      y_eleven = #{yEleven,jdbcType=INTEGER},
+      y_twelve = #{yTwelve,jdbcType=INTEGER},
+      y_remark = #{yRemark,jdbcType=LONGVARCHAR}
+    where yd_id = #{ydId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.plan.PlanYeardetail" >
+    update plan_yeardetail
+    set yd_yid = #{ydYid,jdbcType=VARCHAR},
+      yd_customerid = #{ydCustomerid,jdbcType=VARCHAR},
+      yd_ctype = #{ydCtype,jdbcType=VARCHAR},
+      yd_product = #{ydProduct,jdbcType=TINYINT},
+      yd_transport = #{ydTransport,jdbcType=TINYINT},
+      yd_ptype = #{ydPtype,jdbcType=TINYINT},
+      yd_people = #{ydPeople,jdbcType=VARCHAR},
+      yd_plan = #{ydPlan,jdbcType=INTEGER},
+      y_one = #{yOne,jdbcType=INTEGER},
+      y_two = #{yTwo,jdbcType=INTEGER},
+      y_three = #{yThree,jdbcType=INTEGER},
+      y_four = #{yFour,jdbcType=INTEGER},
+      y_five = #{yFive,jdbcType=INTEGER},
+      y_six = #{ySix,jdbcType=INTEGER},
+      y_seven = #{ySeven,jdbcType=INTEGER},
+      y_eight = #{yEight,jdbcType=INTEGER},
+      y_nine = #{yNine,jdbcType=INTEGER},
+      y_ten = #{yTen,jdbcType=INTEGER},
+      y_eleven = #{yEleven,jdbcType=INTEGER},
+      y_twelve = #{yTwelve,jdbcType=INTEGER}
+    where yd_id = #{ydId,jdbcType=VARCHAR}
+  </update>
+</mapper>

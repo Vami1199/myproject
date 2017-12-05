@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.SalesContractChangeDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.contract.SalesContractChange" >
+    <id column="sc_contractId" property="scContractid" jdbcType="INTEGER" />
+    <result column="sc_customerName" property="scCustomername" jdbcType="VARCHAR" />
+    <result column="sc_contractNumber" property="scContractnumber" jdbcType="INTEGER" />
+    <result column="sc_applicationWay" property="scApplicationway" jdbcType="VARCHAR" />
+    <result column="sc_applicantUnit" property="scApplicantunit" jdbcType="VARCHAR" />
+    <result column="sc_reasonType" property="scReasontype" jdbcType="VARCHAR" />
+    <result column="sc_changePerson" property="scChangeperson" jdbcType="VARCHAR" />
+    <result column="sc_changeTime" property="scChangetime" jdbcType="DATE" />
+    <result column="sc_status" property="scStatus" jdbcType="INTEGER" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.contract.SalesContractChangeWithBLOBs" extends="BaseResultMap" >
+    <result column="sc_changedescription" property="scChangedescription" jdbcType="LONGVARCHAR" />
+    <result column="sc_remark" property="scRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      sc_contractId, sc_customerName, sc_contractNumber, sc_applicationWay, sc_applicantUnit, 
+      sc_reasonType, sc_changePerson, sc_changeTime, sc_status, Createdate, ModifyDate, 
+      CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    sc_changedescription, sc_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.contract.SalesContractChangeQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sales_contract_change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.contract.SalesContractChangeQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sales_contract_change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    sc_contractId,sc_customerName,sc_contractNumber,sc_applicationWay,sc_applicantUnit,sc_reasonType,sc_changePerson,sc_changeTime,sc_status,Createdate,ModifyDate,CreateBy,ModifyBy,sc_changedescription,sc_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from sales_contract_change
+    where sc_contractId = #{scContractid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sales_contract_change
+    where sc_contractId = #{scContractid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.contract.SalesContractChangeQuery" >
+    delete from sales_contract_change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.contract.SalesContractChangeWithBLOBs" >
+    insert into sales_contract_change (sc_contractId, sc_customerName, sc_contractNumber, 
+      sc_applicationWay, sc_applicantUnit, sc_reasonType, 
+      sc_changePerson, sc_changeTime, sc_status, 
+      Createdate, ModifyDate, CreateBy, 
+      ModifyBy, sc_changedescription, sc_remark
+      )
+    values (#{scContractid,jdbcType=INTEGER}, #{scCustomername,jdbcType=VARCHAR}, #{scContractnumber,jdbcType=INTEGER}, 
+      #{scApplicationway,jdbcType=VARCHAR}, #{scApplicantunit,jdbcType=VARCHAR}, #{scReasontype,jdbcType=VARCHAR}, 
+      #{scChangeperson,jdbcType=VARCHAR}, #{scChangetime,jdbcType=DATE}, #{scStatus,jdbcType=INTEGER}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{modifyby,jdbcType=VARCHAR}, #{scChangedescription,jdbcType=LONGVARCHAR}, #{scRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.contract.SalesContractChangeWithBLOBs" >
+    insert into sales_contract_change
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scContractid != null" >
+        sc_contractId,
+      </if>
+      <if test="scCustomername != null" >
+        sc_customerName,
+      </if>
+      <if test="scContractnumber != null" >
+        sc_contractNumber,
+      </if>
+      <if test="scApplicationway != null" >
+        sc_applicationWay,
+      </if>
+      <if test="scApplicantunit != null" >
+        sc_applicantUnit,
+      </if>
+      <if test="scReasontype != null" >
+        sc_reasonType,
+      </if>
+      <if test="scChangeperson != null" >
+        sc_changePerson,
+      </if>
+      <if test="scChangetime != null" >
+        sc_changeTime,
+      </if>
+      <if test="scStatus != null" >
+        sc_status,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="scChangedescription != null" >
+        sc_changedescription,
+      </if>
+      <if test="scRemark != null" >
+        sc_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scContractid != null" >
+        #{scContractid,jdbcType=INTEGER},
+      </if>
+      <if test="scCustomername != null" >
+        #{scCustomername,jdbcType=VARCHAR},
+      </if>
+      <if test="scContractnumber != null" >
+        #{scContractnumber,jdbcType=INTEGER},
+      </if>
+      <if test="scApplicationway != null" >
+        #{scApplicationway,jdbcType=VARCHAR},
+      </if>
+      <if test="scApplicantunit != null" >
+        #{scApplicantunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scReasontype != null" >
+        #{scReasontype,jdbcType=VARCHAR},
+      </if>
+      <if test="scChangeperson != null" >
+        #{scChangeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="scChangetime != null" >
+        #{scChangetime,jdbcType=DATE},
+      </if>
+      <if test="scStatus != null" >
+        #{scStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="scChangedescription != null" >
+        #{scChangedescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scRemark != null" >
+        #{scRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.contract.SalesContractChangeQuery" resultType="java.lang.Integer" >
+    select count(*) from sales_contract_change
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sales_contract_change
+    <set >
+      <if test="record.scContractid != null" >
+        sc_contractId = #{record.scContractid,jdbcType=INTEGER},
+      </if>
+      <if test="record.scCustomername != null" >
+        sc_customerName = #{record.scCustomername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scContractnumber != null" >
+        sc_contractNumber = #{record.scContractnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.scApplicationway != null" >
+        sc_applicationWay = #{record.scApplicationway,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scApplicantunit != null" >
+        sc_applicantUnit = #{record.scApplicantunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scReasontype != null" >
+        sc_reasonType = #{record.scReasontype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scChangeperson != null" >
+        sc_changePerson = #{record.scChangeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scChangetime != null" >
+        sc_changeTime = #{record.scChangetime,jdbcType=DATE},
+      </if>
+      <if test="record.scStatus != null" >
+        sc_status = #{record.scStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scChangedescription != null" >
+        sc_changedescription = #{record.scChangedescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.scRemark != null" >
+        sc_remark = #{record.scRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update sales_contract_change
+    set sc_contractId = #{record.scContractid,jdbcType=INTEGER},
+      sc_customerName = #{record.scCustomername,jdbcType=VARCHAR},
+      sc_contractNumber = #{record.scContractnumber,jdbcType=INTEGER},
+      sc_applicationWay = #{record.scApplicationway,jdbcType=VARCHAR},
+      sc_applicantUnit = #{record.scApplicantunit,jdbcType=VARCHAR},
+      sc_reasonType = #{record.scReasontype,jdbcType=VARCHAR},
+      sc_changePerson = #{record.scChangeperson,jdbcType=VARCHAR},
+      sc_changeTime = #{record.scChangetime,jdbcType=DATE},
+      sc_status = #{record.scStatus,jdbcType=INTEGER},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      sc_changedescription = #{record.scChangedescription,jdbcType=LONGVARCHAR},
+      sc_remark = #{record.scRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sales_contract_change
+    set sc_contractId = #{record.scContractid,jdbcType=INTEGER},
+      sc_customerName = #{record.scCustomername,jdbcType=VARCHAR},
+      sc_contractNumber = #{record.scContractnumber,jdbcType=INTEGER},
+      sc_applicationWay = #{record.scApplicationway,jdbcType=VARCHAR},
+      sc_applicantUnit = #{record.scApplicantunit,jdbcType=VARCHAR},
+      sc_reasonType = #{record.scReasontype,jdbcType=VARCHAR},
+      sc_changePerson = #{record.scChangeperson,jdbcType=VARCHAR},
+      sc_changeTime = #{record.scChangetime,jdbcType=DATE},
+      sc_status = #{record.scStatus,jdbcType=INTEGER},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.contract.SalesContractChangeWithBLOBs" >
+    update sales_contract_change
+    <set >
+      <if test="scCustomername != null" >
+        sc_customerName = #{scCustomername,jdbcType=VARCHAR},
+      </if>
+      <if test="scContractnumber != null" >
+        sc_contractNumber = #{scContractnumber,jdbcType=INTEGER},
+      </if>
+      <if test="scApplicationway != null" >
+        sc_applicationWay = #{scApplicationway,jdbcType=VARCHAR},
+      </if>
+      <if test="scApplicantunit != null" >
+        sc_applicantUnit = #{scApplicantunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scReasontype != null" >
+        sc_reasonType = #{scReasontype,jdbcType=VARCHAR},
+      </if>
+      <if test="scChangeperson != null" >
+        sc_changePerson = #{scChangeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="scChangetime != null" >
+        sc_changeTime = #{scChangetime,jdbcType=DATE},
+      </if>
+      <if test="scStatus != null" >
+        sc_status = #{scStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="scChangedescription != null" >
+        sc_changedescription = #{scChangedescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scRemark != null" >
+        sc_remark = #{scRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sc_contractId = #{scContractid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.contract.SalesContractChangeWithBLOBs" >
+    update sales_contract_change
+    set sc_customerName = #{scCustomername,jdbcType=VARCHAR},
+      sc_contractNumber = #{scContractnumber,jdbcType=INTEGER},
+      sc_applicationWay = #{scApplicationway,jdbcType=VARCHAR},
+      sc_applicantUnit = #{scApplicantunit,jdbcType=VARCHAR},
+      sc_reasonType = #{scReasontype,jdbcType=VARCHAR},
+      sc_changePerson = #{scChangeperson,jdbcType=VARCHAR},
+      sc_changeTime = #{scChangetime,jdbcType=DATE},
+      sc_status = #{scStatus,jdbcType=INTEGER},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      sc_changedescription = #{scChangedescription,jdbcType=LONGVARCHAR},
+      sc_remark = #{scRemark,jdbcType=LONGVARCHAR}
+    where sc_contractId = #{scContractid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.contract.SalesContractChange" >
+    update sales_contract_change
+    set sc_customerName = #{scCustomername,jdbcType=VARCHAR},
+      sc_contractNumber = #{scContractnumber,jdbcType=INTEGER},
+      sc_applicationWay = #{scApplicationway,jdbcType=VARCHAR},
+      sc_applicantUnit = #{scApplicantunit,jdbcType=VARCHAR},
+      sc_reasonType = #{scReasontype,jdbcType=VARCHAR},
+      sc_changePerson = #{scChangeperson,jdbcType=VARCHAR},
+      sc_changeTime = #{scChangetime,jdbcType=DATE},
+      sc_status = #{scStatus,jdbcType=INTEGER},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where sc_contractId = #{scContractid,jdbcType=INTEGER}
+  </update>
+</mapper>

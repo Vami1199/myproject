@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.LSendDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.land.LSend" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="s_applydate" property="sApplydate" jdbcType="DATE" />
+    <result column="s_custype" property="sCustype" jdbcType="TINYINT" />
+    <result column="s_ordertype" property="sOrdertype" jdbcType="TINYINT" />
+    <result column="s_ordernum" property="sOrdernum" jdbcType="VARCHAR" />
+    <result column="s_customerid" property="sCustomerid" jdbcType="INTEGER" />
+    <result column="s_address" property="sAddress" jdbcType="VARCHAR" />
+    <result column="s_product" property="sProduct" jdbcType="VARCHAR" />
+    <result column="s_source" property="sSource" jdbcType="VARCHAR" />
+    <result column="s_senddate" property="sSenddate" jdbcType="DATE" />
+    <result column="s_baydate" property="sBaydate" jdbcType="DATE" />
+    <result column="s_residue" property="sResidue" jdbcType="INTEGER" />
+    <result column="s_applycount" property="sApplycount" jdbcType="INTEGER" />
+    <result column="s_askcars" property="sAskcars" jdbcType="INTEGER" />
+    <result column="s_price" property="sPrice" jdbcType="DECIMAL" />
+    <result column="s_total" property="sTotal" jdbcType="DECIMAL" />
+    <result column="s_user" property="sUser" jdbcType="VARCHAR" />
+    <result column="s_transport" property="sTransport" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.land.LSend" extends="BaseResultMap" >
+    <result column="s_remark" property="sRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      s_id, s_applydate, s_custype, s_ordertype, s_ordernum, s_customerid, s_address, s_product, 
+      s_source, s_senddate, s_baydate, s_residue, s_applycount, s_askcars, s_price, s_total, 
+      s_user, s_transport, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    s_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.land.LSendQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from l_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.land.LSendQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from l_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    s_id,s_applydate,s_custype,s_ordertype,s_ordernum,s_customerid,s_address,s_product,s_source,s_senddate,s_baydate,s_residue,s_applycount,s_askcars,s_price,s_total,s_user,s_transport,Createdate,ModifyDate,CreateBy,ModifyBy,s_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from l_send
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from l_send
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.land.LSendQuery" >
+    delete from l_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.land.LSend" >
+    insert into l_send (s_id, s_applydate, s_custype, 
+      s_ordertype, s_ordernum, s_customerid, 
+      s_address, s_product, s_source, 
+      s_senddate, s_baydate, s_residue, 
+      s_applycount, s_askcars, s_price, 
+      s_total, s_user, s_transport, 
+      Createdate, ModifyDate, CreateBy, 
+      ModifyBy, s_remark)
+    values (#{sId,jdbcType=INTEGER}, #{sApplydate,jdbcType=DATE}, #{sCustype,jdbcType=TINYINT}, 
+      #{sOrdertype,jdbcType=TINYINT}, #{sOrdernum,jdbcType=VARCHAR}, #{sCustomerid,jdbcType=INTEGER}, 
+      #{sAddress,jdbcType=VARCHAR}, #{sProduct,jdbcType=VARCHAR}, #{sSource,jdbcType=VARCHAR}, 
+      #{sSenddate,jdbcType=DATE}, #{sBaydate,jdbcType=DATE}, #{sResidue,jdbcType=INTEGER}, 
+      #{sApplycount,jdbcType=INTEGER}, #{sAskcars,jdbcType=INTEGER}, #{sPrice,jdbcType=DECIMAL}, 
+      #{sTotal,jdbcType=DECIMAL}, #{sUser,jdbcType=VARCHAR}, #{sTransport,jdbcType=TINYINT}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{modifyby,jdbcType=VARCHAR}, #{sRemark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.land.LSend" >
+    insert into l_send
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        s_id,
+      </if>
+      <if test="sApplydate != null" >
+        s_applydate,
+      </if>
+      <if test="sCustype != null" >
+        s_custype,
+      </if>
+      <if test="sOrdertype != null" >
+        s_ordertype,
+      </if>
+      <if test="sOrdernum != null" >
+        s_ordernum,
+      </if>
+      <if test="sCustomerid != null" >
+        s_customerid,
+      </if>
+      <if test="sAddress != null" >
+        s_address,
+      </if>
+      <if test="sProduct != null" >
+        s_product,
+      </if>
+      <if test="sSource != null" >
+        s_source,
+      </if>
+      <if test="sSenddate != null" >
+        s_senddate,
+      </if>
+      <if test="sBaydate != null" >
+        s_baydate,
+      </if>
+      <if test="sResidue != null" >
+        s_residue,
+      </if>
+      <if test="sApplycount != null" >
+        s_applycount,
+      </if>
+      <if test="sAskcars != null" >
+        s_askcars,
+      </if>
+      <if test="sPrice != null" >
+        s_price,
+      </if>
+      <if test="sTotal != null" >
+        s_total,
+      </if>
+      <if test="sUser != null" >
+        s_user,
+      </if>
+      <if test="sTransport != null" >
+        s_transport,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="sRemark != null" >
+        s_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="sApplydate != null" >
+        #{sApplydate,jdbcType=DATE},
+      </if>
+      <if test="sCustype != null" >
+        #{sCustype,jdbcType=TINYINT},
+      </if>
+      <if test="sOrdertype != null" >
+        #{sOrdertype,jdbcType=TINYINT},
+      </if>
+      <if test="sOrdernum != null" >
+        #{sOrdernum,jdbcType=VARCHAR},
+      </if>
+      <if test="sCustomerid != null" >
+        #{sCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="sAddress != null" >
+        #{sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sProduct != null" >
+        #{sProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="sSource != null" >
+        #{sSource,jdbcType=VARCHAR},
+      </if>
+      <if test="sSenddate != null" >
+        #{sSenddate,jdbcType=DATE},
+      </if>
+      <if test="sBaydate != null" >
+        #{sBaydate,jdbcType=DATE},
+      </if>
+      <if test="sResidue != null" >
+        #{sResidue,jdbcType=INTEGER},
+      </if>
+      <if test="sApplycount != null" >
+        #{sApplycount,jdbcType=INTEGER},
+      </if>
+      <if test="sAskcars != null" >
+        #{sAskcars,jdbcType=INTEGER},
+      </if>
+      <if test="sPrice != null" >
+        #{sPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sTotal != null" >
+        #{sTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="sUser != null" >
+        #{sUser,jdbcType=VARCHAR},
+      </if>
+      <if test="sTransport != null" >
+        #{sTransport,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="sRemark != null" >
+        #{sRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.land.LSendQuery" resultType="java.lang.Integer" >
+    select count(*) from l_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update l_send
+    <set >
+      <if test="record.sId != null" >
+        s_id = #{record.sId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sApplydate != null" >
+        s_applydate = #{record.sApplydate,jdbcType=DATE},
+      </if>
+      <if test="record.sCustype != null" >
+        s_custype = #{record.sCustype,jdbcType=TINYINT},
+      </if>
+      <if test="record.sOrdertype != null" >
+        s_ordertype = #{record.sOrdertype,jdbcType=TINYINT},
+      </if>
+      <if test="record.sOrdernum != null" >
+        s_ordernum = #{record.sOrdernum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sCustomerid != null" >
+        s_customerid = #{record.sCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sAddress != null" >
+        s_address = #{record.sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sProduct != null" >
+        s_product = #{record.sProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sSource != null" >
+        s_source = #{record.sSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sSenddate != null" >
+        s_senddate = #{record.sSenddate,jdbcType=DATE},
+      </if>
+      <if test="record.sBaydate != null" >
+        s_baydate = #{record.sBaydate,jdbcType=DATE},
+      </if>
+      <if test="record.sResidue != null" >
+        s_residue = #{record.sResidue,jdbcType=INTEGER},
+      </if>
+      <if test="record.sApplycount != null" >
+        s_applycount = #{record.sApplycount,jdbcType=INTEGER},
+      </if>
+      <if test="record.sAskcars != null" >
+        s_askcars = #{record.sAskcars,jdbcType=INTEGER},
+      </if>
+      <if test="record.sPrice != null" >
+        s_price = #{record.sPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sTotal != null" >
+        s_total = #{record.sTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sUser != null" >
+        s_user = #{record.sUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sTransport != null" >
+        s_transport = #{record.sTransport,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sRemark != null" >
+        s_remark = #{record.sRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update l_send
+    set s_id = #{record.sId,jdbcType=INTEGER},
+      s_applydate = #{record.sApplydate,jdbcType=DATE},
+      s_custype = #{record.sCustype,jdbcType=TINYINT},
+      s_ordertype = #{record.sOrdertype,jdbcType=TINYINT},
+      s_ordernum = #{record.sOrdernum,jdbcType=VARCHAR},
+      s_customerid = #{record.sCustomerid,jdbcType=INTEGER},
+      s_address = #{record.sAddress,jdbcType=VARCHAR},
+      s_product = #{record.sProduct,jdbcType=VARCHAR},
+      s_source = #{record.sSource,jdbcType=VARCHAR},
+      s_senddate = #{record.sSenddate,jdbcType=DATE},
+      s_baydate = #{record.sBaydate,jdbcType=DATE},
+      s_residue = #{record.sResidue,jdbcType=INTEGER},
+      s_applycount = #{record.sApplycount,jdbcType=INTEGER},
+      s_askcars = #{record.sAskcars,jdbcType=INTEGER},
+      s_price = #{record.sPrice,jdbcType=DECIMAL},
+      s_total = #{record.sTotal,jdbcType=DECIMAL},
+      s_user = #{record.sUser,jdbcType=VARCHAR},
+      s_transport = #{record.sTransport,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      s_remark = #{record.sRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update l_send
+    set s_id = #{record.sId,jdbcType=INTEGER},
+      s_applydate = #{record.sApplydate,jdbcType=DATE},
+      s_custype = #{record.sCustype,jdbcType=TINYINT},
+      s_ordertype = #{record.sOrdertype,jdbcType=TINYINT},
+      s_ordernum = #{record.sOrdernum,jdbcType=VARCHAR},
+      s_customerid = #{record.sCustomerid,jdbcType=INTEGER},
+      s_address = #{record.sAddress,jdbcType=VARCHAR},
+      s_product = #{record.sProduct,jdbcType=VARCHAR},
+      s_source = #{record.sSource,jdbcType=VARCHAR},
+      s_senddate = #{record.sSenddate,jdbcType=DATE},
+      s_baydate = #{record.sBaydate,jdbcType=DATE},
+      s_residue = #{record.sResidue,jdbcType=INTEGER},
+      s_applycount = #{record.sApplycount,jdbcType=INTEGER},
+      s_askcars = #{record.sAskcars,jdbcType=INTEGER},
+      s_price = #{record.sPrice,jdbcType=DECIMAL},
+      s_total = #{record.sTotal,jdbcType=DECIMAL},
+      s_user = #{record.sUser,jdbcType=VARCHAR},
+      s_transport = #{record.sTransport,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.land.LSend" >
+    update l_send
+    <set >
+      <if test="sApplydate != null" >
+        s_applydate = #{sApplydate,jdbcType=DATE},
+      </if>
+      <if test="sCustype != null" >
+        s_custype = #{sCustype,jdbcType=TINYINT},
+      </if>
+      <if test="sOrdertype != null" >
+        s_ordertype = #{sOrdertype,jdbcType=TINYINT},
+      </if>
+      <if test="sOrdernum != null" >
+        s_ordernum = #{sOrdernum,jdbcType=VARCHAR},
+      </if>
+      <if test="sCustomerid != null" >
+        s_customerid = #{sCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="sAddress != null" >
+        s_address = #{sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sProduct != null" >
+        s_product = #{sProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="sSource != null" >
+        s_source = #{sSource,jdbcType=VARCHAR},
+      </if>
+      <if test="sSenddate != null" >
+        s_senddate = #{sSenddate,jdbcType=DATE},
+      </if>
+      <if test="sBaydate != null" >
+        s_baydate = #{sBaydate,jdbcType=DATE},
+      </if>
+      <if test="sResidue != null" >
+        s_residue = #{sResidue,jdbcType=INTEGER},
+      </if>
+      <if test="sApplycount != null" >
+        s_applycount = #{sApplycount,jdbcType=INTEGER},
+      </if>
+      <if test="sAskcars != null" >
+        s_askcars = #{sAskcars,jdbcType=INTEGER},
+      </if>
+      <if test="sPrice != null" >
+        s_price = #{sPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sTotal != null" >
+        s_total = #{sTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="sUser != null" >
+        s_user = #{sUser,jdbcType=VARCHAR},
+      </if>
+      <if test="sTransport != null" >
+        s_transport = #{sTransport,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="sRemark != null" >
+        s_remark = #{sRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.land.LSend" >
+    update l_send
+    set s_applydate = #{sApplydate,jdbcType=DATE},
+      s_custype = #{sCustype,jdbcType=TINYINT},
+      s_ordertype = #{sOrdertype,jdbcType=TINYINT},
+      s_ordernum = #{sOrdernum,jdbcType=VARCHAR},
+      s_customerid = #{sCustomerid,jdbcType=INTEGER},
+      s_address = #{sAddress,jdbcType=VARCHAR},
+      s_product = #{sProduct,jdbcType=VARCHAR},
+      s_source = #{sSource,jdbcType=VARCHAR},
+      s_senddate = #{sSenddate,jdbcType=DATE},
+      s_baydate = #{sBaydate,jdbcType=DATE},
+      s_residue = #{sResidue,jdbcType=INTEGER},
+      s_applycount = #{sApplycount,jdbcType=INTEGER},
+      s_askcars = #{sAskcars,jdbcType=INTEGER},
+      s_price = #{sPrice,jdbcType=DECIMAL},
+      s_total = #{sTotal,jdbcType=DECIMAL},
+      s_user = #{sUser,jdbcType=VARCHAR},
+      s_transport = #{sTransport,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      s_remark = #{sRemark,jdbcType=LONGVARCHAR}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.land.LSend" >
+    update l_send
+    set s_applydate = #{sApplydate,jdbcType=DATE},
+      s_custype = #{sCustype,jdbcType=TINYINT},
+      s_ordertype = #{sOrdertype,jdbcType=TINYINT},
+      s_ordernum = #{sOrdernum,jdbcType=VARCHAR},
+      s_customerid = #{sCustomerid,jdbcType=INTEGER},
+      s_address = #{sAddress,jdbcType=VARCHAR},
+      s_product = #{sProduct,jdbcType=VARCHAR},
+      s_source = #{sSource,jdbcType=VARCHAR},
+      s_senddate = #{sSenddate,jdbcType=DATE},
+      s_baydate = #{sBaydate,jdbcType=DATE},
+      s_residue = #{sResidue,jdbcType=INTEGER},
+      s_applycount = #{sApplycount,jdbcType=INTEGER},
+      s_askcars = #{sAskcars,jdbcType=INTEGER},
+      s_price = #{sPrice,jdbcType=DECIMAL},
+      s_total = #{sTotal,jdbcType=DECIMAL},
+      s_user = #{sUser,jdbcType=VARCHAR},
+      s_transport = #{sTransport,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+</mapper>

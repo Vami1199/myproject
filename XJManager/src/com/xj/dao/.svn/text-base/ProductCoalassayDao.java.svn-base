@@ -1,0 +1,22 @@
+package com.xj.dao;
+
+import com.xj.domain.query.ProductCoalassay;
+import com.xj.domain.query.ProductCoalassayQuery;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface ProductCoalassayDao {
+    int countByExample(ProductCoalassayQuery example);
+
+    int deleteByExample(ProductCoalassayQuery example);
+
+    int insert(ProductCoalassay record);
+
+    int insertSelective(ProductCoalassay record);
+
+    List<ProductCoalassay> selectByExample(ProductCoalassayQuery example);
+
+    int updateByExampleSelective(@Param("record") ProductCoalassay record, @Param("example") ProductCoalassayQuery example);
+
+    int updateByExample(@Param("record") ProductCoalassay record, @Param("example") ProductCoalassayQuery example);
+}

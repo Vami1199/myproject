@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PAddwithoutcontractDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trainsplan.PAddwithoutcontract" >
+    <id column="awt_id" property="awtId" jdbcType="VARCHAR" />
+    <result column="awt_start" property="awtStart" jdbcType="VARCHAR" />
+    <result column="awt_end" property="awtEnd" jdbcType="VARCHAR" />
+    <result column="awt_paycompany" property="awtPaycompany" jdbcType="VARCHAR" />
+    <result column="awt_takecompany" property="awtTakecompany" jdbcType="VARCHAR" />
+    <result column="awt_product" property="awtProduct" jdbcType="VARCHAR" />
+    <result column="awt_province" property="awtProvince" jdbcType="VARCHAR" />
+    <result column="awt_industry" property="awtIndustry" jdbcType="VARCHAR" />
+    <result column="awt_trainnumber" property="awtTrainnumber" jdbcType="BIGINT" />
+    <result column="awt_weight" property="awtWeight" jdbcType="INTEGER" />
+    <result column="awt_mid" property="awtMid" jdbcType="VARCHAR" />
+    <result column="awt_arrive" property="awtArrive" jdbcType="VARCHAR" />
+    <result column="awt_starttime" property="awtStarttime" jdbcType="DATE" />
+    <result column="awt_endtime" property="awtEndtime" jdbcType="DATE" />
+    <result column="awt_batch" property="awtBatch" jdbcType="VARCHAR" />
+    <result column="awc_rnumber" property="awcRnumber" jdbcType="INTEGER" />
+    <result column="awc_rweight" property="awcRweight" jdbcType="BIGINT" />
+    <result column="m_realtrain" property="mRealtrain" jdbcType="INTEGER" />
+    <result column="awc_realweight" property="awcRealweight" jdbcType="BIGINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.trainsplan.PAddwithoutcontract" extends="BaseResultMap" >
+    <result column="awt_remark" property="awtRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      awt_id, awt_start, awt_end, awt_paycompany, awt_takecompany, awt_product, awt_province, 
+      awt_industry, awt_trainnumber, awt_weight, awt_mid, awt_arrive, awt_starttime, awt_endtime, 
+      awt_batch, awc_rnumber, awc_rweight, m_realtrain, awc_realweight, Createdate, ModifyDate, 
+      CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    awt_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.trainsplan.PAddwithoutcontractQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from p_addwithoutcontract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trainsplan.PAddwithoutcontractQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_addwithoutcontract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    awt_id,awt_start,awt_end,awt_paycompany,awt_takecompany,awt_product,awt_province,awt_industry,awt_trainnumber,awt_weight,awt_mid,awt_arrive,awt_starttime,awt_endtime,awt_batch,awc_rnumber,awc_rweight,m_realtrain,awc_realweight,Createdate,ModifyDate,CreateBy,ModifyBy,awt_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from p_addwithoutcontract
+    where awt_id = #{awtId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from p_addwithoutcontract
+    where awt_id = #{awtId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trainsplan.PAddwithoutcontractQuery" >
+    delete from p_addwithoutcontract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trainsplan.PAddwithoutcontract" >
+    insert into p_addwithoutcontract (awt_id, awt_start, awt_end, 
+      awt_paycompany, awt_takecompany, awt_product, 
+      awt_province, awt_industry, awt_trainnumber, 
+      awt_weight, awt_mid, awt_arrive, 
+      awt_starttime, awt_endtime, awt_batch, 
+      awc_rnumber, awc_rweight, m_realtrain, 
+      awc_realweight, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, awt_remark
+      )
+    values (#{awtId,jdbcType=VARCHAR}, #{awtStart,jdbcType=VARCHAR}, #{awtEnd,jdbcType=VARCHAR}, 
+      #{awtPaycompany,jdbcType=VARCHAR}, #{awtTakecompany,jdbcType=VARCHAR}, #{awtProduct,jdbcType=VARCHAR}, 
+      #{awtProvince,jdbcType=VARCHAR}, #{awtIndustry,jdbcType=VARCHAR}, #{awtTrainnumber,jdbcType=BIGINT}, 
+      #{awtWeight,jdbcType=INTEGER}, #{awtMid,jdbcType=VARCHAR}, #{awtArrive,jdbcType=VARCHAR}, 
+      #{awtStarttime,jdbcType=DATE}, #{awtEndtime,jdbcType=DATE}, #{awtBatch,jdbcType=VARCHAR}, 
+      #{awcRnumber,jdbcType=INTEGER}, #{awcRweight,jdbcType=BIGINT}, #{mRealtrain,jdbcType=INTEGER}, 
+      #{awcRealweight,jdbcType=BIGINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{awtRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trainsplan.PAddwithoutcontract" >
+    insert into p_addwithoutcontract
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="awtId != null" >
+        awt_id,
+      </if>
+      <if test="awtStart != null" >
+        awt_start,
+      </if>
+      <if test="awtEnd != null" >
+        awt_end,
+      </if>
+      <if test="awtPaycompany != null" >
+        awt_paycompany,
+      </if>
+      <if test="awtTakecompany != null" >
+        awt_takecompany,
+      </if>
+      <if test="awtProduct != null" >
+        awt_product,
+      </if>
+      <if test="awtProvince != null" >
+        awt_province,
+      </if>
+      <if test="awtIndustry != null" >
+        awt_industry,
+      </if>
+      <if test="awtTrainnumber != null" >
+        awt_trainnumber,
+      </if>
+      <if test="awtWeight != null" >
+        awt_weight,
+      </if>
+      <if test="awtMid != null" >
+        awt_mid,
+      </if>
+      <if test="awtArrive != null" >
+        awt_arrive,
+      </if>
+      <if test="awtStarttime != null" >
+        awt_starttime,
+      </if>
+      <if test="awtEndtime != null" >
+        awt_endtime,
+      </if>
+      <if test="awtBatch != null" >
+        awt_batch,
+      </if>
+      <if test="awcRnumber != null" >
+        awc_rnumber,
+      </if>
+      <if test="awcRweight != null" >
+        awc_rweight,
+      </if>
+      <if test="mRealtrain != null" >
+        m_realtrain,
+      </if>
+      <if test="awcRealweight != null" >
+        awc_realweight,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="awtRemark != null" >
+        awt_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="awtId != null" >
+        #{awtId,jdbcType=VARCHAR},
+      </if>
+      <if test="awtStart != null" >
+        #{awtStart,jdbcType=VARCHAR},
+      </if>
+      <if test="awtEnd != null" >
+        #{awtEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="awtPaycompany != null" >
+        #{awtPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="awtTakecompany != null" >
+        #{awtTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="awtProduct != null" >
+        #{awtProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="awtProvince != null" >
+        #{awtProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="awtIndustry != null" >
+        #{awtIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="awtTrainnumber != null" >
+        #{awtTrainnumber,jdbcType=BIGINT},
+      </if>
+      <if test="awtWeight != null" >
+        #{awtWeight,jdbcType=INTEGER},
+      </if>
+      <if test="awtMid != null" >
+        #{awtMid,jdbcType=VARCHAR},
+      </if>
+      <if test="awtArrive != null" >
+        #{awtArrive,jdbcType=VARCHAR},
+      </if>
+      <if test="awtStarttime != null" >
+        #{awtStarttime,jdbcType=DATE},
+      </if>
+      <if test="awtEndtime != null" >
+        #{awtEndtime,jdbcType=DATE},
+      </if>
+      <if test="awtBatch != null" >
+        #{awtBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="awcRnumber != null" >
+        #{awcRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="awcRweight != null" >
+        #{awcRweight,jdbcType=BIGINT},
+      </if>
+      <if test="mRealtrain != null" >
+        #{mRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="awcRealweight != null" >
+        #{awcRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="awtRemark != null" >
+        #{awtRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trainsplan.PAddwithoutcontractQuery" resultType="java.lang.Integer" >
+    select count(*) from p_addwithoutcontract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_addwithoutcontract
+    <set >
+      <if test="record.awtId != null" >
+        awt_id = #{record.awtId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtStart != null" >
+        awt_start = #{record.awtStart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtEnd != null" >
+        awt_end = #{record.awtEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtPaycompany != null" >
+        awt_paycompany = #{record.awtPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtTakecompany != null" >
+        awt_takecompany = #{record.awtTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtProduct != null" >
+        awt_product = #{record.awtProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtProvince != null" >
+        awt_province = #{record.awtProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtIndustry != null" >
+        awt_industry = #{record.awtIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtTrainnumber != null" >
+        awt_trainnumber = #{record.awtTrainnumber,jdbcType=BIGINT},
+      </if>
+      <if test="record.awtWeight != null" >
+        awt_weight = #{record.awtWeight,jdbcType=INTEGER},
+      </if>
+      <if test="record.awtMid != null" >
+        awt_mid = #{record.awtMid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtArrive != null" >
+        awt_arrive = #{record.awtArrive,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtStarttime != null" >
+        awt_starttime = #{record.awtStarttime,jdbcType=DATE},
+      </if>
+      <if test="record.awtEndtime != null" >
+        awt_endtime = #{record.awtEndtime,jdbcType=DATE},
+      </if>
+      <if test="record.awtBatch != null" >
+        awt_batch = #{record.awtBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awcRnumber != null" >
+        awc_rnumber = #{record.awcRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.awcRweight != null" >
+        awc_rweight = #{record.awcRweight,jdbcType=BIGINT},
+      </if>
+      <if test="record.mRealtrain != null" >
+        m_realtrain = #{record.mRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="record.awcRealweight != null" >
+        awc_realweight = #{record.awcRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awtRemark != null" >
+        awt_remark = #{record.awtRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update p_addwithoutcontract
+    set awt_id = #{record.awtId,jdbcType=VARCHAR},
+      awt_start = #{record.awtStart,jdbcType=VARCHAR},
+      awt_end = #{record.awtEnd,jdbcType=VARCHAR},
+      awt_paycompany = #{record.awtPaycompany,jdbcType=VARCHAR},
+      awt_takecompany = #{record.awtTakecompany,jdbcType=VARCHAR},
+      awt_product = #{record.awtProduct,jdbcType=VARCHAR},
+      awt_province = #{record.awtProvince,jdbcType=VARCHAR},
+      awt_industry = #{record.awtIndustry,jdbcType=VARCHAR},
+      awt_trainnumber = #{record.awtTrainnumber,jdbcType=BIGINT},
+      awt_weight = #{record.awtWeight,jdbcType=INTEGER},
+      awt_mid = #{record.awtMid,jdbcType=VARCHAR},
+      awt_arrive = #{record.awtArrive,jdbcType=VARCHAR},
+      awt_starttime = #{record.awtStarttime,jdbcType=DATE},
+      awt_endtime = #{record.awtEndtime,jdbcType=DATE},
+      awt_batch = #{record.awtBatch,jdbcType=VARCHAR},
+      awc_rnumber = #{record.awcRnumber,jdbcType=INTEGER},
+      awc_rweight = #{record.awcRweight,jdbcType=BIGINT},
+      m_realtrain = #{record.mRealtrain,jdbcType=INTEGER},
+      awc_realweight = #{record.awcRealweight,jdbcType=BIGINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      awt_remark = #{record.awtRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_addwithoutcontract
+    set awt_id = #{record.awtId,jdbcType=VARCHAR},
+      awt_start = #{record.awtStart,jdbcType=VARCHAR},
+      awt_end = #{record.awtEnd,jdbcType=VARCHAR},
+      awt_paycompany = #{record.awtPaycompany,jdbcType=VARCHAR},
+      awt_takecompany = #{record.awtTakecompany,jdbcType=VARCHAR},
+      awt_product = #{record.awtProduct,jdbcType=VARCHAR},
+      awt_province = #{record.awtProvince,jdbcType=VARCHAR},
+      awt_industry = #{record.awtIndustry,jdbcType=VARCHAR},
+      awt_trainnumber = #{record.awtTrainnumber,jdbcType=BIGINT},
+      awt_weight = #{record.awtWeight,jdbcType=INTEGER},
+      awt_mid = #{record.awtMid,jdbcType=VARCHAR},
+      awt_arrive = #{record.awtArrive,jdbcType=VARCHAR},
+      awt_starttime = #{record.awtStarttime,jdbcType=DATE},
+      awt_endtime = #{record.awtEndtime,jdbcType=DATE},
+      awt_batch = #{record.awtBatch,jdbcType=VARCHAR},
+      awc_rnumber = #{record.awcRnumber,jdbcType=INTEGER},
+      awc_rweight = #{record.awcRweight,jdbcType=BIGINT},
+      m_realtrain = #{record.mRealtrain,jdbcType=INTEGER},
+      awc_realweight = #{record.awcRealweight,jdbcType=BIGINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trainsplan.PAddwithoutcontract" >
+    update p_addwithoutcontract
+    <set >
+      <if test="awtStart != null" >
+        awt_start = #{awtStart,jdbcType=VARCHAR},
+      </if>
+      <if test="awtEnd != null" >
+        awt_end = #{awtEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="awtPaycompany != null" >
+        awt_paycompany = #{awtPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="awtTakecompany != null" >
+        awt_takecompany = #{awtTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="awtProduct != null" >
+        awt_product = #{awtProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="awtProvince != null" >
+        awt_province = #{awtProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="awtIndustry != null" >
+        awt_industry = #{awtIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="awtTrainnumber != null" >
+        awt_trainnumber = #{awtTrainnumber,jdbcType=BIGINT},
+      </if>
+      <if test="awtWeight != null" >
+        awt_weight = #{awtWeight,jdbcType=INTEGER},
+      </if>
+      <if test="awtMid != null" >
+        awt_mid = #{awtMid,jdbcType=VARCHAR},
+      </if>
+      <if test="awtArrive != null" >
+        awt_arrive = #{awtArrive,jdbcType=VARCHAR},
+      </if>
+      <if test="awtStarttime != null" >
+        awt_starttime = #{awtStarttime,jdbcType=DATE},
+      </if>
+      <if test="awtEndtime != null" >
+        awt_endtime = #{awtEndtime,jdbcType=DATE},
+      </if>
+      <if test="awtBatch != null" >
+        awt_batch = #{awtBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="awcRnumber != null" >
+        awc_rnumber = #{awcRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="awcRweight != null" >
+        awc_rweight = #{awcRweight,jdbcType=BIGINT},
+      </if>
+      <if test="mRealtrain != null" >
+        m_realtrain = #{mRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="awcRealweight != null" >
+        awc_realweight = #{awcRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="awtRemark != null" >
+        awt_remark = #{awtRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where awt_id = #{awtId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.trainsplan.PAddwithoutcontract" >
+    update p_addwithoutcontract
+    set awt_start = #{awtStart,jdbcType=VARCHAR},
+      awt_end = #{awtEnd,jdbcType=VARCHAR},
+      awt_paycompany = #{awtPaycompany,jdbcType=VARCHAR},
+      awt_takecompany = #{awtTakecompany,jdbcType=VARCHAR},
+      awt_product = #{awtProduct,jdbcType=VARCHAR},
+      awt_province = #{awtProvince,jdbcType=VARCHAR},
+      awt_industry = #{awtIndustry,jdbcType=VARCHAR},
+      awt_trainnumber = #{awtTrainnumber,jdbcType=BIGINT},
+      awt_weight = #{awtWeight,jdbcType=INTEGER},
+      awt_mid = #{awtMid,jdbcType=VARCHAR},
+      awt_arrive = #{awtArrive,jdbcType=VARCHAR},
+      awt_starttime = #{awtStarttime,jdbcType=DATE},
+      awt_endtime = #{awtEndtime,jdbcType=DATE},
+      awt_batch = #{awtBatch,jdbcType=VARCHAR},
+      awc_rnumber = #{awcRnumber,jdbcType=INTEGER},
+      awc_rweight = #{awcRweight,jdbcType=BIGINT},
+      m_realtrain = #{mRealtrain,jdbcType=INTEGER},
+      awc_realweight = #{awcRealweight,jdbcType=BIGINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      awt_remark = #{awtRemark,jdbcType=LONGVARCHAR}
+    where awt_id = #{awtId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trainsplan.PAddwithoutcontract" >
+    update p_addwithoutcontract
+    set awt_start = #{awtStart,jdbcType=VARCHAR},
+      awt_end = #{awtEnd,jdbcType=VARCHAR},
+      awt_paycompany = #{awtPaycompany,jdbcType=VARCHAR},
+      awt_takecompany = #{awtTakecompany,jdbcType=VARCHAR},
+      awt_product = #{awtProduct,jdbcType=VARCHAR},
+      awt_province = #{awtProvince,jdbcType=VARCHAR},
+      awt_industry = #{awtIndustry,jdbcType=VARCHAR},
+      awt_trainnumber = #{awtTrainnumber,jdbcType=BIGINT},
+      awt_weight = #{awtWeight,jdbcType=INTEGER},
+      awt_mid = #{awtMid,jdbcType=VARCHAR},
+      awt_arrive = #{awtArrive,jdbcType=VARCHAR},
+      awt_starttime = #{awtStarttime,jdbcType=DATE},
+      awt_endtime = #{awtEndtime,jdbcType=DATE},
+      awt_batch = #{awtBatch,jdbcType=VARCHAR},
+      awc_rnumber = #{awcRnumber,jdbcType=INTEGER},
+      awc_rweight = #{awcRweight,jdbcType=BIGINT},
+      m_realtrain = #{mRealtrain,jdbcType=INTEGER},
+      awc_realweight = #{awcRealweight,jdbcType=BIGINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where awt_id = #{awtId,jdbcType=VARCHAR}
+  </update>
+</mapper>

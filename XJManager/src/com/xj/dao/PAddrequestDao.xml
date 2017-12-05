@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PAddrequestDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trainsplan.PAddrequest" >
+    <id column="add_id" property="addId" jdbcType="VARCHAR" />
+    <result column="add_contractid" property="addContractid" jdbcType="VARCHAR" />
+    <result column="add_arrive" property="addArrive" jdbcType="VARCHAR" />
+    <result column="add_paycompany" property="addPaycompany" jdbcType="VARCHAR" />
+    <result column="add_takecompany" property="addTakecompany" jdbcType="VARCHAR" />
+    <result column="add_starttime" property="addStarttime" jdbcType="DATE" />
+    <result column="add_endtime" property="addEndtime" jdbcType="DATE" />
+    <result column="add_start" property="addStart" jdbcType="VARCHAR" />
+    <result column="add_end" property="addEnd" jdbcType="VARCHAR" />
+    <result column="add_province" property="addProvince" jdbcType="VARCHAR" />
+    <result column="add_industry" property="addIndustry" jdbcType="VARCHAR" />
+    <result column="add_trainnumber" property="addTrainnumber" jdbcType="INTEGER" />
+    <result column="add_werght" property="addWerght" jdbcType="BIGINT" />
+    <result column="add_mid" property="addMid" jdbcType="VARCHAR" />
+    <result column="add_batch" property="addBatch" jdbcType="VARCHAR" />
+    <result column="add_rnumber" property="addRnumber" jdbcType="INTEGER" />
+    <result column="add_rweight" property="addRweight" jdbcType="BIGINT" />
+    <result column="add_realtrain" property="addRealtrain" jdbcType="INTEGER" />
+    <result column="add_realweight" property="addRealweight" jdbcType="BIGINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.trainsplan.PAddrequest" extends="BaseResultMap" >
+    <result column="add_remark" property="addRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      add_id, add_contractid, add_arrive, add_paycompany, add_takecompany, add_starttime, 
+      add_endtime, add_start, add_end, add_province, add_industry, add_trainnumber, add_werght, 
+      add_mid, add_batch, add_rnumber, add_rweight, add_realtrain, add_realweight, Createdate, 
+      ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    add_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.trainsplan.PAddrequestQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from p_addrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trainsplan.PAddrequestQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_addrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    add_id,add_contractid,add_arrive,add_paycompany,add_takecompany,add_starttime,add_endtime,add_start,add_end,add_province,add_industry,add_trainnumber,add_werght,add_mid,add_batch,add_rnumber,add_rweight,add_realtrain,add_realweight,Createdate,ModifyDate,CreateBy,ModifyBy,add_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from p_addrequest
+    where add_id = #{addId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from p_addrequest
+    where add_id = #{addId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trainsplan.PAddrequestQuery" >
+    delete from p_addrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trainsplan.PAddrequest" >
+    insert into p_addrequest (add_id, add_contractid, add_arrive, 
+      add_paycompany, add_takecompany, add_starttime, 
+      add_endtime, add_start, add_end, 
+      add_province, add_industry, add_trainnumber, 
+      add_werght, add_mid, add_batch, 
+      add_rnumber, add_rweight, add_realtrain, 
+      add_realweight, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, add_remark
+      )
+    values (#{addId,jdbcType=VARCHAR}, #{addContractid,jdbcType=VARCHAR}, #{addArrive,jdbcType=VARCHAR}, 
+      #{addPaycompany,jdbcType=VARCHAR}, #{addTakecompany,jdbcType=VARCHAR}, #{addStarttime,jdbcType=DATE}, 
+      #{addEndtime,jdbcType=DATE}, #{addStart,jdbcType=VARCHAR}, #{addEnd,jdbcType=VARCHAR}, 
+      #{addProvince,jdbcType=VARCHAR}, #{addIndustry,jdbcType=VARCHAR}, #{addTrainnumber,jdbcType=INTEGER}, 
+      #{addWerght,jdbcType=BIGINT}, #{addMid,jdbcType=VARCHAR}, #{addBatch,jdbcType=VARCHAR}, 
+      #{addRnumber,jdbcType=INTEGER}, #{addRweight,jdbcType=BIGINT}, #{addRealtrain,jdbcType=INTEGER}, 
+      #{addRealweight,jdbcType=BIGINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{addRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trainsplan.PAddrequest" >
+    insert into p_addrequest
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addId != null" >
+        add_id,
+      </if>
+      <if test="addContractid != null" >
+        add_contractid,
+      </if>
+      <if test="addArrive != null" >
+        add_arrive,
+      </if>
+      <if test="addPaycompany != null" >
+        add_paycompany,
+      </if>
+      <if test="addTakecompany != null" >
+        add_takecompany,
+      </if>
+      <if test="addStarttime != null" >
+        add_starttime,
+      </if>
+      <if test="addEndtime != null" >
+        add_endtime,
+      </if>
+      <if test="addStart != null" >
+        add_start,
+      </if>
+      <if test="addEnd != null" >
+        add_end,
+      </if>
+      <if test="addProvince != null" >
+        add_province,
+      </if>
+      <if test="addIndustry != null" >
+        add_industry,
+      </if>
+      <if test="addTrainnumber != null" >
+        add_trainnumber,
+      </if>
+      <if test="addWerght != null" >
+        add_werght,
+      </if>
+      <if test="addMid != null" >
+        add_mid,
+      </if>
+      <if test="addBatch != null" >
+        add_batch,
+      </if>
+      <if test="addRnumber != null" >
+        add_rnumber,
+      </if>
+      <if test="addRweight != null" >
+        add_rweight,
+      </if>
+      <if test="addRealtrain != null" >
+        add_realtrain,
+      </if>
+      <if test="addRealweight != null" >
+        add_realweight,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="addRemark != null" >
+        add_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addId != null" >
+        #{addId,jdbcType=VARCHAR},
+      </if>
+      <if test="addContractid != null" >
+        #{addContractid,jdbcType=VARCHAR},
+      </if>
+      <if test="addArrive != null" >
+        #{addArrive,jdbcType=VARCHAR},
+      </if>
+      <if test="addPaycompany != null" >
+        #{addPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="addTakecompany != null" >
+        #{addTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="addStarttime != null" >
+        #{addStarttime,jdbcType=DATE},
+      </if>
+      <if test="addEndtime != null" >
+        #{addEndtime,jdbcType=DATE},
+      </if>
+      <if test="addStart != null" >
+        #{addStart,jdbcType=VARCHAR},
+      </if>
+      <if test="addEnd != null" >
+        #{addEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="addProvince != null" >
+        #{addProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addIndustry != null" >
+        #{addIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="addTrainnumber != null" >
+        #{addTrainnumber,jdbcType=INTEGER},
+      </if>
+      <if test="addWerght != null" >
+        #{addWerght,jdbcType=BIGINT},
+      </if>
+      <if test="addMid != null" >
+        #{addMid,jdbcType=VARCHAR},
+      </if>
+      <if test="addBatch != null" >
+        #{addBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="addRnumber != null" >
+        #{addRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="addRweight != null" >
+        #{addRweight,jdbcType=BIGINT},
+      </if>
+      <if test="addRealtrain != null" >
+        #{addRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="addRealweight != null" >
+        #{addRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="addRemark != null" >
+        #{addRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trainsplan.PAddrequestQuery" resultType="java.lang.Integer" >
+    select count(*) from p_addrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_addrequest
+    <set >
+      <if test="record.addId != null" >
+        add_id = #{record.addId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addContractid != null" >
+        add_contractid = #{record.addContractid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addArrive != null" >
+        add_arrive = #{record.addArrive,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addPaycompany != null" >
+        add_paycompany = #{record.addPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTakecompany != null" >
+        add_takecompany = #{record.addTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addStarttime != null" >
+        add_starttime = #{record.addStarttime,jdbcType=DATE},
+      </if>
+      <if test="record.addEndtime != null" >
+        add_endtime = #{record.addEndtime,jdbcType=DATE},
+      </if>
+      <if test="record.addStart != null" >
+        add_start = #{record.addStart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addEnd != null" >
+        add_end = #{record.addEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addProvince != null" >
+        add_province = #{record.addProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addIndustry != null" >
+        add_industry = #{record.addIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTrainnumber != null" >
+        add_trainnumber = #{record.addTrainnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.addWerght != null" >
+        add_werght = #{record.addWerght,jdbcType=BIGINT},
+      </if>
+      <if test="record.addMid != null" >
+        add_mid = #{record.addMid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addBatch != null" >
+        add_batch = #{record.addBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addRnumber != null" >
+        add_rnumber = #{record.addRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.addRweight != null" >
+        add_rweight = #{record.addRweight,jdbcType=BIGINT},
+      </if>
+      <if test="record.addRealtrain != null" >
+        add_realtrain = #{record.addRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="record.addRealweight != null" >
+        add_realweight = #{record.addRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addRemark != null" >
+        add_remark = #{record.addRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update p_addrequest
+    set add_id = #{record.addId,jdbcType=VARCHAR},
+      add_contractid = #{record.addContractid,jdbcType=VARCHAR},
+      add_arrive = #{record.addArrive,jdbcType=VARCHAR},
+      add_paycompany = #{record.addPaycompany,jdbcType=VARCHAR},
+      add_takecompany = #{record.addTakecompany,jdbcType=VARCHAR},
+      add_starttime = #{record.addStarttime,jdbcType=DATE},
+      add_endtime = #{record.addEndtime,jdbcType=DATE},
+      add_start = #{record.addStart,jdbcType=VARCHAR},
+      add_end = #{record.addEnd,jdbcType=VARCHAR},
+      add_province = #{record.addProvince,jdbcType=VARCHAR},
+      add_industry = #{record.addIndustry,jdbcType=VARCHAR},
+      add_trainnumber = #{record.addTrainnumber,jdbcType=INTEGER},
+      add_werght = #{record.addWerght,jdbcType=BIGINT},
+      add_mid = #{record.addMid,jdbcType=VARCHAR},
+      add_batch = #{record.addBatch,jdbcType=VARCHAR},
+      add_rnumber = #{record.addRnumber,jdbcType=INTEGER},
+      add_rweight = #{record.addRweight,jdbcType=BIGINT},
+      add_realtrain = #{record.addRealtrain,jdbcType=INTEGER},
+      add_realweight = #{record.addRealweight,jdbcType=BIGINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      add_remark = #{record.addRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_addrequest
+    set add_id = #{record.addId,jdbcType=VARCHAR},
+      add_contractid = #{record.addContractid,jdbcType=VARCHAR},
+      add_arrive = #{record.addArrive,jdbcType=VARCHAR},
+      add_paycompany = #{record.addPaycompany,jdbcType=VARCHAR},
+      add_takecompany = #{record.addTakecompany,jdbcType=VARCHAR},
+      add_starttime = #{record.addStarttime,jdbcType=DATE},
+      add_endtime = #{record.addEndtime,jdbcType=DATE},
+      add_start = #{record.addStart,jdbcType=VARCHAR},
+      add_end = #{record.addEnd,jdbcType=VARCHAR},
+      add_province = #{record.addProvince,jdbcType=VARCHAR},
+      add_industry = #{record.addIndustry,jdbcType=VARCHAR},
+      add_trainnumber = #{record.addTrainnumber,jdbcType=INTEGER},
+      add_werght = #{record.addWerght,jdbcType=BIGINT},
+      add_mid = #{record.addMid,jdbcType=VARCHAR},
+      add_batch = #{record.addBatch,jdbcType=VARCHAR},
+      add_rnumber = #{record.addRnumber,jdbcType=INTEGER},
+      add_rweight = #{record.addRweight,jdbcType=BIGINT},
+      add_realtrain = #{record.addRealtrain,jdbcType=INTEGER},
+      add_realweight = #{record.addRealweight,jdbcType=BIGINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trainsplan.PAddrequest" >
+    update p_addrequest
+    <set >
+      <if test="addContractid != null" >
+        add_contractid = #{addContractid,jdbcType=VARCHAR},
+      </if>
+      <if test="addArrive != null" >
+        add_arrive = #{addArrive,jdbcType=VARCHAR},
+      </if>
+      <if test="addPaycompany != null" >
+        add_paycompany = #{addPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="addTakecompany != null" >
+        add_takecompany = #{addTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="addStarttime != null" >
+        add_starttime = #{addStarttime,jdbcType=DATE},
+      </if>
+      <if test="addEndtime != null" >
+        add_endtime = #{addEndtime,jdbcType=DATE},
+      </if>
+      <if test="addStart != null" >
+        add_start = #{addStart,jdbcType=VARCHAR},
+      </if>
+      <if test="addEnd != null" >
+        add_end = #{addEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="addProvince != null" >
+        add_province = #{addProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addIndustry != null" >
+        add_industry = #{addIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="addTrainnumber != null" >
+        add_trainnumber = #{addTrainnumber,jdbcType=INTEGER},
+      </if>
+      <if test="addWerght != null" >
+        add_werght = #{addWerght,jdbcType=BIGINT},
+      </if>
+      <if test="addMid != null" >
+        add_mid = #{addMid,jdbcType=VARCHAR},
+      </if>
+      <if test="addBatch != null" >
+        add_batch = #{addBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="addRnumber != null" >
+        add_rnumber = #{addRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="addRweight != null" >
+        add_rweight = #{addRweight,jdbcType=BIGINT},
+      </if>
+      <if test="addRealtrain != null" >
+        add_realtrain = #{addRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="addRealweight != null" >
+        add_realweight = #{addRealweight,jdbcType=BIGINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="addRemark != null" >
+        add_remark = #{addRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where add_id = #{addId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.trainsplan.PAddrequest" >
+    update p_addrequest
+    set add_contractid = #{addContractid,jdbcType=VARCHAR},
+      add_arrive = #{addArrive,jdbcType=VARCHAR},
+      add_paycompany = #{addPaycompany,jdbcType=VARCHAR},
+      add_takecompany = #{addTakecompany,jdbcType=VARCHAR},
+      add_starttime = #{addStarttime,jdbcType=DATE},
+      add_endtime = #{addEndtime,jdbcType=DATE},
+      add_start = #{addStart,jdbcType=VARCHAR},
+      add_end = #{addEnd,jdbcType=VARCHAR},
+      add_province = #{addProvince,jdbcType=VARCHAR},
+      add_industry = #{addIndustry,jdbcType=VARCHAR},
+      add_trainnumber = #{addTrainnumber,jdbcType=INTEGER},
+      add_werght = #{addWerght,jdbcType=BIGINT},
+      add_mid = #{addMid,jdbcType=VARCHAR},
+      add_batch = #{addBatch,jdbcType=VARCHAR},
+      add_rnumber = #{addRnumber,jdbcType=INTEGER},
+      add_rweight = #{addRweight,jdbcType=BIGINT},
+      add_realtrain = #{addRealtrain,jdbcType=INTEGER},
+      add_realweight = #{addRealweight,jdbcType=BIGINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      add_remark = #{addRemark,jdbcType=LONGVARCHAR}
+    where add_id = #{addId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trainsplan.PAddrequest" >
+    update p_addrequest
+    set add_contractid = #{addContractid,jdbcType=VARCHAR},
+      add_arrive = #{addArrive,jdbcType=VARCHAR},
+      add_paycompany = #{addPaycompany,jdbcType=VARCHAR},
+      add_takecompany = #{addTakecompany,jdbcType=VARCHAR},
+      add_starttime = #{addStarttime,jdbcType=DATE},
+      add_endtime = #{addEndtime,jdbcType=DATE},
+      add_start = #{addStart,jdbcType=VARCHAR},
+      add_end = #{addEnd,jdbcType=VARCHAR},
+      add_province = #{addProvince,jdbcType=VARCHAR},
+      add_industry = #{addIndustry,jdbcType=VARCHAR},
+      add_trainnumber = #{addTrainnumber,jdbcType=INTEGER},
+      add_werght = #{addWerght,jdbcType=BIGINT},
+      add_mid = #{addMid,jdbcType=VARCHAR},
+      add_batch = #{addBatch,jdbcType=VARCHAR},
+      add_rnumber = #{addRnumber,jdbcType=INTEGER},
+      add_rweight = #{addRweight,jdbcType=BIGINT},
+      add_realtrain = #{addRealtrain,jdbcType=INTEGER},
+      add_realweight = #{addRealweight,jdbcType=BIGINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where add_id = #{addId,jdbcType=VARCHAR}
+  </update>
+</mapper>

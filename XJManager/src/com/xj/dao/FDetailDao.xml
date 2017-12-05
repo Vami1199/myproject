@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.FDetailDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.freight.FDetail" >
+    <id column="de_id" property="deId" jdbcType="VARCHAR" />
+    <result column="de_oid" property="deOid" jdbcType="VARCHAR" />
+    <result column="de_transport" property="deTransport" jdbcType="DECIMAL" />
+    <result column="de_overdue" property="deOverdue" jdbcType="DECIMAL" />
+    <result column="de_overtime" property="deOvertime" jdbcType="DECIMAL" />
+    <result column="de_safely" property="deSafely" jdbcType="DECIMAL" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      de_id, de_oid, de_transport, de_overdue, de_overtime, de_safely, Createdate, ModifyDate, 
+      CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.freight.FDetailQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from f_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    de_id,de_oid,de_transport,de_overdue,de_overtime,de_safely,Createdate,ModifyDate,CreateBy,ModifyBy
+    from f_detail
+    where de_id = #{deId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from f_detail
+    where de_id = #{deId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.freight.FDetailQuery" >
+    delete from f_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.freight.FDetail" >
+    insert into f_detail (de_id, de_oid, de_transport, 
+      de_overdue, de_overtime, de_safely, 
+      Createdate, ModifyDate, CreateBy, 
+      ModifyBy)
+    values (#{deId,jdbcType=VARCHAR}, #{deOid,jdbcType=VARCHAR}, #{deTransport,jdbcType=DECIMAL}, 
+      #{deOverdue,jdbcType=DECIMAL}, #{deOvertime,jdbcType=DECIMAL}, #{deSafely,jdbcType=DECIMAL}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{modifyby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.freight.FDetail" >
+    insert into f_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deId != null" >
+        de_id,
+      </if>
+      <if test="deOid != null" >
+        de_oid,
+      </if>
+      <if test="deTransport != null" >
+        de_transport,
+      </if>
+      <if test="deOverdue != null" >
+        de_overdue,
+      </if>
+      <if test="deOvertime != null" >
+        de_overtime,
+      </if>
+      <if test="deSafely != null" >
+        de_safely,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deId != null" >
+        #{deId,jdbcType=VARCHAR},
+      </if>
+      <if test="deOid != null" >
+        #{deOid,jdbcType=VARCHAR},
+      </if>
+      <if test="deTransport != null" >
+        #{deTransport,jdbcType=DECIMAL},
+      </if>
+      <if test="deOverdue != null" >
+        #{deOverdue,jdbcType=DECIMAL},
+      </if>
+      <if test="deOvertime != null" >
+        #{deOvertime,jdbcType=DECIMAL},
+      </if>
+      <if test="deSafely != null" >
+        #{deSafely,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.freight.FDetailQuery" resultType="java.lang.Integer" >
+    select count(*) from f_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update f_detail
+    <set >
+      <if test="record.deId != null" >
+        de_id = #{record.deId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deOid != null" >
+        de_oid = #{record.deOid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deTransport != null" >
+        de_transport = #{record.deTransport,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deOverdue != null" >
+        de_overdue = #{record.deOverdue,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deOvertime != null" >
+        de_overtime = #{record.deOvertime,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deSafely != null" >
+        de_safely = #{record.deSafely,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update f_detail
+    set de_id = #{record.deId,jdbcType=VARCHAR},
+      de_oid = #{record.deOid,jdbcType=VARCHAR},
+      de_transport = #{record.deTransport,jdbcType=DECIMAL},
+      de_overdue = #{record.deOverdue,jdbcType=DECIMAL},
+      de_overtime = #{record.deOvertime,jdbcType=DECIMAL},
+      de_safely = #{record.deSafely,jdbcType=DECIMAL},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.freight.FDetail" >
+    update f_detail
+    <set >
+      <if test="deOid != null" >
+        de_oid = #{deOid,jdbcType=VARCHAR},
+      </if>
+      <if test="deTransport != null" >
+        de_transport = #{deTransport,jdbcType=DECIMAL},
+      </if>
+      <if test="deOverdue != null" >
+        de_overdue = #{deOverdue,jdbcType=DECIMAL},
+      </if>
+      <if test="deOvertime != null" >
+        de_overtime = #{deOvertime,jdbcType=DECIMAL},
+      </if>
+      <if test="deSafely != null" >
+        de_safely = #{deSafely,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where de_id = #{deId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.freight.FDetail" >
+    update f_detail
+    set de_oid = #{deOid,jdbcType=VARCHAR},
+      de_transport = #{deTransport,jdbcType=DECIMAL},
+      de_overdue = #{deOverdue,jdbcType=DECIMAL},
+      de_overtime = #{deOvertime,jdbcType=DECIMAL},
+      de_safely = #{deSafely,jdbcType=DECIMAL},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where de_id = #{deId,jdbcType=VARCHAR}
+  </update>
+</mapper>

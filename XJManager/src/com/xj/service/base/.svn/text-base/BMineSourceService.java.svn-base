@@ -1,0 +1,16 @@
+package com.xj.service.base;
+
+import java.util.List;
+import java.util.Map;
+
+import com.xj.domain.base.BMinesource;
+import com.xj.domain.base.BMinesourceQuery;
+import com.xj.domain.query.SourceListQuery;
+
+public interface BMineSourceService {
+	String findAll(BMinesourceQuery sourceQuery);
+
+	int add(BMinesource source);
+
+	int update(BMinesource source);
+}

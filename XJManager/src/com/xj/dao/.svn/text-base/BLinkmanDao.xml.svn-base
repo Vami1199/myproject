@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.BLinkmanDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.base.BLinkman" >
+    <id column="l_id" property="lId" jdbcType="VARCHAR" />
+    <result column="l_name" property="lName" jdbcType="VARCHAR" />
+    <result column="l_duty" property="lDuty" jdbcType="VARCHAR" />
+    <result column="l_phone" property="lPhone" jdbcType="VARCHAR" />
+    <result column="l_fax" property="lFax" jdbcType="VARCHAR" />
+    <result column="l_telephone" property="lTelephone" jdbcType="VARCHAR" />
+    <result column="l_email" property="lEmail" jdbcType="VARCHAR" />
+    <result column="l_sex" property="lSex" jdbcType="TINYINT" />
+    <result column="l_card" property="lCard" jdbcType="VARCHAR" />
+    <result column="l_birthplace" property="lBirthplace" jdbcType="VARCHAR" />
+    <result column="l_address" property="lAddress" jdbcType="VARCHAR" />
+    <result column="l_age" property="lAge" jdbcType="TINYINT" />
+    <result column="l_education" property="lEducation" jdbcType="TINYINT" />
+    <result column="l_intime" property="lIntime" jdbcType="TINYINT" />
+    <result column="l_cid" property="lCid" jdbcType="INTEGER" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.base.BLinkman" extends="BaseResultMap" >
+    <result column="l_description" property="lDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      l_id, l_name, l_duty, l_phone, l_fax, l_telephone, l_email, l_sex, l_card, l_birthplace, 
+      l_address, l_age, l_education, l_intime, l_cid, Createdate, ModifyDate, CreateBy, 
+      ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    l_description
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.base.BLinkmanQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from b_linkman
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.base.BLinkmanQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from b_linkman
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    l_id,l_name,l_duty,l_phone,l_fax,l_telephone,l_email,l_sex,l_card,l_birthplace,l_address,l_age,l_education,l_intime,l_cid,Createdate,ModifyDate,CreateBy,ModifyBy,l_description
+    ,
+    <include refid="Blob_Column_List" />
+    from b_linkman
+    where l_id = #{lId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from b_linkman
+    where l_id = #{lId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.base.BLinkmanQuery" >
+    delete from b_linkman
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.base.BLinkman" >
+    insert into b_linkman (l_id, l_name, l_duty, 
+      l_phone, l_fax, l_telephone, 
+      l_email, l_sex, l_card, 
+      l_birthplace, l_address, l_age, 
+      l_education, l_intime, l_cid, 
+      Createdate, ModifyDate, CreateBy, 
+      ModifyBy, l_description)
+    values (#{lId,jdbcType=VARCHAR}, #{lName,jdbcType=VARCHAR}, #{lDuty,jdbcType=VARCHAR}, 
+      #{lPhone,jdbcType=VARCHAR}, #{lFax,jdbcType=VARCHAR}, #{lTelephone,jdbcType=VARCHAR}, 
+      #{lEmail,jdbcType=VARCHAR}, #{lSex,jdbcType=TINYINT}, #{lCard,jdbcType=VARCHAR}, 
+      #{lBirthplace,jdbcType=VARCHAR}, #{lAddress,jdbcType=VARCHAR}, #{lAge,jdbcType=TINYINT}, 
+      #{lEducation,jdbcType=TINYINT}, #{lIntime,jdbcType=TINYINT}, #{lCid,jdbcType=INTEGER}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{modifyby,jdbcType=VARCHAR}, #{lDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.base.BLinkman" >
+    insert into b_linkman
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lId != null" >
+        l_id,
+      </if>
+      <if test="lName != null" >
+        l_name,
+      </if>
+      <if test="lDuty != null" >
+        l_duty,
+      </if>
+      <if test="lPhone != null" >
+        l_phone,
+      </if>
+      <if test="lFax != null" >
+        l_fax,
+      </if>
+      <if test="lTelephone != null" >
+        l_telephone,
+      </if>
+      <if test="lEmail != null" >
+        l_email,
+      </if>
+      <if test="lSex != null" >
+        l_sex,
+      </if>
+      <if test="lCard != null" >
+        l_card,
+      </if>
+      <if test="lBirthplace != null" >
+        l_birthplace,
+      </if>
+      <if test="lAddress != null" >
+        l_address,
+      </if>
+      <if test="lAge != null" >
+        l_age,
+      </if>
+      <if test="lEducation != null" >
+        l_education,
+      </if>
+      <if test="lIntime != null" >
+        l_intime,
+      </if>
+      <if test="lCid != null" >
+        l_cid,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="lDescription != null" >
+        l_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lId != null" >
+        #{lId,jdbcType=VARCHAR},
+      </if>
+      <if test="lName != null" >
+        #{lName,jdbcType=VARCHAR},
+      </if>
+      <if test="lDuty != null" >
+        #{lDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="lPhone != null" >
+        #{lPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="lFax != null" >
+        #{lFax,jdbcType=VARCHAR},
+      </if>
+      <if test="lTelephone != null" >
+        #{lTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="lEmail != null" >
+        #{lEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="lSex != null" >
+        #{lSex,jdbcType=TINYINT},
+      </if>
+      <if test="lCard != null" >
+        #{lCard,jdbcType=VARCHAR},
+      </if>
+      <if test="lBirthplace != null" >
+        #{lBirthplace,jdbcType=VARCHAR},
+      </if>
+      <if test="lAddress != null" >
+        #{lAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lAge != null" >
+        #{lAge,jdbcType=TINYINT},
+      </if>
+      <if test="lEducation != null" >
+        #{lEducation,jdbcType=TINYINT},
+      </if>
+      <if test="lIntime != null" >
+        #{lIntime,jdbcType=TINYINT},
+      </if>
+      <if test="lCid != null" >
+        #{lCid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="lDescription != null" >
+        #{lDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.base.BLinkmanQuery" resultType="java.lang.Integer" >
+    select count(*) from b_linkman
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update b_linkman
+    <set >
+      <if test="record.lId != null" >
+        l_id = #{record.lId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lName != null" >
+        l_name = #{record.lName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lDuty != null" >
+        l_duty = #{record.lDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lPhone != null" >
+        l_phone = #{record.lPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lFax != null" >
+        l_fax = #{record.lFax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lTelephone != null" >
+        l_telephone = #{record.lTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lEmail != null" >
+        l_email = #{record.lEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lSex != null" >
+        l_sex = #{record.lSex,jdbcType=TINYINT},
+      </if>
+      <if test="record.lCard != null" >
+        l_card = #{record.lCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lBirthplace != null" >
+        l_birthplace = #{record.lBirthplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lAddress != null" >
+        l_address = #{record.lAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lAge != null" >
+        l_age = #{record.lAge,jdbcType=TINYINT},
+      </if>
+      <if test="record.lEducation != null" >
+        l_education = #{record.lEducation,jdbcType=TINYINT},
+      </if>
+      <if test="record.lIntime != null" >
+        l_intime = #{record.lIntime,jdbcType=TINYINT},
+      </if>
+      <if test="record.lCid != null" >
+        l_cid = #{record.lCid,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lDescription != null" >
+        l_description = #{record.lDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update b_linkman
+    set l_id = #{record.lId,jdbcType=VARCHAR},
+      l_name = #{record.lName,jdbcType=VARCHAR},
+      l_duty = #{record.lDuty,jdbcType=VARCHAR},
+      l_phone = #{record.lPhone,jdbcType=VARCHAR},
+      l_fax = #{record.lFax,jdbcType=VARCHAR},
+      l_telephone = #{record.lTelephone,jdbcType=VARCHAR},
+      l_email = #{record.lEmail,jdbcType=VARCHAR},
+      l_sex = #{record.lSex,jdbcType=TINYINT},
+      l_card = #{record.lCard,jdbcType=VARCHAR},
+      l_birthplace = #{record.lBirthplace,jdbcType=VARCHAR},
+      l_address = #{record.lAddress,jdbcType=VARCHAR},
+      l_age = #{record.lAge,jdbcType=TINYINT},
+      l_education = #{record.lEducation,jdbcType=TINYINT},
+      l_intime = #{record.lIntime,jdbcType=TINYINT},
+      l_cid = #{record.lCid,jdbcType=INTEGER},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      l_description = #{record.lDescription,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update b_linkman
+    set l_id = #{record.lId,jdbcType=VARCHAR},
+      l_name = #{record.lName,jdbcType=VARCHAR},
+      l_duty = #{record.lDuty,jdbcType=VARCHAR},
+      l_phone = #{record.lPhone,jdbcType=VARCHAR},
+      l_fax = #{record.lFax,jdbcType=VARCHAR},
+      l_telephone = #{record.lTelephone,jdbcType=VARCHAR},
+      l_email = #{record.lEmail,jdbcType=VARCHAR},
+      l_sex = #{record.lSex,jdbcType=TINYINT},
+      l_card = #{record.lCard,jdbcType=VARCHAR},
+      l_birthplace = #{record.lBirthplace,jdbcType=VARCHAR},
+      l_address = #{record.lAddress,jdbcType=VARCHAR},
+      l_age = #{record.lAge,jdbcType=TINYINT},
+      l_education = #{record.lEducation,jdbcType=TINYINT},
+      l_intime = #{record.lIntime,jdbcType=TINYINT},
+      l_cid = #{record.lCid,jdbcType=INTEGER},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.base.BLinkman" >
+    update b_linkman
+    <set >
+      <if test="lName != null" >
+        l_name = #{lName,jdbcType=VARCHAR},
+      </if>
+      <if test="lDuty != null" >
+        l_duty = #{lDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="lPhone != null" >
+        l_phone = #{lPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="lFax != null" >
+        l_fax = #{lFax,jdbcType=VARCHAR},
+      </if>
+      <if test="lTelephone != null" >
+        l_telephone = #{lTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="lEmail != null" >
+        l_email = #{lEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="lSex != null" >
+        l_sex = #{lSex,jdbcType=TINYINT},
+      </if>
+      <if test="lCard != null" >
+        l_card = #{lCard,jdbcType=VARCHAR},
+      </if>
+      <if test="lBirthplace != null" >
+        l_birthplace = #{lBirthplace,jdbcType=VARCHAR},
+      </if>
+      <if test="lAddress != null" >
+        l_address = #{lAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lAge != null" >
+        l_age = #{lAge,jdbcType=TINYINT},
+      </if>
+      <if test="lEducation != null" >
+        l_education = #{lEducation,jdbcType=TINYINT},
+      </if>
+      <if test="lIntime != null" >
+        l_intime = #{lIntime,jdbcType=TINYINT},
+      </if>
+      <if test="lCid != null" >
+        l_cid = #{lCid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="lDescription != null" >
+        l_description = #{lDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where l_id = #{lId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.base.BLinkman" >
+    update b_linkman
+    set l_name = #{lName,jdbcType=VARCHAR},
+      l_duty = #{lDuty,jdbcType=VARCHAR},
+      l_phone = #{lPhone,jdbcType=VARCHAR},
+      l_fax = #{lFax,jdbcType=VARCHAR},
+      l_telephone = #{lTelephone,jdbcType=VARCHAR},
+      l_email = #{lEmail,jdbcType=VARCHAR},
+      l_sex = #{lSex,jdbcType=TINYINT},
+      l_card = #{lCard,jdbcType=VARCHAR},
+      l_birthplace = #{lBirthplace,jdbcType=VARCHAR},
+      l_address = #{lAddress,jdbcType=VARCHAR},
+      l_age = #{lAge,jdbcType=TINYINT},
+      l_education = #{lEducation,jdbcType=TINYINT},
+      l_intime = #{lIntime,jdbcType=TINYINT},
+      l_cid = #{lCid,jdbcType=INTEGER},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      l_description = #{lDescription,jdbcType=LONGVARCHAR}
+    where l_id = #{lId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.base.BLinkman" >
+    update b_linkman
+    set l_name = #{lName,jdbcType=VARCHAR},
+      l_duty = #{lDuty,jdbcType=VARCHAR},
+      l_phone = #{lPhone,jdbcType=VARCHAR},
+      l_fax = #{lFax,jdbcType=VARCHAR},
+      l_telephone = #{lTelephone,jdbcType=VARCHAR},
+      l_email = #{lEmail,jdbcType=VARCHAR},
+      l_sex = #{lSex,jdbcType=TINYINT},
+      l_card = #{lCard,jdbcType=VARCHAR},
+      l_birthplace = #{lBirthplace,jdbcType=VARCHAR},
+      l_address = #{lAddress,jdbcType=VARCHAR},
+      l_age = #{lAge,jdbcType=TINYINT},
+      l_education = #{lEducation,jdbcType=TINYINT},
+      l_intime = #{lIntime,jdbcType=TINYINT},
+      l_cid = #{lCid,jdbcType=INTEGER},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where l_id = #{lId,jdbcType=VARCHAR}
+  </update>
+</mapper>

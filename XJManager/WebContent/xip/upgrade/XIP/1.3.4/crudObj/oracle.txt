@@ -1,0 +1,5 @@
+DELETE from xip_pub_mnu_tree where FUN_TREE_ID = (select FUN_TREE_ID from xip_pub_fun_tree where FUN_TREE_CODE = 'XIP2_CONC_NODE');
+DELETE from xip_pub_menugroup_language where FUN_CODE = 'XIP2_CONC_NODE';
+DELETE from xip_pub_fun_language where FUN_CODE = 'XIP2_CONC_NODE';
+DELETE from xip_pub_fun_tree where FUN_TREE_CODE = 'XIP2_CONC_NODE';
+commit;

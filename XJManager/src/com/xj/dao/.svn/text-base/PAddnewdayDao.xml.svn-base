@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PAddnewdayDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trainsplan.PAddnewday" >
+    <id column="an_id" property="anId" jdbcType="VARCHAR" />
+    <result column="an_start" property="anStart" jdbcType="VARCHAR" />
+    <result column="an_end" property="anEnd" jdbcType="VARCHAR" />
+    <result column="an_batch" property="anBatch" jdbcType="VARCHAR" />
+    <result column="an_source" property="anSource" jdbcType="VARCHAR" />
+    <result column="an_train" property="anTrain" jdbcType="INTEGER" />
+    <result column="an_rtrain" property="anRtrain" jdbcType="INTEGER" />
+    <result column="an_rnumber" property="anRnumber" jdbcType="INTEGER" />
+    <result column="an_allot" property="anAllot" jdbcType="INTEGER" />
+    <result column="an_wait" property="anWait" jdbcType="INTEGER" />
+    <result column="an_weight" property="anWeight" jdbcType="BIGINT" />
+    <result column="an_quality" property="anQuality" jdbcType="INTEGER" />
+    <result column="an_paycompany" property="anPaycompany" jdbcType="VARCHAR" />
+    <result column="an_takecompany" property="anTakecompany" jdbcType="VARCHAR" />
+    <result column="an_dayid" property="anDayid" jdbcType="VARCHAR" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.trainsplan.PAddnewday" extends="BaseResultMap" >
+    <result column="an_remark" property="anRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      an_id, an_start, an_end, an_batch, an_source, an_train, an_rtrain, an_rnumber, an_allot, 
+      an_wait, an_weight, an_quality, an_paycompany, an_takecompany, an_dayid, Createdate, 
+      ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    an_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.trainsplan.PAddnewdayQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from p_addnewday
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trainsplan.PAddnewdayQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_addnewday
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    an_id,an_start,an_end,an_batch,an_source,an_train,an_rtrain,an_rnumber,an_allot,an_wait,an_weight,an_quality,an_paycompany,an_takecompany,an_dayid,Createdate,ModifyDate,CreateBy,ModifyBy,an_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from p_addnewday
+    where an_id = #{anId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from p_addnewday
+    where an_id = #{anId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trainsplan.PAddnewdayQuery" >
+    delete from p_addnewday
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trainsplan.PAddnewday" >
+    insert into p_addnewday (an_id, an_start, an_end, 
+      an_batch, an_source, an_train, 
+      an_rtrain, an_rnumber, an_allot, 
+      an_wait, an_weight, an_quality, 
+      an_paycompany, an_takecompany, an_dayid, 
+      Createdate, ModifyDate, CreateBy, 
+      ModifyBy, an_remark)
+    values (#{anId,jdbcType=VARCHAR}, #{anStart,jdbcType=VARCHAR}, #{anEnd,jdbcType=VARCHAR}, 
+      #{anBatch,jdbcType=VARCHAR}, #{anSource,jdbcType=VARCHAR}, #{anTrain,jdbcType=INTEGER}, 
+      #{anRtrain,jdbcType=INTEGER}, #{anRnumber,jdbcType=INTEGER}, #{anAllot,jdbcType=INTEGER}, 
+      #{anWait,jdbcType=INTEGER}, #{anWeight,jdbcType=BIGINT}, #{anQuality,jdbcType=INTEGER}, 
+      #{anPaycompany,jdbcType=VARCHAR}, #{anTakecompany,jdbcType=VARCHAR}, #{anDayid,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{modifyby,jdbcType=VARCHAR}, #{anRemark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trainsplan.PAddnewday" >
+    insert into p_addnewday
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="anId != null" >
+        an_id,
+      </if>
+      <if test="anStart != null" >
+        an_start,
+      </if>
+      <if test="anEnd != null" >
+        an_end,
+      </if>
+      <if test="anBatch != null" >
+        an_batch,
+      </if>
+      <if test="anSource != null" >
+        an_source,
+      </if>
+      <if test="anTrain != null" >
+        an_train,
+      </if>
+      <if test="anRtrain != null" >
+        an_rtrain,
+      </if>
+      <if test="anRnumber != null" >
+        an_rnumber,
+      </if>
+      <if test="anAllot != null" >
+        an_allot,
+      </if>
+      <if test="anWait != null" >
+        an_wait,
+      </if>
+      <if test="anWeight != null" >
+        an_weight,
+      </if>
+      <if test="anQuality != null" >
+        an_quality,
+      </if>
+      <if test="anPaycompany != null" >
+        an_paycompany,
+      </if>
+      <if test="anTakecompany != null" >
+        an_takecompany,
+      </if>
+      <if test="anDayid != null" >
+        an_dayid,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="anRemark != null" >
+        an_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="anId != null" >
+        #{anId,jdbcType=VARCHAR},
+      </if>
+      <if test="anStart != null" >
+        #{anStart,jdbcType=VARCHAR},
+      </if>
+      <if test="anEnd != null" >
+        #{anEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="anBatch != null" >
+        #{anBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="anSource != null" >
+        #{anSource,jdbcType=VARCHAR},
+      </if>
+      <if test="anTrain != null" >
+        #{anTrain,jdbcType=INTEGER},
+      </if>
+      <if test="anRtrain != null" >
+        #{anRtrain,jdbcType=INTEGER},
+      </if>
+      <if test="anRnumber != null" >
+        #{anRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="anAllot != null" >
+        #{anAllot,jdbcType=INTEGER},
+      </if>
+      <if test="anWait != null" >
+        #{anWait,jdbcType=INTEGER},
+      </if>
+      <if test="anWeight != null" >
+        #{anWeight,jdbcType=BIGINT},
+      </if>
+      <if test="anQuality != null" >
+        #{anQuality,jdbcType=INTEGER},
+      </if>
+      <if test="anPaycompany != null" >
+        #{anPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="anTakecompany != null" >
+        #{anTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="anDayid != null" >
+        #{anDayid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="anRemark != null" >
+        #{anRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trainsplan.PAddnewdayQuery" resultType="java.lang.Integer" >
+    select count(*) from p_addnewday
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_addnewday
+    <set >
+      <if test="record.anId != null" >
+        an_id = #{record.anId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anStart != null" >
+        an_start = #{record.anStart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anEnd != null" >
+        an_end = #{record.anEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anBatch != null" >
+        an_batch = #{record.anBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anSource != null" >
+        an_source = #{record.anSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anTrain != null" >
+        an_train = #{record.anTrain,jdbcType=INTEGER},
+      </if>
+      <if test="record.anRtrain != null" >
+        an_rtrain = #{record.anRtrain,jdbcType=INTEGER},
+      </if>
+      <if test="record.anRnumber != null" >
+        an_rnumber = #{record.anRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.anAllot != null" >
+        an_allot = #{record.anAllot,jdbcType=INTEGER},
+      </if>
+      <if test="record.anWait != null" >
+        an_wait = #{record.anWait,jdbcType=INTEGER},
+      </if>
+      <if test="record.anWeight != null" >
+        an_weight = #{record.anWeight,jdbcType=BIGINT},
+      </if>
+      <if test="record.anQuality != null" >
+        an_quality = #{record.anQuality,jdbcType=INTEGER},
+      </if>
+      <if test="record.anPaycompany != null" >
+        an_paycompany = #{record.anPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anTakecompany != null" >
+        an_takecompany = #{record.anTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anDayid != null" >
+        an_dayid = #{record.anDayid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anRemark != null" >
+        an_remark = #{record.anRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update p_addnewday
+    set an_id = #{record.anId,jdbcType=VARCHAR},
+      an_start = #{record.anStart,jdbcType=VARCHAR},
+      an_end = #{record.anEnd,jdbcType=VARCHAR},
+      an_batch = #{record.anBatch,jdbcType=VARCHAR},
+      an_source = #{record.anSource,jdbcType=VARCHAR},
+      an_train = #{record.anTrain,jdbcType=INTEGER},
+      an_rtrain = #{record.anRtrain,jdbcType=INTEGER},
+      an_rnumber = #{record.anRnumber,jdbcType=INTEGER},
+      an_allot = #{record.anAllot,jdbcType=INTEGER},
+      an_wait = #{record.anWait,jdbcType=INTEGER},
+      an_weight = #{record.anWeight,jdbcType=BIGINT},
+      an_quality = #{record.anQuality,jdbcType=INTEGER},
+      an_paycompany = #{record.anPaycompany,jdbcType=VARCHAR},
+      an_takecompany = #{record.anTakecompany,jdbcType=VARCHAR},
+      an_dayid = #{record.anDayid,jdbcType=VARCHAR},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      an_remark = #{record.anRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_addnewday
+    set an_id = #{record.anId,jdbcType=VARCHAR},
+      an_start = #{record.anStart,jdbcType=VARCHAR},
+      an_end = #{record.anEnd,jdbcType=VARCHAR},
+      an_batch = #{record.anBatch,jdbcType=VARCHAR},
+      an_source = #{record.anSource,jdbcType=VARCHAR},
+      an_train = #{record.anTrain,jdbcType=INTEGER},
+      an_rtrain = #{record.anRtrain,jdbcType=INTEGER},
+      an_rnumber = #{record.anRnumber,jdbcType=INTEGER},
+      an_allot = #{record.anAllot,jdbcType=INTEGER},
+      an_wait = #{record.anWait,jdbcType=INTEGER},
+      an_weight = #{record.anWeight,jdbcType=BIGINT},
+      an_quality = #{record.anQuality,jdbcType=INTEGER},
+      an_paycompany = #{record.anPaycompany,jdbcType=VARCHAR},
+      an_takecompany = #{record.anTakecompany,jdbcType=VARCHAR},
+      an_dayid = #{record.anDayid,jdbcType=VARCHAR},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trainsplan.PAddnewday" >
+    update p_addnewday
+    <set >
+      <if test="anStart != null" >
+        an_start = #{anStart,jdbcType=VARCHAR},
+      </if>
+      <if test="anEnd != null" >
+        an_end = #{anEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="anBatch != null" >
+        an_batch = #{anBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="anSource != null" >
+        an_source = #{anSource,jdbcType=VARCHAR},
+      </if>
+      <if test="anTrain != null" >
+        an_train = #{anTrain,jdbcType=INTEGER},
+      </if>
+      <if test="anRtrain != null" >
+        an_rtrain = #{anRtrain,jdbcType=INTEGER},
+      </if>
+      <if test="anRnumber != null" >
+        an_rnumber = #{anRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="anAllot != null" >
+        an_allot = #{anAllot,jdbcType=INTEGER},
+      </if>
+      <if test="anWait != null" >
+        an_wait = #{anWait,jdbcType=INTEGER},
+      </if>
+      <if test="anWeight != null" >
+        an_weight = #{anWeight,jdbcType=BIGINT},
+      </if>
+      <if test="anQuality != null" >
+        an_quality = #{anQuality,jdbcType=INTEGER},
+      </if>
+      <if test="anPaycompany != null" >
+        an_paycompany = #{anPaycompany,jdbcType=VARCHAR},
+      </if>
+      <if test="anTakecompany != null" >
+        an_takecompany = #{anTakecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="anDayid != null" >
+        an_dayid = #{anDayid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="anRemark != null" >
+        an_remark = #{anRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where an_id = #{anId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.trainsplan.PAddnewday" >
+    update p_addnewday
+    set an_start = #{anStart,jdbcType=VARCHAR},
+      an_end = #{anEnd,jdbcType=VARCHAR},
+      an_batch = #{anBatch,jdbcType=VARCHAR},
+      an_source = #{anSource,jdbcType=VARCHAR},
+      an_train = #{anTrain,jdbcType=INTEGER},
+      an_rtrain = #{anRtrain,jdbcType=INTEGER},
+      an_rnumber = #{anRnumber,jdbcType=INTEGER},
+      an_allot = #{anAllot,jdbcType=INTEGER},
+      an_wait = #{anWait,jdbcType=INTEGER},
+      an_weight = #{anWeight,jdbcType=BIGINT},
+      an_quality = #{anQuality,jdbcType=INTEGER},
+      an_paycompany = #{anPaycompany,jdbcType=VARCHAR},
+      an_takecompany = #{anTakecompany,jdbcType=VARCHAR},
+      an_dayid = #{anDayid,jdbcType=VARCHAR},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      an_remark = #{anRemark,jdbcType=LONGVARCHAR}
+    where an_id = #{anId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trainsplan.PAddnewday" >
+    update p_addnewday
+    set an_start = #{anStart,jdbcType=VARCHAR},
+      an_end = #{anEnd,jdbcType=VARCHAR},
+      an_batch = #{anBatch,jdbcType=VARCHAR},
+      an_source = #{anSource,jdbcType=VARCHAR},
+      an_train = #{anTrain,jdbcType=INTEGER},
+      an_rtrain = #{anRtrain,jdbcType=INTEGER},
+      an_rnumber = #{anRnumber,jdbcType=INTEGER},
+      an_allot = #{anAllot,jdbcType=INTEGER},
+      an_wait = #{anWait,jdbcType=INTEGER},
+      an_weight = #{anWeight,jdbcType=BIGINT},
+      an_quality = #{anQuality,jdbcType=INTEGER},
+      an_paycompany = #{anPaycompany,jdbcType=VARCHAR},
+      an_takecompany = #{anTakecompany,jdbcType=VARCHAR},
+      an_dayid = #{anDayid,jdbcType=VARCHAR},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where an_id = #{anId,jdbcType=VARCHAR}
+  </update>
+</mapper>

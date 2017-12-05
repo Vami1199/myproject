@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.BCoaltypeDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.base.BCoaltype" >
+    <id column="ct_id" property="ctId" jdbcType="INTEGER" />
+    <result column="ct_name" property="ctName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.base.BCoaltype" extends="BaseResultMap" >
+    <result column="ct_remark" property="ctRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      ct_id, ct_name
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    ct_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.base.BCoaltypeQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from b_coaltype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.base.BCoaltypeQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from b_coaltype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    ct_id,ct_name,ct_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from b_coaltype
+    where ct_id = #{ctId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from b_coaltype
+    where ct_id = #{ctId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.base.BCoaltypeQuery" >
+    delete from b_coaltype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.base.BCoaltype" >
+    insert into b_coaltype (ct_id, ct_name, ct_remark
+      )
+    values (#{ctId,jdbcType=INTEGER}, #{ctName,jdbcType=VARCHAR}, #{ctRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.base.BCoaltype" >
+    insert into b_coaltype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ctId != null" >
+        ct_id,
+      </if>
+      <if test="ctName != null" >
+        ct_name,
+      </if>
+      <if test="ctRemark != null" >
+        ct_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ctId != null" >
+        #{ctId,jdbcType=INTEGER},
+      </if>
+      <if test="ctName != null" >
+        #{ctName,jdbcType=VARCHAR},
+      </if>
+      <if test="ctRemark != null" >
+        #{ctRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.base.BCoaltypeQuery" resultType="java.lang.Integer" >
+    select count(*) from b_coaltype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update b_coaltype
+    <set >
+      <if test="record.ctId != null" >
+        ct_id = #{record.ctId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ctName != null" >
+        ct_name = #{record.ctName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ctRemark != null" >
+        ct_remark = #{record.ctRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update b_coaltype
+    set ct_id = #{record.ctId,jdbcType=INTEGER},
+      ct_name = #{record.ctName,jdbcType=VARCHAR},
+      ct_remark = #{record.ctRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update b_coaltype
+    set ct_id = #{record.ctId,jdbcType=INTEGER},
+      ct_name = #{record.ctName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.base.BCoaltype" >
+    update b_coaltype
+    <set >
+      <if test="ctName != null" >
+        ct_name = #{ctName,jdbcType=VARCHAR},
+      </if>
+      <if test="ctRemark != null" >
+        ct_remark = #{ctRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ct_id = #{ctId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.base.BCoaltype" >
+    update b_coaltype
+    set ct_name = #{ctName,jdbcType=VARCHAR},
+      ct_remark = #{ctRemark,jdbcType=LONGVARCHAR}
+    where ct_id = #{ctId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.base.BCoaltype" >
+    update b_coaltype
+    set ct_name = #{ctName,jdbcType=VARCHAR}
+    where ct_id = #{ctId,jdbcType=INTEGER}
+  </update>
+</mapper>

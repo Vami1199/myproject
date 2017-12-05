@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.LDetailDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.land.LDetail" >
+    <id column="ap_id" property="apId" jdbcType="INTEGER" />
+    <result column="de_id" property="deId" jdbcType="INTEGER" />
+    <result column="de_apid" property="deApid" jdbcType="INTEGER" />
+    <result column="de_address" property="deAddress" jdbcType="VARCHAR" />
+    <result column="de_product" property="deProduct" jdbcType="VARCHAR" />
+    <result column="de_price" property="dePrice" jdbcType="DECIMAL" />
+    <result column="de_count" property="deCount" jdbcType="DECIMAL" />
+    <result column="de_total" property="deTotal" jdbcType="DECIMAL" />
+    <result column="de_freight" property="deFreight" jdbcType="DECIMAL" />
+    <result column="de_carriage" property="deCarriage" jdbcType="DECIMAL" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.land.LDetail" extends="BaseResultMap" >
+    <result column="de_remark" property="deRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      ap_id, de_id, de_apid, de_address, de_product, de_price, de_count, de_total, de_freight, 
+      de_carriage, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    de_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.land.LDetailQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from l_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.land.LDetailQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from l_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    ap_id,de_id,de_apid,de_address,de_product,de_price,de_count,de_total,de_freight,de_carriage,Createdate,ModifyDate,CreateBy,ModifyBy,de_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from l_detail
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from l_detail
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.land.LDetailQuery" >
+    delete from l_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.land.LDetail" >
+    insert into l_detail (ap_id, de_id, de_apid, 
+      de_address, de_product, de_price, 
+      de_count, de_total, de_freight, 
+      de_carriage, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, de_remark
+      )
+    values (#{apId,jdbcType=INTEGER}, #{deId,jdbcType=INTEGER}, #{deApid,jdbcType=INTEGER}, 
+      #{deAddress,jdbcType=VARCHAR}, #{deProduct,jdbcType=VARCHAR}, #{dePrice,jdbcType=DECIMAL}, 
+      #{deCount,jdbcType=DECIMAL}, #{deTotal,jdbcType=DECIMAL}, #{deFreight,jdbcType=DECIMAL}, 
+      #{deCarriage,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{deRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.land.LDetail" >
+    insert into l_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="apId != null" >
+        ap_id,
+      </if>
+      <if test="deId != null" >
+        de_id,
+      </if>
+      <if test="deApid != null" >
+        de_apid,
+      </if>
+      <if test="deAddress != null" >
+        de_address,
+      </if>
+      <if test="deProduct != null" >
+        de_product,
+      </if>
+      <if test="dePrice != null" >
+        de_price,
+      </if>
+      <if test="deCount != null" >
+        de_count,
+      </if>
+      <if test="deTotal != null" >
+        de_total,
+      </if>
+      <if test="deFreight != null" >
+        de_freight,
+      </if>
+      <if test="deCarriage != null" >
+        de_carriage,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="deRemark != null" >
+        de_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="apId != null" >
+        #{apId,jdbcType=INTEGER},
+      </if>
+      <if test="deId != null" >
+        #{deId,jdbcType=INTEGER},
+      </if>
+      <if test="deApid != null" >
+        #{deApid,jdbcType=INTEGER},
+      </if>
+      <if test="deAddress != null" >
+        #{deAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deProduct != null" >
+        #{deProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="dePrice != null" >
+        #{dePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deCount != null" >
+        #{deCount,jdbcType=DECIMAL},
+      </if>
+      <if test="deTotal != null" >
+        #{deTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="deFreight != null" >
+        #{deFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="deCarriage != null" >
+        #{deCarriage,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="deRemark != null" >
+        #{deRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.land.LDetailQuery" resultType="java.lang.Integer" >
+    select count(*) from l_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update l_detail
+    <set >
+      <if test="record.apId != null" >
+        ap_id = #{record.apId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deId != null" >
+        de_id = #{record.deId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deApid != null" >
+        de_apid = #{record.deApid,jdbcType=INTEGER},
+      </if>
+      <if test="record.deAddress != null" >
+        de_address = #{record.deAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deProduct != null" >
+        de_product = #{record.deProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dePrice != null" >
+        de_price = #{record.dePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deCount != null" >
+        de_count = #{record.deCount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deTotal != null" >
+        de_total = #{record.deTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deFreight != null" >
+        de_freight = #{record.deFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deCarriage != null" >
+        de_carriage = #{record.deCarriage,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deRemark != null" >
+        de_remark = #{record.deRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update l_detail
+    set ap_id = #{record.apId,jdbcType=INTEGER},
+      de_id = #{record.deId,jdbcType=INTEGER},
+      de_apid = #{record.deApid,jdbcType=INTEGER},
+      de_address = #{record.deAddress,jdbcType=VARCHAR},
+      de_product = #{record.deProduct,jdbcType=VARCHAR},
+      de_price = #{record.dePrice,jdbcType=DECIMAL},
+      de_count = #{record.deCount,jdbcType=DECIMAL},
+      de_total = #{record.deTotal,jdbcType=DECIMAL},
+      de_freight = #{record.deFreight,jdbcType=DECIMAL},
+      de_carriage = #{record.deCarriage,jdbcType=DECIMAL},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      de_remark = #{record.deRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update l_detail
+    set ap_id = #{record.apId,jdbcType=INTEGER},
+      de_id = #{record.deId,jdbcType=INTEGER},
+      de_apid = #{record.deApid,jdbcType=INTEGER},
+      de_address = #{record.deAddress,jdbcType=VARCHAR},
+      de_product = #{record.deProduct,jdbcType=VARCHAR},
+      de_price = #{record.dePrice,jdbcType=DECIMAL},
+      de_count = #{record.deCount,jdbcType=DECIMAL},
+      de_total = #{record.deTotal,jdbcType=DECIMAL},
+      de_freight = #{record.deFreight,jdbcType=DECIMAL},
+      de_carriage = #{record.deCarriage,jdbcType=DECIMAL},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.land.LDetail" >
+    update l_detail
+    <set >
+      <if test="deId != null" >
+        de_id = #{deId,jdbcType=INTEGER},
+      </if>
+      <if test="deApid != null" >
+        de_apid = #{deApid,jdbcType=INTEGER},
+      </if>
+      <if test="deAddress != null" >
+        de_address = #{deAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="deProduct != null" >
+        de_product = #{deProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="dePrice != null" >
+        de_price = #{dePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deCount != null" >
+        de_count = #{deCount,jdbcType=DECIMAL},
+      </if>
+      <if test="deTotal != null" >
+        de_total = #{deTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="deFreight != null" >
+        de_freight = #{deFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="deCarriage != null" >
+        de_carriage = #{deCarriage,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="deRemark != null" >
+        de_remark = #{deRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.land.LDetail" >
+    update l_detail
+    set de_id = #{deId,jdbcType=INTEGER},
+      de_apid = #{deApid,jdbcType=INTEGER},
+      de_address = #{deAddress,jdbcType=VARCHAR},
+      de_product = #{deProduct,jdbcType=VARCHAR},
+      de_price = #{dePrice,jdbcType=DECIMAL},
+      de_count = #{deCount,jdbcType=DECIMAL},
+      de_total = #{deTotal,jdbcType=DECIMAL},
+      de_freight = #{deFreight,jdbcType=DECIMAL},
+      de_carriage = #{deCarriage,jdbcType=DECIMAL},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      de_remark = #{deRemark,jdbcType=LONGVARCHAR}
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.land.LDetail" >
+    update l_detail
+    set de_id = #{deId,jdbcType=INTEGER},
+      de_apid = #{deApid,jdbcType=INTEGER},
+      de_address = #{deAddress,jdbcType=VARCHAR},
+      de_product = #{deProduct,jdbcType=VARCHAR},
+      de_price = #{dePrice,jdbcType=DECIMAL},
+      de_count = #{deCount,jdbcType=DECIMAL},
+      de_total = #{deTotal,jdbcType=DECIMAL},
+      de_freight = #{deFreight,jdbcType=DECIMAL},
+      de_carriage = #{deCarriage,jdbcType=DECIMAL},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where ap_id = #{apId,jdbcType=INTEGER}
+  </update>
+</mapper>

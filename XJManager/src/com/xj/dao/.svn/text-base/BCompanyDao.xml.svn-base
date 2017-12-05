@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.BCompanyDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.base.BCompany" >
+    <id column="co_id" property="coId" jdbcType="VARCHAR" />
+    <result column="co_short" property="coShort" jdbcType="VARCHAR" />
+    <result column="co_name" property="coName" jdbcType="VARCHAR" />
+    <result column="co_phone" property="coPhone" jdbcType="VARCHAR" />
+    <result column="co_postcode" property="coPostcode" jdbcType="INTEGER" />
+    <result column="co_fax" property="coFax" jdbcType="VARCHAR" />
+    <result column="co_leader" property="coLeader" jdbcType="VARCHAR" />
+    <result column="co_address" property="coAddress" jdbcType="VARCHAR" />
+    <result column="co_linkman" property="coLinkman" jdbcType="VARCHAR" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      co_id, co_short, co_name, co_phone, co_postcode, co_fax, co_leader, co_address, co_linkman, 
+      Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.base.BCompanyQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from b_company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    co_id,co_short,co_name,co_phone,co_postcode,co_fax,co_leader,co_address,co_linkman,Createdate,ModifyDate,CreateBy,ModifyBy
+    from b_company
+    where co_id = #{coId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from b_company
+    where co_id = #{coId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.base.BCompanyQuery" >
+    delete from b_company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.base.BCompany" >
+    insert into b_company (co_id, co_short, co_name, 
+      co_phone, co_postcode, co_fax, 
+      co_leader, co_address, co_linkman, 
+      Createdate, ModifyDate, CreateBy, 
+      ModifyBy)
+    values (#{coId,jdbcType=VARCHAR}, #{coShort,jdbcType=VARCHAR}, #{coName,jdbcType=VARCHAR}, 
+      #{coPhone,jdbcType=VARCHAR}, #{coPostcode,jdbcType=INTEGER}, #{coFax,jdbcType=VARCHAR}, 
+      #{coLeader,jdbcType=VARCHAR}, #{coAddress,jdbcType=VARCHAR}, #{coLinkman,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{modifyby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.base.BCompany" >
+    insert into b_company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coId != null" >
+        co_id,
+      </if>
+      <if test="coShort != null" >
+        co_short,
+      </if>
+      <if test="coName != null" >
+        co_name,
+      </if>
+      <if test="coPhone != null" >
+        co_phone,
+      </if>
+      <if test="coPostcode != null" >
+        co_postcode,
+      </if>
+      <if test="coFax != null" >
+        co_fax,
+      </if>
+      <if test="coLeader != null" >
+        co_leader,
+      </if>
+      <if test="coAddress != null" >
+        co_address,
+      </if>
+      <if test="coLinkman != null" >
+        co_linkman,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coId != null" >
+        #{coId,jdbcType=VARCHAR},
+      </if>
+      <if test="coShort != null" >
+        #{coShort,jdbcType=VARCHAR},
+      </if>
+      <if test="coName != null" >
+        #{coName,jdbcType=VARCHAR},
+      </if>
+      <if test="coPhone != null" >
+        #{coPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="coPostcode != null" >
+        #{coPostcode,jdbcType=INTEGER},
+      </if>
+      <if test="coFax != null" >
+        #{coFax,jdbcType=VARCHAR},
+      </if>
+      <if test="coLeader != null" >
+        #{coLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="coAddress != null" >
+        #{coAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="coLinkman != null" >
+        #{coLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.base.BCompanyQuery" resultType="java.lang.Integer" >
+    select count(*) from b_company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update b_company
+    <set >
+      <if test="record.coId != null" >
+        co_id = #{record.coId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coShort != null" >
+        co_short = #{record.coShort,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coName != null" >
+        co_name = #{record.coName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coPhone != null" >
+        co_phone = #{record.coPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coPostcode != null" >
+        co_postcode = #{record.coPostcode,jdbcType=INTEGER},
+      </if>
+      <if test="record.coFax != null" >
+        co_fax = #{record.coFax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coLeader != null" >
+        co_leader = #{record.coLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coAddress != null" >
+        co_address = #{record.coAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coLinkman != null" >
+        co_linkman = #{record.coLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update b_company
+    set co_id = #{record.coId,jdbcType=VARCHAR},
+      co_short = #{record.coShort,jdbcType=VARCHAR},
+      co_name = #{record.coName,jdbcType=VARCHAR},
+      co_phone = #{record.coPhone,jdbcType=VARCHAR},
+      co_postcode = #{record.coPostcode,jdbcType=INTEGER},
+      co_fax = #{record.coFax,jdbcType=VARCHAR},
+      co_leader = #{record.coLeader,jdbcType=VARCHAR},
+      co_address = #{record.coAddress,jdbcType=VARCHAR},
+      co_linkman = #{record.coLinkman,jdbcType=VARCHAR},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.base.BCompany" >
+    update b_company
+    <set >
+      <if test="coShort != null" >
+        co_short = #{coShort,jdbcType=VARCHAR},
+      </if>
+      <if test="coName != null" >
+        co_name = #{coName,jdbcType=VARCHAR},
+      </if>
+      <if test="coPhone != null" >
+        co_phone = #{coPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="coPostcode != null" >
+        co_postcode = #{coPostcode,jdbcType=INTEGER},
+      </if>
+      <if test="coFax != null" >
+        co_fax = #{coFax,jdbcType=VARCHAR},
+      </if>
+      <if test="coLeader != null" >
+        co_leader = #{coLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="coAddress != null" >
+        co_address = #{coAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="coLinkman != null" >
+        co_linkman = #{coLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where co_id = #{coId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.base.BCompany" >
+    update b_company
+    set co_short = #{coShort,jdbcType=VARCHAR},
+      co_name = #{coName,jdbcType=VARCHAR},
+      co_phone = #{coPhone,jdbcType=VARCHAR},
+      co_postcode = #{coPostcode,jdbcType=INTEGER},
+      co_fax = #{coFax,jdbcType=VARCHAR},
+      co_leader = #{coLeader,jdbcType=VARCHAR},
+      co_address = #{coAddress,jdbcType=VARCHAR},
+      co_linkman = #{coLinkman,jdbcType=VARCHAR},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where co_id = #{coId,jdbcType=VARCHAR}
+  </update>
+</mapper>

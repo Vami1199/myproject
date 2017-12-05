@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.TNoteDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trains.TNote" >
+    <id column="note_id" property="noteId" jdbcType="INTEGER" />
+    <result column="note_wagonid" property="noteWagonid" jdbcType="VARCHAR" />
+    <result column="note_num" property="noteNum" jdbcType="VARCHAR" />
+    <result column="note_tnum" property="noteTnum" jdbcType="VARCHAR" />
+    <result column="note_loadinger" property="noteLoadinger" jdbcType="TINYINT" />
+    <result column="note_way" property="noteWay" jdbcType="VARCHAR" />
+    <result column="note_arrivetime" property="noteArrivetime" jdbcType="DATE" />
+    <result column="note_cnum" property="noteCnum" jdbcType="VARCHAR" />
+    <result column="note_length" property="noteLength" jdbcType="DECIMAL" />
+    <result column="note_boxtype" property="noteBoxtype" jdbcType="VARCHAR" />
+    <result column="note_shipper" property="noteShipper" jdbcType="VARCHAR" />
+    <result column="note_shipperaddress" property="noteShipperaddress" jdbcType="VARCHAR" />
+    <result column="note_count" property="noteCount" jdbcType="INTEGER" />
+    <result column="note_offer" property="noteOffer" jdbcType="DECIMAL" />
+    <result column="note_starttime" property="noteStarttime" jdbcType="DATE" />
+    <result column="note_pricenum" property="notePricenum" jdbcType="VARCHAR" />
+    <result column="note_pricerate" property="notePricerate" jdbcType="VARCHAR" />
+    <result column="note_totalprice" property="noteTotalprice" jdbcType="DECIMAL" />
+    <result column="note_maker" property="noteMaker" jdbcType="VARCHAR" />
+    <result column="note_receiver" property="noteReceiver" jdbcType="VARCHAR" />
+    <result column="note_acceptor" property="noteAcceptor" jdbcType="VARCHAR" />
+    <result column="note_reviewer" property="noteReviewer" jdbcType="VARCHAR" />
+    <result column="Createdate" property="createdate" jdbcType="DATE" />
+    <result column="ModifyDate" property="modifydate" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.trains.TNote" extends="BaseResultMap" >
+    <result column="note_remark" property="noteRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      note_id, note_wagonid, note_num, note_tnum, note_loadinger, note_way, note_arrivetime, 
+      note_cnum, note_length, note_boxtype, note_shipper, note_shipperaddress, note_count, 
+      note_offer, note_starttime, note_pricenum, note_pricerate, note_totalprice, note_maker, 
+      note_receiver, note_acceptor, note_reviewer, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    note_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.trains.TNoteQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_note
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trains.TNoteQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_note
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    note_id,note_wagonid,note_num,note_tnum,note_loadinger,note_way,note_arrivetime,note_cnum,note_length,note_boxtype,note_shipper,note_shipperaddress,note_count,note_offer,note_starttime,note_pricenum,note_pricerate,note_totalprice,note_maker,note_receiver,note_acceptor,note_reviewer,Createdate,ModifyDate,CreateBy,ModifyBy,note_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from t_note
+    where note_id = #{noteId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_note
+    where note_id = #{noteId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trains.TNoteQuery" >
+    delete from t_note
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trains.TNote" >
+    insert into t_note (note_id, note_wagonid, note_num, 
+      note_tnum, note_loadinger, note_way, 
+      note_arrivetime, note_cnum, note_length, 
+      note_boxtype, note_shipper, note_shipperaddress, 
+      note_count, note_offer, note_starttime, 
+      note_pricenum, note_pricerate, note_totalprice, 
+      note_maker, note_receiver, note_acceptor, 
+      note_reviewer, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, note_remark
+      )
+    values (#{noteId,jdbcType=INTEGER}, #{noteWagonid,jdbcType=VARCHAR}, #{noteNum,jdbcType=VARCHAR}, 
+      #{noteTnum,jdbcType=VARCHAR}, #{noteLoadinger,jdbcType=TINYINT}, #{noteWay,jdbcType=VARCHAR}, 
+      #{noteArrivetime,jdbcType=DATE}, #{noteCnum,jdbcType=VARCHAR}, #{noteLength,jdbcType=DECIMAL}, 
+      #{noteBoxtype,jdbcType=VARCHAR}, #{noteShipper,jdbcType=VARCHAR}, #{noteShipperaddress,jdbcType=VARCHAR}, 
+      #{noteCount,jdbcType=INTEGER}, #{noteOffer,jdbcType=DECIMAL}, #{noteStarttime,jdbcType=DATE}, 
+      #{notePricenum,jdbcType=VARCHAR}, #{notePricerate,jdbcType=VARCHAR}, #{noteTotalprice,jdbcType=DECIMAL}, 
+      #{noteMaker,jdbcType=VARCHAR}, #{noteReceiver,jdbcType=VARCHAR}, #{noteAcceptor,jdbcType=VARCHAR}, 
+      #{noteReviewer,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, #{modifydate,jdbcType=DATE}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{noteRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trains.TNote" >
+    insert into t_note
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="noteId != null" >
+        note_id,
+      </if>
+      <if test="noteWagonid != null" >
+        note_wagonid,
+      </if>
+      <if test="noteNum != null" >
+        note_num,
+      </if>
+      <if test="noteTnum != null" >
+        note_tnum,
+      </if>
+      <if test="noteLoadinger != null" >
+        note_loadinger,
+      </if>
+      <if test="noteWay != null" >
+        note_way,
+      </if>
+      <if test="noteArrivetime != null" >
+        note_arrivetime,
+      </if>
+      <if test="noteCnum != null" >
+        note_cnum,
+      </if>
+      <if test="noteLength != null" >
+        note_length,
+      </if>
+      <if test="noteBoxtype != null" >
+        note_boxtype,
+      </if>
+      <if test="noteShipper != null" >
+        note_shipper,
+      </if>
+      <if test="noteShipperaddress != null" >
+        note_shipperaddress,
+      </if>
+      <if test="noteCount != null" >
+        note_count,
+      </if>
+      <if test="noteOffer != null" >
+        note_offer,
+      </if>
+      <if test="noteStarttime != null" >
+        note_starttime,
+      </if>
+      <if test="notePricenum != null" >
+        note_pricenum,
+      </if>
+      <if test="notePricerate != null" >
+        note_pricerate,
+      </if>
+      <if test="noteTotalprice != null" >
+        note_totalprice,
+      </if>
+      <if test="noteMaker != null" >
+        note_maker,
+      </if>
+      <if test="noteReceiver != null" >
+        note_receiver,
+      </if>
+      <if test="noteAcceptor != null" >
+        note_acceptor,
+      </if>
+      <if test="noteReviewer != null" >
+        note_reviewer,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="noteRemark != null" >
+        note_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="noteId != null" >
+        #{noteId,jdbcType=INTEGER},
+      </if>
+      <if test="noteWagonid != null" >
+        #{noteWagonid,jdbcType=VARCHAR},
+      </if>
+      <if test="noteNum != null" >
+        #{noteNum,jdbcType=VARCHAR},
+      </if>
+      <if test="noteTnum != null" >
+        #{noteTnum,jdbcType=VARCHAR},
+      </if>
+      <if test="noteLoadinger != null" >
+        #{noteLoadinger,jdbcType=TINYINT},
+      </if>
+      <if test="noteWay != null" >
+        #{noteWay,jdbcType=VARCHAR},
+      </if>
+      <if test="noteArrivetime != null" >
+        #{noteArrivetime,jdbcType=DATE},
+      </if>
+      <if test="noteCnum != null" >
+        #{noteCnum,jdbcType=VARCHAR},
+      </if>
+      <if test="noteLength != null" >
+        #{noteLength,jdbcType=DECIMAL},
+      </if>
+      <if test="noteBoxtype != null" >
+        #{noteBoxtype,jdbcType=VARCHAR},
+      </if>
+      <if test="noteShipper != null" >
+        #{noteShipper,jdbcType=VARCHAR},
+      </if>
+      <if test="noteShipperaddress != null" >
+        #{noteShipperaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="noteCount != null" >
+        #{noteCount,jdbcType=INTEGER},
+      </if>
+      <if test="noteOffer != null" >
+        #{noteOffer,jdbcType=DECIMAL},
+      </if>
+      <if test="noteStarttime != null" >
+        #{noteStarttime,jdbcType=DATE},
+      </if>
+      <if test="notePricenum != null" >
+        #{notePricenum,jdbcType=VARCHAR},
+      </if>
+      <if test="notePricerate != null" >
+        #{notePricerate,jdbcType=VARCHAR},
+      </if>
+      <if test="noteTotalprice != null" >
+        #{noteTotalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="noteMaker != null" >
+        #{noteMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="noteReceiver != null" >
+        #{noteReceiver,jdbcType=VARCHAR},
+      </if>
+      <if test="noteAcceptor != null" >
+        #{noteAcceptor,jdbcType=VARCHAR},
+      </if>
+      <if test="noteReviewer != null" >
+        #{noteReviewer,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=DATE},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="noteRemark != null" >
+        #{noteRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trains.TNoteQuery" resultType="java.lang.Integer" >
+    select count(*) from t_note
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_note
+    <set >
+      <if test="record.noteId != null" >
+        note_id = #{record.noteId,jdbcType=INTEGER},
+      </if>
+      <if test="record.noteWagonid != null" >
+        note_wagonid = #{record.noteWagonid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteNum != null" >
+        note_num = #{record.noteNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteTnum != null" >
+        note_tnum = #{record.noteTnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteLoadinger != null" >
+        note_loadinger = #{record.noteLoadinger,jdbcType=TINYINT},
+      </if>
+      <if test="record.noteWay != null" >
+        note_way = #{record.noteWay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteArrivetime != null" >
+        note_arrivetime = #{record.noteArrivetime,jdbcType=DATE},
+      </if>
+      <if test="record.noteCnum != null" >
+        note_cnum = #{record.noteCnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteLength != null" >
+        note_length = #{record.noteLength,jdbcType=DECIMAL},
+      </if>
+      <if test="record.noteBoxtype != null" >
+        note_boxtype = #{record.noteBoxtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteShipper != null" >
+        note_shipper = #{record.noteShipper,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteShipperaddress != null" >
+        note_shipperaddress = #{record.noteShipperaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteCount != null" >
+        note_count = #{record.noteCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.noteOffer != null" >
+        note_offer = #{record.noteOffer,jdbcType=DECIMAL},
+      </if>
+      <if test="record.noteStarttime != null" >
+        note_starttime = #{record.noteStarttime,jdbcType=DATE},
+      </if>
+      <if test="record.notePricenum != null" >
+        note_pricenum = #{record.notePricenum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.notePricerate != null" >
+        note_pricerate = #{record.notePricerate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteTotalprice != null" >
+        note_totalprice = #{record.noteTotalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.noteMaker != null" >
+        note_maker = #{record.noteMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteReceiver != null" >
+        note_receiver = #{record.noteReceiver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteAcceptor != null" >
+        note_acceptor = #{record.noteAcceptor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteReviewer != null" >
+        note_reviewer = #{record.noteReviewer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=DATE},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=DATE},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noteRemark != null" >
+        note_remark = #{record.noteRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_note
+    set note_id = #{record.noteId,jdbcType=INTEGER},
+      note_wagonid = #{record.noteWagonid,jdbcType=VARCHAR},
+      note_num = #{record.noteNum,jdbcType=VARCHAR},
+      note_tnum = #{record.noteTnum,jdbcType=VARCHAR},
+      note_loadinger = #{record.noteLoadinger,jdbcType=TINYINT},
+      note_way = #{record.noteWay,jdbcType=VARCHAR},
+      note_arrivetime = #{record.noteArrivetime,jdbcType=DATE},
+      note_cnum = #{record.noteCnum,jdbcType=VARCHAR},
+      note_length = #{record.noteLength,jdbcType=DECIMAL},
+      note_boxtype = #{record.noteBoxtype,jdbcType=VARCHAR},
+      note_shipper = #{record.noteShipper,jdbcType=VARCHAR},
+      note_shipperaddress = #{record.noteShipperaddress,jdbcType=VARCHAR},
+      note_count = #{record.noteCount,jdbcType=INTEGER},
+      note_offer = #{record.noteOffer,jdbcType=DECIMAL},
+      note_starttime = #{record.noteStarttime,jdbcType=DATE},
+      note_pricenum = #{record.notePricenum,jdbcType=VARCHAR},
+      note_pricerate = #{record.notePricerate,jdbcType=VARCHAR},
+      note_totalprice = #{record.noteTotalprice,jdbcType=DECIMAL},
+      note_maker = #{record.noteMaker,jdbcType=VARCHAR},
+      note_receiver = #{record.noteReceiver,jdbcType=VARCHAR},
+      note_acceptor = #{record.noteAcceptor,jdbcType=VARCHAR},
+      note_reviewer = #{record.noteReviewer,jdbcType=VARCHAR},
+      Createdate = #{record.createdate,jdbcType=DATE},
+      ModifyDate = #{record.modifydate,jdbcType=DATE},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      note_remark = #{record.noteRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_note
+    set note_id = #{record.noteId,jdbcType=INTEGER},
+      note_wagonid = #{record.noteWagonid,jdbcType=VARCHAR},
+      note_num = #{record.noteNum,jdbcType=VARCHAR},
+      note_tnum = #{record.noteTnum,jdbcType=VARCHAR},
+      note_loadinger = #{record.noteLoadinger,jdbcType=TINYINT},
+      note_way = #{record.noteWay,jdbcType=VARCHAR},
+      note_arrivetime = #{record.noteArrivetime,jdbcType=DATE},
+      note_cnum = #{record.noteCnum,jdbcType=VARCHAR},
+      note_length = #{record.noteLength,jdbcType=DECIMAL},
+      note_boxtype = #{record.noteBoxtype,jdbcType=VARCHAR},
+      note_shipper = #{record.noteShipper,jdbcType=VARCHAR},
+      note_shipperaddress = #{record.noteShipperaddress,jdbcType=VARCHAR},
+      note_count = #{record.noteCount,jdbcType=INTEGER},
+      note_offer = #{record.noteOffer,jdbcType=DECIMAL},
+      note_starttime = #{record.noteStarttime,jdbcType=DATE},
+      note_pricenum = #{record.notePricenum,jdbcType=VARCHAR},
+      note_pricerate = #{record.notePricerate,jdbcType=VARCHAR},
+      note_totalprice = #{record.noteTotalprice,jdbcType=DECIMAL},
+      note_maker = #{record.noteMaker,jdbcType=VARCHAR},
+      note_receiver = #{record.noteReceiver,jdbcType=VARCHAR},
+      note_acceptor = #{record.noteAcceptor,jdbcType=VARCHAR},
+      note_reviewer = #{record.noteReviewer,jdbcType=VARCHAR},
+      Createdate = #{record.createdate,jdbcType=DATE},
+      ModifyDate = #{record.modifydate,jdbcType=DATE},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trains.TNote" >
+    update t_note
+    <set >
+      <if test="noteWagonid != null" >
+        note_wagonid = #{noteWagonid,jdbcType=VARCHAR},
+      </if>
+      <if test="noteNum != null" >
+        note_num = #{noteNum,jdbcType=VARCHAR},
+      </if>
+      <if test="noteTnum != null" >
+        note_tnum = #{noteTnum,jdbcType=VARCHAR},
+      </if>
+      <if test="noteLoadinger != null" >
+        note_loadinger = #{noteLoadinger,jdbcType=TINYINT},
+      </if>
+      <if test="noteWay != null" >
+        note_way = #{noteWay,jdbcType=VARCHAR},
+      </if>
+      <if test="noteArrivetime != null" >
+        note_arrivetime = #{noteArrivetime,jdbcType=DATE},
+      </if>
+      <if test="noteCnum != null" >
+        note_cnum = #{noteCnum,jdbcType=VARCHAR},
+      </if>
+      <if test="noteLength != null" >
+        note_length = #{noteLength,jdbcType=DECIMAL},
+      </if>
+      <if test="noteBoxtype != null" >
+        note_boxtype = #{noteBoxtype,jdbcType=VARCHAR},
+      </if>
+      <if test="noteShipper != null" >
+        note_shipper = #{noteShipper,jdbcType=VARCHAR},
+      </if>
+      <if test="noteShipperaddress != null" >
+        note_shipperaddress = #{noteShipperaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="noteCount != null" >
+        note_count = #{noteCount,jdbcType=INTEGER},
+      </if>
+      <if test="noteOffer != null" >
+        note_offer = #{noteOffer,jdbcType=DECIMAL},
+      </if>
+      <if test="noteStarttime != null" >
+        note_starttime = #{noteStarttime,jdbcType=DATE},
+      </if>
+      <if test="notePricenum != null" >
+        note_pricenum = #{notePricenum,jdbcType=VARCHAR},
+      </if>
+      <if test="notePricerate != null" >
+        note_pricerate = #{notePricerate,jdbcType=VARCHAR},
+      </if>
+      <if test="noteTotalprice != null" >
+        note_totalprice = #{noteTotalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="noteMaker != null" >
+        note_maker = #{noteMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="noteReceiver != null" >
+        note_receiver = #{noteReceiver,jdbcType=VARCHAR},
+      </if>
+      <if test="noteAcceptor != null" >
+        note_acceptor = #{noteAcceptor,jdbcType=VARCHAR},
+      </if>
+      <if test="noteReviewer != null" >
+        note_reviewer = #{noteReviewer,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=DATE},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="noteRemark != null" >
+        note_remark = #{noteRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where note_id = #{noteId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.trains.TNote" >
+    update t_note
+    set note_wagonid = #{noteWagonid,jdbcType=VARCHAR},
+      note_num = #{noteNum,jdbcType=VARCHAR},
+      note_tnum = #{noteTnum,jdbcType=VARCHAR},
+      note_loadinger = #{noteLoadinger,jdbcType=TINYINT},
+      note_way = #{noteWay,jdbcType=VARCHAR},
+      note_arrivetime = #{noteArrivetime,jdbcType=DATE},
+      note_cnum = #{noteCnum,jdbcType=VARCHAR},
+      note_length = #{noteLength,jdbcType=DECIMAL},
+      note_boxtype = #{noteBoxtype,jdbcType=VARCHAR},
+      note_shipper = #{noteShipper,jdbcType=VARCHAR},
+      note_shipperaddress = #{noteShipperaddress,jdbcType=VARCHAR},
+      note_count = #{noteCount,jdbcType=INTEGER},
+      note_offer = #{noteOffer,jdbcType=DECIMAL},
+      note_starttime = #{noteStarttime,jdbcType=DATE},
+      note_pricenum = #{notePricenum,jdbcType=VARCHAR},
+      note_pricerate = #{notePricerate,jdbcType=VARCHAR},
+      note_totalprice = #{noteTotalprice,jdbcType=DECIMAL},
+      note_maker = #{noteMaker,jdbcType=VARCHAR},
+      note_receiver = #{noteReceiver,jdbcType=VARCHAR},
+      note_acceptor = #{noteAcceptor,jdbcType=VARCHAR},
+      note_reviewer = #{noteReviewer,jdbcType=VARCHAR},
+      Createdate = #{createdate,jdbcType=DATE},
+      ModifyDate = #{modifydate,jdbcType=DATE},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      note_remark = #{noteRemark,jdbcType=LONGVARCHAR}
+    where note_id = #{noteId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trains.TNote" >
+    update t_note
+    set note_wagonid = #{noteWagonid,jdbcType=VARCHAR},
+      note_num = #{noteNum,jdbcType=VARCHAR},
+      note_tnum = #{noteTnum,jdbcType=VARCHAR},
+      note_loadinger = #{noteLoadinger,jdbcType=TINYINT},
+      note_way = #{noteWay,jdbcType=VARCHAR},
+      note_arrivetime = #{noteArrivetime,jdbcType=DATE},
+      note_cnum = #{noteCnum,jdbcType=VARCHAR},
+      note_length = #{noteLength,jdbcType=DECIMAL},
+      note_boxtype = #{noteBoxtype,jdbcType=VARCHAR},
+      note_shipper = #{noteShipper,jdbcType=VARCHAR},
+      note_shipperaddress = #{noteShipperaddress,jdbcType=VARCHAR},
+      note_count = #{noteCount,jdbcType=INTEGER},
+      note_offer = #{noteOffer,jdbcType=DECIMAL},
+      note_starttime = #{noteStarttime,jdbcType=DATE},
+      note_pricenum = #{notePricenum,jdbcType=VARCHAR},
+      note_pricerate = #{notePricerate,jdbcType=VARCHAR},
+      note_totalprice = #{noteTotalprice,jdbcType=DECIMAL},
+      note_maker = #{noteMaker,jdbcType=VARCHAR},
+      note_receiver = #{noteReceiver,jdbcType=VARCHAR},
+      note_acceptor = #{noteAcceptor,jdbcType=VARCHAR},
+      note_reviewer = #{noteReviewer,jdbcType=VARCHAR},
+      Createdate = #{createdate,jdbcType=DATE},
+      ModifyDate = #{modifydate,jdbcType=DATE},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where note_id = #{noteId,jdbcType=INTEGER}
+  </update>
+</mapper>

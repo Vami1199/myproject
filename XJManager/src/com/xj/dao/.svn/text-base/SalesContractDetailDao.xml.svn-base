@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.SalesContractDetailDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.contract.SalesContractDetail" >
+    <id column="scd_id" property="scdId" jdbcType="VARCHAR" />
+    <result column="scd_scid" property="scdScid" jdbcType="VARCHAR" />
+    <result column="scd_receivingUnit" property="scdReceivingunit" jdbcType="VARCHAR" />
+    <result column="scd_hairStanding" property="scdHairstanding" jdbcType="VARCHAR" />
+    <result column="scd_arriveStation" property="scdArrivestation" jdbcType="VARCHAR" />
+    <result column="scd_productName" property="scdProductname" jdbcType="VARCHAR" />
+    <result column="scd_qualityStandard" property="scdQualitystandard" jdbcType="VARCHAR" />
+    <result column="scd_unitPrice" property="scdUnitprice" jdbcType="DECIMAL" />
+    <result column="scd_indexType" property="scdIndextype" jdbcType="VARCHAR" />
+    <result column="scd_indexName" property="scdIndexname" jdbcType="VARCHAR" />
+    <result column="scd_shippingType" property="scdShippingtype" jdbcType="VARCHAR" />
+    <result column="scd_measuringUnit" property="scdMeasuringunit" jdbcType="VARCHAR" />
+    <result column="scd_calorificValue" property="scdCalorificvalue" jdbcType="DECIMAL" />
+    <result column="scd_totalMoisture" property="scdTotalmoisture" jdbcType="DECIMAL" />
+    <result column="scd_volatileMatter" property="scdVolatilematter" jdbcType="DECIMAL" />
+    <result column="scd_supplyTotal" property="scdSupplytotal" jdbcType="DECIMAL" />
+    <result column="scd_january" property="scdJanuary" jdbcType="DECIMAL" />
+    <result column="scd_february" property="scdFebruary" jdbcType="DECIMAL" />
+    <result column="scd_march" property="scdMarch" jdbcType="DECIMAL" />
+    <result column="scd_april" property="scdApril" jdbcType="DECIMAL" />
+    <result column="scd_may" property="scdMay" jdbcType="DECIMAL" />
+    <result column="scd_june" property="scdJune" jdbcType="DECIMAL" />
+    <result column="scd_july" property="scdJuly" jdbcType="DECIMAL" />
+    <result column="scd_august" property="scdAugust" jdbcType="DECIMAL" />
+    <result column="scd_september" property="scdSeptember" jdbcType="DECIMAL" />
+    <result column="scd_october" property="scdOctober" jdbcType="DECIMAL" />
+    <result column="scd_november" property="scdNovember" jdbcType="DECIMAL" />
+    <result column="scd_december" property="scdDecember" jdbcType="DECIMAL" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.contract.SalesContractDetail" extends="BaseResultMap" >
+    <result column="scd_remark" property="scdRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      scd_id, scd_scid, scd_receivingUnit, scd_hairStanding, scd_arriveStation, scd_productName, 
+      scd_qualityStandard, scd_unitPrice, scd_indexType, scd_indexName, scd_shippingType, 
+      scd_measuringUnit, scd_calorificValue, scd_totalMoisture, scd_volatileMatter, scd_supplyTotal, 
+      scd_january, scd_february, scd_march, scd_april, scd_may, scd_june, scd_july, scd_august, 
+      scd_september, scd_october, scd_november, scd_december, Createdate, ModifyDate, CreateBy, 
+      ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    scd_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.contract.SalesContractDetailQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sales_contract_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.contract.SalesContractDetailQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sales_contract_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    scd_id,scd_scid,scd_receivingUnit,scd_hairStanding,scd_arriveStation,scd_productName,scd_qualityStandard,scd_unitPrice,scd_indexType,scd_indexName,scd_shippingType,scd_measuringUnit,scd_calorificValue,scd_totalMoisture,scd_volatileMatter,scd_supplyTotal,scd_january,scd_february,scd_march,scd_april,scd_may,scd_june,scd_july,scd_august,scd_september,scd_october,scd_november,scd_december,Createdate,ModifyDate,CreateBy,ModifyBy,scd_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from sales_contract_detail
+    where scd_id = #{scdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sales_contract_detail
+    where scd_id = #{scdId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.contract.SalesContractDetailQuery" >
+    delete from sales_contract_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.contract.SalesContractDetail" >
+    insert into sales_contract_detail (scd_id, scd_scid, scd_receivingUnit, 
+      scd_hairStanding, scd_arriveStation, scd_productName, 
+      scd_qualityStandard, scd_unitPrice, scd_indexType, 
+      scd_indexName, scd_shippingType, scd_measuringUnit, 
+      scd_calorificValue, scd_totalMoisture, scd_volatileMatter, 
+      scd_supplyTotal, scd_january, scd_february, 
+      scd_march, scd_april, scd_may, 
+      scd_june, scd_july, scd_august, 
+      scd_september, scd_october, scd_november, 
+      scd_december, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, scd_remark
+      )
+    values (#{scdId,jdbcType=VARCHAR}, #{scdScid,jdbcType=VARCHAR}, #{scdReceivingunit,jdbcType=VARCHAR}, 
+      #{scdHairstanding,jdbcType=VARCHAR}, #{scdArrivestation,jdbcType=VARCHAR}, #{scdProductname,jdbcType=VARCHAR}, 
+      #{scdQualitystandard,jdbcType=VARCHAR}, #{scdUnitprice,jdbcType=DECIMAL}, #{scdIndextype,jdbcType=VARCHAR}, 
+      #{scdIndexname,jdbcType=VARCHAR}, #{scdShippingtype,jdbcType=VARCHAR}, #{scdMeasuringunit,jdbcType=VARCHAR}, 
+      #{scdCalorificvalue,jdbcType=DECIMAL}, #{scdTotalmoisture,jdbcType=DECIMAL}, #{scdVolatilematter,jdbcType=DECIMAL}, 
+      #{scdSupplytotal,jdbcType=DECIMAL}, #{scdJanuary,jdbcType=DECIMAL}, #{scdFebruary,jdbcType=DECIMAL}, 
+      #{scdMarch,jdbcType=DECIMAL}, #{scdApril,jdbcType=DECIMAL}, #{scdMay,jdbcType=DECIMAL}, 
+      #{scdJune,jdbcType=DECIMAL}, #{scdJuly,jdbcType=DECIMAL}, #{scdAugust,jdbcType=DECIMAL}, 
+      #{scdSeptember,jdbcType=DECIMAL}, #{scdOctober,jdbcType=DECIMAL}, #{scdNovember,jdbcType=DECIMAL}, 
+      #{scdDecember,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{scdRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.contract.SalesContractDetail" >
+    insert into sales_contract_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scdId != null" >
+        scd_id,
+      </if>
+      <if test="scdScid != null" >
+        scd_scid,
+      </if>
+      <if test="scdReceivingunit != null" >
+        scd_receivingUnit,
+      </if>
+      <if test="scdHairstanding != null" >
+        scd_hairStanding,
+      </if>
+      <if test="scdArrivestation != null" >
+        scd_arriveStation,
+      </if>
+      <if test="scdProductname != null" >
+        scd_productName,
+      </if>
+      <if test="scdQualitystandard != null" >
+        scd_qualityStandard,
+      </if>
+      <if test="scdUnitprice != null" >
+        scd_unitPrice,
+      </if>
+      <if test="scdIndextype != null" >
+        scd_indexType,
+      </if>
+      <if test="scdIndexname != null" >
+        scd_indexName,
+      </if>
+      <if test="scdShippingtype != null" >
+        scd_shippingType,
+      </if>
+      <if test="scdMeasuringunit != null" >
+        scd_measuringUnit,
+      </if>
+      <if test="scdCalorificvalue != null" >
+        scd_calorificValue,
+      </if>
+      <if test="scdTotalmoisture != null" >
+        scd_totalMoisture,
+      </if>
+      <if test="scdVolatilematter != null" >
+        scd_volatileMatter,
+      </if>
+      <if test="scdSupplytotal != null" >
+        scd_supplyTotal,
+      </if>
+      <if test="scdJanuary != null" >
+        scd_january,
+      </if>
+      <if test="scdFebruary != null" >
+        scd_february,
+      </if>
+      <if test="scdMarch != null" >
+        scd_march,
+      </if>
+      <if test="scdApril != null" >
+        scd_april,
+      </if>
+      <if test="scdMay != null" >
+        scd_may,
+      </if>
+      <if test="scdJune != null" >
+        scd_june,
+      </if>
+      <if test="scdJuly != null" >
+        scd_july,
+      </if>
+      <if test="scdAugust != null" >
+        scd_august,
+      </if>
+      <if test="scdSeptember != null" >
+        scd_september,
+      </if>
+      <if test="scdOctober != null" >
+        scd_october,
+      </if>
+      <if test="scdNovember != null" >
+        scd_november,
+      </if>
+      <if test="scdDecember != null" >
+        scd_december,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="scdRemark != null" >
+        scd_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scdId != null" >
+        #{scdId,jdbcType=VARCHAR},
+      </if>
+      <if test="scdScid != null" >
+        #{scdScid,jdbcType=VARCHAR},
+      </if>
+      <if test="scdReceivingunit != null" >
+        #{scdReceivingunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scdHairstanding != null" >
+        #{scdHairstanding,jdbcType=VARCHAR},
+      </if>
+      <if test="scdArrivestation != null" >
+        #{scdArrivestation,jdbcType=VARCHAR},
+      </if>
+      <if test="scdProductname != null" >
+        #{scdProductname,jdbcType=VARCHAR},
+      </if>
+      <if test="scdQualitystandard != null" >
+        #{scdQualitystandard,jdbcType=VARCHAR},
+      </if>
+      <if test="scdUnitprice != null" >
+        #{scdUnitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="scdIndextype != null" >
+        #{scdIndextype,jdbcType=VARCHAR},
+      </if>
+      <if test="scdIndexname != null" >
+        #{scdIndexname,jdbcType=VARCHAR},
+      </if>
+      <if test="scdShippingtype != null" >
+        #{scdShippingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="scdMeasuringunit != null" >
+        #{scdMeasuringunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scdCalorificvalue != null" >
+        #{scdCalorificvalue,jdbcType=DECIMAL},
+      </if>
+      <if test="scdTotalmoisture != null" >
+        #{scdTotalmoisture,jdbcType=DECIMAL},
+      </if>
+      <if test="scdVolatilematter != null" >
+        #{scdVolatilematter,jdbcType=DECIMAL},
+      </if>
+      <if test="scdSupplytotal != null" >
+        #{scdSupplytotal,jdbcType=DECIMAL},
+      </if>
+      <if test="scdJanuary != null" >
+        #{scdJanuary,jdbcType=DECIMAL},
+      </if>
+      <if test="scdFebruary != null" >
+        #{scdFebruary,jdbcType=DECIMAL},
+      </if>
+      <if test="scdMarch != null" >
+        #{scdMarch,jdbcType=DECIMAL},
+      </if>
+      <if test="scdApril != null" >
+        #{scdApril,jdbcType=DECIMAL},
+      </if>
+      <if test="scdMay != null" >
+        #{scdMay,jdbcType=DECIMAL},
+      </if>
+      <if test="scdJune != null" >
+        #{scdJune,jdbcType=DECIMAL},
+      </if>
+      <if test="scdJuly != null" >
+        #{scdJuly,jdbcType=DECIMAL},
+      </if>
+      <if test="scdAugust != null" >
+        #{scdAugust,jdbcType=DECIMAL},
+      </if>
+      <if test="scdSeptember != null" >
+        #{scdSeptember,jdbcType=DECIMAL},
+      </if>
+      <if test="scdOctober != null" >
+        #{scdOctober,jdbcType=DECIMAL},
+      </if>
+      <if test="scdNovember != null" >
+        #{scdNovember,jdbcType=DECIMAL},
+      </if>
+      <if test="scdDecember != null" >
+        #{scdDecember,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="scdRemark != null" >
+        #{scdRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.contract.SalesContractDetailQuery" resultType="java.lang.Integer" >
+    select count(*) from sales_contract_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sales_contract_detail
+    <set >
+      <if test="record.scdId != null" >
+        scd_id = #{record.scdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdScid != null" >
+        scd_scid = #{record.scdScid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdReceivingunit != null" >
+        scd_receivingUnit = #{record.scdReceivingunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdHairstanding != null" >
+        scd_hairStanding = #{record.scdHairstanding,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdArrivestation != null" >
+        scd_arriveStation = #{record.scdArrivestation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdProductname != null" >
+        scd_productName = #{record.scdProductname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdQualitystandard != null" >
+        scd_qualityStandard = #{record.scdQualitystandard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdUnitprice != null" >
+        scd_unitPrice = #{record.scdUnitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdIndextype != null" >
+        scd_indexType = #{record.scdIndextype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdIndexname != null" >
+        scd_indexName = #{record.scdIndexname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdShippingtype != null" >
+        scd_shippingType = #{record.scdShippingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdMeasuringunit != null" >
+        scd_measuringUnit = #{record.scdMeasuringunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdCalorificvalue != null" >
+        scd_calorificValue = #{record.scdCalorificvalue,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdTotalmoisture != null" >
+        scd_totalMoisture = #{record.scdTotalmoisture,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdVolatilematter != null" >
+        scd_volatileMatter = #{record.scdVolatilematter,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdSupplytotal != null" >
+        scd_supplyTotal = #{record.scdSupplytotal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdJanuary != null" >
+        scd_january = #{record.scdJanuary,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdFebruary != null" >
+        scd_february = #{record.scdFebruary,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdMarch != null" >
+        scd_march = #{record.scdMarch,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdApril != null" >
+        scd_april = #{record.scdApril,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdMay != null" >
+        scd_may = #{record.scdMay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdJune != null" >
+        scd_june = #{record.scdJune,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdJuly != null" >
+        scd_july = #{record.scdJuly,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdAugust != null" >
+        scd_august = #{record.scdAugust,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdSeptember != null" >
+        scd_september = #{record.scdSeptember,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdOctober != null" >
+        scd_october = #{record.scdOctober,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdNovember != null" >
+        scd_november = #{record.scdNovember,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scdDecember != null" >
+        scd_december = #{record.scdDecember,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scdRemark != null" >
+        scd_remark = #{record.scdRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update sales_contract_detail
+    set scd_id = #{record.scdId,jdbcType=VARCHAR},
+      scd_scid = #{record.scdScid,jdbcType=VARCHAR},
+      scd_receivingUnit = #{record.scdReceivingunit,jdbcType=VARCHAR},
+      scd_hairStanding = #{record.scdHairstanding,jdbcType=VARCHAR},
+      scd_arriveStation = #{record.scdArrivestation,jdbcType=VARCHAR},
+      scd_productName = #{record.scdProductname,jdbcType=VARCHAR},
+      scd_qualityStandard = #{record.scdQualitystandard,jdbcType=VARCHAR},
+      scd_unitPrice = #{record.scdUnitprice,jdbcType=DECIMAL},
+      scd_indexType = #{record.scdIndextype,jdbcType=VARCHAR},
+      scd_indexName = #{record.scdIndexname,jdbcType=VARCHAR},
+      scd_shippingType = #{record.scdShippingtype,jdbcType=VARCHAR},
+      scd_measuringUnit = #{record.scdMeasuringunit,jdbcType=VARCHAR},
+      scd_calorificValue = #{record.scdCalorificvalue,jdbcType=DECIMAL},
+      scd_totalMoisture = #{record.scdTotalmoisture,jdbcType=DECIMAL},
+      scd_volatileMatter = #{record.scdVolatilematter,jdbcType=DECIMAL},
+      scd_supplyTotal = #{record.scdSupplytotal,jdbcType=DECIMAL},
+      scd_january = #{record.scdJanuary,jdbcType=DECIMAL},
+      scd_february = #{record.scdFebruary,jdbcType=DECIMAL},
+      scd_march = #{record.scdMarch,jdbcType=DECIMAL},
+      scd_april = #{record.scdApril,jdbcType=DECIMAL},
+      scd_may = #{record.scdMay,jdbcType=DECIMAL},
+      scd_june = #{record.scdJune,jdbcType=DECIMAL},
+      scd_july = #{record.scdJuly,jdbcType=DECIMAL},
+      scd_august = #{record.scdAugust,jdbcType=DECIMAL},
+      scd_september = #{record.scdSeptember,jdbcType=DECIMAL},
+      scd_october = #{record.scdOctober,jdbcType=DECIMAL},
+      scd_november = #{record.scdNovember,jdbcType=DECIMAL},
+      scd_december = #{record.scdDecember,jdbcType=DECIMAL},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      scd_remark = #{record.scdRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sales_contract_detail
+    set scd_id = #{record.scdId,jdbcType=VARCHAR},
+      scd_scid = #{record.scdScid,jdbcType=VARCHAR},
+      scd_receivingUnit = #{record.scdReceivingunit,jdbcType=VARCHAR},
+      scd_hairStanding = #{record.scdHairstanding,jdbcType=VARCHAR},
+      scd_arriveStation = #{record.scdArrivestation,jdbcType=VARCHAR},
+      scd_productName = #{record.scdProductname,jdbcType=VARCHAR},
+      scd_qualityStandard = #{record.scdQualitystandard,jdbcType=VARCHAR},
+      scd_unitPrice = #{record.scdUnitprice,jdbcType=DECIMAL},
+      scd_indexType = #{record.scdIndextype,jdbcType=VARCHAR},
+      scd_indexName = #{record.scdIndexname,jdbcType=VARCHAR},
+      scd_shippingType = #{record.scdShippingtype,jdbcType=VARCHAR},
+      scd_measuringUnit = #{record.scdMeasuringunit,jdbcType=VARCHAR},
+      scd_calorificValue = #{record.scdCalorificvalue,jdbcType=DECIMAL},
+      scd_totalMoisture = #{record.scdTotalmoisture,jdbcType=DECIMAL},
+      scd_volatileMatter = #{record.scdVolatilematter,jdbcType=DECIMAL},
+      scd_supplyTotal = #{record.scdSupplytotal,jdbcType=DECIMAL},
+      scd_january = #{record.scdJanuary,jdbcType=DECIMAL},
+      scd_february = #{record.scdFebruary,jdbcType=DECIMAL},
+      scd_march = #{record.scdMarch,jdbcType=DECIMAL},
+      scd_april = #{record.scdApril,jdbcType=DECIMAL},
+      scd_may = #{record.scdMay,jdbcType=DECIMAL},
+      scd_june = #{record.scdJune,jdbcType=DECIMAL},
+      scd_july = #{record.scdJuly,jdbcType=DECIMAL},
+      scd_august = #{record.scdAugust,jdbcType=DECIMAL},
+      scd_september = #{record.scdSeptember,jdbcType=DECIMAL},
+      scd_october = #{record.scdOctober,jdbcType=DECIMAL},
+      scd_november = #{record.scdNovember,jdbcType=DECIMAL},
+      scd_december = #{record.scdDecember,jdbcType=DECIMAL},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.contract.SalesContractDetail" >
+    update sales_contract_detail
+    <set >
+      <if test="scdScid != null" >
+        scd_scid = #{scdScid,jdbcType=VARCHAR},
+      </if>
+      <if test="scdReceivingunit != null" >
+        scd_receivingUnit = #{scdReceivingunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scdHairstanding != null" >
+        scd_hairStanding = #{scdHairstanding,jdbcType=VARCHAR},
+      </if>
+      <if test="scdArrivestation != null" >
+        scd_arriveStation = #{scdArrivestation,jdbcType=VARCHAR},
+      </if>
+      <if test="scdProductname != null" >
+        scd_productName = #{scdProductname,jdbcType=VARCHAR},
+      </if>
+      <if test="scdQualitystandard != null" >
+        scd_qualityStandard = #{scdQualitystandard,jdbcType=VARCHAR},
+      </if>
+      <if test="scdUnitprice != null" >
+        scd_unitPrice = #{scdUnitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="scdIndextype != null" >
+        scd_indexType = #{scdIndextype,jdbcType=VARCHAR},
+      </if>
+      <if test="scdIndexname != null" >
+        scd_indexName = #{scdIndexname,jdbcType=VARCHAR},
+      </if>
+      <if test="scdShippingtype != null" >
+        scd_shippingType = #{scdShippingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="scdMeasuringunit != null" >
+        scd_measuringUnit = #{scdMeasuringunit,jdbcType=VARCHAR},
+      </if>
+      <if test="scdCalorificvalue != null" >
+        scd_calorificValue = #{scdCalorificvalue,jdbcType=DECIMAL},
+      </if>
+      <if test="scdTotalmoisture != null" >
+        scd_totalMoisture = #{scdTotalmoisture,jdbcType=DECIMAL},
+      </if>
+      <if test="scdVolatilematter != null" >
+        scd_volatileMatter = #{scdVolatilematter,jdbcType=DECIMAL},
+      </if>
+      <if test="scdSupplytotal != null" >
+        scd_supplyTotal = #{scdSupplytotal,jdbcType=DECIMAL},
+      </if>
+      <if test="scdJanuary != null" >
+        scd_january = #{scdJanuary,jdbcType=DECIMAL},
+      </if>
+      <if test="scdFebruary != null" >
+        scd_february = #{scdFebruary,jdbcType=DECIMAL},
+      </if>
+      <if test="scdMarch != null" >
+        scd_march = #{scdMarch,jdbcType=DECIMAL},
+      </if>
+      <if test="scdApril != null" >
+        scd_april = #{scdApril,jdbcType=DECIMAL},
+      </if>
+      <if test="scdMay != null" >
+        scd_may = #{scdMay,jdbcType=DECIMAL},
+      </if>
+      <if test="scdJune != null" >
+        scd_june = #{scdJune,jdbcType=DECIMAL},
+      </if>
+      <if test="scdJuly != null" >
+        scd_july = #{scdJuly,jdbcType=DECIMAL},
+      </if>
+      <if test="scdAugust != null" >
+        scd_august = #{scdAugust,jdbcType=DECIMAL},
+      </if>
+      <if test="scdSeptember != null" >
+        scd_september = #{scdSeptember,jdbcType=DECIMAL},
+      </if>
+      <if test="scdOctober != null" >
+        scd_october = #{scdOctober,jdbcType=DECIMAL},
+      </if>
+      <if test="scdNovember != null" >
+        scd_november = #{scdNovember,jdbcType=DECIMAL},
+      </if>
+      <if test="scdDecember != null" >
+        scd_december = #{scdDecember,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="scdRemark != null" >
+        scd_remark = #{scdRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where scd_id = #{scdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.contract.SalesContractDetail" >
+    update sales_contract_detail
+    set scd_scid = #{scdScid,jdbcType=VARCHAR},
+      scd_receivingUnit = #{scdReceivingunit,jdbcType=VARCHAR},
+      scd_hairStanding = #{scdHairstanding,jdbcType=VARCHAR},
+      scd_arriveStation = #{scdArrivestation,jdbcType=VARCHAR},
+      scd_productName = #{scdProductname,jdbcType=VARCHAR},
+      scd_qualityStandard = #{scdQualitystandard,jdbcType=VARCHAR},
+      scd_unitPrice = #{scdUnitprice,jdbcType=DECIMAL},
+      scd_indexType = #{scdIndextype,jdbcType=VARCHAR},
+      scd_indexName = #{scdIndexname,jdbcType=VARCHAR},
+      scd_shippingType = #{scdShippingtype,jdbcType=VARCHAR},
+      scd_measuringUnit = #{scdMeasuringunit,jdbcType=VARCHAR},
+      scd_calorificValue = #{scdCalorificvalue,jdbcType=DECIMAL},
+      scd_totalMoisture = #{scdTotalmoisture,jdbcType=DECIMAL},
+      scd_volatileMatter = #{scdVolatilematter,jdbcType=DECIMAL},
+      scd_supplyTotal = #{scdSupplytotal,jdbcType=DECIMAL},
+      scd_january = #{scdJanuary,jdbcType=DECIMAL},
+      scd_february = #{scdFebruary,jdbcType=DECIMAL},
+      scd_march = #{scdMarch,jdbcType=DECIMAL},
+      scd_april = #{scdApril,jdbcType=DECIMAL},
+      scd_may = #{scdMay,jdbcType=DECIMAL},
+      scd_june = #{scdJune,jdbcType=DECIMAL},
+      scd_july = #{scdJuly,jdbcType=DECIMAL},
+      scd_august = #{scdAugust,jdbcType=DECIMAL},
+      scd_september = #{scdSeptember,jdbcType=DECIMAL},
+      scd_october = #{scdOctober,jdbcType=DECIMAL},
+      scd_november = #{scdNovember,jdbcType=DECIMAL},
+      scd_december = #{scdDecember,jdbcType=DECIMAL},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      scd_remark = #{scdRemark,jdbcType=LONGVARCHAR}
+    where scd_id = #{scdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.contract.SalesContractDetail" >
+    update sales_contract_detail
+    set scd_scid = #{scdScid,jdbcType=VARCHAR},
+      scd_receivingUnit = #{scdReceivingunit,jdbcType=VARCHAR},
+      scd_hairStanding = #{scdHairstanding,jdbcType=VARCHAR},
+      scd_arriveStation = #{scdArrivestation,jdbcType=VARCHAR},
+      scd_productName = #{scdProductname,jdbcType=VARCHAR},
+      scd_qualityStandard = #{scdQualitystandard,jdbcType=VARCHAR},
+      scd_unitPrice = #{scdUnitprice,jdbcType=DECIMAL},
+      scd_indexType = #{scdIndextype,jdbcType=VARCHAR},
+      scd_indexName = #{scdIndexname,jdbcType=VARCHAR},
+      scd_shippingType = #{scdShippingtype,jdbcType=VARCHAR},
+      scd_measuringUnit = #{scdMeasuringunit,jdbcType=VARCHAR},
+      scd_calorificValue = #{scdCalorificvalue,jdbcType=DECIMAL},
+      scd_totalMoisture = #{scdTotalmoisture,jdbcType=DECIMAL},
+      scd_volatileMatter = #{scdVolatilematter,jdbcType=DECIMAL},
+      scd_supplyTotal = #{scdSupplytotal,jdbcType=DECIMAL},
+      scd_january = #{scdJanuary,jdbcType=DECIMAL},
+      scd_february = #{scdFebruary,jdbcType=DECIMAL},
+      scd_march = #{scdMarch,jdbcType=DECIMAL},
+      scd_april = #{scdApril,jdbcType=DECIMAL},
+      scd_may = #{scdMay,jdbcType=DECIMAL},
+      scd_june = #{scdJune,jdbcType=DECIMAL},
+      scd_july = #{scdJuly,jdbcType=DECIMAL},
+      scd_august = #{scdAugust,jdbcType=DECIMAL},
+      scd_september = #{scdSeptember,jdbcType=DECIMAL},
+      scd_october = #{scdOctober,jdbcType=DECIMAL},
+      scd_november = #{scdNovember,jdbcType=DECIMAL},
+      scd_december = #{scdDecember,jdbcType=DECIMAL},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where scd_id = #{scdId,jdbcType=VARCHAR}
+  </update>
+</mapper>

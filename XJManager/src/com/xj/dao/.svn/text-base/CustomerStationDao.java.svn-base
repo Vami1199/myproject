@@ -1,0 +1,22 @@
+package com.xj.dao;
+
+import com.xj.domain.query.CustomerStation;
+import com.xj.domain.query.CustomerStationQuery;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface CustomerStationDao {
+    int countByExample(CustomerStationQuery example);
+
+    int deleteByExample(CustomerStationQuery example);
+
+    int insert(CustomerStation record);
+
+    int insertSelective(CustomerStation record);
+
+    List<CustomerStation> selectByExample(CustomerStationQuery example);
+
+    int updateByExampleSelective(@Param("record") CustomerStation record, @Param("example") CustomerStationQuery example);
+
+    int updateByExample(@Param("record") CustomerStation record, @Param("example") CustomerStationQuery example);
+}

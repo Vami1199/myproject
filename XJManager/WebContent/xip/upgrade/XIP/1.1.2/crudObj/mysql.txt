@@ -1,0 +1,47 @@
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONF' where t.fun_tree_code = 'XIP2' ;
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_ATTCH_CAT' where t.url ='/main?xwl=23W2FPM1OAAT';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_ATTCH_FILE' where t.url ='/main?xwl=23WIW0PXIBKJ';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_ATTCH_SERVER' where t.url ='/main?xwl=23W21HIY5GQD';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_AUTH_FUNC' where t.url ='/main?xwl=23W20GG51T5H';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_AUTH_ORG' where t.url ='/main?xwl=23WSD6KB5Z7L';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_AUTH_ROLE' where t.url ='/main?xwl=23WCFT07IZJD';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_AUTH_UF' where t.url ='/main?xwl=23WO6G8BUQPZ';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_AUTH_UR' where t.url ='/main?xwl=23WO6G8BVPSW';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_AUTH_USER' where t.url ='/main?xwl=23VZKU3HBH92';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CHART_TMP' where t.url ='/main?xwl=23XF2T8HTFXH';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONC_NODE' where t.url ='/main?xwl=23W1Q3M7A7KI';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONC_PROGRAM' where t.url ='/main?xwl=23W3JS9VY5I5';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONC_TASK' where t.url ='/main?xwl=23WCQ6TFHGIB';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONF_APP' where t.url ='/main?xwl=23W1PMZVOSUY';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONF_IE' where t.url ='/main?xwl=23WW4NT1ZWTE';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONF_IE_DEF' where t.url ='/main?xwl=23WW4OF5S66S';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONF_IO_TEMPLATE' where t.url ='/main?xwl=23WPYTWVKUIG';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONF_PARAM' where t.url ='/main?xwl=23WY5BHMORNO';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONF_VALSET' where t.url ='/main?xwl=23W0CDJH1JGP';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_CONF_WS' where t.url ='/main?xwl=23WBI6MXCU2B';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_HR_DEPT' where t.url ='/main?xwl=23W06BGDKYGJ';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_HR_EMP' where t.url ='/main?xwl=23VVZ3QMOKT0';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_HR_ORG' where t.url ='/main?xwl=23WSD6KB5YQG';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WB_BUGS' where t.url ='/main?xwl=23XJXR79URRQ';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WB_BUG_OP' where t.url ='/main?xwl=23XLIFSV5M02';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WB_IDE' where t.url ='/main?xwl=ide';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WB_MONITOR' where t.url ='/main?xwl=23XLIFSV5M05';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WB_PHASES' where t.url ='/main?xwl=23XJXR79URRA';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WB_PORTAL' where t.url ='/main?xwl=index';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WB_PRJ' where t.url ='/main?xwl=23XJXR79URQS';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WF_ACT_EXECUTOR' where t.url ='/main?xwl=23X7D36B72F8';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WF_CHART' where t.url ='/workflow/designer/drawIndex.jsp';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WF_DEMO' where t.url ='/main?xwl=23VNB76YLXKZ';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WF_DEMO_WS' where t.url ='/main?xwl=23VP8D49UUP6';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WF_ENTITY' where t.url ='/main?xwl=23W090GMALLP';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WF_FORMS' where t.url ='/main?xwl=23WLDT41JADJ';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WF_HOLIDAY' where t.url ='/main?xwl=23W090GMALMC';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WF_HOLIDAY_USER' where t.url ='/main?xwl=23W090GMALMF';
+update xip_pub_fun_tree t set t.fun_tree_code = 'XIP2_WF_MONITOR' where t.url ='/main?xwl=23VQQJ1QCUKP';
+
+ delete from xip_pub_val_set_dtl where VAL_SET_CODE = 'NOTICE_TYPE_VS';
+ delete from xip_pub_val_sets where VAL_SET_CODE = 'NOTICE_TYPE_VS';
+ delete from xip_pub_param_vals 
+ where exists (select 1 from xip_pub_params where xip_pub_param_vals.PARAM_ID = xip_pub_params.param_id 
+   and xip_pub_params.param_code = 'NOTICE_TYPE');
+ delete from xip_pub_params where PARAM_CODE = 'NOTICE_TYPE';

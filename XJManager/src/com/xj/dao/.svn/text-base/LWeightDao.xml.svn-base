@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.LWeightDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.land.LWeight" >
+    <id column="e_id" property="eId" jdbcType="INTEGER" />
+    <result column="e_applyid" property="eApplyid" jdbcType="INTEGER" />
+    <result column="e_emptydate" property="eEmptydate" jdbcType="DATE" />
+    <result column="e_fulldate" property="eFulldate" jdbcType="DATE" />
+    <result column="e_source" property="eSource" jdbcType="VARCHAR" />
+    <result column="e_order" property="eOrder" jdbcType="TINYINT" />
+    <result column="e_ordernum" property="eOrdernum" jdbcType="VARCHAR" />
+    <result column="e_customerid" property="eCustomerid" jdbcType="INTEGER" />
+    <result column="e_reciever" property="eReciever" jdbcType="VARCHAR" />
+    <result column="e_bourn" property="eBourn" jdbcType="VARCHAR" />
+    <result column="e_harbor" property="eHarbor" jdbcType="TINYINT" />
+    <result column="e_type" property="eType" jdbcType="TINYINT" />
+    <result column="e_length" property="eLength" jdbcType="INTEGER" />
+    <result column="e_price" property="ePrice" jdbcType="DECIMAL" />
+    <result column="e_goods" property="eGoods" jdbcType="TINYINT" />
+    <result column="e_product" property="eProduct" jdbcType="TINYINT" />
+    <result column="e_unit" property="eUnit" jdbcType="VARCHAR" />
+    <result column="e_totalnum" property="eTotalnum" jdbcType="INTEGER" />
+    <result column="e_surplus" property="eSurplus" jdbcType="INTEGER" />
+    <result column="e_entrepot" property="eEntrepot" jdbcType="VARCHAR" />
+    <result column="e_emptytime" property="eEmptytime" jdbcType="VARCHAR" />
+    <result column="e_fulltime" property="eFulltime" jdbcType="VARCHAR" />
+    <result column="e_cartype" property="eCartype" jdbcType="VARCHAR" />
+    <result column="e_carnum" property="eCarnum" jdbcType="VARCHAR" />
+    <result column="e_weight" property="eWeight" jdbcType="INTEGER" />
+    <result column="e_wargon" property="eWargon" jdbcType="INTEGER" />
+    <result column="e_transport" property="eTransport" jdbcType="VARCHAR" />
+    <result column="e_user" property="eUser" jdbcType="VARCHAR" />
+    <result column="e_operator" property="eOperator" jdbcType="VARCHAR" />
+    <result column="e_inspector" property="eInspector" jdbcType="VARCHAR" />
+    <result column="e_flag" property="eFlag" jdbcType="TINYINT" />
+    <result column="e_state" property="eState" jdbcType="TINYINT" />
+    <result column="e_condition" property="eCondition" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.land.LWeight" extends="BaseResultMap" >
+    <result column="e_remark" property="eRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      e_id, e_applyid, e_emptydate, e_fulldate, e_source, e_order, e_ordernum, e_customerid, 
+      e_reciever, e_bourn, e_harbor, e_type, e_length, e_price, e_goods, e_product, e_unit, 
+      e_totalnum, e_surplus, e_entrepot, e_emptytime, e_fulltime, e_cartype, e_carnum, 
+      e_weight, e_wargon, e_transport, e_user, e_operator, e_inspector, e_flag, e_state, 
+      e_condition, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    e_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.land.LWeightQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from l_weight
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.land.LWeightQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from l_weight
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    e_id,e_applyid,e_emptydate,e_fulldate,e_source,e_order,e_ordernum,e_customerid,e_reciever,e_bourn,e_harbor,e_type,e_length,e_price,e_goods,e_product,e_unit,e_totalnum,e_surplus,e_entrepot,e_emptytime,e_fulltime,e_cartype,e_carnum,e_weight,e_wargon,e_transport,e_user,e_operator,e_inspector,e_flag,e_state,e_condition,Createdate,ModifyDate,CreateBy,ModifyBy,e_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from l_weight
+    where e_id = #{eId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from l_weight
+    where e_id = #{eId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.land.LWeightQuery" >
+    delete from l_weight
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.land.LWeight" >
+    insert into l_weight (e_id, e_applyid, e_emptydate, 
+      e_fulldate, e_source, e_order, 
+      e_ordernum, e_customerid, e_reciever, 
+      e_bourn, e_harbor, e_type, 
+      e_length, e_price, e_goods, 
+      e_product, e_unit, e_totalnum, 
+      e_surplus, e_entrepot, e_emptytime, 
+      e_fulltime, e_cartype, e_carnum, 
+      e_weight, e_wargon, e_transport, 
+      e_user, e_operator, e_inspector, 
+      e_flag, e_state, e_condition, 
+      Createdate, ModifyDate, CreateBy, 
+      ModifyBy, e_remark)
+    values (#{eId,jdbcType=INTEGER}, #{eApplyid,jdbcType=INTEGER}, #{eEmptydate,jdbcType=DATE}, 
+      #{eFulldate,jdbcType=DATE}, #{eSource,jdbcType=VARCHAR}, #{eOrder,jdbcType=TINYINT}, 
+      #{eOrdernum,jdbcType=VARCHAR}, #{eCustomerid,jdbcType=INTEGER}, #{eReciever,jdbcType=VARCHAR}, 
+      #{eBourn,jdbcType=VARCHAR}, #{eHarbor,jdbcType=TINYINT}, #{eType,jdbcType=TINYINT}, 
+      #{eLength,jdbcType=INTEGER}, #{ePrice,jdbcType=DECIMAL}, #{eGoods,jdbcType=TINYINT}, 
+      #{eProduct,jdbcType=TINYINT}, #{eUnit,jdbcType=VARCHAR}, #{eTotalnum,jdbcType=INTEGER}, 
+      #{eSurplus,jdbcType=INTEGER}, #{eEntrepot,jdbcType=VARCHAR}, #{eEmptytime,jdbcType=VARCHAR}, 
+      #{eFulltime,jdbcType=VARCHAR}, #{eCartype,jdbcType=VARCHAR}, #{eCarnum,jdbcType=VARCHAR}, 
+      #{eWeight,jdbcType=INTEGER}, #{eWargon,jdbcType=INTEGER}, #{eTransport,jdbcType=VARCHAR}, 
+      #{eUser,jdbcType=VARCHAR}, #{eOperator,jdbcType=VARCHAR}, #{eInspector,jdbcType=VARCHAR}, 
+      #{eFlag,jdbcType=TINYINT}, #{eState,jdbcType=TINYINT}, #{eCondition,jdbcType=TINYINT}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{modifyby,jdbcType=VARCHAR}, #{eRemark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.land.LWeight" >
+    insert into l_weight
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eId != null" >
+        e_id,
+      </if>
+      <if test="eApplyid != null" >
+        e_applyid,
+      </if>
+      <if test="eEmptydate != null" >
+        e_emptydate,
+      </if>
+      <if test="eFulldate != null" >
+        e_fulldate,
+      </if>
+      <if test="eSource != null" >
+        e_source,
+      </if>
+      <if test="eOrder != null" >
+        e_order,
+      </if>
+      <if test="eOrdernum != null" >
+        e_ordernum,
+      </if>
+      <if test="eCustomerid != null" >
+        e_customerid,
+      </if>
+      <if test="eReciever != null" >
+        e_reciever,
+      </if>
+      <if test="eBourn != null" >
+        e_bourn,
+      </if>
+      <if test="eHarbor != null" >
+        e_harbor,
+      </if>
+      <if test="eType != null" >
+        e_type,
+      </if>
+      <if test="eLength != null" >
+        e_length,
+      </if>
+      <if test="ePrice != null" >
+        e_price,
+      </if>
+      <if test="eGoods != null" >
+        e_goods,
+      </if>
+      <if test="eProduct != null" >
+        e_product,
+      </if>
+      <if test="eUnit != null" >
+        e_unit,
+      </if>
+      <if test="eTotalnum != null" >
+        e_totalnum,
+      </if>
+      <if test="eSurplus != null" >
+        e_surplus,
+      </if>
+      <if test="eEntrepot != null" >
+        e_entrepot,
+      </if>
+      <if test="eEmptytime != null" >
+        e_emptytime,
+      </if>
+      <if test="eFulltime != null" >
+        e_fulltime,
+      </if>
+      <if test="eCartype != null" >
+        e_cartype,
+      </if>
+      <if test="eCarnum != null" >
+        e_carnum,
+      </if>
+      <if test="eWeight != null" >
+        e_weight,
+      </if>
+      <if test="eWargon != null" >
+        e_wargon,
+      </if>
+      <if test="eTransport != null" >
+        e_transport,
+      </if>
+      <if test="eUser != null" >
+        e_user,
+      </if>
+      <if test="eOperator != null" >
+        e_operator,
+      </if>
+      <if test="eInspector != null" >
+        e_inspector,
+      </if>
+      <if test="eFlag != null" >
+        e_flag,
+      </if>
+      <if test="eState != null" >
+        e_state,
+      </if>
+      <if test="eCondition != null" >
+        e_condition,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="eRemark != null" >
+        e_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eId != null" >
+        #{eId,jdbcType=INTEGER},
+      </if>
+      <if test="eApplyid != null" >
+        #{eApplyid,jdbcType=INTEGER},
+      </if>
+      <if test="eEmptydate != null" >
+        #{eEmptydate,jdbcType=DATE},
+      </if>
+      <if test="eFulldate != null" >
+        #{eFulldate,jdbcType=DATE},
+      </if>
+      <if test="eSource != null" >
+        #{eSource,jdbcType=VARCHAR},
+      </if>
+      <if test="eOrder != null" >
+        #{eOrder,jdbcType=TINYINT},
+      </if>
+      <if test="eOrdernum != null" >
+        #{eOrdernum,jdbcType=VARCHAR},
+      </if>
+      <if test="eCustomerid != null" >
+        #{eCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="eReciever != null" >
+        #{eReciever,jdbcType=VARCHAR},
+      </if>
+      <if test="eBourn != null" >
+        #{eBourn,jdbcType=VARCHAR},
+      </if>
+      <if test="eHarbor != null" >
+        #{eHarbor,jdbcType=TINYINT},
+      </if>
+      <if test="eType != null" >
+        #{eType,jdbcType=TINYINT},
+      </if>
+      <if test="eLength != null" >
+        #{eLength,jdbcType=INTEGER},
+      </if>
+      <if test="ePrice != null" >
+        #{ePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="eGoods != null" >
+        #{eGoods,jdbcType=TINYINT},
+      </if>
+      <if test="eProduct != null" >
+        #{eProduct,jdbcType=TINYINT},
+      </if>
+      <if test="eUnit != null" >
+        #{eUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="eTotalnum != null" >
+        #{eTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="eSurplus != null" >
+        #{eSurplus,jdbcType=INTEGER},
+      </if>
+      <if test="eEntrepot != null" >
+        #{eEntrepot,jdbcType=VARCHAR},
+      </if>
+      <if test="eEmptytime != null" >
+        #{eEmptytime,jdbcType=VARCHAR},
+      </if>
+      <if test="eFulltime != null" >
+        #{eFulltime,jdbcType=VARCHAR},
+      </if>
+      <if test="eCartype != null" >
+        #{eCartype,jdbcType=VARCHAR},
+      </if>
+      <if test="eCarnum != null" >
+        #{eCarnum,jdbcType=VARCHAR},
+      </if>
+      <if test="eWeight != null" >
+        #{eWeight,jdbcType=INTEGER},
+      </if>
+      <if test="eWargon != null" >
+        #{eWargon,jdbcType=INTEGER},
+      </if>
+      <if test="eTransport != null" >
+        #{eTransport,jdbcType=VARCHAR},
+      </if>
+      <if test="eUser != null" >
+        #{eUser,jdbcType=VARCHAR},
+      </if>
+      <if test="eOperator != null" >
+        #{eOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="eInspector != null" >
+        #{eInspector,jdbcType=VARCHAR},
+      </if>
+      <if test="eFlag != null" >
+        #{eFlag,jdbcType=TINYINT},
+      </if>
+      <if test="eState != null" >
+        #{eState,jdbcType=TINYINT},
+      </if>
+      <if test="eCondition != null" >
+        #{eCondition,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="eRemark != null" >
+        #{eRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.land.LWeightQuery" resultType="java.lang.Integer" >
+    select count(*) from l_weight
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update l_weight
+    <set >
+      <if test="record.eId != null" >
+        e_id = #{record.eId,jdbcType=INTEGER},
+      </if>
+      <if test="record.eApplyid != null" >
+        e_applyid = #{record.eApplyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.eEmptydate != null" >
+        e_emptydate = #{record.eEmptydate,jdbcType=DATE},
+      </if>
+      <if test="record.eFulldate != null" >
+        e_fulldate = #{record.eFulldate,jdbcType=DATE},
+      </if>
+      <if test="record.eSource != null" >
+        e_source = #{record.eSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eOrder != null" >
+        e_order = #{record.eOrder,jdbcType=TINYINT},
+      </if>
+      <if test="record.eOrdernum != null" >
+        e_ordernum = #{record.eOrdernum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eCustomerid != null" >
+        e_customerid = #{record.eCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.eReciever != null" >
+        e_reciever = #{record.eReciever,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eBourn != null" >
+        e_bourn = #{record.eBourn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eHarbor != null" >
+        e_harbor = #{record.eHarbor,jdbcType=TINYINT},
+      </if>
+      <if test="record.eType != null" >
+        e_type = #{record.eType,jdbcType=TINYINT},
+      </if>
+      <if test="record.eLength != null" >
+        e_length = #{record.eLength,jdbcType=INTEGER},
+      </if>
+      <if test="record.ePrice != null" >
+        e_price = #{record.ePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.eGoods != null" >
+        e_goods = #{record.eGoods,jdbcType=TINYINT},
+      </if>
+      <if test="record.eProduct != null" >
+        e_product = #{record.eProduct,jdbcType=TINYINT},
+      </if>
+      <if test="record.eUnit != null" >
+        e_unit = #{record.eUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eTotalnum != null" >
+        e_totalnum = #{record.eTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.eSurplus != null" >
+        e_surplus = #{record.eSurplus,jdbcType=INTEGER},
+      </if>
+      <if test="record.eEntrepot != null" >
+        e_entrepot = #{record.eEntrepot,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eEmptytime != null" >
+        e_emptytime = #{record.eEmptytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eFulltime != null" >
+        e_fulltime = #{record.eFulltime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eCartype != null" >
+        e_cartype = #{record.eCartype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eCarnum != null" >
+        e_carnum = #{record.eCarnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eWeight != null" >
+        e_weight = #{record.eWeight,jdbcType=INTEGER},
+      </if>
+      <if test="record.eWargon != null" >
+        e_wargon = #{record.eWargon,jdbcType=INTEGER},
+      </if>
+      <if test="record.eTransport != null" >
+        e_transport = #{record.eTransport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eUser != null" >
+        e_user = #{record.eUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eOperator != null" >
+        e_operator = #{record.eOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eInspector != null" >
+        e_inspector = #{record.eInspector,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eFlag != null" >
+        e_flag = #{record.eFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.eState != null" >
+        e_state = #{record.eState,jdbcType=TINYINT},
+      </if>
+      <if test="record.eCondition != null" >
+        e_condition = #{record.eCondition,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eRemark != null" >
+        e_remark = #{record.eRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update l_weight
+    set e_id = #{record.eId,jdbcType=INTEGER},
+      e_applyid = #{record.eApplyid,jdbcType=INTEGER},
+      e_emptydate = #{record.eEmptydate,jdbcType=DATE},
+      e_fulldate = #{record.eFulldate,jdbcType=DATE},
+      e_source = #{record.eSource,jdbcType=VARCHAR},
+      e_order = #{record.eOrder,jdbcType=TINYINT},
+      e_ordernum = #{record.eOrdernum,jdbcType=VARCHAR},
+      e_customerid = #{record.eCustomerid,jdbcType=INTEGER},
+      e_reciever = #{record.eReciever,jdbcType=VARCHAR},
+      e_bourn = #{record.eBourn,jdbcType=VARCHAR},
+      e_harbor = #{record.eHarbor,jdbcType=TINYINT},
+      e_type = #{record.eType,jdbcType=TINYINT},
+      e_length = #{record.eLength,jdbcType=INTEGER},
+      e_price = #{record.ePrice,jdbcType=DECIMAL},
+      e_goods = #{record.eGoods,jdbcType=TINYINT},
+      e_product = #{record.eProduct,jdbcType=TINYINT},
+      e_unit = #{record.eUnit,jdbcType=VARCHAR},
+      e_totalnum = #{record.eTotalnum,jdbcType=INTEGER},
+      e_surplus = #{record.eSurplus,jdbcType=INTEGER},
+      e_entrepot = #{record.eEntrepot,jdbcType=VARCHAR},
+      e_emptytime = #{record.eEmptytime,jdbcType=VARCHAR},
+      e_fulltime = #{record.eFulltime,jdbcType=VARCHAR},
+      e_cartype = #{record.eCartype,jdbcType=VARCHAR},
+      e_carnum = #{record.eCarnum,jdbcType=VARCHAR},
+      e_weight = #{record.eWeight,jdbcType=INTEGER},
+      e_wargon = #{record.eWargon,jdbcType=INTEGER},
+      e_transport = #{record.eTransport,jdbcType=VARCHAR},
+      e_user = #{record.eUser,jdbcType=VARCHAR},
+      e_operator = #{record.eOperator,jdbcType=VARCHAR},
+      e_inspector = #{record.eInspector,jdbcType=VARCHAR},
+      e_flag = #{record.eFlag,jdbcType=TINYINT},
+      e_state = #{record.eState,jdbcType=TINYINT},
+      e_condition = #{record.eCondition,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      e_remark = #{record.eRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update l_weight
+    set e_id = #{record.eId,jdbcType=INTEGER},
+      e_applyid = #{record.eApplyid,jdbcType=INTEGER},
+      e_emptydate = #{record.eEmptydate,jdbcType=DATE},
+      e_fulldate = #{record.eFulldate,jdbcType=DATE},
+      e_source = #{record.eSource,jdbcType=VARCHAR},
+      e_order = #{record.eOrder,jdbcType=TINYINT},
+      e_ordernum = #{record.eOrdernum,jdbcType=VARCHAR},
+      e_customerid = #{record.eCustomerid,jdbcType=INTEGER},
+      e_reciever = #{record.eReciever,jdbcType=VARCHAR},
+      e_bourn = #{record.eBourn,jdbcType=VARCHAR},
+      e_harbor = #{record.eHarbor,jdbcType=TINYINT},
+      e_type = #{record.eType,jdbcType=TINYINT},
+      e_length = #{record.eLength,jdbcType=INTEGER},
+      e_price = #{record.ePrice,jdbcType=DECIMAL},
+      e_goods = #{record.eGoods,jdbcType=TINYINT},
+      e_product = #{record.eProduct,jdbcType=TINYINT},
+      e_unit = #{record.eUnit,jdbcType=VARCHAR},
+      e_totalnum = #{record.eTotalnum,jdbcType=INTEGER},
+      e_surplus = #{record.eSurplus,jdbcType=INTEGER},
+      e_entrepot = #{record.eEntrepot,jdbcType=VARCHAR},
+      e_emptytime = #{record.eEmptytime,jdbcType=VARCHAR},
+      e_fulltime = #{record.eFulltime,jdbcType=VARCHAR},
+      e_cartype = #{record.eCartype,jdbcType=VARCHAR},
+      e_carnum = #{record.eCarnum,jdbcType=VARCHAR},
+      e_weight = #{record.eWeight,jdbcType=INTEGER},
+      e_wargon = #{record.eWargon,jdbcType=INTEGER},
+      e_transport = #{record.eTransport,jdbcType=VARCHAR},
+      e_user = #{record.eUser,jdbcType=VARCHAR},
+      e_operator = #{record.eOperator,jdbcType=VARCHAR},
+      e_inspector = #{record.eInspector,jdbcType=VARCHAR},
+      e_flag = #{record.eFlag,jdbcType=TINYINT},
+      e_state = #{record.eState,jdbcType=TINYINT},
+      e_condition = #{record.eCondition,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.land.LWeight" >
+    update l_weight
+    <set >
+      <if test="eApplyid != null" >
+        e_applyid = #{eApplyid,jdbcType=INTEGER},
+      </if>
+      <if test="eEmptydate != null" >
+        e_emptydate = #{eEmptydate,jdbcType=DATE},
+      </if>
+      <if test="eFulldate != null" >
+        e_fulldate = #{eFulldate,jdbcType=DATE},
+      </if>
+      <if test="eSource != null" >
+        e_source = #{eSource,jdbcType=VARCHAR},
+      </if>
+      <if test="eOrder != null" >
+        e_order = #{eOrder,jdbcType=TINYINT},
+      </if>
+      <if test="eOrdernum != null" >
+        e_ordernum = #{eOrdernum,jdbcType=VARCHAR},
+      </if>
+      <if test="eCustomerid != null" >
+        e_customerid = #{eCustomerid,jdbcType=INTEGER},
+      </if>
+      <if test="eReciever != null" >
+        e_reciever = #{eReciever,jdbcType=VARCHAR},
+      </if>
+      <if test="eBourn != null" >
+        e_bourn = #{eBourn,jdbcType=VARCHAR},
+      </if>
+      <if test="eHarbor != null" >
+        e_harbor = #{eHarbor,jdbcType=TINYINT},
+      </if>
+      <if test="eType != null" >
+        e_type = #{eType,jdbcType=TINYINT},
+      </if>
+      <if test="eLength != null" >
+        e_length = #{eLength,jdbcType=INTEGER},
+      </if>
+      <if test="ePrice != null" >
+        e_price = #{ePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="eGoods != null" >
+        e_goods = #{eGoods,jdbcType=TINYINT},
+      </if>
+      <if test="eProduct != null" >
+        e_product = #{eProduct,jdbcType=TINYINT},
+      </if>
+      <if test="eUnit != null" >
+        e_unit = #{eUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="eTotalnum != null" >
+        e_totalnum = #{eTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="eSurplus != null" >
+        e_surplus = #{eSurplus,jdbcType=INTEGER},
+      </if>
+      <if test="eEntrepot != null" >
+        e_entrepot = #{eEntrepot,jdbcType=VARCHAR},
+      </if>
+      <if test="eEmptytime != null" >
+        e_emptytime = #{eEmptytime,jdbcType=VARCHAR},
+      </if>
+      <if test="eFulltime != null" >
+        e_fulltime = #{eFulltime,jdbcType=VARCHAR},
+      </if>
+      <if test="eCartype != null" >
+        e_cartype = #{eCartype,jdbcType=VARCHAR},
+      </if>
+      <if test="eCarnum != null" >
+        e_carnum = #{eCarnum,jdbcType=VARCHAR},
+      </if>
+      <if test="eWeight != null" >
+        e_weight = #{eWeight,jdbcType=INTEGER},
+      </if>
+      <if test="eWargon != null" >
+        e_wargon = #{eWargon,jdbcType=INTEGER},
+      </if>
+      <if test="eTransport != null" >
+        e_transport = #{eTransport,jdbcType=VARCHAR},
+      </if>
+      <if test="eUser != null" >
+        e_user = #{eUser,jdbcType=VARCHAR},
+      </if>
+      <if test="eOperator != null" >
+        e_operator = #{eOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="eInspector != null" >
+        e_inspector = #{eInspector,jdbcType=VARCHAR},
+      </if>
+      <if test="eFlag != null" >
+        e_flag = #{eFlag,jdbcType=TINYINT},
+      </if>
+      <if test="eState != null" >
+        e_state = #{eState,jdbcType=TINYINT},
+      </if>
+      <if test="eCondition != null" >
+        e_condition = #{eCondition,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="eRemark != null" >
+        e_remark = #{eRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where e_id = #{eId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.land.LWeight" >
+    update l_weight
+    set e_applyid = #{eApplyid,jdbcType=INTEGER},
+      e_emptydate = #{eEmptydate,jdbcType=DATE},
+      e_fulldate = #{eFulldate,jdbcType=DATE},
+      e_source = #{eSource,jdbcType=VARCHAR},
+      e_order = #{eOrder,jdbcType=TINYINT},
+      e_ordernum = #{eOrdernum,jdbcType=VARCHAR},
+      e_customerid = #{eCustomerid,jdbcType=INTEGER},
+      e_reciever = #{eReciever,jdbcType=VARCHAR},
+      e_bourn = #{eBourn,jdbcType=VARCHAR},
+      e_harbor = #{eHarbor,jdbcType=TINYINT},
+      e_type = #{eType,jdbcType=TINYINT},
+      e_length = #{eLength,jdbcType=INTEGER},
+      e_price = #{ePrice,jdbcType=DECIMAL},
+      e_goods = #{eGoods,jdbcType=TINYINT},
+      e_product = #{eProduct,jdbcType=TINYINT},
+      e_unit = #{eUnit,jdbcType=VARCHAR},
+      e_totalnum = #{eTotalnum,jdbcType=INTEGER},
+      e_surplus = #{eSurplus,jdbcType=INTEGER},
+      e_entrepot = #{eEntrepot,jdbcType=VARCHAR},
+      e_emptytime = #{eEmptytime,jdbcType=VARCHAR},
+      e_fulltime = #{eFulltime,jdbcType=VARCHAR},
+      e_cartype = #{eCartype,jdbcType=VARCHAR},
+      e_carnum = #{eCarnum,jdbcType=VARCHAR},
+      e_weight = #{eWeight,jdbcType=INTEGER},
+      e_wargon = #{eWargon,jdbcType=INTEGER},
+      e_transport = #{eTransport,jdbcType=VARCHAR},
+      e_user = #{eUser,jdbcType=VARCHAR},
+      e_operator = #{eOperator,jdbcType=VARCHAR},
+      e_inspector = #{eInspector,jdbcType=VARCHAR},
+      e_flag = #{eFlag,jdbcType=TINYINT},
+      e_state = #{eState,jdbcType=TINYINT},
+      e_condition = #{eCondition,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      e_remark = #{eRemark,jdbcType=LONGVARCHAR}
+    where e_id = #{eId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.land.LWeight" >
+    update l_weight
+    set e_applyid = #{eApplyid,jdbcType=INTEGER},
+      e_emptydate = #{eEmptydate,jdbcType=DATE},
+      e_fulldate = #{eFulldate,jdbcType=DATE},
+      e_source = #{eSource,jdbcType=VARCHAR},
+      e_order = #{eOrder,jdbcType=TINYINT},
+      e_ordernum = #{eOrdernum,jdbcType=VARCHAR},
+      e_customerid = #{eCustomerid,jdbcType=INTEGER},
+      e_reciever = #{eReciever,jdbcType=VARCHAR},
+      e_bourn = #{eBourn,jdbcType=VARCHAR},
+      e_harbor = #{eHarbor,jdbcType=TINYINT},
+      e_type = #{eType,jdbcType=TINYINT},
+      e_length = #{eLength,jdbcType=INTEGER},
+      e_price = #{ePrice,jdbcType=DECIMAL},
+      e_goods = #{eGoods,jdbcType=TINYINT},
+      e_product = #{eProduct,jdbcType=TINYINT},
+      e_unit = #{eUnit,jdbcType=VARCHAR},
+      e_totalnum = #{eTotalnum,jdbcType=INTEGER},
+      e_surplus = #{eSurplus,jdbcType=INTEGER},
+      e_entrepot = #{eEntrepot,jdbcType=VARCHAR},
+      e_emptytime = #{eEmptytime,jdbcType=VARCHAR},
+      e_fulltime = #{eFulltime,jdbcType=VARCHAR},
+      e_cartype = #{eCartype,jdbcType=VARCHAR},
+      e_carnum = #{eCarnum,jdbcType=VARCHAR},
+      e_weight = #{eWeight,jdbcType=INTEGER},
+      e_wargon = #{eWargon,jdbcType=INTEGER},
+      e_transport = #{eTransport,jdbcType=VARCHAR},
+      e_user = #{eUser,jdbcType=VARCHAR},
+      e_operator = #{eOperator,jdbcType=VARCHAR},
+      e_inspector = #{eInspector,jdbcType=VARCHAR},
+      e_flag = #{eFlag,jdbcType=TINYINT},
+      e_state = #{eState,jdbcType=TINYINT},
+      e_condition = #{eCondition,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where e_id = #{eId,jdbcType=INTEGER}
+  </update>
+</mapper>

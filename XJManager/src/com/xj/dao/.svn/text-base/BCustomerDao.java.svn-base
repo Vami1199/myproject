@@ -1,0 +1,36 @@
+package com.xj.dao;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import com.xj.domain.base.BCustomer;
+import com.xj.domain.base.BCustomerQuery;
+import com.xj.domain.base.BCustomerWithBLOBs;
+public interface BCustomerDao {
+    int countByExample(BCustomerQuery example);
+    
+    int deleteByExample(BCustomerQuery example);
+
+    int deleteByPrimaryKey(Integer cId);
+
+    int insert(BCustomerWithBLOBs record);
+
+    int insertSelective(BCustomerWithBLOBs record);
+
+    List<BCustomerWithBLOBs> selectByExampleWithBLOBs(BCustomerQuery example);
+
+    List<BCustomer> selectByExample(BCustomerQuery example);
+
+    BCustomerWithBLOBs selectByPrimaryKey(Integer cId);
+
+    int updateByExampleSelective(@Param("record") BCustomerWithBLOBs record, @Param("example") BCustomerQuery example);
+
+    int updateByExampleWithBLOBs(@Param("record") BCustomerWithBLOBs record, @Param("example") BCustomerQuery example);
+
+    int updateByExample(@Param("record") BCustomer record, @Param("example") BCustomerQuery example);
+
+    int updateByPrimaryKeySelective(BCustomerWithBLOBs record);
+
+    int updateByPrimaryKeyWithBLOBs(BCustomerWithBLOBs record);
+
+    int updateByPrimaryKey(BCustomer record);
+}

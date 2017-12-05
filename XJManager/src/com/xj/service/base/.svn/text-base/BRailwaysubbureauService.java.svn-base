@@ -1,0 +1,5 @@
+package com.xj.service.base;
+
+public interface BRailwaysubbureauService {
+
+}

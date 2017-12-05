@@ -1,0 +1,26 @@
+package com.xj.dao;
+
+import com.xj.domain.base.BRailwaywagonsys;
+import com.xj.domain.base.BRailwaywagonsysQuery;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface BRailwaywagonsysDao {
+    int countByExample(BRailwaywagonsysQuery example);
+
+    int deleteByExample(BRailwaywagonsysQuery example);
+
+    int insert(BRailwaywagonsys record);
+
+    int insertSelective(BRailwaywagonsys record);
+
+    List<BRailwaywagonsys> selectByExampleWithBLOBs(BRailwaywagonsysQuery example);
+
+    List<BRailwaywagonsys> selectByExample(BRailwaywagonsysQuery example);
+
+    int updateByExampleSelective(@Param("record") BRailwaywagonsys record, @Param("example") BRailwaywagonsysQuery example);
+
+    int updateByExampleWithBLOBs(@Param("record") BRailwaywagonsys record, @Param("example") BRailwaywagonsysQuery example);
+
+    int updateByExample(@Param("record") BRailwaywagonsys record, @Param("example") BRailwaywagonsysQuery example);
+}

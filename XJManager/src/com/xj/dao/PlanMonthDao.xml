@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PlanMonthDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.plan.PlanMonth" >
+    <id column="m_id" property="mId" jdbcType="VARCHAR" />
+    <result column="m_year" property="mYear" jdbcType="INTEGER" />
+    <result column="m_month" property="mMonth" jdbcType="INTEGER" />
+    <result column="m_plantype" property="mPlantype" jdbcType="TINYINT" />
+    <result column="m_count" property="mCount" jdbcType="INTEGER" />
+    <result column="m_transport" property="mTransport" jdbcType="TINYINT" />
+    <result column="y_user" property="yUser" jdbcType="VARCHAR" />
+    <result column="y_date" property="yDate" jdbcType="DATE" />
+    <result column="y_department" property="yDepartment" jdbcType="VARCHAR" />
+    <result column="y_state" property="yState" jdbcType="TINYINT" />
+    <result column="CreateDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.plan.PlanMonth" extends="BaseResultMap" >
+    <result column="y_remark" property="yRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      m_id, m_year, m_month, m_plantype, m_count, m_transport, y_user, y_date, y_department, 
+      y_state, CreateDate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    y_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.plan.PlanMonthQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from plan_month
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.plan.PlanMonthQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from plan_month
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    m_id,m_year,m_month,m_plantype,m_count,m_transport,y_user,y_date,y_department,y_state,CreateDate,ModifyDate,CreateBy,ModifyBy,y_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from plan_month
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from plan_month
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.plan.PlanMonthQuery" >
+    delete from plan_month
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.plan.PlanMonth" >
+    insert into plan_month (m_id, m_year, m_month, 
+      m_plantype, m_count, m_transport, 
+      y_user, y_date, y_department, 
+      y_state, CreateDate, ModifyDate, 
+      CreateBy, ModifyBy, y_remark
+      )
+    values (#{mId,jdbcType=VARCHAR}, #{mYear,jdbcType=INTEGER}, #{mMonth,jdbcType=INTEGER}, 
+      #{mPlantype,jdbcType=TINYINT}, #{mCount,jdbcType=INTEGER}, #{mTransport,jdbcType=TINYINT}, 
+      #{yUser,jdbcType=VARCHAR}, #{yDate,jdbcType=DATE}, #{yDepartment,jdbcType=VARCHAR}, 
+      #{yState,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{yRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.plan.PlanMonth" >
+    insert into plan_month
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        m_id,
+      </if>
+      <if test="mYear != null" >
+        m_year,
+      </if>
+      <if test="mMonth != null" >
+        m_month,
+      </if>
+      <if test="mPlantype != null" >
+        m_plantype,
+      </if>
+      <if test="mCount != null" >
+        m_count,
+      </if>
+      <if test="mTransport != null" >
+        m_transport,
+      </if>
+      <if test="yUser != null" >
+        y_user,
+      </if>
+      <if test="yDate != null" >
+        y_date,
+      </if>
+      <if test="yDepartment != null" >
+        y_department,
+      </if>
+      <if test="yState != null" >
+        y_state,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="yRemark != null" >
+        y_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        #{mId,jdbcType=VARCHAR},
+      </if>
+      <if test="mYear != null" >
+        #{mYear,jdbcType=INTEGER},
+      </if>
+      <if test="mMonth != null" >
+        #{mMonth,jdbcType=INTEGER},
+      </if>
+      <if test="mPlantype != null" >
+        #{mPlantype,jdbcType=TINYINT},
+      </if>
+      <if test="mCount != null" >
+        #{mCount,jdbcType=INTEGER},
+      </if>
+      <if test="mTransport != null" >
+        #{mTransport,jdbcType=TINYINT},
+      </if>
+      <if test="yUser != null" >
+        #{yUser,jdbcType=VARCHAR},
+      </if>
+      <if test="yDate != null" >
+        #{yDate,jdbcType=DATE},
+      </if>
+      <if test="yDepartment != null" >
+        #{yDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="yState != null" >
+        #{yState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="yRemark != null" >
+        #{yRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.plan.PlanMonthQuery" resultType="java.lang.Integer" >
+    select count(*) from plan_month
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update plan_month
+    <set >
+      <if test="record.mId != null" >
+        m_id = #{record.mId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mYear != null" >
+        m_year = #{record.mYear,jdbcType=INTEGER},
+      </if>
+      <if test="record.mMonth != null" >
+        m_month = #{record.mMonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.mPlantype != null" >
+        m_plantype = #{record.mPlantype,jdbcType=TINYINT},
+      </if>
+      <if test="record.mCount != null" >
+        m_count = #{record.mCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.mTransport != null" >
+        m_transport = #{record.mTransport,jdbcType=TINYINT},
+      </if>
+      <if test="record.yUser != null" >
+        y_user = #{record.yUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yDate != null" >
+        y_date = #{record.yDate,jdbcType=DATE},
+      </if>
+      <if test="record.yDepartment != null" >
+        y_department = #{record.yDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yState != null" >
+        y_state = #{record.yState,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        CreateDate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yRemark != null" >
+        y_remark = #{record.yRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update plan_month
+    set m_id = #{record.mId,jdbcType=VARCHAR},
+      m_year = #{record.mYear,jdbcType=INTEGER},
+      m_month = #{record.mMonth,jdbcType=INTEGER},
+      m_plantype = #{record.mPlantype,jdbcType=TINYINT},
+      m_count = #{record.mCount,jdbcType=INTEGER},
+      m_transport = #{record.mTransport,jdbcType=TINYINT},
+      y_user = #{record.yUser,jdbcType=VARCHAR},
+      y_date = #{record.yDate,jdbcType=DATE},
+      y_department = #{record.yDepartment,jdbcType=VARCHAR},
+      y_state = #{record.yState,jdbcType=TINYINT},
+      CreateDate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      y_remark = #{record.yRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update plan_month
+    set m_id = #{record.mId,jdbcType=VARCHAR},
+      m_year = #{record.mYear,jdbcType=INTEGER},
+      m_month = #{record.mMonth,jdbcType=INTEGER},
+      m_plantype = #{record.mPlantype,jdbcType=TINYINT},
+      m_count = #{record.mCount,jdbcType=INTEGER},
+      m_transport = #{record.mTransport,jdbcType=TINYINT},
+      y_user = #{record.yUser,jdbcType=VARCHAR},
+      y_date = #{record.yDate,jdbcType=DATE},
+      y_department = #{record.yDepartment,jdbcType=VARCHAR},
+      y_state = #{record.yState,jdbcType=TINYINT},
+      CreateDate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.plan.PlanMonth" >
+    update plan_month
+    <set >
+      <if test="mYear != null" >
+        m_year = #{mYear,jdbcType=INTEGER},
+      </if>
+      <if test="mMonth != null" >
+        m_month = #{mMonth,jdbcType=INTEGER},
+      </if>
+      <if test="mPlantype != null" >
+        m_plantype = #{mPlantype,jdbcType=TINYINT},
+      </if>
+      <if test="mCount != null" >
+        m_count = #{mCount,jdbcType=INTEGER},
+      </if>
+      <if test="mTransport != null" >
+        m_transport = #{mTransport,jdbcType=TINYINT},
+      </if>
+      <if test="yUser != null" >
+        y_user = #{yUser,jdbcType=VARCHAR},
+      </if>
+      <if test="yDate != null" >
+        y_date = #{yDate,jdbcType=DATE},
+      </if>
+      <if test="yDepartment != null" >
+        y_department = #{yDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="yState != null" >
+        y_state = #{yState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="yRemark != null" >
+        y_remark = #{yRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.plan.PlanMonth" >
+    update plan_month
+    set m_year = #{mYear,jdbcType=INTEGER},
+      m_month = #{mMonth,jdbcType=INTEGER},
+      m_plantype = #{mPlantype,jdbcType=TINYINT},
+      m_count = #{mCount,jdbcType=INTEGER},
+      m_transport = #{mTransport,jdbcType=TINYINT},
+      y_user = #{yUser,jdbcType=VARCHAR},
+      y_date = #{yDate,jdbcType=DATE},
+      y_department = #{yDepartment,jdbcType=VARCHAR},
+      y_state = #{yState,jdbcType=TINYINT},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      y_remark = #{yRemark,jdbcType=LONGVARCHAR}
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.plan.PlanMonth" >
+    update plan_month
+    set m_year = #{mYear,jdbcType=INTEGER},
+      m_month = #{mMonth,jdbcType=INTEGER},
+      m_plantype = #{mPlantype,jdbcType=TINYINT},
+      m_count = #{mCount,jdbcType=INTEGER},
+      m_transport = #{mTransport,jdbcType=TINYINT},
+      y_user = #{yUser,jdbcType=VARCHAR},
+      y_date = #{yDate,jdbcType=DATE},
+      y_department = #{yDepartment,jdbcType=VARCHAR},
+      y_state = #{yState,jdbcType=TINYINT},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where m_id = #{mId,jdbcType=VARCHAR}
+  </update>
+</mapper>

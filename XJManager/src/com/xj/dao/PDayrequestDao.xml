@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xj.dao.PDayrequestDao" >
+  <resultMap id="BaseResultMap" type="com.xj.domain.trainsplan.PDayrequest" >
+    <id column="d_id" property="dId" jdbcType="VARCHAR" />
+    <result column="d_date" property="dDate" jdbcType="DATE" />
+    <result column="d_user" property="dUser" jdbcType="VARCHAR" />
+    <result column="d_auditor" property="dAuditor" jdbcType="VARCHAR" />
+    <result column="d_start" property="dStart" jdbcType="VARCHAR" />
+    <result column="d_trainnumber" property="dTrainnumber" jdbcType="INTEGER" />
+    <result column="d_rnumber" property="dRnumber" jdbcType="INTEGER" />
+    <result column="d_realtrain" property="dRealtrain" jdbcType="INTEGER" />
+    <result column="d_weight" property="dWeight" jdbcType="BIGINT" />
+    <result column="d_state" property="dState" jdbcType="TINYINT" />
+    <result column="Createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="ModifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="ModifyBy" property="modifyby" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xj.domain.trainsplan.PDayrequest" extends="BaseResultMap" >
+    <result column="d_remark" property="dRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <if test="fields == null" >
+      d_id, d_date, d_user, d_auditor, d_start, d_trainnumber, d_rnumber, d_realtrain, 
+      d_weight, d_state, Createdate, ModifyDate, CreateBy, ModifyBy
+    </if>
+    <if test="fields != null" >
+      ${fields}
+    </if>
+  </sql>
+  <sql id="Blob_Column_List" >
+    d_remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.xj.domain.trainsplan.PDayrequestQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from p_dayrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xj.domain.trainsplan.PDayrequestQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_dayrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null" >
+      limit #{startRow} , #{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    d_id,d_date,d_user,d_auditor,d_start,d_trainnumber,d_rnumber,d_realtrain,d_weight,d_state,Createdate,ModifyDate,CreateBy,ModifyBy,d_remark
+    ,
+    <include refid="Blob_Column_List" />
+    from p_dayrequest
+    where d_id = #{dId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from p_dayrequest
+    where d_id = #{dId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xj.domain.trainsplan.PDayrequestQuery" >
+    delete from p_dayrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xj.domain.trainsplan.PDayrequest" >
+    insert into p_dayrequest (d_id, d_date, d_user, 
+      d_auditor, d_start, d_trainnumber, 
+      d_rnumber, d_realtrain, d_weight, 
+      d_state, Createdate, ModifyDate, 
+      CreateBy, ModifyBy, d_remark
+      )
+    values (#{dId,jdbcType=VARCHAR}, #{dDate,jdbcType=DATE}, #{dUser,jdbcType=VARCHAR}, 
+      #{dAuditor,jdbcType=VARCHAR}, #{dStart,jdbcType=VARCHAR}, #{dTrainnumber,jdbcType=INTEGER}, 
+      #{dRnumber,jdbcType=INTEGER}, #{dRealtrain,jdbcType=INTEGER}, #{dWeight,jdbcType=BIGINT}, 
+      #{dState,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{createby,jdbcType=VARCHAR}, #{modifyby,jdbcType=VARCHAR}, #{dRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xj.domain.trainsplan.PDayrequest" >
+    insert into p_dayrequest
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dId != null" >
+        d_id,
+      </if>
+      <if test="dDate != null" >
+        d_date,
+      </if>
+      <if test="dUser != null" >
+        d_user,
+      </if>
+      <if test="dAuditor != null" >
+        d_auditor,
+      </if>
+      <if test="dStart != null" >
+        d_start,
+      </if>
+      <if test="dTrainnumber != null" >
+        d_trainnumber,
+      </if>
+      <if test="dRnumber != null" >
+        d_rnumber,
+      </if>
+      <if test="dRealtrain != null" >
+        d_realtrain,
+      </if>
+      <if test="dWeight != null" >
+        d_weight,
+      </if>
+      <if test="dState != null" >
+        d_state,
+      </if>
+      <if test="createdate != null" >
+        Createdate,
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy,
+      </if>
+      <if test="dRemark != null" >
+        d_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dId != null" >
+        #{dId,jdbcType=VARCHAR},
+      </if>
+      <if test="dDate != null" >
+        #{dDate,jdbcType=DATE},
+      </if>
+      <if test="dUser != null" >
+        #{dUser,jdbcType=VARCHAR},
+      </if>
+      <if test="dAuditor != null" >
+        #{dAuditor,jdbcType=VARCHAR},
+      </if>
+      <if test="dStart != null" >
+        #{dStart,jdbcType=VARCHAR},
+      </if>
+      <if test="dTrainnumber != null" >
+        #{dTrainnumber,jdbcType=INTEGER},
+      </if>
+      <if test="dRnumber != null" >
+        #{dRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="dRealtrain != null" >
+        #{dRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="dWeight != null" >
+        #{dWeight,jdbcType=BIGINT},
+      </if>
+      <if test="dState != null" >
+        #{dState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="dRemark != null" >
+        #{dRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xj.domain.trainsplan.PDayrequestQuery" resultType="java.lang.Integer" >
+    select count(*) from p_dayrequest
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_dayrequest
+    <set >
+      <if test="record.dId != null" >
+        d_id = #{record.dId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dDate != null" >
+        d_date = #{record.dDate,jdbcType=DATE},
+      </if>
+      <if test="record.dUser != null" >
+        d_user = #{record.dUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dAuditor != null" >
+        d_auditor = #{record.dAuditor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dStart != null" >
+        d_start = #{record.dStart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dTrainnumber != null" >
+        d_trainnumber = #{record.dTrainnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.dRnumber != null" >
+        d_rnumber = #{record.dRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.dRealtrain != null" >
+        d_realtrain = #{record.dRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="record.dWeight != null" >
+        d_weight = #{record.dWeight,jdbcType=BIGINT},
+      </if>
+      <if test="record.dState != null" >
+        d_state = #{record.dState,jdbcType=TINYINT},
+      </if>
+      <if test="record.createdate != null" >
+        Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifydate != null" >
+        ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createby != null" >
+        CreateBy = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyby != null" >
+        ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dRemark != null" >
+        d_remark = #{record.dRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update p_dayrequest
+    set d_id = #{record.dId,jdbcType=VARCHAR},
+      d_date = #{record.dDate,jdbcType=DATE},
+      d_user = #{record.dUser,jdbcType=VARCHAR},
+      d_auditor = #{record.dAuditor,jdbcType=VARCHAR},
+      d_start = #{record.dStart,jdbcType=VARCHAR},
+      d_trainnumber = #{record.dTrainnumber,jdbcType=INTEGER},
+      d_rnumber = #{record.dRnumber,jdbcType=INTEGER},
+      d_realtrain = #{record.dRealtrain,jdbcType=INTEGER},
+      d_weight = #{record.dWeight,jdbcType=BIGINT},
+      d_state = #{record.dState,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR},
+      d_remark = #{record.dRemark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_dayrequest
+    set d_id = #{record.dId,jdbcType=VARCHAR},
+      d_date = #{record.dDate,jdbcType=DATE},
+      d_user = #{record.dUser,jdbcType=VARCHAR},
+      d_auditor = #{record.dAuditor,jdbcType=VARCHAR},
+      d_start = #{record.dStart,jdbcType=VARCHAR},
+      d_trainnumber = #{record.dTrainnumber,jdbcType=INTEGER},
+      d_rnumber = #{record.dRnumber,jdbcType=INTEGER},
+      d_realtrain = #{record.dRealtrain,jdbcType=INTEGER},
+      d_weight = #{record.dWeight,jdbcType=BIGINT},
+      d_state = #{record.dState,jdbcType=TINYINT},
+      Createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{record.modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{record.createby,jdbcType=VARCHAR},
+      ModifyBy = #{record.modifyby,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xj.domain.trainsplan.PDayrequest" >
+    update p_dayrequest
+    <set >
+      <if test="dDate != null" >
+        d_date = #{dDate,jdbcType=DATE},
+      </if>
+      <if test="dUser != null" >
+        d_user = #{dUser,jdbcType=VARCHAR},
+      </if>
+      <if test="dAuditor != null" >
+        d_auditor = #{dAuditor,jdbcType=VARCHAR},
+      </if>
+      <if test="dStart != null" >
+        d_start = #{dStart,jdbcType=VARCHAR},
+      </if>
+      <if test="dTrainnumber != null" >
+        d_trainnumber = #{dTrainnumber,jdbcType=INTEGER},
+      </if>
+      <if test="dRnumber != null" >
+        d_rnumber = #{dRnumber,jdbcType=INTEGER},
+      </if>
+      <if test="dRealtrain != null" >
+        d_realtrain = #{dRealtrain,jdbcType=INTEGER},
+      </if>
+      <if test="dWeight != null" >
+        d_weight = #{dWeight,jdbcType=BIGINT},
+      </if>
+      <if test="dState != null" >
+        d_state = #{dState,jdbcType=TINYINT},
+      </if>
+      <if test="createdate != null" >
+        Createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyby != null" >
+        ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      </if>
+      <if test="dRemark != null" >
+        d_remark = #{dRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where d_id = #{dId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xj.domain.trainsplan.PDayrequest" >
+    update p_dayrequest
+    set d_date = #{dDate,jdbcType=DATE},
+      d_user = #{dUser,jdbcType=VARCHAR},
+      d_auditor = #{dAuditor,jdbcType=VARCHAR},
+      d_start = #{dStart,jdbcType=VARCHAR},
+      d_trainnumber = #{dTrainnumber,jdbcType=INTEGER},
+      d_rnumber = #{dRnumber,jdbcType=INTEGER},
+      d_realtrain = #{dRealtrain,jdbcType=INTEGER},
+      d_weight = #{dWeight,jdbcType=BIGINT},
+      d_state = #{dState,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR},
+      d_remark = #{dRemark,jdbcType=LONGVARCHAR}
+    where d_id = #{dId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xj.domain.trainsplan.PDayrequest" >
+    update p_dayrequest
+    set d_date = #{dDate,jdbcType=DATE},
+      d_user = #{dUser,jdbcType=VARCHAR},
+      d_auditor = #{dAuditor,jdbcType=VARCHAR},
+      d_start = #{dStart,jdbcType=VARCHAR},
+      d_trainnumber = #{dTrainnumber,jdbcType=INTEGER},
+      d_rnumber = #{dRnumber,jdbcType=INTEGER},
+      d_realtrain = #{dRealtrain,jdbcType=INTEGER},
+      d_weight = #{dWeight,jdbcType=BIGINT},
+      d_state = #{dState,jdbcType=TINYINT},
+      Createdate = #{createdate,jdbcType=TIMESTAMP},
+      ModifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      ModifyBy = #{modifyby,jdbcType=VARCHAR}
+    where d_id = #{dId,jdbcType=VARCHAR}
+  </update>
+</mapper>

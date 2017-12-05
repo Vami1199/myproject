@@ -1,0 +1,30 @@
+package com.xj.domain.query;
+/***
+ * 分页查询封装类
+ * @author Administrator
+ *
+ */
+public class PageQuery {
+	private Integer page;
+	private Integer start;
+	private Integer limit;
+	public Integer getPage() {
+		return page;
+	}
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+	public Integer getStart() {
+		return start;
+	}
+	public void setStart(Integer start) {
+		this.start = start;
+	}
+	public Integer getLimit() {
+		return limit;
+	}
+	public void setLimit(Integer limit) {
+		this.limit = limit;
+	}
+	
+}

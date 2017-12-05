@@ -1,0 +1,37 @@
+package com.xj.dao;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+import com.xj.domain.base.BRailwaysubbureau;
+import com.xj.domain.base.BRailwaysubbureauQuery;
+
+public interface BRailwaysubbureauDao {
+    int countByExample(BRailwaysubbureauQuery example);
+
+    int deleteByExample(BRailwaysubbureauQuery example);
+
+    int deleteByPrimaryKey(String subbureauId);
+
+    int insert(BRailwaysubbureau record);
+
+    int insertSelective(BRailwaysubbureau record);
+
+    List<BRailwaysubbureau> selectByExampleWithBLOBs(BRailwaysubbureauQuery example);
+
+    List<BRailwaysubbureau> selectByExample(BRailwaysubbureauQuery example);
+
+    BRailwaysubbureau selectByPrimaryKey(String subbureauId);
+
+    int updateByExampleSelective(@Param("record") BRailwaysubbureau record, @Param("example") BRailwaysubbureauQuery example);
+
+    int updateByExampleWithBLOBs(@Param("record") BRailwaysubbureau record, @Param("example") BRailwaysubbureauQuery example);
+
+    int updateByExample(@Param("record") BRailwaysubbureau record, @Param("example") BRailwaysubbureauQuery example);
+
+    int updateByPrimaryKeySelective(BRailwaysubbureau record);
+
+    int updateByPrimaryKeyWithBLOBs(BRailwaysubbureau record);
+
+    int updateByPrimaryKey(BRailwaysubbureau record);
+}

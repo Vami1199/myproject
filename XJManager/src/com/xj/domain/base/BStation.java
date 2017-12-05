@@ -1,0 +1,207 @@
+package com.xj.domain.base;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class BStation implements Serializable {
+    private Integer sId;
+
+    private String sSort;
+
+    private String sName;
+
+    private Integer sDeparturestation;
+
+    private Integer sRailwaystation;
+
+    private Integer sProvince;
+
+    private String sCity;
+
+    private Integer sMileage;
+
+    private Integer sFreight;
+
+    private Integer sRailwaysbureau;
+
+    private Integer sMouth;
+
+    /**
+     * 创建日期
+     */
+    private Date createdate;
+
+    /**
+     * 修改日期
+     */
+    private Date modifydate;
+
+    /**
+     * 创建人
+     */
+    private String createby;
+
+    /**
+     * 修改人
+     */
+    private String modifyby;
+
+    private String sRemark;
+
+    private static final long serialVersionUID = 1L;
+
+    public Integer getsId() {
+        return sId;
+    }
+
+    public void setsId(Integer sId) {
+        this.sId = sId;
+    }
+
+    public String getsSort() {
+        return sSort;
+    }
+
+    public void setsSort(String sSort) {
+        this.sSort = sSort == null ? null : sSort.trim();
+    }
+
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName == null ? null : sName.trim();
+    }
+
+    public Integer getsDeparturestation() {
+        return sDeparturestation;
+    }
+
+    public void setsDeparturestation(Integer sDeparturestation) {
+        this.sDeparturestation = sDeparturestation;
+    }
+
+    public Integer getsRailwaystation() {
+        return sRailwaystation;
+    }
+
+    public void setsRailwaystation(Integer sRailwaystation) {
+        this.sRailwaystation = sRailwaystation;
+    }
+
+    public Integer getsProvince() {
+        return sProvince;
+    }
+
+    public void setsProvince(Integer sProvince) {
+        this.sProvince = sProvince;
+    }
+
+    public String getsCity() {
+        return sCity;
+    }
+
+    public void setsCity(String sCity) {
+        this.sCity = sCity == null ? null : sCity.trim();
+    }
+
+    public Integer getsMileage() {
+        return sMileage;
+    }
+
+    public void setsMileage(Integer sMileage) {
+        this.sMileage = sMileage;
+    }
+
+    public Integer getsFreight() {
+        return sFreight;
+    }
+
+    public void setsFreight(Integer sFreight) {
+        this.sFreight = sFreight;
+    }
+
+    public Integer getsRailwaysbureau() {
+        return sRailwaysbureau;
+    }
+
+    public void setsRailwaysbureau(Integer sRailwaysbureau) {
+        this.sRailwaysbureau = sRailwaysbureau;
+    }
+
+    public Integer getsMouth() {
+        return sMouth;
+    }
+
+    public void setsMouth(Integer sMouth) {
+        this.sMouth = sMouth;
+    }
+
+    public Date getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
+    }
+
+    public Date getModifydate() {
+        return modifydate;
+    }
+
+    public void setModifydate(Date modifydate) {
+        this.modifydate = modifydate;
+    }
+
+    public String getCreateby() {
+        return createby;
+    }
+
+    public void setCreateby(String createby) {
+        this.createby = createby == null ? null : createby.trim();
+    }
+
+    public String getModifyby() {
+        return modifyby;
+    }
+
+    public void setModifyby(String modifyby) {
+        this.modifyby = modifyby == null ? null : modifyby.trim();
+    }
+
+    public String getsRemark() {
+        return sRemark;
+    }
+
+    public void setsRemark(String sRemark) {
+        this.sRemark = sRemark == null ? null : sRemark.trim();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", sId=").append(sId);
+        sb.append(", sSort=").append(sSort);
+        sb.append(", sName=").append(sName);
+        sb.append(", sDeparturestation=").append(sDeparturestation);
+        sb.append(", sRailwaystation=").append(sRailwaystation);
+        sb.append(", sProvince=").append(sProvince);
+        sb.append(", sCity=").append(sCity);
+        sb.append(", sMileage=").append(sMileage);
+        sb.append(", sFreight=").append(sFreight);
+        sb.append(", sRailwaysbureau=").append(sRailwaysbureau);
+        sb.append(", sMouth=").append(sMouth);
+        sb.append(", createdate=").append(createdate);
+        sb.append(", modifydate=").append(modifydate);
+        sb.append(", createby=").append(createby);
+        sb.append(", modifyby=").append(modifyby);
+        sb.append(", sRemark=").append(sRemark);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}
