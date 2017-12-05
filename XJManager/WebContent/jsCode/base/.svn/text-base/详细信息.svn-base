@@ -1,0 +1,375 @@
+      listeners:{
+
+
+                                   click:function(){
+                       ////////////////////////////////////////////////////////////////////////////
+                                   	  //定义grid
+                                       var searchFormx = Ext.create('Ext.grid.Panel', {
+                                       	//grid 的标题
+                                       
+                                           //引入仓库
+                                           store: null,
+                                           //引入选择框
+                                          
+                                           //定义列
+                                           columns:[{
+                                               id:'sourceId',
+                                               text: '顺序号',
+                                               sortable: true,
+                                               //与定义的类中的属性匹配
+                                               dataIndex: 'sourceId',
+                                               flex: 0,
+                                               width: 75,
+                                               //鼠标点击时能够编辑
+                                               editor: {
+                                                   allowBlank: false
+                                               }
+                                           },{
+                                               text: '矿别名称',
+                                               sortable: true,
+                                               dataIndex: 'sourceName',
+                                               width: 75,
+                                               //鼠标点击时能够编辑
+                                               editor: {
+                                                   allowBlank: false
+                                               }
+                                           },{
+                                               text: '单位编号',
+                                               sortable: true,
+                                               dataIndex: 'sourceCompanyid',
+                                               width: 75,
+                                               editor: {
+                                                   allowBlank: false
+                                               }
+                                           },
+                                           {
+                                               text: '单位全称',
+                                               sortable: true,
+                                               dataIndex: 'sourceCompanyname',
+                                               width: 75,
+                                               editor: {
+                                                   allowBlank: false
+                                               }
+                                           },{
+                                               text: '全硫值',
+                                               sortable: true,
+                                               dataIndex: 'sourceSulphur',
+                                               width: 75,
+                                               editor: {
+                                                   allowBlank: false
+                                               }
+                                           },{
+                                               text: '单位简称',
+                                               sortable: true,
+                                               dataIndex: 'sourceCompanyshort',
+                                               width: 75,
+                                               editor: {
+                                                   allowBlank: false
+                                               }
+                                           },
+                                              
+                                               
+                                               ],
+                                               
+                                           // 保存和取消按钮
+                                           dockedItems: [
+                                           //各种按钮布局
+                                           {
+                                               xtype: 'toolbar',
+                                               items: [{
+                                               	text:'新增',
+                                               	tooltip:'add',
+                                               	iconCls:'add',
+                                               	listeners : {
+                                                       
+                                                   }
+                                               	
+                                               }, '-',{
+                                                   text:'修改',
+                                                   tooltip:' edit',
+                                                   iconCls:'edit',
+                                                   handler:function(){
+                                                   	
+                                                   }
+                                               },'-',{
+                                                   itemId: 'removeButton',
+                                                   text:'删除',
+                                                   tooltip:'remove',
+                                                   iconCls:'remove',
+                                                   disabled: true
+                                               },'-', {
+                                                   text:'概要信息',
+                                                   tooltip:'detailed',
+                                                   iconCls:'detailed'
+                                               },'-',{
+                                               	text:'上一条',
+                                               	tooltip:'search',
+                                               	iconCls:'forward'
+                                               },'-',{
+                                               	text:'下一条',
+                                               	tooltip:'search',
+                                               	iconCls:'next'
+                                               },
+                                               
+                                               ]
+                                          }],
+                                          
+                                          //table边框的设定
+                                           stripeRows: true,
+                                           height:200,
+                                           width:900,
+                                           frame:false,
+                                          
+                                       });
+                                   	
+                                   	
+                      ///////////////////////////////////////////////////////////////////////////             	
+                                  //创建一个搜索表单
+                                   var searchForm1 =  Ext.create('Ext.form.Panel', {
+                                   	   region:'west',
+                     		               plain: true,
+                     		               border: 0,
+                     		               bodyPadding: 5,
+                     		               width:900,
+                     		             
+                     		               //表单发送的到的action路径
+                     		               url: '',
+                     		               //默认设置
+                     		               fieldDefaults: {
+                     		                   labelWidth: 70,
+                     		                   anchor: '100%'
+                     		               },
+                     		               //布局,vbox是竖排,hbox是横排
+                     		               layout: {
+                     		                   type: 'vbox',
+                     		                   align: 'stretch' // Child items are stretched to full width
+                     		               },
+                     		            
+                     		               items: [
+                     		                   {
+                     		            	   xtype: 'textfield',
+                     		            	   fieldLabel: '机构编号',
+                     		               		},
+                     		                   {
+                     		                	   xtype: 'textfield',
+                     		                	   fieldLabel: '机构简称',
+                     		                   },
+                     		                   {
+                     		                	   xtype: 'textfield',
+                     		                	   fieldLabel: '机构电话',
+                     		                   },
+                     		                   {
+                     		                	   xtype: 'textfield',
+                     		                	   fieldLabel: '机构传真',
+                     		                   },
+                     		                   {
+                     		                	   xtype: 'textfield',
+                     		                	   fieldLabel: '机构邮编',
+                     		                   },
+                     		                   {
+                     		                	   xtype: 'textfield',
+                     		                	   fieldLabel: '机构负责人',
+                     		                   }
+                     		                ],
+               							
+                     		               
+               		            		 });
+                                   	
+                                   	
+                                
+                     ////////////////////////////////////////////////////////////////////////        
+                             //定义grid
+                             Ext.History.init();
+
+                     	    // Needed if you want to handle history for multiple components in the same page.
+                     	    // Should be something that won't be in component ids.
+                     	    var tokenDelimiter = ':';
+                     	    
+                     	    function onTabChange(tabPanel, tab) {
+                     	        var tabs = [],
+                     	            ownerCt = tabPanel.ownerCt, 
+                     	            oldToken, newToken;
+
+                     	        tabs.push(tab.id);
+                     	        tabs.push(tabPanel.id);
+
+                     	        while (ownerCt && ownerCt.is('tabpanel')) {
+                     	            tabs.push(ownerCt.id);
+                     	            ownerCt = ownerCt.ownerCt;
+                     	        }
+                     	        
+                     	        newToken = tabs.reverse().join(tokenDelimiter);
+                     	        
+                     	        oldToken = Ext.History.getToken();
+                     	       
+                     	        if (oldToken === null || oldToken.search(newToken) === -1) {
+                     	            Ext.History.add(newToken);
+                     	        }
+                     	    }
+                     	    
+                     	    // Handle this change event in order to restore the UI to the appropriate history state
+                     	    function onAfterRender() {
+                     	        Ext.History.on('change', function(token) {
+                     	            var parts, tabPanel, length, i;
+                     	            
+                     	            if (token) {
+                     	                parts = token.split(tokenDelimiter);
+                     	                length = parts.length;
+                     	                
+                     	                // setActiveTab in all nested tabs
+                     	                for (i = 0; i < length - 1; i++) {
+                     	                    Ext.getCmp(parts[i]).setActiveTab(Ext.getCmp(parts[i + 1]));
+                     	                }
+                     	            }
+                     	        });
+                     	        
+                     	        // This is the initial default state.  Necessary if you navigate starting from the
+                     	        // page without any existing history token params and go back to the start state.
+                     	        var activeTab1 = Ext.getCmp('main-tabs').getActiveTab(),
+                     	            activeTab2 = activeTab1.getActiveTab();
+                     	            
+                     	        onTabChange(activeTab1, activeTab2);
+                     	    }
+                     	/////////////////////////////////////////////////////////////////////////    
+                     	   var tab= Ext.create('Ext.TabPanel', {
+                     	        renderTo: Ext.getBody(),
+                     	        id: 'main-tabs',
+                     	        height: 200,
+                     	        width: 900,
+                     	        activeTab: 0,
+                     	        defaults: {
+                     	            padding: 10
+                     	        },
+                     	        
+                     	        items: [{
+                     	            xtype: 'tabpanel',
+                     	            title: '产品参数',
+                     	            id: 'tab1',
+                     	            activeTab: 0,
+                     	            padding: 5,
+                     	            border: true,
+                     	            plain: true,
+                     	            
+                     	            defaults: {
+                     	                padding: 10
+                     	            },
+
+                     	          dockedItems: [
+                     	        //各种按钮布局
+                     	        {
+                     	            xtype: 'toolbar',
+                     	            items: [{
+                     	            	text:'筛选',
+                     	            	tooltip:'search',
+                     	            	iconCls:'search'
+                     	            },{
+                     	            	text:'添加',
+                     	            	tooltip:'add',
+                     	            	iconCls:'add',
+                     	            	listeners : {
+                     	                    'click' : function() {
+                     	                    	
+                     	                    }
+                     	                }
+                     	            	
+                     	            }, '-',{
+                     	                text:'修改',
+                     	                tooltip:' edit',
+                     	                iconCls:'edit',
+                     	                handler:function(){
+                     	                	var msgid = grid.getSelectionModel().getLastSelected().get('sourceId');
+                     	                	alert(msgid);
+                     	                }
+                     	            },'-',{
+                     	                itemId: 'removeButton',
+                     	                text:'删除',
+                     	                tooltip:'remove',
+                     	                iconCls:'remove',
+                     	                disabled: true
+                     	            },'-', {
+                     	                text:'详细信息',
+                     	                tooltip:'detailed',
+                     	                iconCls:'detailed'
+                     	            }
+                     	            ]
+                     	       }],
+                     	       
+                     	            items: [{
+                     	                title: '产品参数',
+                     	                id: 'subtab1',
+                     	                html: '产品参数',
+                     	              items:[],
+                     	            }],
+                     	       		
+                     	       		
+                     	            
+                     	            listeners: {
+                     	                tabchange: onTabChange
+                     	            }
+                     	        },{
+                     	            title: '产品构成',
+                     	            id: 'tab2',
+                     	            html: 'Tab 2 content'
+                     	        }],
+                     	        listeners: {
+                     	            tabchange: onTabChange,
+                     	            afterrender: onAfterRender 
+                     	        }
+                     	    });
+                     	    
+                       //////////////////////////////////////////////////////////////      
+                             
+                                   	 Ext.create("Ext.window.Window",{  
+                                        /*title:'搜索', */ 
+                                        closable: true,
+                                        closeAction: 'hide',
+                                        width: 900,
+                                        minWidth: 550,
+                                        height: 600,
+                                        tools: [{type: 'pin'}],
+                                        layout: {
+                                       	 type: 'border',
+                                       	 padding: 5
+                                        },
+                                        constrain:true,  
+                                        //模态窗体  
+                                        modal:true,  
+                                        //模态窗体  
+                                        plain:true,  
+                                        //滚动条设置  
+                                        autoScroll:true,      
+                                        items:[
+               								{
+               									region: 'north',
+               									title:'详细信息',
+               									items:[searchFormx],
+               									width: 200,
+               									split: true,
+               									//是否可缩小
+               									floatable: false,
+               								},
+                                               {
+                                               	region: 'north',
+                                               	title:'更多详细信息',
+                                               	items:[searchForm1],
+                                               	/*width: 100,*/
+                                               	split: true,
+                                               	//是否可缩小
+                                               	collapsible: true,
+                                               	collapsed: true,
+                                               	floatable: false
+                                               },
+                                               {
+                                               	region: 'north',
+                                               	items:[tab],
+                                               	/*width: 200,*/
+                                               	split: true,
+                                               	floatable: false,
+                                               	autoScroll:true
+                                               }
+                                           ]
+                                    }).show();  
+                                  }
+                               
+                               
+                               }

@@ -1,0 +1,19 @@
+1.grid获取所有数据
+grid.getStore()  //取得grid的数据源
+var comValue;
+for(int i;i<grid.getStore().getCount();i++)
+{
+   comValue+=grid.getStore().getAt(i).data.字段名+',';
+}
+2.获取选中行数据
+var record = grid.getSelectionModel().getSelection();
+record[0].get(Index);
+3.根据name获取控件
+addkhForm.getForm().findField(name);
+4.根据id
+Ext.getCmp(id)
+5.获取整个form
+var all = searchForm.getForm().getValues();
+all[name]
+6.grid.getStore();
+fore

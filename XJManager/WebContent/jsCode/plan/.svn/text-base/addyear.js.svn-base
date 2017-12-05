@@ -1,0 +1,320 @@
+Ext.Loader.setConfig({enabled: true});
+
+//设置路径
+Ext.Loader.setPath('Ext.ux', '../../common/ux/');
+
+//定义需要的插件
+Ext.require([
+    'Ext.data.*',
+    'Ext.grid.*',
+    'Ext.util.*',
+    'Ext.tip.QuickTipManager',
+    'Ext.ux.data.PagingMemoryProxy',
+    'Ext.ux.ProgressBarPager',
+    'Ext.selection.CheckboxModel',
+    'Ext.ux.RowExpander',
+    'Ext.selection.CellModel',
+    'Ext.ux.CheckColumn',
+    'Ext.state.*',
+    'Ext.form.*'
+]);
+
+Ext.onReady(function(){
+	// register model
+	//相当于定义了一个company 类
+	Ext.define('PMonthrequest', {
+		extend: 'Ext.data.Model',
+		idProperty: '',
+		//定义类的属性
+		fields: [
+		         {name: 'yId' ,type: 'string'},
+		         {name: 'yYear', type: 'Integer'},
+		         {name: 'yPlan', type: 'Integer'},
+		         {name: 'yUser', type: 'string'},
+		         {name: 'yDate',type:'date', dateFormat:'n/j h:i'}
+		         ]        
+	});
+    //定义数据源将被引入到对应的列中
+    var myData = [
+        ['xxx',1999,999,'xxx','9/1 12:00']
+      
+    ];
+    
+    //初始化QuickTips就是为了使带有data-qtip属性的html标签能够在鼠标移上去的时候显示其内容
+    Ext.tip.QuickTipManager.init();
+    
+    //想当于一个仓库 存储各种对像的
+    var store = Ext.create('Ext.data.Store', {
+        model: 'PMonthrequest',
+        remoteSort: true,
+        //每页显示的数据
+        pageSize: 5,
+        proxy: {
+            type: 'pagingmemory',
+            //引入数据源
+            data: myData,
+            reader: {
+                type: 'array'
+            }
+        }
+    });
+    
+    //定义编辑属性
+    var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+    	//鼠标点击两次 出现编辑
+        clicksToEdit: 2
+    });
+    
+    //定义选择框
+    var sm = Ext.create('Ext.selection.CheckboxModel');
+    //定义grid
+    var grid = Ext.create('Ext.grid.Panel', {
+    	//grid 的标题
+        title:'table',
+        //引入仓库
+        store: store,
+        //引入选择框
+        selModel: sm,
+        //定义列
+        columns: [{
+                id:'',
+                text: '年销售计划编号',
+                sortable: true,
+                //与定义的类中的属性匹配
+                dataIndex: 'yId',
+                flex: 0,
+                width: 75,
+                //鼠标点击时能够编辑
+                editor: {
+                    allowBlank: false
+                }
+            },{
+                text: '年度',
+                sortable: true,
+                /*renderer: Ext.util.Format.usMoney,*/
+                dataIndex: 'yYear',
+                width: 75,
+                //鼠标点击时出现下拉框选择编辑的内容
+                editor: new Ext.form.field.ComboBox({
+                    typeAhead: true,
+                    triggerAction: 'all',
+                    selectOnTab: true,
+                    store: [
+                        ['1991','1991'],
+                        ['1992','1992'],
+                        ['1993','1993'],
+                        ['1994','1994'],
+                        ['1995','1995']
+                    ],
+                    lazyRender: true,
+                    listClass: 'x-combo-list-small'
+                })
+            },{
+                text: '计划销量',
+                sortable: true,
+                dataIndex: 'yPlan',
+                width: 75,
+                editor: {
+                    allowBlank: false
+                }
+            },{
+                text: '创建人',
+                sortable: true,
+                dataIndex: 'yUser',
+                width: 75,
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                text: '制定日期',
+                sortable: true,
+                //格式化日期
+                renderer: Ext.util.Format.dateRenderer('m/d/Y'),
+                dataIndex: 'yDate',
+                width: 75,
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+            	//定义每列数据删除按钮
+            		text: '快速删除',
+                    xtype: 'actioncolumn',
+                    title:'快速删除',
+                    width:75,
+                    sortable: false,
+                    items: [{
+                        icon: '../../common/shared/icons/fam/delete.gif',
+                        tooltip: 'Delete Plant',
+                        handler: function(grid, rowIndex, colIndex) {
+         					Ext.MessageBox.confirm(   
+         					 "请确认"  
+         					  ,"确定删除吗？"  
+         					  ,function( button,text ){  
+         						 if( button == 'yes'){  
+         					      store.removeAt(rowIndex); 
+         						 }  
+         					  }   
+         					);        
+                        }
+                    }]
+                }
+           
+            
+            ],
+            
+        // 保存和取消按钮
+        dockedItems: [{
+            xtype: 'toolbar',
+            dock: 'bottom',
+            ui: 'footer',
+            layout: {
+                pack: 'center'
+            },
+            items: [{
+            	
+                minWidth: 80,
+                text: '保存'
+            },{
+                minWidth: 80,
+                text: '取消'
+            }]
+        }, 
+        //各种按钮布局
+        {
+            xtype: 'toolbar',
+            items: [{
+                text:'添加',
+                tooltip:'add',
+                iconCls:'add'
+            }, '-',{
+                text:'修改',
+                tooltip:' edit',
+                iconCls:'edit'
+            },'-',{
+                itemId: 'removeButton',
+                text:'删除',
+                tooltip:'remove',
+                iconCls:'remove',
+                disabled: true
+            },'-', {
+                text:'送审',
+                tooltip:'submit for censorship',
+                iconCls:'songshen'
+            },'-', {
+                text:'复制',
+                tooltip:'copy',
+                iconCls:'copy'
+            },'-', {
+                text:'生成',
+                tooltip:'create',
+                iconCls:'create'
+            },'-', {
+                text:'审批意见',
+                tooltip:'Approval opinions',
+                iconCls:'shenpiyijian'
+            },'-', {
+                text:'打印',
+                tooltip:'print',
+                iconCls:'print'
+            },'-', {
+                text:'详细信息',
+                tooltip:'detailed',
+                iconCls:'detailed'
+            }
+            ]
+       }],
+       
+       //table边框的设定
+        stripeRows: true,
+        height:320,
+        width:1200,
+        frame:false,
+        
+        /*resizable: {
+           handles: 's',
+           minHeight: 100
+        },*/
+        
+        bbar: Ext.create('Ext.PagingToolbar', {
+            pageSize: 10,
+            store: store,
+            displayInfo: true,
+            plugins: Ext.create('Ext.ux.ProgressBarPager', {})
+        }),
+       //快速添加列功能 
+       tbar: [{
+            text: '快速添加',
+            handler : function(){
+                // 将匹配的类加载到新建的行中
+                var r = Ext.create('PMonthrequest', {
+                	mId: 'xxxx',
+                	mYear: '1991',
+                	mMonth: '01',
+                	mDate: '9/9 12:00',
+                	mFlag:'xxx',
+                	mAdminid:99,
+                	mUser:'xx',
+                	mTrains:88,
+                	mWeight:'xx',
+                	createby:'xxx',
+                	modifyby:'xxx',
+                	createdate:'9/9 12:00',
+                	mRemark:'xx',
+                    indoor: false
+                });
+                store.insert(0, r);
+                cellEditing.startEditByPosition({row: 0, column: 0});
+            }
+        }],
+        //引入编辑功能
+        plugins: [cellEditing]
+    });
+
+    //将table放入制定的div中
+    grid.render('grid-example');
+    //重新提交新的参数请求数据；
+    store.load();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***********************************************************************************************/
+/***********************************************************************************************/
+
+/*// example of custom renderer function
+function change(val){
+	if(val > 0){
+		return '<span style="color:green;">' + val + '</span>';
+	}else if(val < 0){
+		return '<span style="color:red;">' + val + '</span>';
+	}
+	return val;
+}
+
+// example of custom renderer function
+function pctChange(val){
+if(val > 0){
+	return '<span style="color:green;">' + val + '%</span>';
+}else if(val < 0){
+	return '<span style="color:red;">' + val + '%</span>';
+}
+return val;
+}*/

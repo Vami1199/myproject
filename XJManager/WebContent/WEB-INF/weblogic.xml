@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://www.bea.com/ns/weblogic/weblogic-web-app" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+	<container-descriptor>
+	 	<!-- 设置为true时, 让weblogic服务器优先加载系统/WEB/INF目录下jar包 -->
+		<prefer-web-inf-classes>false</prefer-web-inf-classes>
+	</container-descriptor>
+</weblogic-web-app>

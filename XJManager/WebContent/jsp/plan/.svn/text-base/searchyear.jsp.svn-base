@@ -1,0 +1,38 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/jsp/extjs/extjs.jsp"%>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>首页</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/example.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/myCss.css" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/jsCode/plan/searchyear.js"></script>
+<style type="text/css">
+
+</style> 
+</head>
+<body>
+	<div style="background: #D9E5F3;width:1200px" >
+		<form>
+			<div>
+				<button style="background: #4F86B3">查询</button>
+				<select name="select" id="select_k1" class="xla_k" style="height: 25px">
+					<option value="">请选择</option>
+					<option value="">xxx</option>
+					<option value="">xxx</option>
+				</select> <input type="text" style="height: 25px">
+			</div>
+		</form>
+	</div>
+	<div id="grid-example" style="position:absolute;width:100%;left:0px;top:0px">
+
+
+
+</body>
+</html>

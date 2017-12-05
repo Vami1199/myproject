@@ -1,0 +1,435 @@
+                	//表格验证的提示框
+                	/*********************创建window弹窗表单开始***********************/
+                	var required = '<span style="color:red;font-weight:bold" data-qtip="Required">*</span>';
+                	var c = new Ext.Window({
+                		  autoHight : true,
+                		  modal : true,
+                		  items : [
+                		           /***********************表单设计开始*********************/
+                		           Ext.create('Ext.form.Panel', {
+                		               plain: true,
+                		               border: 0,
+                		               bodyPadding: 5,
+                		               width:320,
+                		               title:'产品添加',
+                		               //表单发送的到的action路径
+                		               url: '',
+                		               //默认设置
+                		               fieldDefaults: {
+                		                   labelWidth: 70,
+                		                   anchor: '100%'
+                		               },
+                		               //布局,vbox是竖排,hbox是横排
+                		               layout: {
+                		                   type: 'vbox',
+                		                   align: 'stretch' // Child items are stretched to full width
+                		               },
+
+                		               items: [
+                		                       { 	
+                		                    	   xtype: 'textfield',
+                		                    	   fieldLabel: '产品编号',              		                    	   
+                		                           afterLabelTextTpl: required,//必填项的标识
+                		                           name : 'name',// name只是改下拉的名称   
+                		                           triggerAction : 'all',// 显示所有下列数据，一定要设置属性triggerAction为all
+                		                           allowBlank: false,              	                          
+                		                           tooltip: '填入产品编号'
+                		                       	},
+                		                       	{ 	
+                		                       		xtype: 'textfield',
+                		                       		fieldLabel: '产品名称',
+                		                       		//必填项
+                		                       		afterLabelTextTpl: required,
+                		                       		name: '',
+                		                       		allowBlank: false,
+                		                       		tooltip: '填入产品编号'
+                		                       	},
+                		                       	
+                		                       	
+                		                       {
+                		                   xtype: 'combo',
+                		                   store: Ext.create('Ext.data.ArrayStore', {
+                		                	   fields: [ 'coal' ],
+                		                       data: [
+                		                           ['烟煤'],
+                		                           ['烟煤'],
+                		                           ['烟煤']
+                		                       ]
+                		                   }),
+                		                   name: '',
+                		                   hiddenName : 'id',// 提交到后台的input的name ，对应下面store里的''id，必须要填
+        		                           emptyText : '-----请选择-----',
+                		                   //map中的键
+                		                   valueField:'',
+                		                   //map中的值 
+                		                   displayField: 'coal',
+                		                   //选中下拉框后再点击面板就会多出一行,不知道有卵子用
+                		                   /*plugins: [ Ext.ux.FieldReplicator ],*/
+                		                   fieldLabel: '煤种',
+                		                   queryMode: 'local',//数据模式,local代表本地数据模式
+                		                   //tab键是否可以选择当前突出项
+                		                   selectOnTab: false,
+                		                   /****下拉框不可编辑*****/
+            		            		   typeAhead:false,
+            		            		   editable:false, 
+                		                   onReplicate: function(){
+                		                       this.getStore().clearFilter();
+                		                   }
+                		               },  
+                		               
+                		               {
+                		            		   xtype: 'combo',
+                		            		   store: Ext.create('Ext.data.ArrayStore', {
+                		            			   fields: [ 'type' ],
+                		            			   data: [
+                		            			          ['动力煤'],
+                		            			          ['动力煤'],
+                		            			          ['动力煤']
+                		            			          ]
+                		            		   }),
+                		            		   name: '',
+                    		                   hiddenName : 'id',// 提交到后台的input的name ，对应下面store里的''id，必须要填
+            		                           emptyText : '-----请选择-----',
+                		            		   //map中的键
+                		            		   valueField:'',
+                		            		   //map中的值 
+                		            		   displayField: 'type',
+                		            		  /* plugins: [ Ext.ux.FieldReplicator ],*/
+                		            		   fieldLabel: '品种',
+                		            		   queryMode: 'local',
+                		            		   //tab键是否可以选择当前突出项
+                		            		   selectOnTab: false,
+                		            		   /****下拉框不可编辑*****/
+                		            		   typeAhead:false,
+                		            		   editable:false, 
+                		            		   /****下拉框不可编辑*****/
+                		            		   name: '',
+                		            		   onReplicate: function(){
+                		            			   this.getStore().clearFilter();
+                		            		   }
+                		            	   }, 
+                		            	   
+                		            		{ 	
+           		                       		xtype: 'textfield',
+           		                       		fieldLabel: '计量单位',
+           		                       		value:'吨',
+           		                       		//必填项
+           		                       		afterLabelTextTpl: required,
+           		                       		name: '',
+           		                       		allowBlank: false,
+           		                       		tooltip: '填入产品编号'
+           		                       		},
+                		            	   
+           		                       	{
+           		                       		xtype:"fieldcontainer" , 
+           		                       		layout:"hbox" , 
+           		                       		items:[
+           		                                     {
+           		                                    	 xtype:"textfield", 
+           		                                    	 fieldLabel:"部门", 
+           		                                    	 flex:1,
+           		                                    	 fieldLabel: '生产单位',
+                   		                       			 /*layout: 'column',*/
+           		                                    	 value:'',
+           		                                    	 //必填项
+                   		                       		     afterLabelTextTpl: required,
+                   		                       			 name: '',
+                   		                       			 allowBlank: false,
+           		                                     } , 
+           		                                     {
+           		                                    	 xtype:"button", 
+           		                                    	 icon:'../../common/shared/icons/fam/search.png',
+           		                                    	 /************创建单位搜索框开始***********/
+           		                                    	 listeners:{
+           		                                            click:function(){
+           		                                            	
+           		                                           //创建一个搜索表单
+           		                                            var searchForm =  Ext.create('Ext.form.Panel', {
+           		                                            	   region:'west',
+           		                              		               plain: true,
+           		                              		               border: 0,
+           		                              		               bodyPadding: 5,
+           		                              		               width:200,
+           		                              		               //表单发送的到的action路径
+           		                              		               url: '',
+           		                              		               //默认设置
+           		                              		               fieldDefaults: {
+           		                              		                   labelWidth: 70,
+           		                              		                   anchor: '100%'
+           		                              		               },
+           		                              		               //布局,vbox是竖排,hbox是横排
+           		                              		               layout: {
+           		                              		                   type: 'vbox',
+           		                              		                   align: 'stretch' // Child items are stretched to full width
+           		                              		               },
+           		                              		               items: [
+           		                              		                   {
+           		                              		            	   xtype: 'textfield',
+           		                              		            	   fieldLabel: '机构编号',
+           		                              		               		},
+           		                              		                   {
+           		                              		                	   xtype: 'textfield',
+           		                              		                	   fieldLabel: '机构简称',
+           		                              		                   },
+           		                              		                   {
+           		                              		                	   xtype: 'textfield',
+           		                              		                	   fieldLabel: '机构电话',
+           		                              		                   },
+           		                              		                   {
+           		                              		                	   xtype: 'textfield',
+           		                              		                	   fieldLabel: '机构传真',
+           		                              		                   },
+           		                              		                   {
+           		                              		                	   xtype: 'textfield',
+           		                              		                	   fieldLabel: '机构邮编',
+           		                              		                   },
+           		                              		                   {
+           		                              		                	   xtype: 'textfield',
+           		                              		                	   fieldLabel: '机构负责人',
+           		                              		                   }
+           		                              		                ],
+																	
+           		                              		               buttons : [
+           		                        		            		  {
+           		                        		            		   text : "搜索",
+           		                        		            		   iconCls : "btn-save",
+           		                        		            		   handler : function() {}
+           		                        		            		   },
+           		                        		            		  {
+           		                        		            		   text : "重置",
+           		                        		            		   iconCls : "reset",
+           		                        		            		   handler : function() {}
+           		                        		            		  }]
+           		                        		            		 });
+           		                                            	
+           		                                            	//创建一个grid
+           		                                         Ext.define('company', {
+           		                                         extend: 'Ext.data.Model',
+           		                                  		 idProperty: '',
+           		                                  		 //定义类的属性
+           		                                  		 fields: [
+           		                                  		         {name: 'coId' ,type: 'string'},
+           		                                  		         {name: 'coShort', type: 'string'},
+           		                                  		         {name: 'coName', type: 'string'},
+           		                                  		         {name: 'coPhone', type: 'string'},
+           		                                  		         {name: 'coPostcode', type: 'integer'},
+           		                                  		         {name: 'coFax', type: 'string'},
+           		                                  		         {name: 'coLeader', type: 'string'},
+           		                                  		         {name: 'coAddress', type: 'string'},
+           		                                  		         {name: 'coLinkman', type: 'string'}
+           		                                  		         ]        
+           		                                         });
+
+           		                                      //定义数据源将被引入到对应的列中
+           		                                      var myData = [
+           		                                          []
+           		                                        
+           		                                      ];
+           		                                      
+           		                                      //初始化QuickTips就是为了使带有data-qtip属性的html标签能够在鼠标移上去的时候显示其内容
+           		                                      Ext.tip.QuickTipManager.init();
+           		                                      
+           		                                      //想当于一个仓库 存储各种对像的
+           		                                      var store = Ext.create('Ext.data.Store', {
+           		                                          model: 'company',
+           		                                          remoteSort: true,
+           		                                          //每页显示的数据
+           		                                          pageSize: 5,
+           		                                          proxy: {
+           		                                              type: 'pagingmemory',
+           		                                              //引入数据源
+           		                                              data: myData,
+           		                                              reader: {
+           		                                                  type: 'array'
+           		                                              }
+           		                                          }
+           		                                      });
+           		                                      
+           		                                      //定义grid
+           		                                      var agrid = Ext.create('Ext.grid.Panel', {
+           		                                    	id:'agrid',  
+           		                                    	region:'east',
+           		                                      	//grid 的标题
+           		                                          title:'单位列表',
+           		                                          //引入仓库
+           		                                          store: store,
+           		                                          //定义列
+           		                                          columns:[
+           		                                             {
+           		                                              id:'coId',
+           		                                              text: '机构编号',
+           		                                              sortable: true,
+           		                                              //与定义的类中的属性匹配
+           		                                              dataIndex: 'coId',
+           		                                              flex: 0,
+           		                                              width: 75,
+           		                                             },{
+           		                                              text: '机构简称',
+           		                                              sortable: true,
+           		                                              dataIndex: 'coShort',
+           		                                              width: 75
+           		                                             },{
+           		                                              text: '机构全称',
+           		                                              sortable: true,
+           		                                              dataIndex: 'coName',
+           		                                              width: 75
+	           		                                      },{
+	           		                                    	  text: '联系电话',
+	           		                                    	  sortable: true,
+	           		                                    	  dataIndex: 'coPhone',
+	           		                                    	  width: 75
+	           		                                            },{
+	           		                                            	text: '邮政编码',
+	           		                                            	sortable: true,
+	           		                                            	dataIndex: 'coPostcode',
+	           		                                            	width: 75
+	           		                                    	 },{
+	           		                                    		 text: '传真',
+	           		                                    		 sortable: true,
+	           		                                    		 dataIndex: 'coFax',
+	           		                                    		 width: 75
+	           		                                     },{
+	           		                                    	 text: '负责人',
+	           		                                    	 sortable: true,
+	           		                                    	 dataIndex: 'coLeader',
+	           		                                    	 width: 75
+	           		                                     },{
+	           		                                    	 text: '地址',
+	           		                                    	 sortable: true,
+	           		                                    	 dataIndex: 'coAddress',
+	           		                                    	 width: 75
+	           		                                     },{
+	           		                                    	 text: '联系人',
+	           		                                    	 sortable: true,
+	           		                                    	 dataIndex: 'coLinkman',
+	           		                                    	 width: 75
+	           		                                     }
+	           		                                      		],
+	           		                                          stripeRows: true,
+	           		                                          height:320,
+	           		                                          width:1200,
+	           		                                          frame:false,
+	           		                                      });
+           		                                            	 Ext.create("Ext.window.Window",{  
+           		                                                 title:'搜索',  
+           		                                                 closable: true,
+           		                                                 closeAction: 'hide',
+           		                                                 width: 600,
+           		                                                 minWidth: 350,
+           		                                                 height: 320,
+           		                                                 tools: [{type: 'pin'}],
+           		                                                 layout: {
+           		                                                	 type: 'border',
+           		                                                	 padding: 5
+           		                                                 },
+           		                                                 constrain:true,  
+           		                                                 //模态窗体  
+           		                                                 modal:true,  
+           		                                                 //模态窗体  
+           		                                                 plain:true,  
+           		                                                 //滚动条设置  
+           		                                                 autoScroll:true,      
+           		                                                 items:[
+           		                                                        {
+           		                                                        	region: 'west',
+           		                                                        	title:'部门搜索',
+           		                                                        	items:[searchForm],
+           		                                                        	width: 200,
+           		                                                        	split: true,
+           		                                                        	//是否可缩小
+           		                                                        	collapsible: true,
+           		                                                        	floatable: false
+           		                                                        },
+           		                                                        {
+           		                                                        	region: 'center',
+           		                                                        	items:[agrid],
+           		                                                        	width: 200,
+           		                                                        	split: true,
+           		                                                        	floatable: false,
+           		                                                        	autoScroll:true
+           		                                                        }
+           		                                                    ]
+           		                                             }).show();  
+           		                                           }
+           		                                        }
+           		                                  /************创建单位搜索框结束***********/
+           		                                     }        
+           		                                  ]} ,
+           		                                  
+           		           		          {
+                 		                   xtype: 'combo',
+                 		                   store: Ext.create('Ext.data.ArrayStore', {
+                 		                	   fields: [ 'applicationrange' ],
+                 		                       data: [
+                 		                           ['生产'],
+                 		                           ['销售']
+                 		                       ]
+                 		                   }),
+                 		                   name: '',
+                 		                   hiddenName : 'id',// 提交到后台的input的name ，对应下面store里的''id，必须要填
+         		                           emptyText : '-----请选择-----',
+                 		                   valueField:'',
+                 		                   displayField: 'applicationrange',
+                 		                   fieldLabel: '适用范围',
+                 		                   queryMode: 'local',//数据模式,local代表本地数据模式
+                 		                   selectOnTab: false,
+             		            		   typeAhead:false,
+             		            		   editable:false,            
+                 		                   onReplicate: function(){
+                 		                       this.getStore().clearFilter();
+                 		                   }
+                 		               },
+                 		               
+                 		              {
+                		                   xtype: 'combo',
+                		                   store: Ext.create('Ext.data.ArrayStore', {
+                		                	   fields: [ 'availability' ],
+                		                       data: [
+                		                           ['是'],
+                		                           ['否']
+                		                       ]
+                		                   }),
+                		                   name: '',
+                		                   hiddenName : 'id',// 提交到后台的input的name ，对应下面store里的''id，必须要填
+        		                           emptyText : '-----请选择-----',
+                		                   valueField:'',
+                		                   displayField: 'availability',
+                		                   fieldLabel: '可用',
+                		                   queryMode: 'local',//数据模式,local代表本地数据模式
+                		                   selectOnTab: false,
+            		            		   typeAhead:false,
+            		            		   editable:false, 
+                		                   onReplicate: function(){
+                		                       this.getStore().clearFilter();
+                		                   }
+                		               },  
+
+                		            	   {
+                		                   xtype: 'textarea',
+                		                   fieldLabel: '备注',
+                		                   hideLabel: false,
+                		                   name: 'remark',
+                		                   style: 'margin:0', // Remove default margin
+                		                   flex: 1  // Take up all *remaining* vertical space
+                		               }]
+                		           })
+                		           ],  // 这里面放你的表单。 
+                		     /***********************表单设计结束*********************/
+                      		           buttons : [
+                		            		  {
+                		            		   text : "保存",
+                		            		   iconCls : "btn-save",
+                		            		   handler : function() {  
+                		            		   }
+                		            		  },
+                		            		  {
+                		            		   text : "重置",
+                		            		   iconCls : "reset",
+                		            		   handler : function() { 
+                		            		   }
+                		            		  }]
+                		            		 });
+               /*********************创建window弹窗表单结束***********************/
+               //打开弹窗
+               c.show();
+               }

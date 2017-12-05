@@ -1,0 +1,382 @@
+Ext.Loader.setConfig({enabled: true});
+
+//设置路径
+Ext.Loader.setPath('Ext.ux', '../../common/ux/');
+
+//定义需要的插件
+Ext.require([
+    'Ext.data.*',
+    'Ext.grid.*',
+    'Ext.util.*',
+    'Ext.tip.QuickTipManager',
+    'Ext.ux.data.PagingMemoryProxy',
+    'Ext.ux.ProgressBarPager',
+    'Ext.selection.CheckboxModel',
+    'Ext.ux.RowExpander',
+    'Ext.selection.CellModel',
+    'Ext.ux.CheckColumn',
+    'Ext.state.*',
+    'Ext.form.*'
+]);
+
+Ext.onReady(function(){
+	// register model
+	//相当于定义了一个company 类
+	Ext.define('request', {
+		extend: 'Ext.data.Model',
+		idProperty: '',
+		//定义类的属性
+		fields: [
+		         {name: 'apId' ,type: 'integer'},
+		         {name: 'apFlag', type: 'byte'},
+		         {name: 'apDate', type: 'date',dateFormat:'n/j h:i'},
+				 {name: 'apCustomerid', type: 'Integer'},
+				 {name: 'apDepartmentid',type:'string'},
+				 {name: 'apMethod',type:'byte'},	
+				 {name: 'apPay',type:'byte'},
+				 {name: 'totalNum',type:'decimal'},
+				 {name: 'totalPrice',type:'decimal'},
+		         {name: 'apContract',type:'string'},
+		         {name: 'contract',type:'string'},
+		         {name: 'apState',type:'byte'}
+		         ]        
+	});
+    //定义数据源将被引入到对应的列中
+    var myData = [
+    ];
+    
+    //初始化QuickTips就是为了使带有data-qtip属性的html标签能够在鼠标移上去的时候显示其内容
+    Ext.tip.QuickTipManager.init();
+    
+    //想当于一个仓库 存储各种对像的
+    var store = Ext.create('Ext.data.Store', {
+        model: 'request',
+        remoteSort: true,
+        //每页显示的数据
+        pageSize: 20,
+        proxy: {
+            type: 'pagingmemory',
+            //引入数据源
+            data: myData,
+            reader: {
+                type: 'array'
+            }
+        }
+    });
+    
+    //定义编辑属性
+    var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+    	//鼠标点击两次 出现编辑
+        clicksToEdit: 2
+    });
+    
+    //定义选择框
+    var sm = Ext.create('Ext.selection.CheckboxModel');
+    //定义grid
+    var grid = Ext.create('Ext.grid.Panel', {
+    	//grid 的标题
+        title:'维护购煤申请单',
+        //引入仓库
+        store: store,
+        //引入选择框
+        selModel: sm,
+        //定义列
+        columns: [{
+                id:'apId',
+                text: '编号',
+                sortable: true,
+                //与定义的类中的属性匹配
+                dataIndex: 'apId',
+                flex: 0,
+                width: 75,
+                //鼠标点击时能够编辑
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+            	text: '红蓝标记',
+            	sortable: true,
+            	dataIndex: 'apFlag',
+            	width: 75,
+            	editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                text: '开票日期',
+                sortable: true,
+                //格式化日期
+                renderer: Ext.util.Format.dateRenderer('m/d/Y'),
+                dataIndex: 'apDate',
+                width: 75,
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                id:'apCustomerid',
+                text: '客户名称',
+                sortable: true,
+                //与定义的类中的属性匹配
+                dataIndex: 'apCustomerid',
+                flex: 0,
+                width: 75,
+                //鼠标点击时能够编辑
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                id:'apDepartmentid',
+                text: '执行单位',
+                sortable: true,
+                //与定义的类中的属性匹配
+                dataIndex: 'apDepartmentid',
+                flex: 0,
+                width: 75,
+                //鼠标点击时能够编辑
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                id:'apMethod',
+                text: '承运方式',
+                sortable: true,
+                //与定义的类中的属性匹配
+                dataIndex: 'apMethod',
+                flex: 0,
+                width: 75,
+                //鼠标点击时能够编辑
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                id:'apPay',
+                text: '付款方式',
+                sortable: true,
+                //与定义的类中的属性匹配
+                dataIndex: 'apPay',
+                flex: 0,
+                width: 75,
+                //鼠标点击时能够编辑
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                id:'totalNum',
+                text: '购煤量',
+                sortable: true,
+                //与定义的类中的属性匹配
+                dataIndex: 'totalNum',
+                flex: 0,
+                width: 75,
+                //鼠标点击时能够编辑
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                id:'totalPrice',
+                text: '总金额',
+                sortable: true,
+                //与定义的类中的属性匹配
+                dataIndex: 'ahRoaduser',
+                flex: 0,
+                width: 75,
+                //鼠标点击时能够编辑
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                id:'apContract',
+                text: '相关合同编号',
+                sortable: true,
+                //与定义的类中的属性匹配
+                dataIndex: 'apContract',
+                flex: 0,
+                width: 75,
+                //鼠标点击时能够编辑
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                text: '相关合同',
+                sortable: true,
+                dataIndex: 'contract',
+                width: 75,
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+                text: '状态',
+                sortable: true,
+                dataIndex: 'apState',
+                width: 75,
+                editor: {
+                    allowBlank: false
+                }
+            },
+            {
+            	//定义每列数据删除按钮
+            		text: '快速删除',
+                    xtype: 'actioncolumn',
+                    title:'快速删除',
+                    width:75,
+                    sortable: false,
+                    items: [{
+                        icon: '../../common/shared/icons/fam/delete.gif',
+                        tooltip: 'Delete Plant',
+                        handler: function(grid, rowIndex, colIndex) {
+         					Ext.MessageBox.confirm(   
+         					 "请确认"  
+         					  ,"确定删除吗？"  
+         					  ,function( button,text ){  
+         						 if( button == 'yes'){  
+         					      store.removeAt(rowIndex); 
+         						 }  
+         					  }   
+         					);        
+                        }
+                    }]
+                }
+           
+            
+            ],
+            
+        // 保存和取消按钮
+        dockedItems: [{
+            xtype: 'toolbar',
+            dock: 'bottom',
+            ui: 'footer',
+            layout: {
+                pack: 'center'
+            },
+            items: [{
+            	
+                minWidth: 80,
+                text: '保存'
+            },{
+                minWidth: 80,
+                text: '取消'
+            }]
+        }, 
+        //各种按钮布局
+        {
+            xtype: 'toolbar',
+            items: [{
+                text:'添加',
+                tooltip:'add',
+                iconCls:'add'
+                
+            }, '-',{
+                text:'修改',
+                tooltip:' edit',
+                iconCls:'edit'
+            },'-',{
+                itemId: 'removeButton',
+                text:'删除',
+                tooltip:'remove',
+                iconCls:'remove',
+                disabled: true
+            },'-', {
+                text:'送审',
+                tooltip:'submit for censorship',
+                iconCls:'songshen'
+            },'-', {
+                text:'复制',
+                tooltip:'copy',
+                iconCls:'copy'
+            },'-', {
+                text:'生成',
+                tooltip:'create',
+                iconCls:'create'
+            },'-', {
+                text:'审批意见',
+                tooltip:'Approval opinions',
+                iconCls:'shenpiyijian'
+            },'-', {
+                text:'打印',
+                tooltip:'print',
+                iconCls:'print'
+            },'-', {
+                text:'详细信息',
+                tooltip:'detailed',
+                iconCls:'detailed'
+            }
+            ]
+       }],
+       
+       //table边框的设定
+        stripeRows: true,
+        height:320,
+        width:1200,
+        frame:false,
+        
+        /*resizable: {
+           handles: 's',
+           minHeight: 100
+        },*/
+        
+        bbar: Ext.create('Ext.PagingToolbar', {
+            pageSize: 10,
+            store: store,
+            displayInfo: true,
+            plugins: Ext.create('Ext.ux.ProgressBarPager', {})
+        }),
+        //引入编辑功能
+        plugins: [cellEditing]
+    });
+
+    //将table放入制定的div中
+    grid.render('grid-example');
+    //重新提交新的参数请求数据；
+    store.load();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***********************************************************************************************/
+/***********************************************************************************************/
+
+/*// example of custom renderer function
+function change(val){
+	if(val > 0){
+		return '<span style="color:green;">' + val + '</span>';
+	}else if(val < 0){
+		return '<span style="color:red;">' + val + '</span>';
+	}
+	return val;
+}
+
+// example of custom renderer function
+function pctChange(val){
+if(val > 0){
+	return '<span style="color:green;">' + val + '%</span>';
+}else if(val < 0){
+	return '<span style="color:red;">' + val + '%</span>';
+}
+return val;
+}*/

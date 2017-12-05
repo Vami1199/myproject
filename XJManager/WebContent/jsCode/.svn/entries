@@ -1,0 +1,43 @@
+10
+
+dir
+90
+svn://localhost/XJ/XJManager/WebContent/jsCode
+svn://localhost/XJ
+
+
+
+2017-10-25T06:23:37.293899Z
+90
+
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+c9997e6b-b566-bf4c-9f8e-3bc380430b36
+
+base
+dir
+
+localsell
+dir
+
+plan
+dir
+
+trainsplan
+dir
+
+trainsport
+dir
+

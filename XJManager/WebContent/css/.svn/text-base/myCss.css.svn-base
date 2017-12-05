@@ -1,0 +1,55 @@
+       body .x-panel {
+            margin-bottom:20px;
+        }
+        .icon-grid {
+            background-image:url(../common/shared/icons/fam/grid.png) !important;
+        }
+        .add {
+            background-image:url(../common/shared/icons/fam/add.gif) !important;
+        }
+        .option {
+            background-image:url(../common/shared/icons/fam/plugin.gif) !important;
+        }
+        .remove {
+            background-image:url(../common/shared/icons/fam/delete.gif) !important;
+        }
+        .edit {
+            background-image:url(../common/shared/icons/fam/cog_edit.png) !important;
+        }
+        .print {
+            background-image:url(../common/shared/icons/fam/print.png) !important;
+        }
+        .search {
+            background-image:url(../common/shared/icons/fam/search.png) !important;
+        }
+        .detailed {
+            background-image:url(../common/shared/icons/fam/detailed.png) !important;
+        }
+        .ok {
+            background-image:url(../common/shared/icons/fam/ok.png) !important;
+        }
+        .share {
+            background-image:url(../common/shared/icons/fam/share.png) !important;
+        }
+        .change {
+            background-image:url(../common/shared/icons/fam/change.png) !important;
+        }
+        .forward {
+            background-image:url(../common/shared/icons/fam/forward.png) !important;
+        }
+        .next {
+            background-image:url(../common/shared/icons/fam/next.png) !important;
+        }
+        .songshen {
+            background-image:url(../common/shared/icons/fam/songshen.png) !important;
+        }
+        .copy {
+            background-image:url(../common/shared/icons/fam/copy.png) !important;
+        }
+        .create {
+            background-image:url(../common/shared/icons/fam/create.png) !important;
+        }
+        .shenpiyijian {
+            background-image:url(../common/shared/icons/fam/shenpiyijian.png) !important;
+        }
+       
