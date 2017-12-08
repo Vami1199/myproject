@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xj.common.JsonUtils;
+import com.xj.dao.BCustomerDao;
 import com.xj.dao.PayInnerListDao;
 import com.xj.domain.account.PayInnerList;
 import com.xj.domain.account.PayInnerListQuery;
+import com.xj.domain.base.BCustomer;
 import com.xj.domain.query.account.PayInnerListQueryOwn;
 import com.xj.service.account.PayInnerService;
 
@@ -21,6 +23,8 @@ import com.xj.service.account.PayInnerService;
 public class PayInnerImpl implements PayInnerService{
 	@Autowired
 	PayInnerListDao payInnerListDao;
+	@Autowired
+	BCustomerDao bCustomerDao;
 	
 	public String findByExp(PayInnerListQuery payInnerListQuery){
 		List<PayInnerList> payInnerList =  payInnerListDao.selectByExample(payInnerListQuery);
@@ -29,6 +33,19 @@ public class PayInnerImpl implements PayInnerService{
 		for (PayInnerList payInnerListEvery : payInnerList) {
 			PayInnerListQueryOwn payInnerListQueryOwn = new PayInnerListQueryOwn();
 			payInnerListQueryOwn.setPayInnerList(payInnerListEvery);
+			BCustomer mainName = bCustomerDao.selectByPrimaryKey(payInnerListEvery.getPayInMain());
+			BCustomer salerName =bCustomerDao.selectByPrimaryKey(payInnerListEvery.getPayInSale());
+			BCustomer buyerName =bCustomerDao.selectByPrimaryKey(payInnerListEvery.getPayInBuy());
+			if (mainName != null) {
+				payInnerListQueryOwn.setMainName(mainName.getcName());
+			}
+			if (salerName != null) {
+				payInnerListQueryOwn.setSalerName(salerName.getcName());
+			}
+			if (buyerName != null) {
+				payInnerListQueryOwn.setBuyerName(buyerName.getcName());
+			}
+			payInnerListQueryOwns.add(payInnerListQueryOwn);
 		}
 		int count = payInnerListDao.countByExample(payInnerListQuery);
 		Map<String, Object> map = new HashMap<String, Object>();

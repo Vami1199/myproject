@@ -11,4 +11,5 @@ public interface PayInnerService {
 	int update(PayInnerList payInnerList);
 	
 	Integer deleteById(Integer id);
+
 }

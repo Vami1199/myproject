@@ -490,7 +490,6 @@ Ext.onReady(function() {
 			padding: '5px',
 			border: 1
 		},
-
 		region: 'west',
 		plain: true,
 		border: 0,
