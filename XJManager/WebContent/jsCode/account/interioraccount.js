@@ -131,8 +131,7 @@ Ext.onReady(function() {
 			name: 'customer.cCreditdeclare',
 			type: 'String'
 		}]
-	});
-	
+	});	
 	Ext.define('addcompany', {
 				extend: 'Ext.data.Model',
 				idProperty: '',
@@ -173,12 +172,32 @@ Ext.onReady(function() {
 						type: 'string'
 					}
 				]
-			});
-			
-			
+		});			
+	
+	Ext.define('payPiList',{
+		extend: 'Ext.data.Model',
+		idProperty: '',	
+		fields:[{
+			name:'payPiList.payPiId',
+			type:'Integer'
+		},{
+			name:'payPiList.payPiNoIncome',
+			type:'Long'
+		},{
+			name:'payPiList.payPiPurchases',
+			type:'Long'
+		},{
+			name:'payPiList.payPiPrice',
+			type:'Long'
+		}
+		]
+	});
+	
 	var required = '<span style="color:red;font-weight:bold" data-qtip="Required">*</span>';
 	var requiredimportant = '<span style="color:red;font-weight:bold" data-qtip="Required">***</span>';
+	var sm = Ext.create('Ext.selection.CheckboxModel');
 	
+	/*********************客户收货单位**********************************/
 	var customerId;
 	//查询单位用到的store
 	var reciveStore = Ext.create('Ext.data.Store', {
@@ -196,8 +215,6 @@ Ext.onReady(function() {
 			}
 		}
 	});	
-	
-
 	/*************************搜索功能开始************************************/
 	var searchFormpanel = Ext.create('Ext.form.Panel', {
 		region: 'west',
@@ -251,6 +268,29 @@ Ext.onReady(function() {
 
 				minWidth: 80,
 				text: '搜索',
+				handler:function(){
+					var url = '/XJManager/account/payInnerList.do?1=1';
+					var all = searchFormpanel.getForm().getValues();
+					var searchName = all['payInnerList.payInProductName']; //商品名称
+					var searchBuyer = all['buyerName'];//购货单位
+					var searchSaler = all['salerName'];//销货单位
+					var searchDate = all[''];//创建日期，有这个字段吗？
+					if(searchName != null && searchName != '') {
+							url = url + '&=payInnerList.payInProductName' + searchName;
+					}
+					if(searchBuyer != null && searchBuyer != '') {
+							url = url + '&=buyerName' + searchBuyer;
+					}
+					if(searchSaler != null && searchSaler != '') {
+							url = url + '&=salerName' + searchSaler;
+					}
+					if(searchDate != null && searchDate != '') {
+							url = url + '&=payInnerList.payInProductName' + searchDate;
+					}
+					store.getProxy().url = url;
+					store.load();
+					panelnew.hide();					
+				}
 			}, {
 				minWidth: 80,
 				text: '取消'
@@ -258,7 +298,6 @@ Ext.onReady(function() {
 		}]
 
 	});
-	//////////////////////////////////////////////////////
 	//筛选面板
 	var panelnew = Ext.create("Ext.panel.Panel", {
 			floating: true,
@@ -284,6 +323,7 @@ Ext.onReady(function() {
 			autoScroll: true,
 			items: [{
 					region: 'north',
+					title:'供应商搜索',
 					items: [searchFormpanel],
 					width: 200,
 					split: true,
@@ -330,21 +370,28 @@ Ext.onReady(function() {
 	});
     Ext.tip.QuickTipManager.init();
     var store = Ext.create('Ext.data.Store', {
+    	//model解析数据的模型，模型可以代替proxy和fields配置  
         model: 'PayInnerList',
+        //remoteSort往后台发送排序条件 
         remoteSort: true,
         //每页显示的数据
         pageSize: 5,
+        //proxy数据代理，用于从某个途径读取原始数据，发送ajax来请求数据
         proxy: {
             type: "ajax",
             url: '/XJManager/account/payInnerList.do',
+            // 读取数据的工具（数据代理）
             reader: {
+            	// 读取方式按照json字符串格式读取
                 type: "json",
+                // json解析成js对象之后读取所有数据（通常是数组）的属性名称。
                 root: "queryList",
+                // json解析成js对象之后读取数据总条数的属性名称
                 totalProperty: 'totalCount'
             }
         }
     });
-    var sm = Ext.create('Ext.selection.CheckboxModel');
+   
     
 	
 		
@@ -568,7 +615,7 @@ Ext.onReady(function() {
 							//必填项
 							name:'mainName',
 							afterLabelTextTpl: required,
-							allowBlank: false,
+							//allowBlank: false,
 						}, {
 							xtype: "button",
 							icon: '../../common/shared/icons/fam/search.png',
@@ -826,15 +873,15 @@ Ext.onReady(function() {
 							xtype: "textfield",
 							fieldLabel: "销货单位",
 							width: 278,
-							flex: 0,
-							//flex: 1,
+							//flex: 0,
+							flex: 1,
 							/*layout: 'column',*/
 							value: '',
 							//必填项
 							afterLabelTextTpl: required,
 							//pProductionunit
 							name: 'salerName',
-							allowBlank: false,
+							//allowBlank: false,
 						}, {
 							xtype: "button",
 							icon: '../../common/shared/icons/fam/search.png',
@@ -1048,7 +1095,7 @@ Ext.onReady(function() {
 										items: [{
 											region: 'west',
 											title: '部门搜索',
-											items: [searchFormdw],
+											items: [companyForm],
 											width: 200,
 											split: true,
 											//是否可缩小
@@ -1065,10 +1112,10 @@ Ext.onReady(function() {
 									});
 									companyGrid.addListener('itemdblclick',function(dataview, record, item, index, e) {
 										if(record.get('coId')!=null){
-											addForm.getForm().findField('payList.payDepartment').setValue(record.get('coId'));
+											addForm.getForm().findField('payInnerList.payInSale').setValue(record.get('coId'));
 										}
 										if(record.get('coName')!=null){
-											addForm.getForm().findField('departmentName').setValue(record.get('coName'));
+											addForm.getForm().findField('salerName').setValue(record.get('coName'));
 										}
 										companyWin.hide();
 									});
@@ -1097,7 +1144,7 @@ Ext.onReady(function() {
 							//pProductionunit
 							name: 'buyerName',
 							afterLabelTextTpl: required,
-							allowBlank: false,
+							//allowBlank: false,
 						}, {
 							xtype: "button",
 							icon: '../../common/shared/icons/fam/search.png',
@@ -1139,7 +1186,7 @@ Ext.onReady(function() {
 											align: 'stretch' // Child items are stretched to full width
 										},
 										items: [{
-												xtype: 'textfield',
+												xtype: 'numberfield',
 												fieldLabel: '客户编号',
 												afterLabelTextTpl: required,
 												name: 'customer.cId',
@@ -1250,7 +1297,7 @@ Ext.onReady(function() {
 													data: [
 														[1,'矿业'],
 														[2,'科技'],
-														[3,'生产']
+														[3,'生产'],
 													]
 												}),
 												//pCoaltype
@@ -1264,6 +1311,7 @@ Ext.onReady(function() {
 												//选中下拉框后再点击面板就会多出一行,不知道有卵子用
 												/*plugins: [ Ext.ux.FieldReplicator ],*/
 												fieldLabel: '所属行业',
+												width: 200,
 												queryMode: 'local', //数据模式,local代表本地数据模式
 												//tab键是否可以选择当前突出项
 												selectOnTab: false,
@@ -1301,6 +1349,7 @@ Ext.onReady(function() {
 												//选中下拉框后再点击面板就会多出一行,不知道有卵子用
 												/*plugins: [ Ext.ux.FieldReplicator ],*/
 												fieldLabel: '部别',
+												width: 200,
 												queryMode: 'local', //数据模式,local代表本地数据模式
 												//tab键是否可以选择当前突出项
 												selectOnTab: false,
@@ -1525,10 +1574,10 @@ Ext.onReady(function() {
 										/********************客户相关结束*********************************/
 										customerGrid.addListener('itemdblclick', function(dataview, record, item, index, e) {
 											if(record.get('customer.cId') != null) {
-												addForm.getForm().findField('payList.payCustomerid').setValue(record.get('customer.cId'));
+												addForm.getForm().findField('payInnerList.payInBuy').setValue(record.get('customer.cId'));
 											}
 											if(record.get('customer.cName') != null) {
-												addForm.getForm().findField('bCustomerName').setValue(record.get('customer.cName'));
+												addForm.getForm().findField('buyerName').setValue(record.get('customer.cName'));
 											}
 											customerWin.hide();
 										});
@@ -1572,10 +1621,10 @@ Ext.onReady(function() {
 			text: "保存",
 			iconCls: "btn-save",
 			handler: function() {
-				if(!addForm.isValid()){
+				/*if(!addForm.isValid()){
 					Ext.Msg.alert('请完善信息', '有必填项没有输入,请仔细检查!');
 					return;
-				}
+				}*/				
 				addForm.submit({
 					success: function() {
 						addWin.hide();
@@ -1584,7 +1633,7 @@ Ext.onReady(function() {
 					failure: function() {
 						Ext.Msg.alert('添加失败', '添加失败,请重试!');
 					}
-				});
+				});				
 			}
 		}, {
 			text: "重置",
@@ -1623,6 +1672,18 @@ Ext.onReady(function() {
 		{
 			name: 'payInnerList.payPiId',
 			type: 'Integer'
+		},
+		{
+			name:'payPiList.payPiNoIncome',
+			type:'Long'
+		},
+		{
+			name:'payPiList.payPiPurchases',
+			type:'Long'
+		},
+		{
+			name:'payPiList.payPiPrice',
+			type:'Long'
 		},
 		{
 			name: 'payInnerList.payInFillNoIncom',
@@ -1754,19 +1815,19 @@ Ext.onReady(function() {
 					text: '不含税收入（元）',
 					width: 100,
 					sortable: true,
-					dataIndex: 'payInnerList.payInNoIncom'
+					dataIndex: 'payPiList.payPiNoIncome'
 				}, {
 					text: '购销量（吨）',
 					width: 100,
 					sortable: true,
 					//renderer: change,
-					dataIndex: 'payInnerList.payInPurchases'
+					dataIndex: 'payPiList.payPiPurchases'
 				}, {
 					text: '不含税售价（元/吨）',
 					width: 100,
 					sortable: true,
 					//renderer: pctChange,
-					dataIndex: 'payInnerList.payInPrice'
+					dataIndex: 'payPiList.payPiPrice'
 				}]
 			}, {
 				text: '补结算',
@@ -1956,6 +2017,7 @@ Ext.onReady(function() {
 
 		//table边框的设定
 		stripeRows: true,
+		store: store,
 		height: 320,
 		width: 1200,
 		frame: false,

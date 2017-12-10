@@ -10,7 +10,7 @@ public class PayPiList implements Serializable {
     private Integer payPiId;
 
     /**
-     * 收货单位
+     * 售货单位
      */
     private Integer payPiSale;
 

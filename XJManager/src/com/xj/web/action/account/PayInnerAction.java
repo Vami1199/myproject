@@ -46,10 +46,16 @@ public class PayInnerAction {
 			if (StringUtils.isNotBlank(payInnerList.getPayInProductName())&&payInnerList.getPayInProductName()!=null) {
 				criteria.andPayInProductNameEqualTo(payInnerList.getPayInProductName());
 			}
-			if (StringUtils.isNotBlank(listQuery.getBuyerName())&& listQuery.getBuyerName()!=null) {
+			/*if (StringUtils.isNotBlank(listQuery.getBuyerName())&& listQuery.getBuyerName()!=null) {
 				criteria.andPayInBuyEqualTo(payInnerList.getPayInBuy());
 			}
 			if (StringUtils.isNotBlank(listQuery.getSalerName())&&listQuery.getSalerName()!=null) {
+				criteria.andPayInSaleEqualTo(payInnerList.getPayInSale());
+			}*/
+			if (payInnerList.getPayInBuy()!=null) {
+				criteria.andPayInBuyEqualTo(payInnerList.getPayInBuy());
+			}
+			if (payInnerList.getPayInSale()!=null) {
 				criteria.andPayInSaleEqualTo(payInnerList.getPayInSale());
 			}
 		}
@@ -65,7 +71,7 @@ public class PayInnerAction {
 	@RequestMapping(value="/account/addSupplierAccount.do")
 	public void addSupplierAccount(HttpServletResponse response,PayInnerListQueryOwn listQuery) throws IOException{
 		PayInnerList payInnerList = listQuery.getPayInnerList();
-		payInnerList.setPayInId(Integer .valueOf(UUIDUtils.returnUUID()));
+		payInnerList.setPayInId(Integer.valueOf(UUIDUtils.returnUUID()));
 		int flag = payInnerService.add(payInnerList);
 		if (flag == 1) {
 			JsonUtils.returnJson(response, "{success:true}");

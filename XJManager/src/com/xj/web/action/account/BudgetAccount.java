@@ -38,9 +38,20 @@ public class BudgetAccount {
 		PayPiList payPiList = listQuery.getPayPiList();
 		Criteria criteria =  payPiListQuery.createCriteria();
 		System.out.println(payPiList);
-		/*if (payPiList !=null) {
-			
-		}*/
+		if (payPiList !=null) {
+			if (payPiList.getPayPiDate()!= null) {
+				criteria.andPayPiDateEqualTo(payPiList.getPayPiDate());
+			}
+			if (payPiList.getPayPiMain()!=null) {
+				criteria.andPayPiMainEqualTo(payPiList.getPayPiMain());
+			}
+			if (payPiList.getPayPiBuy()!=null) {
+				criteria.andPayPiBuyEqualTo(payPiList.getPayPiBuy());
+			}
+			if (payPiList.getPayPiSale()!=null) {
+				criteria.andPayPiSaleEqualTo(payPiList.getPayPiSale());
+			}
+		}
 		String json = budgetAccountService.findByExp(payPiListQuery);
 		JsonUtils.returnJson(response, json);
 	}
@@ -50,7 +61,7 @@ public class BudgetAccount {
 	 * @param listQuery
 	 * @throws IOException
 	 */
-	@RequestMapping(value="/account/addBudget")
+	@RequestMapping(value="/account/addBudget.do")
 	public void addBudget(HttpServletResponse response,PayPiListQueryOwn listQuery) throws IOException{
 		PayPiList payPiList = listQuery.getPayPiList();
 		payPiList.setPayPiId(Integer.valueOf(UUIDUtils.returnUUID()));
