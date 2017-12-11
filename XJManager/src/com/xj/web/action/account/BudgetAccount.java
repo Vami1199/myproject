@@ -64,7 +64,9 @@ public class BudgetAccount {
 	@RequestMapping(value="/account/addBudget.do")
 	public void addBudget(HttpServletResponse response,PayPiListQueryOwn listQuery) throws IOException{
 		PayPiList payPiList = listQuery.getPayPiList();
-		payPiList.setPayPiId(Integer.valueOf(UUIDUtils.returnUUID()));
+		
+		//payPiList.setPayPiId(Integer.valueOf(UUIDUtils.returnUUID()));
+		payPiList.setPayPiId(1);
 		int i = budgetAccountService.add(payPiList);
 		if (i==1) {
 			JsonUtils.returnJson(response, "{success:true}");

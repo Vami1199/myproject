@@ -10,9 +10,7 @@ public class PayInnerListQueryOwn {
 	private String salerName;//销货单位
 	private String buyerName;//购货单位
 
-	private String bCustomerName; 
-	private String reciveName;
-	private String departmentName;
+	
 	
 	
 	public String getBuyerName() {
@@ -38,33 +36,6 @@ public class PayInnerListQueryOwn {
 		this.mainName = mainName;
 	}
 	
-	public String getbCustomerName() {
-		return bCustomerName;
-	}
-
-	public void setbCustomerName(String bCustomerName) {
-		this.bCustomerName = bCustomerName;
-	}
-
-	
-
-	public String getReciveName() {
-		return reciveName;
-	}
-
-	public void setReciveName(String reciveName) {
-		this.reciveName = reciveName;
-	}
-
-	public String getDepartmentName() {
-		return departmentName;
-	}
-
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
-	}
-
-
 	
 	public PayInnerList getPayInnerList() {
 		return payInnerList;

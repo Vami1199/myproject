@@ -355,7 +355,23 @@ Ext.onReady(function() {
 		         {
 		         	name:'payPiList.payPiProjects',
 		         	type:'string'
-		         }
+		         },
+		         {
+		         	name:'payPiList.payPiNoIncome',
+		         	type:'long'
+		         },
+		         {
+		         	name:'payPiList.payPiPurchases',
+		         	type:'long'
+		         },
+		         {
+		         	name:'payPiList.payPiCoalQuality',
+		         	type:'long'	
+		         },
+		         {
+		         	name:'payPiList.payPiPrice',
+		         	type:'long'
+		         },
 		        ]        
 	});
     Ext.tip.QuickTipManager.init();
@@ -499,7 +515,7 @@ Ext.onReady(function() {
 	/*******************机构相关结束*************************/
 
 	/************************定义添加界面开始***********************/
-		var addForm = Ext.create('Ext.form.Panel', {
+	var addForm = Ext.create('Ext.form.Panel', {
 		bodyStyle: {
 			background: '#DFE9F6',
 			padding: '5px',
@@ -527,8 +543,13 @@ Ext.onReady(function() {
 				frame: true,
 				items: [
 				{
-					
-
+					xtype: 'textfield',
+					fieldLabel: '预结算单编号',
+					width: 300,
+					name: 'payPiList.payPiId',
+					hidden:true
+				},
+				{
 						xtype: "fieldcontainer",
 						layout: "hbox",
 						items: [
@@ -548,7 +569,7 @@ Ext.onReady(function() {
 							//必填项
 							name:'mainName',
 							afterLabelTextTpl: required,
-							allowBlank: false,
+							//allowBlank: false,
 						}, {
 							xtype: "button",
 							icon: '../../common/shared/icons/fam/search.png',
@@ -794,9 +815,7 @@ Ext.onReady(function() {
 
 					
 				},
-				{
-					
-
+				{					
 						xtype: "fieldcontainer",
 						layout: "hbox",
 						items: [
@@ -816,7 +835,7 @@ Ext.onReady(function() {
 							//必填项
 							afterLabelTextTpl: required,
 							//pProductionunit
-							allowBlank: false,
+							//allowBlank: false,
 						}, {
 							xtype: "button",
 							icon: '../../common/shared/icons/fam/search.png',
@@ -1083,7 +1102,7 @@ Ext.onReady(function() {
 							//pProductionunit
 							name: 'buyerName',
 							afterLabelTextTpl: required,
-							allowBlank: false,
+							//allowBlank: false,
 						}, {
 							xtype: "button",
 							icon: '../../common/shared/icons/fam/search.png',
@@ -1519,9 +1538,9 @@ Ext.onReady(function() {
 											title: '搜索',
 											closable: true,
 											closeAction: 'hide',
-											width: 600,
+											width: 980,
 											minWidth: 350,
-											height: 320,
+											height: 460,
 											tools: [{
 												type: 'pin'
 											}],
@@ -1660,16 +1679,12 @@ Ext.onReady(function() {
 	//相当于定义了一个company 类
 	Ext.define('budgetAccount', {
 		extend: 'Ext.data.Model',
-		idProperty: '',
+		idProperty: 'budgetAccount',
 		//定义类的属性
 		fields: [
 		{
 			name: 'payPiList.payPiId',
 			type: 'integer'
-		}, {
-			name: 'payPiList.payPiDate',
-			type: 'date',
-			dateFormat: 'n/j h:i'
 		}, {
 			name: 'payPiList.payPiSale',
 			type: 'integer'
@@ -1688,7 +1703,13 @@ Ext.onReady(function() {
 		}, {
 			name: 'mainName',
 			type: 'string'
-		}, {
+		},{
+			name: 'payPiList.payPiDate',
+			type: 'Date',
+			mapping: 'payList.payDate.time',
+			dateFormat: 'time'
+		},
+		{
 			name: 'payPiList.payPiProjects',
 			type: 'string'
 		}, {
@@ -1731,7 +1752,7 @@ Ext.onReady(function() {
 				type: 'array'
 			}*/
 			type: "ajax",
-			url: '/XJManager/account/payInnerList.do',
+			url: '/XJManager/account/budgetList.do',
 			reader: {
 				type: "json",
 				root: "queryList",
@@ -1758,58 +1779,80 @@ Ext.onReady(function() {
 		//定义列
 		columns: [
 		{
-			
+			text: '预结算单编号',
+			sortable: true,
+			dataIndex: 'payPiList.payPiId',
+			flex: 0,
+			width: 75,
+			hidden:true
+		},
+		{
+			text: '预结算单位编号',
+			sortable: true,
+			dataIndex: 'payPiList.payPiMain',
+			flex: 0,
+			width: 75,
+			hidden:true
+		},
+		{
+			text: '售货单位编号',
+			sortable: true,
+			dataIndex: 'payPiList.payPiSale',
+			flex: 0,
+			width: 75,
+			hidden:true
+		},
+		{
+			text: '购货单位编号',
+			sortable: true,
+			dataIndex: 'payPiList.payPiBuy',
+			flex: 0,
+			width: 75,
+			hidden:true
+		},
+		{	
             id: '',
             text: '单位',
             sortable: true,
             //与定义的类中的属性匹配
             dataIndex: 'mainName',
             flex: 0,
-            width: 75,
-        
-		}, {
-			
+            width: 75,       
+		}, {			
             id: '',
             text: '售货单位',
             sortable: true,
             //与定义的类中的属性匹配
             dataIndex: 'salerName',
             flex: 0,
-            width: 75,
-        
-		},{
-			
+            width: 75,       
+		},{			
             id: '',
             text: '购货单位',
             sortable: true,
             //与定义的类中的属性匹配
             dataIndex: 'buyerName',
             flex: 0,
-            width: 75,
-        
+            width: 75,       
 		},
-		{
-			
+		{			
             id: '',
             text: '日期',
             sortable: true,
             //与定义的类中的属性匹配
+            renderer: Ext.util.Format.dateRenderer('m/d/Y'),
             dataIndex: 'payPiList.payPiDate',
             flex: 0,
-            width: 75,
-        
-		}, {
-			
+            width: 75,       
+		}, {			
             id: '',
             text: '项目',
             sortable: true,
             //与定义的类中的属性匹配
             dataIndex: 'payPiList.payPiProjects',
             flex: 0,
-            width: 75,
-        
-		}, {
-			
+            width: 75,      
+		}, {			
             id: '',
             text: '不含税收入（元）',
             sortable: true,
@@ -1818,36 +1861,30 @@ Ext.onReady(function() {
             flex: 0,
             width: 120,
         
-		},{
-			
+		},{			
             id: '',
             text: '购销量（吨）',
             sortable: true,
             //与定义的类中的属性匹配
             dataIndex: 'payPiList.payPiPurchases',
             flex: 0,
-            width: 120,
-        
-		},{
-			
+            width: 120,       
+		},{			
             id: '',
             text: '综合煤质（caL/g）',
             sortable: true,
             //与定义的类中的属性匹配
             dataIndex: 'payPiList.payPiCoalQuality',
             flex: 0,
-            width: 120,
-        
-		},{
-			
+            width: 120,        
+		},{			
             id: '',
             text: '综合售价',
             sortable: true,
             //与定义的类中的属性匹配
             dataIndex: 'payPiList.payPiPrice',
             flex: 0,
-            width: 75,
-        
+            width: 75,        
 		},
 		{
 				//定义每列数据删除按钮

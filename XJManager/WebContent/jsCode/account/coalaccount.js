@@ -533,7 +533,7 @@ Ext.onReady(function() {
 						flex: 1,
 						name: 'departmentName',
 						afterLabelTextTpl: required,
-						allowBlank: false,
+						//allowBlank: false,
 					}, {
 						xtype: "button",
 						icon: '../../common/shared/icons/fam/search.png',
@@ -790,7 +790,7 @@ Ext.onReady(function() {
 						flex: 0,
 						name: 'reciveName',
 						afterLabelTextTpl: required,
-						allowBlank: false,
+						//allowBlank: false,
 					}, {
 						xtype: "button",
 						icon: '../../common/shared/icons/fam/search.png',
@@ -1236,7 +1236,7 @@ Ext.onReady(function() {
 						flex: 0,
 						name: 'bCustomerName',
 						afterLabelTextTpl: required,
-						allowBlank: false,
+						//allowBlank: false,
 					}, {
 						xtype: "button",
 						icon: '../../common/shared/icons/fam/search.png',
